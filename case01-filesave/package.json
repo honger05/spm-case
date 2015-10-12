@@ -1,0 +1,18 @@
+{
+  "spm": {
+    "output": [
+      "index.js",
+      "index.html"
+    ],
+    "dependencies": {
+      "filesaver": "0.0.0",
+      "jquery": "~2.1.4"
+    }
+  },
+  "devDependencies": {
+    "spm": "~3.6.0"
+  },
+  "scripts": {
+    "build": "spm build"
+  }
+}
