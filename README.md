@@ -1,17 +1,17 @@
 # spm-case
 some package which submit on spm3.6 .
 
-# Prepare
+## Prepare
 
-````js
+````bash
 $ npm install spm -g
 ````
 
 Make sure your spm version is 3.6.x .
 
-# Usage
+## Usage
 
-````js
+````bash
 # !-- 1. enter directory
 $ cd case01-filesaver
 
