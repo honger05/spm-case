@@ -2,7 +2,6 @@
 some package which submit on spm3.6 .
 
 # Prepare
------
 
 ````js
 $ npm install spm -g
@@ -11,7 +10,6 @@ $ npm install spm -g
 Make sure your spm version is 3.6.x .
 
 # Usage
-----
 
 ````js
 # !-- 1. enter directory
