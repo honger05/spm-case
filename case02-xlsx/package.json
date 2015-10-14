@@ -1,0 +1,13 @@
+{
+  "spm": {
+    "output": [
+      "index.js",
+      "index.html"
+    ],
+    "dependencies": {
+      "filesaver": "~0.0.0",
+      "xlsx": "~1.0.1",
+      "csv": "~1.0.0"
+    }
+  }
+}
