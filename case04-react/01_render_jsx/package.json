@@ -1,0 +1,19 @@
+{
+  "spm": {
+    "output": [
+      "index.html",
+      "index.js"
+    ],
+    "dependencies": {
+      "react": "0.13.1",
+      "jquery": "~2.1.4"
+    },
+    "build": {
+      "extractCSS": true,
+      "babel": true,
+      "loader": {
+        ".jsx": "babel"
+      }
+    }
+  }
+}
