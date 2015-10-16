@@ -1,0 +1,17 @@
+{
+  "spm": {
+    "main": "index.js",
+    "output": [
+      "index.js",
+      "index.html"
+    ],
+    "build": {
+      "extractCSS": false
+    },
+    "dependencies": {
+      "jquery": "1.10.1",
+      "underscore": "1.6.0",
+      "backbone": "1.1.2"
+    }
+  }
+}

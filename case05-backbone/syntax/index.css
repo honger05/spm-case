@@ -1,0 +1,10 @@
+h1 {
+	color: red;
+}
+
+#sidebar {
+	width: 20%;
+	float: left;
+	height: 100px;
+	outline: 1px solid #ddd;
+}
