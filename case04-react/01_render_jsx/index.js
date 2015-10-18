@@ -171,3 +171,74 @@ React.render(<Input></Input>, document.getElementById('example8'));
 
 
 // Demo10: Component Lifecycle
+var Hello = React.createClass({
+	getInitialState: function() {
+		return {
+			opacity: 1.0
+		}
+	},
+
+	componentDidMount: function() {
+		this.timer = setInterval(function() {
+			var opacity = this.state.opacity;
+			opacity -= 0.05;
+			if (opacity < 0.1) {
+				opacity = 1.0;
+			}
+			this.setState({
+				opacity: opacity
+			});
+		}.bind(this), 100)
+	},
+
+	render: function() {
+		return (
+			<div style={{opacity: this.state.opacity}}>
+				Hello {this.props.name}
+			</div>
+		)
+	}
+})
+
+React.render(
+	<Hello name="React"></Hello>,
+	document.getElementById('example9')
+)
+
+
+// Demo11: Ajax
+var UserGist = React.createClass({
+	getInitialState: function() {
+		return {
+			username: '',
+			lastGistUrl: ''
+		}
+	},
+
+	componentDidMount: function() {
+		$.get(this.props.source, function(result) {
+			var lastGist = result[0];
+			if (this.isMounted()) {
+				this.setState({
+					username: lastGist.owner.login,
+					lastGistUrl: lastGist.html_url
+				})
+			}
+		}.bind(this))
+	},
+
+	render: function() {
+		return (
+			<div>
+				{this.state.username}'s last gist is
+				<a href={this.state.lastGistUrl}>here</a>.
+			</div>
+		)
+	}
+})
+
+React.render(
+	<UserGist source="https://api.github.com/users/octocat/gists"></UserGist>,
+	document.getElementById('example10')
+)
+
