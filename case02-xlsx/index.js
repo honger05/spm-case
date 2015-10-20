@@ -4,12 +4,19 @@
 var filesaver = require('filesaver');
 var CSV = require('csv');
 
-var data = '\
+var use_worker = typeof Worker !== 'undefined';
+
+var XW = {
+	msg: "xlsx",
+	rABS: "./xlsxworker2.js"
+}
+
+var csvdata = '\
 1850,20,0,1,1017281\r\n\
 1850,20,0,2,1003841\r\n\
 1850,20,0,3,1003243';
 
-var parseData = new CSV(data).parse();
+var parseData = new CSV(csvdata).parse();
 
 function datenum(v, date1904) {
 	if(date1904) v+=1462;
@@ -92,7 +99,15 @@ function ab2str(data) {
 }
 
 document.getElementById("download").addEventListener('click', function() {
-	filesaver.saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), "test.xlsx");
+	var suffix = get_radio_value('suffix');
+	switch(suffix){
+		case 'csv':
+			filesaver.saveAs(new Blob([csvdata], {type: "text/plain"}), 'test.csv');
+			break;
+		default:
+			filesaver.saveAs(new Blob([s2ab(wbout)], {type:"application/octet-stream"}), "test.xlsx");
+			break;
+	}
 });
 
 /**
@@ -170,6 +185,7 @@ table2excelEl.addEventListener('click', export_table_to_excel.bind(this, 'table'
   parse excel file.
 **/
 var selectFilesEl = document.getElementById('selectFiles');
+var selectTrueFilesEl = document.getElementById('selectTrueFiles');
 var dropEl = document.getElementById('drop');
 var outEl = document.getElementById('out');
 
@@ -178,7 +194,13 @@ function handleChange(e) {
 	readFiles(files);
 }
 
-selectFilesEl.addEventListener('change', handleChange, false);
+function handleClick(e) {
+	selectTrueFilesEl.click();
+}
+
+selectFilesEl.addEventListener('click', handleClick, false);
+
+selectTrueFilesEl.addEventListener('change', handleChange, false);
 
 function handleDrop(e) {
 	e.preventDefault();
@@ -187,19 +209,9 @@ function handleDrop(e) {
   readFiles(files);
 }
 
-function readFiles(files) {
-	var i, f, len;
-  for (i = 0, len = files.length; i < len; ++i) {
-  	f = files[i];
-		var reader = new FileReader();
-		var name = f.name;
-		reader.onload = function(e) {
-			var data = e.target.result;
-			var workbook = XLSX.read(data, {type: 'binary'});
-			handleWorkbook(workbook);
-		};
-		reader.readAsBinaryString(f);
-	}
+function handleCSV(data) {
+	var data = CSV.parse(data);
+	outEl.innerText = data.join('\n');
 }
 
 function handleWorkbook(workbook) {
@@ -268,6 +280,42 @@ function to_formulae(workbook) {
 		}
 	});
 	return result.join('\n');
+}
+
+function xw_xfer(data, cb) {
+	var worker = new Worker(XW.rABS);
+	worker.onmessage = function(e) {
+		switch(e.data.t) {
+			case 'ready': break;
+			case 'e': console.error(e.data.d); break;
+			default: xx=ab2str(e.data).replace(/\n/g,"\\n").replace(/\r/g,"\\r"); console.log("done"); cb(JSON.parse(xx)); break;
+		}
+	};
+	var val = s2ab(data);
+	worker.postMessage(val[1], [val[1]]);
+}
+
+function readFiles(files) {
+	var i, f, len;
+  for (i = 0, len = files.length; i < len; ++i) {
+  	f = files[i];
+		var reader = new FileReader();
+		var name = f.name;
+		var suffix = name.substring(name.lastIndexOf('.') + 1);
+		reader.onload = function(e) {
+			var data = e.target.result;
+			switch(suffix){
+				case 'csv':
+					handleCSV(data);
+					break;
+				default:
+						var workbook = XLSX.read(data, {type: 'binary'});
+						handleWorkbook(workbook);
+					break;
+			}
+		};
+		reader.readAsBinaryString(f);
+	}
 }
 
 dropEl.addEventListener('dragover', allowDrop, false);

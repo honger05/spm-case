@@ -12,7 +12,10 @@
 			height: 100px;
 			line-height: 100px;
 			text-align: center;
-			border: 2px solid #ddd;
+			border: 2px dashed #ddd;
+		}
+		.hidden {
+			display: none;
 		}
 	</style>
 </head>
@@ -20,8 +23,10 @@
 	
 	<div class="cell">
 		<h1>导出 excel </h1>
+		<input type="radio" name="suffix" value="excel" checked>excel
+		<input type="radio" name="suffix" value="csv">csv
 		<p>包含了 二维数组 和 csv 格式 的 数据</p>
-		<button id="download">download xlsx</button>
+		<button id="download">download</button>
 	</div>
 
 	<div class="cell">
@@ -39,9 +44,9 @@
 	<hr>
 
 	<div class="cell">
-		<h1>导入 excel</h1>
-
-		<input type="file" id="selectFiles" multiple>
+		<h1>导入 excel or csv</h1>
+		<button id="selectFiles">choose file</button>
+		<input type="file" id="selectTrueFiles" multiple class="hidden">
 	</div>
 
 	<div id="drop" class="cell">
@@ -51,7 +56,7 @@
 	<div class="cell">
 		<h1>输出格式</h1>
 		<select name="format">
-			<option value="csv" selected=""> CSV</option>
+			<option value="csv" selected> CSV</option>
 			<option value="json"> JSON</option>
 			<option value="form"> FORMULAE</option>
 		</select>
