@@ -1,0 +1,14 @@
+{
+  "spm": {
+    "output": [
+      "index.html",
+      "index.js"
+    ],
+    "build": {
+    	"extractCSS": true
+    },
+    "dependencies": {
+      "alice-animate": "~2.2.0"
+    }
+  }
+}

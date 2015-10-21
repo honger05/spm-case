@@ -1,0 +1,11 @@
+{
+  "spm": {
+    "output": [
+      "index.html",
+      "index.js"
+    ],
+    "dependencies": {
+      "move": "~0.3.3"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+	.box {
+		width: 100px;
+		height: 100px;
+		border: 1px solid red;
+		margin-top: 10px;
+		-webkit-animation-duration: 3s;
+		-webkit-animation-delay: 1s;
+		-webkit-animation-iteration-count: infinite;
+	}

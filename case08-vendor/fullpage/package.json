@@ -1,0 +1,10 @@
+{
+  "spm": {
+    "output": [
+      "index.*"
+    ],
+    "dependencies": {
+      "move": "~0.3.3"
+    }
+  }
+}
