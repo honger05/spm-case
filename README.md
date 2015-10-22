@@ -23,3 +23,11 @@ $ open http://127.0.0.1:8000/
 $ spm build
 $ open dist/index.html
 ````
+
+## cool website
+
+### 设计类
+
+* [codrops -- html5 + css3 效果](http://tympanus.net/codrops/)
+* [alltemplateneeds -- html + psd 模板](http://www.alltemplateneeds.com/)
+
