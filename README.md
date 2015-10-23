@@ -33,7 +33,7 @@ $ open dist/index.html
 * [中国专业素材网](http://www.tooopen.com/)
 
 
-### sublime 配置
+## sublime 配置
 
 ````json
 {
