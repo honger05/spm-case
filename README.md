@@ -32,3 +32,22 @@ $ open dist/index.html
 * [alltemplateneeds -- html + psd 模板](http://www.alltemplateneeds.com/)
 * [中国专业素材网](http://www.tooopen.com/)
 
+
+### sublime 配置
+
+````json
+{
+	"caret_style": "phase",
+	"color_scheme": "Packages/User/SublimeLinter/Flatland Dark (SL).tmTheme",
+	"font_size": 11,
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"margin": 0,
+	"tab_size": 2,
+	"theme": "Nexus.sublime-theme"
+}
+````
