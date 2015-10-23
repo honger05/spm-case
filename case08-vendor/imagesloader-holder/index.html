@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ImageLoader</title>
+	<style>
+		.holderjs {
+			width: 300px;
+			height: 300px;
+			margin-top: 20px;
+			outline: 1px dashed #08c;
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+
+	<!-- 图片懒加载 -->
+	<img class="lazy-img" data-holder="holder.js/300x300?size=50" data-src="http://i.imgur.com/VWfCPYx.jpg">
+
+	<img class="lazy-img" data-holder="holder.js/100x100?size=50&amp;auto=yes" data-src="http://beatak.github.io/jquery-imageloader/assets/city/w50/bom.jpg">
+
+	<img class="lazy-img" data-holder="holder.js/300x200?text=Add \n line breaks \n anywhere.&amp;theme=social" data-src="http://i.imgur.com/A1RSOhg.jpg">
+
+	<img data-holder="holder.js/300x200?text=Add \n line breaks \n anywhere.&amp;nowrap=true&amp;theme=lava" data-src="http://i.imgur.com/Zwd7Sch.jpg">
+
+	<img data-holder="holder.js/300x200?text=Add \n line breaks \n anywhere.&amp;theme=vine" data-src="http://i.imgur.com/iFBSB1t.jpg">
+
+	<!-- 此方法比较慢 -->
+	<img src="http://placeholder.eternalelf.com/512x128" data-src="http://i.imgur.com/6Lo8oun.jpg"/> 
+
+	<!-- 背景图片懒加载 -->
+	<div class="holderjs" data-background-src="?holder.js/300x200" data-src="http://i.imgur.com/HDSAMFl.jpg"></div>
+	<div class="holderjs" data-background-src="?holder.js/300x300?size=50" data-src="http://i.imgur.com/igjvRa3.jpg"></div>
+	
+	<script src="http://cdn.bootcss.com/jquery/1.8.3/jquery.min.js"></script>
+	<script src="http://cdn.bootcss.com/holder/2.8.2/holder.js"></script>
+	<script src="imageloader.js"></script>
+	<script>
+		Holder.run({
+			dataAttr: 'data-holder'
+		})
+
+		$('body').imageloader({
+			selector: '.lazy-img',
+			each: function(el) {
+				console.log('each image');
+			},
+			callback: function(elm){
+				console.log('all complete')
+			}
+		});
+
+		$('.holderjs').imageloader({
+			background: true
+		})
+	</script>
+</body>
+</html>

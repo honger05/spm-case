@@ -1,0 +1,234 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+img
+{
+    width: 100%;
+    height: 100%;
+
+    opacity: .8;
+}
+
+figcaption
+{
+    position: absolute;
+    top: 0;
+
+    color: #fff;
+}
+
+figure
+{
+    overflow: hidden;
+}
+
+figure img,
+figcaption,
+figcaption h1,
+figcaption p,
+figcaption div
+{
+    -webkit-transition: all .45s;
+         -o-transition: all .45s;
+            transition: all .45s;
+}
+
+.test1
+{
+    background-color: #08c;
+}
+
+figure
+{
+    position: relative;
+}
+
+figcaption
+{
+    top: 10%;
+    left: 10%;
+}
+
+.test1 figcaption h1
+{
+    transform: translate(-200px);
+}
+
+.test1 figcaption p
+{
+    transform: translate(0, 100px);
+
+    opacity: 0;
+}
+
+.test1:hover figcaption h1
+{
+    transform: translate(0);
+}
+
+.test1:hover figcaption p
+{
+    transform: translate(0);
+
+    opacity: 1;
+}
+
+.test1:hover img {
+	opacity: 0.5;
+}
+
+
+.test2
+{
+    background-color: #AEC524;
+}
+
+.test2 div {
+	position: absolute;
+	top: -1%;
+	left: -1%;
+	width: 80%;
+	height: 80%;
+	border: 2px solid #fff;
+	-webkit-transform: rotate(0deg) translate(0, -360px);
+	-ms-transform: rotate(0deg) translate(0, -360px);
+	-o-transform: rotate(0deg) translate(0, -360px);
+	transform: rotate(0deg) translate(0, -360px);
+}
+
+.test2:hover div {
+	-webkit-transform: rotate(360deg) translate(0);
+	-ms-transform: rotate(360deg) translate(0);
+	-o-transform: rotate(360deg) translate(0);
+	transform: rotate(360deg) translate(0);
+}
+
+.test2:hover h1 {
+	transition-delay: .1s;
+	-webkit-transform: translate(0, 100px);
+	-ms-transform: translate(0, 100px);
+	-o-transform: translate(0, 100px);
+	transform: translate(0, 100px);
+}
+
+.test2:hover p {
+	-webkit-transform: translate(0, 100px);
+	-ms-transform: translate(0, 100px);
+	-o-transform: translate(0, 100px);
+	transform: translate(0, 100px);
+}
+
+.test2:hover img {
+	-webkit-transform: scale(1.2);
+	-ms-transform: scale(1.2);
+	-o-transform: scale(1.2);
+	transform: scale(1.2);
+}
+
+.test2 figcaption {
+	width: 100%;
+	height: 100%;
+}
+
+.test2:hover img {
+	opacity: 0.5;
+}
+
+.test3
+{
+    background-color: #29D834;
+}
+
+.test3 figcaption h1 {
+	-webkit-transform: skew(90deg);
+	 -ms-transform: skew(90deg);
+	 -o-transform: skew(90deg);
+	 transform: skew(90deg); 
+}
+
+.test3 figcaption p {
+	transition-delay: .25s;
+	-webkit-transform: skew(90deg);
+	-ms-transform: skew(90deg);
+	-o-transform: skew(90deg);
+	transform: skew(90deg);
+}
+
+.test3:hover figcaption h1,
+.test3:hover figcaption p {
+	-webkit-transform: skew(0deg);
+	-ms-transform: skew(0deg);
+	-o-transform: skew(0deg);
+	transform: skew(0deg);
+}
+
+.test3:hover img {
+	opacity: 0.5;
+}
+
+.test4 {
+	background-color: red;
+}
+
+.test4 figcaption {
+	width: 100%;
+	height: 100%;
+}
+
+.test4 div {
+	position: absolute;
+	top: -1%;
+	left: -1%;
+	width: 80%;
+	height: 80%;
+	border: 2px solid #fff;
+	-webkit-transform: scale(1.2);
+	-ms-transform: scale(1.2);
+	-o-transform: scale(1.2);
+	transform: scale(1.2);
+}
+
+.test4:hover img {
+	opacity: .5;
+}
+
+.test4:hover div {
+	-webkit-transform: scale(1);
+	-ms-transform: scale(1);
+	-o-transform: scale(1);
+	transform: scale(1);
+}
+
+.test4:hover img {
+	-webkit-transform: scale(1.2);
+	-ms-transform: scale(1.2);
+	-o-transform: scale(1.2);
+	transform: scale(1.2);
+}
+
+@media screen and (min-width: 768px)
+{
+    figure
+    {
+        float: left;
+
+        width: 50%;
+    }
+}
+
+@media (min-width: 992px)
+{
+    figure
+    {
+        float: left;
+
+        width: 33.3333%;
+    }
+}
+
+@media (min-width: 1200px)
+{
+}
