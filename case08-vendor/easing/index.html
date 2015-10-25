@@ -6,13 +6,13 @@
 	.box {
 		width: 100px;
 		height: 100px;
-		border: 1px dashed #08c;
+		outline: 1px dashed #08c;
 		background-color: red;
 		color: #fff;
 		margin-top: 10px;
 	}
 
-	.arrow:after {
+	.arrow::after {
 		content: '';
 		position: absolute;
 		width: 10px;
@@ -32,7 +32,7 @@
 <div id="demo3" class="box">assa</div>
 
 <div class="test">
-	<h3>test</h3>	
+	<h3>test</h3>
 	<p class="text">show or hidden</p>
 </div>
 
