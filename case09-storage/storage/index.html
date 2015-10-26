@@ -6,5 +6,59 @@
 </head>
 <body>
 
+	<p>sessionStorage 在新标签或窗口打开一个页面会初始化一个新的会话, 这个特性为多用户登陆提供的便利</p>
+	<p>localStorage 会永久存在</p>
+
+	<script>
+
+		function get(key, scope) {
+			scope = scope ? localStorage : sessionStorage;
+			return JSON.parse(scope.getItem(key) || '{}');
+		}
+
+		function set(key, v, scope) {
+			scope = scope ? localStorage : sessionStorage;
+			scope.setItem(key, JSON.stringify(v || {}));
+		}
+
+		var data = {a: 1};
+
+		set('data', 'data', true);
+
+		console.log(get('data'));
+
+
+		function setLocalImage(key, url) {
+			var Img = new Image();
+			var canvas = document.createElement('canvas');
+			var ctx = canvas.getContext('2d');
+
+			// var fr = new FileReader();
+
+			// fr.onload = function(e) {
+			// 	var dataURL = e.target.result;
+			// 	sessionStorage.setItem(key, dataURL);
+			// }
+
+			Img.onload = function() {
+				canvas.width = Img.width;
+				canvas.height = Img.height;
+				ctx.drawImage(this, 0, 0);
+				document.body.appendChild(canvas);
+				// 跨域了 canvas 不能被导出
+				// var dataURL = canvas.toDataURL();
+				// sessionStorage.setItem(key, dataURL);
+				
+				// 使用 Blob 导出
+				// fr.readAsDataURL(this);
+			}
+
+			Img.src = url;
+			
+		}
+
+		// 无论何种方案，都需要解决跨域问题。
+		setLocalImage('k', 'http://i.imgur.com/6Lo8oun.jpg');
+	</script>
 </body>
 </html>
