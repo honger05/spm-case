@@ -3,8 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <title>Indexeddb</title>
+  <style>
+		.form-group {
+			margin-top: 10px;
+		}
+		.search {
+			margin-top: 20px;
+			background-color: #f5f5f5;
+		}
+
+		table {
+			margin-top: 10px;
+		}
+
+  </style>
 </head>
 <body>
+
+<form>
+	<div class="form-group">
+		<label for="username">username</label>
+		<input type="text" name="username" />
+
+		<label for="phone">phone</label>
+		<input type="text" name="phone" />
+
+		<label for="address">address</label>
+		<input type="text" name="address" />
+
+		<button id="add">add User</button>
+		<button id="deleteDB">deleteDB</button>
+	</div>
+</form>
+
+<div class="search">
+	<input type="text" name="searchName">
+	<button>Search</button>
+	<table border="10" cellpadding="10" cellspacing="0">
+		</tr><th>username</th><th>phone</th><th>address</th><th>option</th>
+		<tr>
+			<td>aaa</td><td>aaa</td><td>aaa</td><td>aaa</td>
+		</tr>
+	</table>
+</div>
 
 <script src="api.js"></script>
 <script src="index.js"></script>

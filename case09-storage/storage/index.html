@@ -11,22 +11,44 @@
 
 	<script>
 
-		function get(key, scope) {
+	  /* 柯里化函数 */
+		function currying(fn) {
+			var slice = Array.prototype.slice;
+			var args = slice.call(arguments, 1);
+			return function() {
+				var innerArgs = slice.call(arguments);
+				var finalArgs = args.concat(innerArgs);
+				return fn.apply(null, finalArgs);
+			}
+		}
+
+		function getStorage(key, scope) {
 			scope = scope ? localStorage : sessionStorage;
 			return JSON.parse(scope.getItem(key) || '{}');
 		}
 
-		function set(key, v, scope) {
+		function setStorage(key, v, scope) {
 			scope = scope ? localStorage : sessionStorage;
 			scope.setItem(key, JSON.stringify(v || {}));
 		}
 
-		var data = {a: 1};
+		var setUser = currying(setStorage, 'user');
 
-		set('data', 'data', true);
+		var getUser = currying(getStorage, 'user');
 
-		console.log(get('data'));
+		var user = {name: 'zhangsan', age: 18};
 
+		// setStorage('user', user);
+		// console.log(getStorage('user'));
+		
+		setUser(user);
+
+		console.log(getUser());
+
+
+		//////////
+		// 存储图片 //
+		//////////
 
 		function setLocalImage(key, url) {
 			var Img = new Image();
