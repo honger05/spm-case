@@ -33,6 +33,7 @@ $ open dist/index.html
 * [smashingmagazine -- EBOOK](http://www.smashingmagazine.com/)
 * [tooopen -- 中国专业素材网](http://www.tooopen.com/)
 * [paho MQTT](http://www.eclipse.org/paho/clients/js/)
+* [can I use](http://caniuse.com/)
 
 
 ## sublime 配置
