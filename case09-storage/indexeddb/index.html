@@ -31,19 +31,21 @@
 		<label for="address">address</label>
 		<input type="text" name="address" />
 
-		<button id="add">add User</button>
-		<button id="deleteDB">deleteDB</button>
+		<button id="addUser" type="button">add User</button>
+		<button id="deleteDB" type="button">deleteDB</button>
 	</div>
 </form>
 
 <div class="search">
-	<input type="text" name="searchName">
-	<button>Search</button>
-	<table border="10" cellpadding="10" cellspacing="0">
-		</tr><th>username</th><th>phone</th><th>address</th><th>option</th>
-		<tr>
-			<td>aaa</td><td>aaa</td><td>aaa</td><td>aaa</td>
-		</tr>
+	<label for="search">username</label>
+	<input type="text" name="search">
+	<button id="searchName">Search Name</button>
+	<button id="searchAll">Search All</button>
+	<table id="table" border="10" cellpadding="10" cellspacing="0">
+		<thead>
+			</tr><th>username</th><th>phone</th><th>address</th><th>option</th>
+		</thead>
+		<tbody></tbody>
 	</table>
 </div>
 

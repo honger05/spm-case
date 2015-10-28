@@ -11,18 +11,23 @@ var indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedD
  * @param     {[type]}                 db [description]
  * @return    {[type]}                    [description]
  */
-function initDB(db) {
+function openDB(db) {
+
+	var promise = new Promise();
+
 	db.version = db.version || 1;
 
 	var request = indexedDB.open(db.name, db.version);
 
 	request.onerror = function(e) {
 		console.log(e.currentTarget.error.message);
-	}
+		promise.reject();
+	};
 
 	request.onsuccess = function(e) {
 		db.db = e.target.result;
-	}
+		promise.resolve(db.db);
+	};
 
 	request.onupgradeneeded = function(e) {
 		var thisDB = e.target.result, objStore;
@@ -30,8 +35,15 @@ function initDB(db) {
 			objStore = thisDB.createObjectStore('account', {keyPath: "id", autoIncrement: true});
 			objStore.createIndex('id', 'id', {unique: true});
 			objStore.createIndex('username', 'username', {unique: false});
+
+			//插入初始化测试数据 
+			objStore.put({username: '张三', phone: 18363908, address: 'guangzhou'});
+			objStore.put({username: '张三', phone: 19854841, address: 'hunan'});
+			objStore.put({username: '张四', phone: 18363908, address: 'hunan'});
 		}
-	}
+	};
+
+	return promise;
 }
 
 function closeDB(db) {
@@ -39,6 +51,7 @@ function closeDB(db) {
 }
 
 function deleteDB(db) {
+	// 会引发页面刷新
 	indexedDB.deleteDatabase(db.name);
 }
 
@@ -184,7 +197,7 @@ function getDataById(db, tableName, id, cb) {
 }
 
 /**
- * @describle 根据关键词索引获取数据
+ * @describle 根据索引获取数据
  * @Author    Honger05
  * @DateTime  2015-10-27T17:28:01+0800
  * @param     {[type]}                 db        [description]
@@ -207,7 +220,7 @@ function getDataBySearch(db, tableName, keywords, cb) {
 
   var boundKeyRange = IDBKeyRange.only(keywords);
 
-  var rowData;
+  var rowData = [];
 
   objectStore.index('username').openCursor(boundKeyRange).onsuccess = function(e) {
   	var cursor = e.target.result;
@@ -215,10 +228,11 @@ function getDataBySearch(db, tableName, keywords, cb) {
   		return cb({error: 0, data: rowData});
   	}
 
-  	rowData = cursor.value;
+  	rowData.push(cursor.value);
   	cursor.continue();
   }
 }
+
 
 /**
  * @describle 根据页码获取数据
@@ -243,11 +257,11 @@ function getDataByPager(db, tableName, start, end, cb) {
 
   var objectStore = transaction.objectStore(tableName);
 
-  var boundKeyRange = IDBKeyRange.bound(start, end, false, true);
+  var boundKeyRange = IDBKeyRange.bound(start, end, false, false);
 
   var rowData = [];
 
-	objectStore.index('username').openCursor(boundKeyRange).onsuccess = function(e) {
+	objectStore.index('id').openCursor(boundKeyRange).onsuccess = function(e) {
   	var cursor = e.target.result;
   	if (!cursor && cb) {
   		 return cb({error: 0, data: rowData});
@@ -270,7 +284,7 @@ function updataData(db, tableName, id, updataData, cb) {
 
   var objectStore = transaction.objectStore(tableName);
 
-  var requset = objectStore.get(id);
+  var request = objectStore.get(id);
 
   request.onsuccess = function(e) {
   	var thisDB = e.target.result;
