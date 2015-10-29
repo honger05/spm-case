@@ -59,3 +59,8 @@ $ open dist/index.html
 
 <p data-height="268" data-theme-id="18889" data-slug-hash="vNRKOK" data-default-tab="result" data-user="honger05" class='codepen'>See the Pen <a href='http://codepen.io/honger05/pen/vNRKOK/'>velocity-test</a> by honger (<a href='http://codepen.io/honger05'>@honger05</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+
+## web font
+
+* Helvetica arial "Helvetica Neue" "Trebuchet MS" sans-serif
