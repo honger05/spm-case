@@ -35,6 +35,11 @@ $ open dist/index.html
 * [paho MQTT](http://www.eclipse.org/paho/clients/js/)
 * [can I use](http://caniuse.com/)
 
+### 程序博客类
+
+* [slideshare - nzakas](http://www.slideshare.net/nzakas/enterprise-javascript-error-handling-presentation)
+* [nczonline](https://www.nczonline.net/blog/2009/04/28/javascript-error-handling-anti-pattern/)
+* [techrepublic](http://www.techrepublic.com/blog/australian-technology/error-handling-in-javascript-rarely-done-often-needed/)
 
 ## sublime 配置
 
