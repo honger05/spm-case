@@ -1,0 +1,74 @@
+a,
+a:link {
+  color: #08c;
+  text-decoration: none;
+}
+.btn {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  background-color: #40bf55;
+  line-height: 2;
+  font-size: 14px;
+  border: 1px;
+  cursor: pointer;
+  outline: 0;
+  margin: 0;
+  padding: 0 18px;
+  color: white;
+  text-align: center;
+  transition: background-color 1.5s;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.btn:hover {
+  background-color: #0df233;
+}
+.btn:active {
+  position: relative;
+  top: 2px;
+  box-shadow: inset 1px 3px 2px #59a666;
+}
+.demo {
+  margin-top: 50px;
+}
+.demo a {
+  color: red;
+}
+.demo:hover {
+  background-color: blue;
+}
+.demo-test {
+  background-color: #ddd;
+}
+.sanjiao {
+  margin-top: 30px;
+  border-width: 10px;
+  border-color: transparent transparent #000000 transparent;
+  border-style: dashed dashed solid dashed;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+.transition {
+  width: 100px;
+  height: 100px;
+  outline: 1px dashed #08c;
+  /* margin-top: 20px; */
+  transform: translate(20px, 20px);
+  background: red;
+  transition: all 1.5s ease-in-out;
+}
+.transition:hover {
+  /* margin-top: 10px; */
+  transform: translate(10px);
+  width: 200px;
+  background: blue;
+}
+.test-translate {
+  margin-top: 10px;
+  width: 100px;
+  height: 100px;
+  outline: 1px dashed #08c;
+}

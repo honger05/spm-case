@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Child1 HTML</title>
+</head>
+<body>
+	<p id="ms">I am child1</p>
+
+	<script>
+
+	var msEl = document.getElementById('ms');
+
+	window.addEventListener('message', function(ev) {
+		msEl.innerHTML = ev.data;
+	}, false);
+	</script>
+</body>
+</html>

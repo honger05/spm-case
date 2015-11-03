@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>PostMessage</title>
+	<style>
+		iframe {
+			display: block;
+			border: 1px solid #08c;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+	<iframe src="child1.html" frameborder="0" id="child1"></iframe>
+	<iframe src="child2.html" frameborder="0" id="child2"></iframe>
+	<input type="text" id="ms">
+	<button id="send">send</button>
+	<script>
+
+	var msEl = document.getElementById('ms');
+	var sendBtn = document.getElementById('send');
+	var child1_iframe = document.getElementById('child1');
+	var child2_iframe = document.getElementById('child2');
+
+	sendBtn.addEventListener('click', function(ev) {
+		var msg = msEl.value;
+		child1_iframe.contentWindow.postMessage(msg, '*');
+		child2_iframe.contentWindow.postMessage(msg, '*');
+
+		var child1_window = window.open('child1.html');
+		
+		child1_window.onload = function() {
+			child1_window.postMessage(msg, '*');
+		};
+		
+		console.log(child1_window);
+	}, false);
+
+	</script>
+</body>
+</html>

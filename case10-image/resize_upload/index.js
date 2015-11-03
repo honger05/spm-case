@@ -28,7 +28,7 @@ function ResizeImageFile(file, maxWidth, maxHeight, callback) {
 		// $('body').append(canvas);
 
 		callback(canvas.toDataURL());
-	}
+	};
 
 	try {
 		Img.src = URL.createObjectURL(file);
@@ -37,8 +37,8 @@ function ResizeImageFile(file, maxWidth, maxHeight, callback) {
 		try {
 			Img.src = window.webkitURL.createObjectURL(file);
 		} 
-		catch (err) {
-			console.error(err.message);
+		catch (ex) {
+			console.error(ex.message);
 		}
 	}
 }
@@ -48,7 +48,7 @@ function isImage(fileName) {
 	var exts = ['jpg', 'png', 'gif', 'jdpg', 'emp'];
 	var isExsit = exts.some(function(el) {
 		return (el.toLowerCase() === extension);
-	})
+	});
 	if (!isExsit) {
 		alert('请选择图片文件');
 		return false;

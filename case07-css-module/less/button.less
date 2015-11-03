@@ -1,0 +1,121 @@
+
+@f_size: 14px;
+@btn_bgc: hsl(130, 50%, 50%);
+@hover_color: hsl(130, 90%, 50%);
+@box_shadow_color: hsl(130, 30%, 50%);
+
+a,
+a:link {
+  color: #08c;
+  text-decoration: none;
+}
+
+.btn {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  background-color: @btn_bgc;
+  line-height: 2;
+  font-size: @f_size;
+  border: 1px;
+  cursor: pointer;
+  outline: 0;
+  margin: 0;
+  padding: 0 18px;
+  color: white;
+  text-align: center;
+  transition: background-color 1.5s;
+  .border_radius(3px);
+}
+
+.btn:hover {
+  background-color: @hover_color;
+}
+
+.btn:active {
+  position: relative;
+  top: 2px;
+  box-shadow: inset 1px 3px 2px @box_shadow_color;
+}
+
+// mixins
+.border_radius(@radius: 5px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius; 
+}
+
+.demo {
+  margin-top: 50px;
+  
+  a {
+    color: red;
+  }
+  
+  &:hover {
+    background-color: blue;
+  }
+  
+  &-test {
+    background-color: #ddd;
+  }
+}
+
+// match top bottom left right
+.triangle(top, @w:5px, @c:#ccc){
+  border-width: @w;
+  border-color: transparent transparent @c transparent;
+  border-style: dashed dashed solid dashed;
+}
+.triangle(bottom, @w:5px, @c:#ccc){
+  border-width: @w;
+  border-color: @c transparent transparent transparent;
+  border-style: solid dashed dashed dashed;
+}
+.triangle(left, @w:5px, @c:#ccc){
+  border-width: @w;
+  border-color: transparent @c transparent transparent;
+  border-style: dashed solid dashed dashed;
+}
+.triangle(right, @w:5px, @c:#ccc){
+  border-width: @w;
+  border-color: transparent transparent transparent @c;
+  border-style: dashed dashed dashed solid;
+}
+
+// 全匹配
+.triangle(@_, @w:5px, @c:#ccc){
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.sanjiao{
+  margin-top: 30px;
+  .triangle(top,10px,#000);
+}
+
+.transition {
+  width: 100px;
+  height: 100px;
+  outline: 1px dashed #08c;
+  /* margin-top: 20px; */
+  transform: translate(20px, 20px);
+  background: red;
+  transition: all 1.5s ease-in-out;
+}
+
+// translate 跟 relative 一样，元素本身占在文档流上。
+.transition:hover {
+  /* margin-top: 10px; */
+  transform: translate(10px);
+  width: 200px;
+  background: blue;
+}
+
+.test-translate {
+  margin-top: 10px;
+  width: 100px;
+  height: 100px;
+  outline: 1px dashed #08c;
+}
