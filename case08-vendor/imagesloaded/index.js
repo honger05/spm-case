@@ -9,4 +9,4 @@ imagesLoaded(gridEl, function() {
 		itemSelector: 'li'
 		// transitionDuration : 0
 	});
-})
+});

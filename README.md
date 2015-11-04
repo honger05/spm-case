@@ -69,3 +69,4 @@ $ open dist/index.html
 ## web font
 
 * Helvetica arial "Helvetica Neue" "Trebuchet MS" sans-serif
+* "source_sans_problack"

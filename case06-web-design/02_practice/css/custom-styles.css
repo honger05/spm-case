@@ -1,0 +1,43 @@
+
+body
+{
+    background: url(../img/body-bg.jpg);
+}
+
+.page-styling
+{
+    margin-top: 90px;
+
+    border-radius: 5px;
+    background: #ebebeb;
+}
+
+.header-wrapper
+{
+    text-align: center;
+}
+
+.site-name
+{
+    display: inline-block;
+    overflow: hidden;
+
+    margin: 0 auto;
+    margin-top: -40px;
+
+    text-align: center;
+
+    background-color: #ebebeb;
+    box-shadow: -8px 8px 0 1px rgba(0, 0, 0, .1);
+}
+
+.site-name h1
+{
+    padding: 40px 30px;
+    font-family: "source_sans_problack";
+    font-size: 40px;
+    line-height: 22px;
+    color: #373435;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
