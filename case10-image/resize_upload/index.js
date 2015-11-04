@@ -80,11 +80,11 @@ $('#upload').on('click', function() {
 			$clickObj.text('重新上传');
 			$clickObj.before('<img src="' + dataURL + '">');
 			uploadImage(dataURL);
-		})
-	})
+		});
+	});
 
 	$fileInput.click();
-})
+});
 
 
 //////////////////////
