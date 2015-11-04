@@ -14,6 +14,9 @@
 	window.addEventListener('message', function(ev) {
 		msEl.innerHTML = ev.data;
 	}, false);
+
+	console.log('opener: ' + window.opener);
+	console.log('referrer: ' + document.referrer );
 	</script>
 </body>
 </html>

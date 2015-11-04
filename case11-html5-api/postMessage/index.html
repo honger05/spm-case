@@ -14,6 +14,9 @@
 <body>
 	<iframe src="child1.html" frameborder="0" id="child1"></iframe>
 	<iframe src="child2.html" frameborder="0" id="child2"></iframe>
+
+	<a href="child1.html">child1</a>
+	
 	<input type="text" id="ms">
 	<button id="send">send</button>
 	<script>
@@ -28,13 +31,24 @@
 		child1_iframe.contentWindow.postMessage(msg, '*');
 		child2_iframe.contentWindow.postMessage(msg, '*');
 
-		var child1_window = window.open('child1.html');
-		
+		var child1_window = window.open('child1.html','newwindow','height=100,width=400,top=0,left=0,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no');
+
 		child1_window.onload = function() {
 			child1_window.postMessage(msg, '*');
 		};
 		
 		console.log(child1_window);
+
+		
+
+		// window.location.href = 'child1.html';
+
+
+		// setTimeout(function() {
+		// 	console.log('post message');
+		// 	window.postMessage(msg, '*');
+		// }, 3000);
+
 	}, false);
 
 	</script>
