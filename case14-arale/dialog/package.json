@@ -1,0 +1,11 @@
+{
+  "spm": {
+    "output": [
+      "index.*"
+    ],
+    "dependencies": {
+      "arale-dialog": "~1.5.1",
+      "alice-one": "~1.3.0"
+    }
+  }
+}
