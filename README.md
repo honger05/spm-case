@@ -70,3 +70,10 @@ $ open dist/index.html
 
 * Helvetica arial "Helvetica Neue" "Trebuchet MS" sans-serif
 * "source_sans_problack"
+* 
+
+## node path
+
+````bash
+C:\Users\Administrator\AppData\Roaming\npm\node_modules\spm\
+````
