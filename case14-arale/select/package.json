@@ -1,0 +1,11 @@
+{
+  "spm": {
+    "output": [
+      "index.*"
+    ],
+    "dependencies": {
+      "arale-select": "~0.10.0",
+      "alice-select": "~1.1.0"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "spm": {
+    "output": [
+      "index.*"
+    ],
+    "dependencies": {
+      "arale-validator": "~0.10.2"
+    }
+  }
+}

@@ -1,0 +1,383 @@
+
+.hidden {
+    display: none;
+}
+
+.tab-demo {
+    margin: 20px
+}
+
+#tab-demo-1 {
+    font: 14px/1.5 'Xin Gothic', 'PT Sans', 'Hiragino Sans GB', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    position: relative;
+    width: 750px;
+    padding-top: 29px;
+}
+
+#tab-demo-1 .ui-switchable-nav {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    margin: 0;
+    padding: 0;
+    z-index: 99;
+    list-style: none;
+}
+
+#tab-demo-1 .ui-switchable-nav li {
+    float: left;
+    width: 130px;
+    height: 27px;
+    line-height: 21px;
+    text-align: center;
+    background: url(assets/tabs-sprite.gif) no-repeat 0 6px;
+    margin-right: 3px;
+    padding-top: 8px;
+    cursor: pointer;
+    list-style: none;
+}
+
+#tab-demo-1 .ui-switchable-nav .ui-switchable-active {
+    background-position: 0 -40px;
+    cursor: default;
+}
+
+#tab-demo-1 .ui-switchable-content {
+    position: relative;
+    height: 150px;
+    padding: 20px;
+    border: 1px solid #AEC7E5;
+}
+
+
+/* =================== slide demo1 =================== */
+.slide-demo {
+    margin: 20px;
+}
+#slide-demo-1 {
+    position: relative;
+    width: 60%;
+    height: 200px;
+    overflow: hidden;
+}
+#slide-demo-1 .ui-switchable-content {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#slide-demo-1 .ui-switchable-content .ui-switchable-panel {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+#slide-demo-1 .ui-switchable-content .ui-switchable-panel img {
+    margin-left: -660px;
+}
+#slide-demo-1 .ui-switchable-nav {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    margin: 0;
+    padding: 0;
+    z-index: 99;
+    font-size: 12px;
+}
+#slide-demo-1 .ui-switchable-nav .ui-switchable-trigger {
+    float: left;
+    width: 15px;
+    height: 15px;
+    line-height: 17px;
+    margin-left: 5px;
+    background-color: #FFF;
+    opacity: .5;
+    filter: alpha(opacity=50);
+    text-align: center;
+    color: black;
+    cursor: pointer;
+    list-style: none;
+}
+#slide-demo-1 .ui-switchable-nav .ui-switchable-active {
+    color: #FFF;
+    background-color: #e96c3e;
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+/* ================== slide demo2 =================== */
+#slide-demo-2 {
+    position: relative;
+    width: 60%;
+    height: 200px;
+    overflow: hidden;
+}
+#slide-demo-2 .ui-switchable-content {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#slide-demo-2 .ui-switchable-content .ui-switchable-panel {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+#slide-demo-2 .ui-switchable-content .ui-switchable-panel img {
+    margin-left: -660px;
+}
+#slide-demo-2 .ui-switchable-nav {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    z-index: 99;
+    text-align: center;
+}
+#slide-demo-2 .ui-switchable-nav .ui-switchable-trigger {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    margin-left: 5px;
+    font-size: 12px;
+    line-height: 1.5;
+    opacity: .5;
+    filter: alpha(opacity=50);
+    color: white;
+    cursor: pointer;
+    list-style: none;
+}
+#slide-demo-2 .ui-switchable-nav .ui-switchable-active {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+/* ================== slide demo3 ================= */
+#slide-demo-3 {
+    position: relative;
+    width: 600px;
+    height: 30px;
+    padding: 0 60px 0 20px;
+    line-height: 30px;
+    overflow: hidden;
+    background: #eaeaea;
+    font-size: 12px;
+}
+#slide-demo-3 .wrapper, #slide-demo-3 .wrapper .ui-switchable-content .ui-switchable-panel {
+    width: 600px;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+}
+#slide-demo-3 .wrapper .ui-switchable-content {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#slide-demo-3 .nav {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    margin: 0;
+}
+#slide-demo-3 .nav a {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    width: 12px;
+    height: 12px;
+    line-height: 10px;
+    font-size: 16px;
+    text-align: center;
+    border: 1px solid #cdcdcd;
+    color: #999;
+    background: white;
+}
+#slide-demo-3 .nav a:hover {
+    color: #f50;
+}
+#slide-demo-3 .nav #next {
+    border-left: none;
+}
+
+/* =================== slide demo4 ========================== */
+#slide-demo-4 {
+    position: relative;
+    width: 500px;
+    height: 200px;
+    overflow: hidden;
+}
+#slide-demo-4 .ui-switchable-content {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#slide-demo-4 .ui-switchable-content .ui-switchable-panel {
+    position: relative;
+    width: 100%;
+    height: 169px;
+    overflow: hidden;
+}
+#slide-demo-4 .ui-switchable-content .ui-switchable-panel img {
+    margin-left: -660px;
+}
+#slide-demo-4 .ui-switchable-nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 10000px;
+    margin: 0;
+    padding: 0;
+    z-index: 99;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+#slide-demo-4 .ui-switchable-nav .ui-switchable-trigger {
+    position: relative;
+    float: left;
+    width: 167px;
+    height: 30px;
+    line-height: 30px;
+    border-right: 1px solid white;
+    cursor: pointer;
+    list-style: none;
+    background: #c7c7c7;
+    color: white;
+}
+#slide-demo-4 .ui-switchable-nav .ui-switchable-active {
+    background: #f60;
+}
+#slide-demo-4 .ui-switchable-nav .ui-switchable-trigger .arrow {
+    position: absolute;
+    left: 50%;
+    top: -8px;
+    margin-left: -8px;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+
+    visibility: hidden;
+}
+#slide-demo-4 .ui-switchable-nav .ui-switchable-active .arrow {
+    visibility: visible;
+    color: #f60;
+}
+
+/* ================ Accordion 手风琴 ================= */
+#accordion-demo-1 {
+    width: 300px;
+    border: 1px solid #ccc;
+}
+
+#accordion-demo-1 .ui-switchable-trigger {
+    height: 30px;
+    line-height: 34px;
+    padding: 0 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+    background: #f3f3f3;
+    overflow: hidden;
+}
+
+#accordion-demo-1 .ui-switchable-trigger h3 {
+    margin: 0;
+    padding-left: 20px;
+    background: transparent url(assets/accordion-sprite.png) no-repeat 0 10px;
+}
+
+#accordion-demo-1 .ui-switchable-panel {
+    height: 150px;
+    padding: 3px 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#accordion-demo-1 .ui-switchable-active h3 {
+    background-position: 0 -14px;
+}
+
+#accordion-demo-1 .last-trigger {
+    border-bottom-width: 0
+}
+
+#accordion-demo-1 .ui-switchable-active {
+    border-bottom-width: 1px
+}
+
+#accordion-demo-1 .last-panel {
+    border-bottom: none
+}
+
+
+/* ================ Carousel 旋转木马 ================*/
+#carousel-demo-2 {
+    position: relative;
+    width: 740px;
+    height: 120px;
+    margin: 100px;
+}
+#carousel-demo-2 .ui-switchable-prev-btn, #carousel-demo-2 .ui-switchable-next-btn {
+    position: absolute;
+    top: -30px;
+    color: #666;
+    cursor: pointer;
+}
+#carousel-demo-2 .ui-switchable-prev-btn {
+    left: 10px;
+}
+#carousel-demo-2 .ui-switchable-next-btn {
+    right: 10px;
+}
+#carousel-demo-2 .ui-switchable-disabled-btn {
+    color: #ddd;
+    cursor: default;
+}
+
+#carousel-demo-2 .scroller {
+    width: 740px;
+    height: 200px;
+    overflow: hidden;
+}
+#carousel-demo-2 .scroller .ui-switchable-content {
+    padding: 0;
+    margin: 0;
+}
+#carousel-demo-2 .scroller .ui-switchable-content img {
+    float: left;
+    display: block;
+    width: 740px;
+    height: 120px;
+}
+#carousel-demo-2 .ui-switchable-nav {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    margin: 0;
+    padding: 0;
+    z-index: 99;
+    font-size: 12px;
+}
+#carousel-demo-2 .ui-switchable-nav .ui-switchable-trigger {
+    float: left;
+    width: 15px;
+    height: 15px;
+    line-height: 17px;
+    margin-left: 5px;
+    background-color: #FFF;
+    opacity: .5;
+    filter: alpha(opacity=50);
+    text-align: center;
+    color: black;
+    cursor: pointer;
+    list-style: none;
+}
+#carousel-demo-2 .ui-switchable-nav .ui-switchable-active {
+    color: #FFF;
+    background-color: #e96c3e;
+    opacity: 1;
+    filter: alpha(opacity=100);
+}

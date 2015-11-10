@@ -1,0 +1,10 @@
+{
+  "spm": {
+    "output": [
+      "index.*"
+    ],
+    "dependencies": {
+      "arale-autocomplete": "~1.4.1"
+    }
+  }
+}

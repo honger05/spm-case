@@ -1,0 +1,10 @@
+{
+  "spm": {
+    "output": [
+      "index.*"
+    ],
+    "dependencies": {
+      "arale-calendar": "~1.1.2"
+    }
+  }
+}

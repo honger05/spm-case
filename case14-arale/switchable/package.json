@@ -1,0 +1,11 @@
+{
+  "spm": {
+  	"output": ["index.*"],
+  	"build": {
+  		"extractCSS": true
+  	},
+    "dependencies": {
+      "arale-switchable": "~1.1.1"
+    }
+  }
+}

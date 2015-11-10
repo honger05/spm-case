@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Validator</title>
+</head>
+<body>
+	
+<form data-widget="validator" class="ui-form">
+    <div class="ui-form-item">
+        <label for="username" class="ui-label"><span class="ui-form-required">*</span>用户名：</label>
+        <input id="username" name="username" class="ui-input" required type="email" minlength="1" maxlength="20" />
+        <div class="ui-form-explain">用户名为电子邮箱。</div>
+    </div>
+
+    <div class="ui-form-item ui-form-item-error">
+        <label for="password" class="ui-label"><span class="ui-form-required">*</span>密码：</label>
+        <input id="password" name="password" type="password" class="ui-input" minlength="5" />
+        <div class="ui-form-explain">密码的长度必须大于或等于5。</div>
+    </div>
+
+    <div class="ui-form-item">
+        <label for="password-confirmation" class="ui-label"><span class="ui-form-required">*</span>重复输入密码：</label>
+        <input id="password-confirmation" name="password-confirmation" type="password" class="ui-input" data-rule="confirmation{target: '#password'}" />
+    </div>
+
+    <div class="ui-form-item">
+        <span class="ui-button-morange ui-button"><input class="ui-button-text" value="确定" type="submit"></span>
+    </div>
+</form>
+
+	<script src="index.js"></script>
+</body>
+</html>

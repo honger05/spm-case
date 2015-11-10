@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Switchable</title>
+	<link rel="stylesheet" href="index.css">
+</head>
+<body>
+	
+<!-- 普通标签页 -->
+<div id="tab-demo-1" class="tab-demo">
+    <ul class="ui-switchable-nav">
+        <li>标题 A</li>
+        <li>标题 B</li>
+        <li>标题 C</li>
+        <li>标题 D</li>
+    </ul>
+    <div class="ui-switchable-content">
+        <div class="hidden">
+            内容 A
+            <pre>
+              - 在当前 trigger 中 mouseover/mouseout, click, focus, 不触发
+              - 鼠标快速滑过非当前 trigger, 不触发
+              - mouseover 到非当前 trigger, 停留时间到达延迟时，触发
+              - click 或 Tab 切换到 trigger, 立即触发
+              - switch / switched 事件的触发
+            </pre>
+        </div>
+        <div class="hidden">内容 B</div>
+        <div class="hidden">内容 C</div>
+        <div class="hidden">内容 D</div>
+    </div>
+</div>
+
+<!-- Slide 卡盘轮播 -->
+<div id="slide-demo-1" class="slide-demo">
+    <ul class="ui-switchable-content" data-role="content">
+        <li class="ui-switchable-panel"><a href="#"><img src="./assets/slide_1.jpg" /></a></li>
+        <li class="hidden ui-switchable-panel"><a href="#"><img src="./assets/slide_2.jpg" /></a></li>
+        <li class="hidden ui-switchable-panel"><a href="#"><img src="./assets/slide_3.jpg" /></a></li>
+    </ul>
+</div>
+
+<!-- Slide 卡盘轮播 -->
+<div id="slide-demo-2" class="slide-demo">
+    <ul data-role="content" class="ui-switchable-content">
+        <li class="hidden ui-switchable-panel"><a href="#"><img src="./assets/slide_1.jpg" /></a></li>
+        <li class="ui-switchable-panel"><a href="#"><img src="./assets/slide_2.jpg" /></a></li>
+        <li class="hidden ui-switchable-panel"><a href="#"><img src="./assets/slide_3.jpg" /></a></li>
+    </ul>
+    <ul data-role="nav" class="ui-switchable-nav">
+        <li class="ui-switchable-trigger">●</li>
+        <li class="ui-switchable-trigger ui-switchable-active">●</li>
+        <li class="ui-switchable-trigger">●</li>
+    </ul>
+</div>
+
+<!-- Slide 卡盘轮播 -->
+<div id="slide-demo-3" class="slide-demo">
+    <div class="wrapper">
+        <ul data-role="content" class="ui-switchable-content">
+            <li class="ui-switchable-panel"><strong>公告1: </strong>Arale 立足于支付宝的前端需求和国内前端社区，基于 Sea.js 和 CMD 规范，致力发展小而美的前端模块架构，建立了一套从编码测试到部署的开发体系， 是一个开放、简单、易用的前端解决方案。</li>
+            <li class="hidden ui-switchable-panel"><strong>公告2: </strong>Arale 立足于支付宝的前端需求和国内前端社区，基于 Sea.js 和 CMD 规范，致力发展小而美的前端模块架构，建立了一套从编码测试到部署的开发体系， 是一个开放、简单、易用的前端解决方案。</li>
+            <li class="hidden ui-switchable-panel"><strong>公告3: </strong>Arale 立足于支付宝的前端需求和国内前端社区，基于 Sea.js 和 CMD 规范，致力发展小而美的前端模块架构，建立了一套从编码测试到部署的开发体系， 是一个开放、简单、易用的前端解决方案。</li>
+        </ul>
+    </div>
+    <p class="nav">
+        <a id="prev" href="#">‹</a>
+        <a id="next" href="#">›</a>
+    </p>
+</div>
+
+<!-- Slide 卡盘轮播 -->
+<div id="slide-demo-4" class="slide-demo">
+    <ul data-role="content" class="ui-switchable-content">
+        <li class="hidden ui-switchable-panel"><a href="#"><img src="./assets/slide_1.jpg" /></a></li>
+        <li class="ui-switchable-panel"><a href="#"><img src="./assets/slide_2.jpg" /></a></li>
+        <li class="hidden ui-switchable-panel"><a href="#"><img src="./assets/slide_3.jpg" /></a></li>
+    </ul>
+    <ul data-role="nav" class="ui-switchable-nav">
+        <li class="ui-switchable-trigger"><span>缩略/标题一</span><b class="arrow">◆</b></li>
+        <li class="ui-switchable-trigger ui-switchable-active"><span>缩略/标题二</span><b class="arrow">◆</b></li>
+        <li class="ui-switchable-trigger"><span>缩略/标题三</span><b class="arrow">◆</b></li>
+    </ul>
+</div>
+
+<!-- Accordion 手风琴 -->
+<div id="accordion-demo-1" class="accordion-demo">
+    <div class="ui-switchable-trigger" data-role="trigger"><h3>标题A</h3></div>
+    <div class="ui-switchable-panel hidden" data-role="panel">
+        1、支持鼠标滑过和点击触点两种方式<br/>
+        2、支持同时展开多个面板
+    </div>
+    <div class="ui-switchable-trigger" data-role="trigger"><h3>标题B</h3></div>
+    <div class="ui-switchable-panel hidden" data-role="panel">内容B<br/>内容B<br/>内容B</div>
+    <div class="ui-switchable-trigger" data-role="trigger"><h3>标题C</h3></div>
+    <div class="ui-switchable-panel hidden" data-role="panel">内容C<br/>内容C<br/>内容C<br/>内容C<br/>内容C</div>
+    <div class="ui-switchable-trigger last-trigger" data-role="trigger"><h3>标题D</h3></div>
+    <div class="ui-switchable-panel last-panel hidden" data-role="panel">内容D<br/>内容D<br/>内容D</div>
+</div>
+
+<!-- Carousel 旋转木马 -->
+<div id="carousel-demo-2" class="carousel-demo">
+    <span class="ui-switchable-prev-btn" data-role="prev">&lsaquo; 上一页</span>
+    <span class="ui-switchable-next-btn" data-role="next">下一页 &rsaquo;</span>
+    <div class="scroller">
+        <div class="ui-switchable-content" data-role="content">
+            <img src="./assets/slide_1.jpg" alt="" class="ui-switchable-panel">
+            <img src="./assets/slide_2.jpg" alt="" class="ui-switchable-panel">
+            <img src="./assets/slide_2.jpg" alt="" class="ui-switchable-panel">
+            <img src="./assets/slide_2.jpg" alt="" class="ui-switchable-panel">
+            <img src="./assets/slide_3.jpg" alt="" class="ui-switchable-panel">
+        </div>
+    </div>
+</div>
+
+	<script src="index.js"></script>
+</body>
+</html>
