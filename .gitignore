@@ -6,3 +6,9 @@ node_modules
 
 # build
 dist
+
+# test runner
+_site
+
+# npm-debug.log
+*.log
