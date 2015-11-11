@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>xlsx</title>
+	<style>
+    .cell {
+    	width: 80%;
+    	margin: 30px auto;
+    }
+		#drop {
+			height: 100px;
+			line-height: 100px;
+			text-align: center;
+			border: 2px solid #ddd;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="cell">
+		<h1>导出 excel </h1>
+		<p>包含了 二维数组 和 csv 格式 的 数据</p>
+		<button id="download">download xlsx</button>
+	</div>
+
+	<div class="cell">
+		<h1>TABLE 导出 excel</h1>
+		<table id="table" border="10" cellspacing="0" cellpadding="10">
+		    <tr><td>This</td><td>is</td><td>a</td><td>Test</td></tr>
+		    <tr><td>Fee</td><td>Fi</td><td>Fo</td><td>Fum</td></tr>
+		    <tr><td>Foo</td><td></td><td>Bar</td><td></td></tr>
+		    <tr><td></td><td>Baz</td><td>(unicode sushi) x1f363</td><td>Qux</td></tr>
+		    <tr><td>'001'</td><td>2</td><td>3</td><td>4</td></tr>
+		</table>
+		<input type="submit" value="Export to Excel!" id="table2excel" style="margin-top:10px">
+	</div>
+
+	<hr>
+
+	<div class="cell">
+		<h1>导入 excel</h1>
+
+		<input type="file" id="selectFiles" multiple>
+	</div>
+
+	<div id="drop" class="cell">
+		可将文件拖拽进来
+	</div>
+	
+	<div class="cell">
+		<h1>输出格式</h1>
+		<select name="format">
+			<option value="csv" selected=""> CSV</option>
+			<option value="json"> JSON</option>
+			<option value="form"> FORMULAE</option>
+		</select>
+	</div>
+	<pre id="out"></pre>
+
+  <script src="xlsx.js"></script>
+	<script src="index.js"></script>
+</body>
+</html>

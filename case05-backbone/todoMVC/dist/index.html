@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TodoMVC</title>
+  <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+<section id="todoapp">
+  <header id="header">
+    <h1>todos</h1>
+    <input type="text" id="new-todo" placeholder="what needs to be done?" autofocus>
+  </header>
+  <section id="main">
+    <input type="checkbox" id="toggle-all">
+    <label for="toggle-all">Mark all as complete</label>
+    <ul id="todo-list"></ul>
+  </section>
+  <footer id="footer"></footer>
+</section>
+<footer id="info">
+  <p>Double-click to edit a todo</p>
+  <p>Originated by <a href="https://github.com/addyosmani">Addy Osmani</a></p>
+  <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+  <p>Modified by <a href="http://www.honger05.com">honger05</a> in Oct 2015</p>
+</footer>
+<script type="text/template" id="item-template">
+  <div class="view">
+        <input class="toggle" type="checkbox" <%= completed ? 'checked' : '' %>>
+        <label><%- title %></label>
+        <button class="destroy"></button>
+    </div>
+    <input class="edit" value="<%- title %>">
+</script>
+<script type="text/template" id="stats-template">
+    <span id="todo-count"><strong><%= remaining %></strong> <%= remaining === 1 ? 'item' : 'items' %> left</span>
+    <ul id="filters">
+        <li>
+            <a class="selected" href="#/">All</a>
+        </li>
+        <li>
+            <a href="#/active">Active</a>
+        </li>
+        <li>
+            <a href="#/completed">Completed</a>
+        </li>
+    </ul>
+    <% if (completed) { %>
+    <button id="clear-completed">Clear completed (<%= completed %>)</button>
+    <% } %>
+</script>
+
+<script src="index.js"></script>
+
+</body>
+</html>

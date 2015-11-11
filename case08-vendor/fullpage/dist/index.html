@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Fullpage</title>
+	<link href="//cdn.bootcss.com/fullPage.js/2.7.4/jquery.fullPage.min.css" rel="stylesheet">
+	<style>
+	#myMenu {
+		position: fixed;
+		top: 10px;
+		right: 10px;
+		z-index: 999;
+	}
+
+	.se2 h1 {
+		position: absolute;
+		text-align: center;
+		margin-left: 100px;
+	}
+
+	.se2 p {
+		position: absolute;
+		text-align: center;
+		margin-top: 100px;
+	}
+	</style>
+</head>
+<body>
+
+<!-- <ul id="myMenu">
+    <li data-menuanchor="firstPage" class="active"><a href="#firstPage">First section</a></li>
+    <li data-menuanchor="secondPage"><a href="#secondPage">Second section</a></li>
+    <li data-menuanchor="thirdPage"><a href="#thirdPage">Third section</a></li>
+    <li data-menuanchor="fourthPage"><a href="#fourthPage">Fourth section</a></li>
+</ul> -->
+
+<div id="fullpage">
+    <div class="section se1">section 1</div>
+    <div class="section se2">
+    		<h1>我们来了</h1>
+    		<p>我们雨来</p>
+    </div>
+    <div class="section se3">section 3</div>
+    <div class="section se4">section 4</div>
+</div>
+
+<script src="//cdn.bootcss.com/jquery/3.0.0-alpha1/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/fullPage.js/2.7.4/vendors/jquery.easings.min.js"></script>
+<script src="//cdn.bootcss.com/fullPage.js/2.7.4/vendors/jquery.slimscroll.min.js"></script>
+<script src="//cdn.bootcss.com/fullPage.js/2.7.4/jquery.fullPage.min.js"></script>
+
+<script src="index.js"></script>
+</body>
+</html>
