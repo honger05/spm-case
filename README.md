@@ -28,14 +28,16 @@ $ open dist/index.html
 
 ### 设计类
 
-* [smashingmagazine -- EBOOK](http://www.smashingmagazine.com/)
-* [codrops -- html5 + css3 效果](http://tympanus.net/codrops/)
-* [alltemplateneeds -- html + psd 模板](http://www.alltemplateneeds.com/)
-* [tooopen -- 中国专业素材网](http://www.tooopen.com/)
+* [smashingmagazine](http://www.smashingmagazine.com/)
+* [codrops](http://tympanus.net/codrops/)
+* [alltemplateneeds](http://www.alltemplateneeds.com/)
+* [tooopen](http://www.tooopen.com/)
 
 ### 工具类
 
 * [heroku](https://www.heroku.com/)
+* [travis-ci](https://travis-ci.org/)
+* [coveralls](https://coveralls.io/)
 * [jspref benchmark](http://jsperf.com/)
 * [regexp test](http://refiddle.com/)
 * [can I use](http://caniuse.com/)
