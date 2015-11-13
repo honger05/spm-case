@@ -28,12 +28,18 @@ $ open dist/index.html
 
 ### 设计类
 
+* [smashingmagazine -- EBOOK](http://www.smashingmagazine.com/)
 * [codrops -- html5 + css3 效果](http://tympanus.net/codrops/)
 * [alltemplateneeds -- html + psd 模板](http://www.alltemplateneeds.com/)
-* [smashingmagazine -- EBOOK](http://www.smashingmagazine.com/)
 * [tooopen -- 中国专业素材网](http://www.tooopen.com/)
-* [paho MQTT](http://www.eclipse.org/paho/clients/js/)
+
+### 工具类
+
+* [heroku](https://www.heroku.com/)
+* [jspref benchmark](http://jsperf.com/)
+* [regexp test](http://refiddle.com/)
 * [can I use](http://caniuse.com/)
+* [paho MQTT](http://www.eclipse.org/paho/clients/js/)
 
 ### 程序博客类
 
@@ -60,20 +66,7 @@ $ open dist/index.html
 }
 ````
 
-## codepen
-
-<p data-height="268" data-theme-id="18889" data-slug-hash="vNRKOK" data-default-tab="result" data-user="honger05" class='codepen'>See the Pen <a href='http://codepen.io/honger05/pen/vNRKOK/'>velocity-test</a> by honger (<a href='http://codepen.io/honger05'>@honger05</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
-
-
 ## web font
 
 * Helvetica arial "Helvetica Neue" "Trebuchet MS" sans-serif
-* "source_sans_problack"
-* 
 
-## node path
-
-````bash
-C:\Users\Administrator\AppData\Roaming\npm\node_modules\spm\
-````
