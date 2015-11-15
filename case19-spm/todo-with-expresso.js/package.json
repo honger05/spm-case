@@ -1,0 +1,14 @@
+{
+  "spm": {
+    "dependencies": {
+      "espresso.js": "0.0.1"
+    },
+    "output": [
+      "app.js",
+      "index.html"
+    ],
+    "build": {
+      "extractCSS": true
+    }
+  }
+}

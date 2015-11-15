@@ -31,6 +31,7 @@ $ open dist/index.html
 * [smashingmagazine](http://www.smashingmagazine.com/)
 * [codrops](http://tympanus.net/codrops/)
 * [alltemplateneeds](http://www.alltemplateneeds.com/)
+* [wallpaperswide](http://wallpaperswide.com/)
 * [tooopen](http://www.tooopen.com/)
 
 ### 工具类

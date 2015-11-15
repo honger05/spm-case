@@ -1,0 +1,15 @@
+{
+  "spm": {
+    "output": [
+      "index.html", "index.js"
+    ],
+    "build": {
+      "loader": {
+        ".js": "+./loader",
+        ".css": "+./loader"
+      },
+      "extractCSS": true,
+      "autoprefixer": true
+    }
+  }
+}

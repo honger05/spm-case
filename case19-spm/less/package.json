@@ -1,0 +1,14 @@
+{
+  "spm": {
+    "output": [
+      "index.html",
+      "index.js"
+    ],
+    "build": {
+      "extractCSS": true
+    },
+    "dependencies": {
+      "normalize.css": "3.0.1"
+    }
+  }
+}
