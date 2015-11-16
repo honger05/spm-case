@@ -1,0 +1,2 @@
+
+jslet.ui.install();
