@@ -135,6 +135,8 @@ if (window.jslet === undefined || jslet === undefined){
 }
 jslet.locale = locale;
 
+require('./jslet-data.js');
+
 module.exports = jslet;
 
 

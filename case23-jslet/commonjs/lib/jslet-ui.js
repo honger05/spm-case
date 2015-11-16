@@ -5,6 +5,8 @@
  * Licensed under MIT (https://github.com/jslet/jslet/LICENSE.txt)
  * ======================================================================== */
 
+var jQuery = require('jquery');
+
 if(!jslet.ui) {
 	jslet.ui = {};
 }

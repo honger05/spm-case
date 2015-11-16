@@ -1,5 +1,15 @@
 {
-	"spm": {
-		"output": ["index.*"]
-	}
+  "spm": {
+    "output": [
+      "index.*"
+    ],
+    "dependencies": {
+      "jquery": "~2.1.4"
+    },
+    "build": {
+    	"global": {
+    		"jquery": "jQuery"
+    	}
+    }
+  }
 }

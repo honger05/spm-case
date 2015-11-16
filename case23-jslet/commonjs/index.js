@@ -1,2 +1,4 @@
 
-require('locale.js');
+var jslet = require('./lib/locale.js');
+
+console.log(jslet);

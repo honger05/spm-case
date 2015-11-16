@@ -5,6 +5,8 @@
  * Licensed under MIT (https://github.com/jslet/jslet/LICENSE.txt)
  * ======================================================================== */
 
+var jQuery = require('jquery');
+
 if (!jslet.rootUri) {
     var ohead = document.getElementsByTagName('head')[0], 
         uri = ohead.lastChild.src;
@@ -9015,7 +9017,7 @@ jslet.data.ContextRuleEngine.prototype = {
 	}
 };
 
-
+require('./jslet-ui.js');
 
 
 
