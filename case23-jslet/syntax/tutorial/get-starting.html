@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Get-Starting</title>
+	<link rel="stylesheet" href="../dist/lib/bootstrap-3.2.0-dist/css/bootstrap.css">
+	<link rel="stylesheet" href="../dist/lib/bootstrap-3.2.0-dist/css/bootstrap-theme.css">
+	<link rel="stylesheet" href="../dist/lib/fontawesome/css/font-awesome.css">
+	<link rel="stylesheet" href="../dist/asset/default/jslet-all.css">
+
+	<link rel="stylesheet" href="../custom/demo-style.css">
+</head>
+<body>
+	
+	<div class="container">
+		<h2>Get Starting</h2>
+
+		<div data-jslet="type:'DBTable', dataset: 'firstds'" ></div>
+		<hr>
+		<div data-jslet="type:'DBEditPanel', dataset: 'firstds'"></div>
+	</div>
+
+
+	<script src="../dist/lib/jquery-1.11.0.js"></script>
+	<script src="../dist/lib/bootstrap-3.2.0-dist/js/bootstrap.js"></script>
+	<script src="../dist/locale/zh-cn/locale.js"></script>
+	<script src="../dist/jslet-data.debug.js"></script>
+	<script src="../dist/jslet-ui.debug.js"></script>
+
+	<script>
+		function initialize(){
+	    
+	    var dsGender = jslet.data.createEnumDataset('gender', {'F':'Female','M':'Male','U':'Unknown'});
+
+			var fldCfg=[
+				{index: 0, type: "N", name: "id", label: "ID", length: 8},
+				{index: 1, type: "S", name: "StringFld", label: "String Field", length: 12},
+				{index: 2, type: "N", name: "IntFld", label: "Int Field", length: 8, displayFormat: "#,##0"},
+				{index: 3, type: "N", name: "DoubleFld", label: "Double Field", scale: 2, length: 12, displayFormat: "#,##0.00"},
+				{index: 4, type: "D", name: "DateFld", label: "Date Field"},
+				{index: 5, type: "B", name: "BooleanFld", label: "Boolean Field"},
+				{index: 6, type: "S", name: "Gender", label: "Gender", lookupField: {dataset: "gender"}}
+			];
+			
+			var dsobj = jslet.data.createDataset("firstds",fldCfg);
+			dsobj.insertRecord();
+		}
+
+
+		initialize();
+
+		jslet.ui.install();
+	</script>
+</body>
+</html>

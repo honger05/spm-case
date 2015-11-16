@@ -1,0 +1,219 @@
+/**
+ * Jslet JavaScript framework, version 2.0 (c) 2013
+ * 
+ * For details, visit web site: http://www.jslet.com/
+ * 
+ */
+ 
+ .jl-menubar {
+	overflow: hidden;
+	background: transparent url('images/menu/menubar-bg.png');
+	background-color: #e6ecf0;
+	padding: 0;
+	border: 1px solid #99bbe8;
+	cursor: default;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	position: relative;
+	/*height: 22px;*/
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+	border-radius: 4px;
+ }
+
+.jl-menubar-item {
+   text-decoration: none;
+   background-color: #e6ecf0;
+   border: 1px solid #e6ecf0;
+   text-align: left;
+   display: block;
+   padding-left: 5px;
+   padding-right: 5px;
+   /*height: 18px;
+   letter-spacing: 1px*/;
+   position: relative;
+   float: left;
+   text-decoration: line;
+   cursor: pointer;
+}
+
+.jl-rtl .jl-menubar-item {
+   text-align: right;
+   float: right;
+}
+
+.jl-menubar-item-hover {
+   text-decoration: none;
+   /*background: transparent url('images/menu/hover.png');*/
+   background-repeat: repeat-x;
+   background-color: #4281f4;
+   border: 1px solid #e5c365;
+   color: white;
+   
+   -webkit-border-radius: 2px;
+   -moz-border-radius: 2px;
+   -ms-border-radius: 2px;
+   -o-border-radius: 2px;
+   border-radius: 2px;
+}
+
+
+
+/*======css for popup menu ===========*/
+.jl-menu {
+    background-color: #fff;
+    border: 1px solid gray;
+	position: absolute;
+	z-index: 99901;
+    display: none;
+    left: -1000;
+    top: -1000;
+    
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.jl-menu-shadow {
+	display: none;
+    left: -1000;
+    top: -1000;
+	z-index: 99900;
+	position: absolute;
+	background: gray;
+	-moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+	-webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.2);
+	filter: progid:DXImageTransform.Microsoft.Blur(pixelRadius=2,MakeShadow=false,ShadowOpacity=0.2);
+
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.jl-menu-item {
+   text-decoration: none;
+   background-color: #fff;
+   border:1px solid #fff;
+   text-align: left;
+   padding:0px;
+   padding-left: 2px;
+   padding-right: 2px;
+   position: relative;
+   /*letter-spacing: 1px;
+   line-height:20px;
+   font-size: 80%;*/
+   overflow: hidden;
+   margin:2px;
+   margin-bottom:2px;
+
+   -webkit-border-radius: 2px;
+   -moz-border-radius: 2px;
+   -ms-border-radius: 2px;
+   -o-border-radius: 2px;
+   border-radius: 2px;
+}
+
+.jl-rtl .jl-menu-item {
+   text-align: right;
+}
+
+.jl-menu-item span {
+    vertical-align: middle;
+}
+
+.jl-menu-item-hover {
+   text-decoration: none;
+/*   background: transparent url('images/menu/hover.png');*/
+   background-repeat: repeat-x;
+   background-color: #4281f4;
+   border: 1px solid #e5c365;
+   color: white;
+}
+
+.jl-menu-disabled a {
+    color: gray; !important
+}
+
+.jl-menu-enabled a {
+    color: black; !important
+}
+
+.jl-menu-item-hover a {
+    color: white; !important
+}
+
+.jl-menu-icon-placeholder {
+	display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin:2px;
+}
+
+.jl-menu-content {
+}
+
+.jl-menu-arrow {
+    position: absolute;
+    background-image: url('images/menu/menuarrow.gif');
+    background-repeat: no-repeat;
+    right: 0;
+    height: 18px;
+    width: 18px;
+    top: 2px;
+}
+
+.jl-rtl .jl-menu-arrow {
+    background-image: url('images/menu/menuarrow-rtl.gif');
+    right: auto;
+    left: 0;
+}
+
+.jl-menu-line {
+    background-image: url('images/menu/menuline.png');
+    background-repeat: repeat-x;
+    background-position: 0 center;
+    margin-right: 2px;
+    padding: 0;
+    height: 4px;
+    position: relative;
+    left: 2px;
+    right: 1px;
+}
+
+.jl-menu-check {
+    background-image: url('images/menu/checked.gif');
+    background-position: 0 2px;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+}
+
+.jl-menu-check-disabled {
+    background-image: url('images/menu/checked.gif');
+    background-position: -16px 2px;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+}
+
+.jl-menu-radio {
+    background-image: url('images/menu/radio.gif');
+    background-position: 0 2px;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;h
+}
+
+.jl-menu-radio-disabled {
+    background-image: url('images/menu/radio.gif');
+    background-position: -16px 2px;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+}

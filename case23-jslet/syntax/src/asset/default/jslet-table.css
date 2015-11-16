@@ -1,0 +1,322 @@
+/* ========================================================================
+ * Jslet framework: jslet-table.css
+ *
+ * Copyright (c) 2014 Jslet Group(https://github.com/jslet/jslet/)
+ * Licensed under MIT (https://github.com/jslet/jslet/LICENSE.txt)
+ * ======================================================================== */
+
+/*--------DBTable ClassName------------ */
+.jl-table {
+    border: 1px solid rgb(180, 192, 200);
+    outline: none;
+	overflow: hidden;
+	height: 200px;
+	width: 100%;
+}
+
+.jl-table input:focus, textarea:focus, select:focus {
+	outline: 1px solid rgba(102, 175, 233, 0.6)!important;
+}
+
+.jl-table table {
+	border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+}
+
+.jl-table td {
+	vertical-align: top;
+    margin: 0;
+    padding: 0;
+}
+
+.jl-tbl-incell {
+	width: 100%;
+	padding: 0;
+	border: 0;
+}
+
+.jl-tbl-footer td {
+   border-right: 1px solid transparent;
+}
+
+.jl-tbl-noborder .jl-tbl-footer td {
+   border-right: 0;
+}
+
+.jl-table .jl-tbl-container {
+    border: none;
+ 	border-spacing: 0;
+	border-collapse: separate;
+    table-layout: fixed;
+	width: 100%;
+	height: 100%;
+}
+
+.jl-scrollbar-col {
+	width: 17px;
+	border: 0;
+	border-left: 1px solid rgb(180, 192, 200);	
+}
+
+.jl-tbl-noborder .jl-scrollbar-col {
+	width: 17px;
+	border: 0;
+	border-left: 0!important;	
+}
+
+
+.jl-scrollbar-hidden {
+	width: 0;
+}
+
+.jl-tbl-fixedcol {
+	height: 100%;
+	width: 100%;
+}
+
+.jl-tbl-contentcol {
+	overflow-x: auto;
+	overflow-y: hidden;
+	height: auto;
+	width: 100%;
+}
+
+.jl-tbl-contentcol>div{
+	height: auto;
+}
+
+.jl-table .jl-tbl-content-table {
+	width: 100%;
+	height: auto;
+}
+
+.jl-tbl-vscroll {
+	overflow-y: scroll;
+	overflow-x: hidden
+}
+
+.jl-tbl-vscroll div {
+	width: 16px;
+}
+
+.jl-tbl-data td, .jl-tbl-data th {
+    border-right: 1px solid rgb(180, 192, 200);
+    border-bottom: 1px solid rgb(180, 192, 200);
+    vertical-align: middle;
+}
+
+.jl-tbl-noborder .jl-tbl-data td, .jl-tbl-noborder .jl-tbl-data th {
+    border: 0;
+}
+
+.jl-tbl-border-vert td, .jl-tbl-border-vert th {
+	border-top: 0;
+	border-bottom: 0;
+}
+
+.jl-tbl-border-hori td, .jl-tbl-border-hori th {
+	border-right: 0;
+	border-left: 0;
+}
+
+.jl-tbl-border-none td {
+	border: 0;
+}
+
+.jl-tbl-border-bottom {
+	border: 0;
+    border-bottom: 1px solid rgb(180, 192, 200);
+}
+
+.jl-tbl-col-over {
+	background-color: blue;
+	color: white;
+}
+
+.jl-tbl-col-over a {
+	color: white!important;
+}
+
+.jl-tbl-border-top {
+	border: 0;
+	border-top: 1px solid rgb(180, 192, 200);
+}
+
+.jl-table .jl-tbl-select-check {
+	width: 14px;
+	height: 14px;
+}
+
+.jl-tbl-header-cell, .jl-scrollbar-width, .jl-tbl-vscroll-head {
+    background-color: #F1F5FB;
+	box-shadow: 0 1px 1px #fff inset;
+	background-color: #f5f5f5;
+	background-image: linear-gradient(to bottom,#f5f5f5 0,#e8e8e8 100%);
+	background-position: 0 1px;
+	background-repeat: repeat-x; 
+}
+
+.jl-tbl-header-cell {
+	text-align: center;
+}
+
+.jl-tbl-vscroll-head {
+	border-bottom: 0;
+	border-left: 0;
+}
+
+.jl-tbl-current {
+    background-color: #eee !important;
+}
+
+.jl-tbl-row-hover {
+	background-color: #f5f5f5 !important;
+}
+	
+.jl-tbl-cell-div, .jl-tbl-footer-div, .jl-tbl-header-div {
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    padding: 0 2px;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.jl-tbl-selected {
+	background-color: #cfeef8!important;
+}
+
+.jl-tbl-curr-cell {
+	outline: 1px dotted blue!important;	
+}
+
+.jl-tbl-sorter {
+    color: #6699FF;
+    position: absolute;
+    right: 5px;
+    height: 90%;
+    width: 17px;
+    letter-spacing: 0;
+    font-size: smaller;
+}
+
+.jl-tbl-splitter {
+	background-color: darkslategray;
+    width: 2px;
+    position: absolute;
+    z-index: 9999;
+    cursor: e-resize;
+}
+
+.jl-tbl-splitter-hook {
+    cursor: e-resize!important;
+    width: 4px;
+    height: 100%!important;
+    font-size: 1px;
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    top: 0;
+}
+
+.jl-tbl-checked {
+    background-image: url('images/table/checked.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
+    height: 18px;
+}
+
+.jl-tbl-unchecked {
+    background-image: url('images/table/unchecked.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
+    height: 100%;
+}
+
+.jl-tbl-norecord {
+	color: black;
+	display: none;
+	padding-top: 10px;
+	padding-left: 10px;
+	position: absolute;
+	z-index: 3
+}
+
+/*tree grid*/
+.jl-tbltree-node {
+    display: inline-block;    
+    cursor: pointer;
+    background-image: url('images/table/arrows.gif');
+    background-repeat: no-repeat;
+    height: 18px;
+    width: 16px;    
+}
+
+.jl-rtl .jl-tbltree-node {
+    display: inline-block;    
+    cursor: pointer;
+    background-image: url('images/table/arrows-rtl.gif');
+    background-repeat: no-repeat;
+    height: 18px;
+    width: 16px;    
+}
+
+.jl-tbltree-collapse {
+    background-position: 0 0;
+}
+
+.jl-tbltree-collapse-hover {
+    background-position: -32px 0;
+}
+
+.jl-tbltree-expand {
+    background-position: -16px 0;
+}
+
+.jl-tbltree-expand-hover {
+    background-position: -48px 0;
+}
+
+.jl-tbltree-indent {
+    display: inline-block;
+    height: 18px;
+    width: 16px;
+}
+
+.jl-tbltree-text {
+    padding: 1px 2px;
+}
+
+.jl-tbltree-icon {
+    display: inline-block;   
+    height: 18px;
+    width: 16px;
+}
+
+.jl-table .jl-tbl-sequence.has-error,
+.jl-table .has-error .form-control {
+	background-color: #a94442!important;
+	color: white!important;
+}
+
+.jl-table .jl-tbl-filter {
+	border:0;
+	position:absolute;
+	left:0;
+	background-color:transparent;
+	color:#ddd	
+}
+
+.jl-table .jl-tbl-filter:hover {
+	color: #000;
+}
+
+.jl-table .jl-tbl-filter:focus{
+	color: green;
+}

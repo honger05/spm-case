@@ -1,0 +1,256 @@
+/*
+ * Jslet JavaScript framework, version 2.0 (c) 2012
+ * 
+ * For details, see the Jslet web site: http://www.jslet.com/
+ * 
+ * --------------------------------------------------------------------------
+ */
+/*--------DBTable ClassName------------ */
+.jl-table {
+    border: 1px solid #ccc;
+    outline: none;
+	overflow: hidden;
+	height: 200px;
+	width: 100%;
+}
+
+.jl-table table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+    border: none;
+}
+
+.jl-tbl-container {
+	width: 100%;
+	height: 100%;
+}
+
+.jl-table td {
+    margin: 0;
+    padding: 0;
+	vertical-align: top;
+}
+
+.jl-scrollbar-width {
+	width: 17px;
+	border: 0;
+}
+
+.jl-tbl-fixedcol {
+	height: 100%;
+	width: 100%;
+}
+
+.jl-tbl-contentcol {
+	overflow-x: auto;
+	overflow-y: hidden;
+	height: 100%;
+	width: 100%;
+}
+
+.jl-tbl-content-div {
+}
+
+.jl-table .jl-tbl-content-table {
+	width: 100%;
+	height: auto;
+}
+
+.jl-tbl-vscroll {
+	overflow-y: scroll;
+	overflow-x: hidden
+}
+
+.jl-tbl-vscroll div {
+	width: 17px;
+}
+
+.jl-tbl-row4width {
+    border: 0;
+    height: 0;
+}
+
+.jl-tbl-data td, .jl-tbl-data th {
+    border: 1px solid #ccc;
+}
+
+.jl-tbl-noborder .jl-tbl-data td, .jl-tbl-noborder .jl-tbl-data th {
+    border: 0;
+}
+
+.jl-tbl-border-vert td, .jl-tbl-border-vert th {
+	border-top: 0;
+	border-bottom: 0;
+}
+
+.jl-tbl-border-hori td, .jl-tbl-border-hori th {
+	border-right: 0;
+	border-left: 0;
+}
+
+.jl-tbl-border-none td {
+	border: 0;
+}
+
+.jl-tbl-row4width th {
+    border: 0;
+    height: 0;
+    padding: 0;
+}
+
+.jl-tbl-border-bottom {
+	border-top: 0;
+	border-left: 0;
+	border-right: 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.jl-tbl-border-top {
+	border-top: 1px solid #ccc;
+	border-left: 0;
+	border-right: 0;
+    border-bottom: 0;
+}
+
+.jl-table .jl-first-col {
+	border-left: 0;
+}
+
+.jl-table .jl-first-row {
+	border-top: 0;
+}
+	
+.jl-table .jl-tbl-select-check {
+	margin-top: 5px;
+	width: 16px;
+	height: 16px;
+}
+
+.jl-tbl-header-cell, .jl-scrollbar-width {
+    background-color: #F1F5FB;
+}
+
+.jl-tbl-current {
+    background-color: #e7eba7 !important;
+}
+
+.jl-tbl-row-hover {
+	background-color: #EDF5FC !important;
+}
+	
+.jl-tbl-cell {
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    padding: 1px 3px 1px 3px;
+}
+
+.jl-tbl-sorter {
+    color: #6699FF;
+    position: absolute;
+    right: 5px;
+    height: 90%;
+    width: 17px;
+    letter-spacing: 0;
+    font-size: smaller;
+}
+
+.jl-tbl-splitter {
+	background-color: darkslategray;
+    width: 2px;
+    position: absolute;
+    z-index: 9999;
+    cursor: e-resize;
+}
+
+.jl-tbl-splitter-hook {
+    cursor: e-resize;
+    width: 4px;
+    height: 1000px;
+    font-size: 1px;
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    top: 0;
+}
+
+.jl-tbl-checked {
+    background-image: url('images/table/checked.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
+    height: 18px;
+}
+
+.jl-tbl-unchecked {
+    background-image: url('images/table/unchecked.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
+    height: 100%;
+}
+
+.jl-tbl-norecord {
+	color: black;
+	display: none;
+	padding-top: 10px;
+	padding-left: 10px;
+	position: absolute;
+	z-index: 3
+}
+
+/*tree grid*/
+.jl-tbltree-node {
+    display: inline-block;    
+    cursor: pointer;
+    background-image: url('images/table/arrows.gif');
+    background-repeat: no-repeat;
+    height: 18px;
+    width: 16px;    
+}
+
+.jl-rtl .jl-tbltree-node {
+    display: inline-block;    
+    cursor: pointer;
+    background-image: url('images/table/arrows-rtl.gif');
+    background-repeat: no-repeat;
+    height: 18px;
+    width: 16px;    
+}
+
+.jl-tbltree-collapse {
+    background-position: 0 0;
+}
+
+.jl-tbltree-collapse-hover {
+    background-position: -32px 0;
+}
+
+.jl-tbltree-expand {
+    background-position: -16px 0;
+}
+
+.jl-tbltree-expand-hover {
+    background-position: -48px 0;
+}
+
+.jl-tbltree-indent {
+    display: inline-block;
+    height: 18px;
+    width: 16px;
+}
+
+.jl-tbltree-text {
+    padding: 1px 2px;
+}
+
+.jl-tbltree-icon {
+    display: inline-block;   
+    height: 18px;
+    width: 16px;
+}
+
+

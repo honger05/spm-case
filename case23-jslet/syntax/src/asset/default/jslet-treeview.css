@@ -1,0 +1,173 @@
+/* ========================================================================
+ * Jslet framework: jslet-treeview.css
+ *
+ * Copyright (c) 2014 Jslet Group(https://github.com/jslet/jslet/)
+ * Licensed under MIT (https://github.com/jslet/jslet/LICENSE.txt)
+ * ======================================================================== */
+	
+/* DBTreeView */
+.jl-tree {
+    padding-left: 5px;
+	padding-right: 0;
+	padding-bottom:5px;
+	line-height: 22px;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	-webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.jl-rtl .jl-tree {
+    padding-left: 0;
+	padding-right: 2px;
+}
+
+.jl-tree-container {
+	width: 100%;
+	height: 100%;
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+
+.jl-tree-nodes {
+	table-layout: fixed;
+	border-collapse: collapse;
+	border-width: 0;
+	height: 18px;
+	width: 18px;
+}
+.jl-tree-nodes-hover {
+	background-color: #f5f5f5;
+}
+
+.jl-tree-nodes td {
+	border-width: 0;
+	padding: 0;
+	margin: 0;
+	vertical-align: middle;
+}
+
+.jl-tree-scroll-col {
+	width: 18px;
+	vertical-align: top;
+}
+
+.jl-tree-scrollbar {
+	height: 100%;
+	width: 100%;
+	overflow-y: scroll;
+}
+
+.jl-tree-tracker {
+	width: 18px;
+	width: 1px;!important
+}
+
+.jl-tree-lines {
+    background-image: url('images/treeview/tree-line.png');
+    background-repeat: no-repeat;
+    width: 18px;
+	height: 18px;
+}
+
+.jl-tree-expander {
+    background-image: url('images/treeview/tree-line.png');
+    background-repeat: no-repeat;
+    width: 18px;
+}
+
+.jl-rtl .jl-tree-lines {
+    background-image: url('images/treeview/tree-line-rtl.png');
+    background-repeat: no-repeat;
+    width: 18px;
+	height: 18px;
+}
+
+.jl-rtl .jl-tree-expander {
+    background-image: url('images/treeview/tree-line-rtl.png');
+    background-repeat: no-repeat;
+    width: 18px;
+}
+
+.jl-tree-icon {
+    width: 18px;
+}
+
+.jl-tree-empty {
+    width: 18px;
+}
+
+.jl-tree-join {
+    background-position: 0 0;
+}
+
+.jl-tree-join-bottom {
+    background-position: -18px 0;
+}
+
+.jl-tree-line {
+    background-position: -36px 0;
+}
+
+.jl-tree-minus {
+    background-position: -54px 0;
+}
+
+.jl-tree-minus-bottom {
+    background-position: -72px 0;
+}
+
+.jl-tree-noline-minus {
+    background-position: -90px 0;
+}
+
+.jl-tree-noline-plus {
+    background-position: -108px 0;
+}
+
+.jl-tree-plus {
+    background-position: -126px 0;
+}
+
+.jl-tree-plus-bottom {
+    background-position: -144px 0;
+}
+
+.jl-tree-checkbox {
+    background-image: url('images/treeview/tree-checkbox.png');
+    background-repeat: no-repeat;
+    width: 18px;
+    height: 18px;
+}
+
+.jl-tree-checked {
+    background-position: 0 0;
+}
+
+.jl-tree-unchecked {
+    background-position: -18px 0;
+}
+
+.jl-tree-mixedchecked {
+    background-position: -36px 0;
+}
+
+.jl-tree-selected {
+    background-color: #eee;
+}
+
+.jl-tree-child-checked {
+    font-weight: bold;
+}
+
+.jl-tree-nodes .jl-tree-text {
+	padding-left: 4px;
+	padding-right: 2px	
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}

@@ -1,0 +1,452 @@
+/**
+ * Jslet JavaScript framework, version 2.0 (c) 2013
+ * 
+ * For details, visit web site: http://www.jslet.com/
+ * 
+ */
+
+.jl-tabcontrol {
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #8db2e3;
+}
+
+.jl-tab-header {
+    background: #f9f9f9;
+    border-bottom: 0;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    padding-top: 2px;
+    overflow: hidden;
+    width: 100%;
+    margin-right: 40px;
+    border-top-width: 0;
+}
+
+.jl-rtl .jl-tab-header {
+    margin-left: 40px;
+    margin-right: auto;
+}
+
+.jl-tab-container {
+    position: relative;
+    left: 0;
+    overflow: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-right: 40px;
+    width: 100%;
+}
+
+.jl-rtl .jl-tab-container {
+	left: auto;
+    right: 0;
+    margin-left: 40px;
+    margin-right: auto;
+}
+
+.jl-tab-list {
+    list-style-type: none;
+    height: 24px;
+    margin: 0;
+    padding: 0;
+    padding-left: 4px;
+    font-size: 12px;
+    width: 5000px;
+    border-bottom: 1px solid #8db2e3;
+}
+
+.jl-rtl .jl-tab-list {
+    padding-left: auto;
+    padding-right: 4px;
+}
+
+.jl-tab-list li {
+    float: left;
+    display: inline-block;
+    margin: 0 1px;
+    margin-right: 4px;
+    margin-bottom: -1px;
+    padding: 0;
+    position: relative;
+    border: 1px solid #8db2e3;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+}
+
+.jl-rtl .jl-tab-list li {
+	float: right; 
+    margin-left: 4px;
+    margin-right: auto;
+}
+
+.jl-tab-list li a.jl-tab-inner {
+    display: inline-block;
+    text-decoration: none;
+    color: #416aa3;
+    background: url('images/tab/tabs_enabled.png') repeat-x left top;
+    margin: 0;
+    padding: 0 10px;
+    height: 23px;
+    line-height: 23px;
+    text-align: center;
+    white-space: nowrap;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+}
+
+.jl-tab-list li a.jl-tab-inner:hover {
+    background: url('images/tab/tabs_active.png') repeat-x left bottom;
+}
+
+.jl-tab-list li.jl-tab-selected {
+    border: 1px solid #8db2e3;
+    border-bottom: 1px solid #fff;
+}
+
+.jl-tab-list li.jl-tab-selected a {
+    color: #416aa3;
+    background: #fff;
+    background: #7eabcd url('images/tab/tabs_active.png') repeat-x left bottom;
+}
+
+.jl-tab-list li.jl-tab-selected a:hover {
+    cursor: default;
+    pointer: default;
+}
+
+.jl-tab-icon-loc {
+    padding-left: 18px;
+}
+
+.jl-rtl .jl-tab-icon-loc {
+    padding-left: auto;
+    padding-right: 18px;
+}
+
+.jl-tab-icon {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 10px;
+    top: 4px;
+}
+
+.jl-rtl .jl-tab-icon {
+	left: auto;
+    right: 10px;
+}
+
+.jl-tab-close-loc {
+    padding-right: 13px;
+}
+
+.jl-rtl .jl-tab-close-loc {
+    padding-left: 13px;
+    padding-right: auto;
+}
+
+.jl-tab-close {
+    position: absolute;
+    font-size: 1px;
+    display: block;
+    padding: 0;
+    width: 15px;
+    height: 15px;
+    top: 4px;
+    right: 5px;
+}
+
+.jl-rtl .jl-tab-close {
+    left: 5px;
+	right: auto;
+}
+
+.jl-tab-list li a.jl-tab-close {
+    opacity: 0.6;
+    filter: alpha(opacity=60);
+    background: url('images/tab/tabs_close.gif') no-repeat 2px 2px;
+}
+
+.jl-tab-list li a:hover.jl-tab-close {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    cursor: hand;
+    cursor: pointer;
+    background: url('images/tab/close-focus.png') no-repeat 2px 2px;
+}
+
+.jl-tab-nav {
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    width: 18px;
+    height: 21px !important;
+    height: 23px;
+    border: 1px solid #8db2e3;
+    font-size: 1px;
+    display: block;
+    cursor: pointer;    
+}
+
+.jl-tab-left {
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    width: 18px;
+    height: 21px !important;
+    height: 23px;
+    border: 1px solid #8db2e3;
+    font-size: 1px;
+    display: block;
+    cursor: pointer;
+
+    right: 22px;
+    background: #e0ecff url('images/tab/tabs_leftarrow.png') no-repeat 1px 3px;
+}
+
+.jl-rtl .jl-tab-left {
+    left: 22px;
+	right: auto;
+    background: #e0ecff url('images/tab/tabs_leftarrow-rtl.png') no-repeat 1px 3px;
+}
+
+.jl-tab-left-disabled {
+    background: #e0ecff url('images/tab/tabs_leftarrow.png') no-repeat -15px 3px;
+}
+
+.jl-rtl .jl-tab-left-disabled {
+    background: #e0ecff url('images/tab/tabs_leftarrow-rtl.png') no-repeat -15px 3px;
+}
+
+.jl-tab-right {
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    width: 18px;
+    height: 21px !important;
+    height: 23px;
+    border: 1px solid #8db2e3;
+    font-size: 1px;
+    display: block;
+    cursor: pointer;
+
+    right: 2px;
+    background: #e0ecff url('images/tab/tabs_rightarrow.png') no-repeat 2px 3px;
+}
+
+.jl-rtl .jl-tab-right {
+    left: 2px;
+	right: auto;
+    background: #e0ecff url('images/tab/tabs_rightarrow-rtl.png') no-repeat 2px 3px;
+}
+
+.jl-tab-right-disabled {
+    background: #e0ecff url('images/tab/tabs_rightarrow.png') no-repeat -14px 3px;
+}
+
+.jl-rtl .jl-tab-right-disabled {
+    background: #e0ecff url('images/tab/tabs_rightarrow-rtl.png') no-repeat -14px 3px;
+}
+
+.jl-tab-items {
+    margin: 0;
+    padding: 0;
+    border-top: 0;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+.jl-tab-new {
+    font-size: 16pt;
+    font-weight: 900;
+}
+.jl-tab-panel {
+    position: relative;
+    padding: 0;
+    overflow: auto;
+}
+
+/*************************************/
+
+ .jl-accordion {
+	border: 0 solid rgb(153, 188, 232);
+}
+
+ .jl-accordion-head {
+	border: 1px solid rgb(153, 188, 232);
+	width: 100%;
+	cursor: pointer;
+	background-color: #efefef;
+    background-image: url('images/accordion/header-bg.png');
+    background-repeat: repeat-x;
+	height: 24px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 1px;
+}
+
+.jl-accordion-head a, .jl-accordion-head a:hover{
+	outline-style: 0 none;
+	text-decoration: none !important;
+	color: black;
+}
+	
+.jl-accordion-head-hover {
+	border: 1px solid blue;
+}
+
+.jl-accordion-body {
+	width: 100%;
+	color: #494949;
+	background-color: efefef;
+	border: 1px solid rgb(153, 188, 232);
+	padding: 5px;
+}
+
+
+/*************************************/
+.jl-fieldset {
+	border: 1px solid #99bbe8;
+	position: relative;
+	padding: 10px;
+}
+
+.jl-fieldset-collapse {
+	border-left: 1px transparent dotted;
+	border-right: 1px transparent dotted;
+	border-bottom: 1px transparent dotted;
+}
+
+.jl-fieldset-legend {
+	position: relative;
+	left: 10px;
+}
+
+.jl-fieldset-btn {
+	width: 16px;
+	height: 20px;
+	padding: 1px 1px;
+	border: 0;
+	cursor: pointer;
+	text-indent: -16px;
+	
+	background-attachment: scroll;
+	background-clip: border-box;
+	background-color: transparent;
+	background-image: url(images/fieldset/arrows.png);
+	background-origin: padding-box;
+	background-position: -140px 53%;
+	background-repeat: no-repeat;
+}
+
+.jl-fieldset-btn-up {
+	background-attachment: scroll;
+	background-clip: border-box;
+	background-color: transparent;
+	background-image: url(images/fieldset/arrows.png);
+	background-origin: padding-box;
+	background-position: -35px 53%;
+	background-repeat: no-repeat;
+}
+
+/*Split-Panel */
+.jl-splitpanel {
+	position: relative;
+	border: 1px solid #99bbe8;
+}
+
+.jl-sp-panel-hori {
+	height: 100%;
+	float: left;
+}
+
+.jl-sp-panel-vert {
+	width: 100%;
+}
+
+.jl-sp-splitter-tracker {
+	width: 4px;
+	height: 4px;
+	position: absolute;
+	z-index: 2;
+	display: none;
+	background-color: #b4b4b4;
+}
+
+.jl-sp-splitter-hori {
+	width: 5px;
+	height: 100%;
+	background-color: #dfe8f6;
+	cursor: e-resize;
+	float: left;
+	position: relative;
+}
+
+.jl-sp-splitter-vert {
+	height: 5px;
+	width: 100%;
+	background-color: #dfe8f6;
+	cursor: s-resize;
+	position: relative;
+}
+
+.jl-sp-button {
+	position: absolute;
+	cursor: pointer;
+	background-color: transparent;
+	background-repeat: no-repeat !important;
+}
+
+.jl-sp-button-top {
+	background: no-repeat bottom left;
+	background-image: url('images/splitpanel/mini-top.gif');
+	
+	left: 50%;
+	margin-left: -17px;
+	width: 35px;
+	height: 5px;		
+}
+
+.jl-sp-button-bottom {
+	background: no-repeat top left;
+	background-image: url('images/splitpanel/mini-bottom.gif');
+}
+
+.jl-sp-button-left {
+	background: no-repeat top right;
+	background-image: url('images/splitpanel/mini-left.gif');
+
+	top: 50%;
+	margin-top: -17px;
+	width: 5px;
+	height: 35px;	
+}
+
+.jl-rtl .jl-sp-button-left {
+	background: no-repeat top right;
+	background-image: url('images/splitpanel/mini-left-rtl.gif');
+
+	top: 50%;
+	margin-top: -17px;
+	width: 5px;
+	height: 35px;	
+}
+
+.jl-sp-button-right {
+	background: no-repeat top left;
+	background-image: url('images/splitpanel/mini-right.gif');
+}
+
+.jl-rtl .jl-sp-button-right {
+	background: no-repeat top left;
+	background-image: url('images/splitpanel/mini-right-rtl.gif');
+}
+
+
