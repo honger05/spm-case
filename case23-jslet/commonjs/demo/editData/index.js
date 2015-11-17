@@ -1,5 +1,5 @@
 
-var jslet = require('../../jslet/locale.js');
+var jslet = require('../../build/locale/zh-cn/locale.js');
 var Interpreter = require('../../interpreter/interpreter.js');
 
 var dataSet = require('../../dataModel/employee.js');

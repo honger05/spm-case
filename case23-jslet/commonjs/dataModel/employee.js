@@ -1,5 +1,4 @@
 //Define Dataset Object
-
 var lkf, dataList, dataSet = {};
 //Dataset object: Gender. There are two fields in enum dataset: code, name
 var dsGender = jslet.data.createEnumDataset('gender', 'F:Female,M:Male,U:Unknown');
@@ -111,6 +110,9 @@ dsEmployee.addField(fldObj);
 fldObj = jslet.data.createStringField('name', 12);
 fldObj.label('Name');
 fldObj.required(true);
+fldObj.unique(true);
+fldObj.aggraded(true);
+fldObj.tip('Name is required and unique');
 dsEmployee.addField(fldObj);
 
 fldObj = jslet.data.createStringField('department', 6);
@@ -135,20 +137,20 @@ dsEmployee.addField(fldObj);
 fldObj = jslet.data.createNumberField('age', 5, 0);
 fldObj.label('Age');
 fldObj.displayWidth(6);
-fldObj.range({ min: 18, max: 60 });
+fldObj.dataRange({ min: 18, max: 60 });
 dsEmployee.addField(fldObj);
 
 fldObj = jslet.data.createBooleanField('married');
 fldObj.label('Married');
-fldObj.trueValue = 1;
-fldObj.falseValue = 0;
+fldObj.trueValue(1);
+fldObj.falseValue(0);
 fldObj.displayWidth(10);
 dsEmployee.addField(fldObj);
 
 fldObj = jslet.data.createDateField('birthday');
 fldObj.label('Birthday');
 fldObj.displayFormat('yyyy-MM-dd');
-fldObj.range({ min: new Date(1960, 1, 1) });
+fldObj.dataRange({ min: new Date(1960, 1, 1) });
 dsEmployee.addField(fldObj);
 
 fldObj = jslet.data.createStringField('position', 10);
@@ -160,7 +162,8 @@ dsEmployee.addField(fldObj);
 
 fldObj = jslet.data.createNumberField('salary', 16, 2);
 fldObj.label('Salary');
-fldObj.displayFormat('￥#,##0.00');
+fldObj.displayFormat('￥#,##0.##');
+fldObj.aggraded(true);
 dsEmployee.addField(fldObj);
 
 fldObj = jslet.data.createStringField('university', 20);
@@ -218,7 +221,6 @@ dsEmployee.addField(fldObj);
 dsEmployee.keyField('workerid');
 dsEmployee.codeField('workerid');
 dsEmployee.nameField('name');
-
 //Add data into dsEmployee
 var dataList = [{
     workerid: 1,
