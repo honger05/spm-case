@@ -2,7 +2,7 @@
   "spm": {
     "output": [
       "index.*",
-      "demo/editData/index.*"
+      "demo/**/*.*"
     ],
     "build": {
       "global": {

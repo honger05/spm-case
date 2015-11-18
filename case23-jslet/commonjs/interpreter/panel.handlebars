@@ -1,0 +1,21 @@
+<div class="panel panel-default">
+	<div class="panel-heading fn-relative">
+		<div class="panel-title">{{title}}</div>
+		<div class="options">
+			{{#each options.inputs}}
+				<input type="text" class="form-control" id={{this}}Input>
+			{{/each}}
+			{{#each options.buttons}}
+				<button class="btn btn-default" id="{{this}}Btn">{{this}}</button>
+			{{/each}}
+		</div>
+		<div class="btn-group fn-toolbar">
+			{{#each toolbar}}
+				<button class="btn btn-default" id="{{this}}Btn">{{this}}</button>
+			{{/each}}
+		</div>
+	</div>
+	<div class="panel-body">
+		{{{bodyTpl}}}
+	</div>
+</div>

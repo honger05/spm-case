@@ -1,0 +1,30 @@
+
+.fn-relative {
+	position: relative;
+}
+
+.fn-toolbar {
+	position: absolute;
+	top: 4px;
+	right: 10px;
+}
+
+.jl-comb-btn-group > .btn {
+	height: 30px;
+}
+
+.jl-msg-button {
+    line-height: 1;
+}
+
+.jl-overlay {
+  background-color: #000;
+}
+
+.panel-title {
+	display: inline;
+}
+
+.options {
+	display: inline-block;
+}

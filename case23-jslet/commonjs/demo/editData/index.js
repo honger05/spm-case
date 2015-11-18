@@ -2,7 +2,7 @@
 var jslet = require('../../build/locale/zh-cn/locale.js');
 var Interpreter = require('../../interpreter/interpreter.js');
 
-var dataSet = require('../../dataModel/employee.js');
+var dataSet = require('../dataModel/employee.js');
 
 var dsProvince = dataSet.dsProvince;
 var dsEmployee = dataSet.dsEmployee;
@@ -13,8 +13,24 @@ var dsEmployee = dataSet.dsEmployee;
 var tpl = {
 	root: 'root',
 	controls: [
-		{type:'DBTable', dataset: 'employee'},
-		{type:'DBEditPanel', dataset: 'employee'},
+		{
+			el: 'tablePanel',
+			panel: {
+				title: 'tableData', 
+				bodytpl: '<div id="tablePanel" style="height:300px"></div>',
+				toolbar: '<button class="btn btn-default">edit</button>'
+			},
+			jsletParams: {type:'DBTable', dataset: 'employee'}
+		},
+		{
+			el: 'editPanel',
+			panel: {
+				title: 'editPanel', 
+				bodytpl: '<div id="editPanel"></div>',
+				toolbar: ''
+			},
+			jsletParams: {type:'DBEditPanel', dataset: 'employee'}
+		}
 	]
 };
 
