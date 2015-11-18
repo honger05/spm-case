@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	
+<head>
+	<title>Agency.js Source</title>
+</head>
+<body onload="parent.resizeSourceFrame(document.body.scrollHeight);">
+	<h2>Agency.js Source</h2>
+	<hr />
+    <pre class="prettyprint linenums"><code>
+//Define Dataset Object
+(function () {
+	function getRandomChar(){
+		return String.fromCharCode(65 + Math.round(Math.random()*25));
+	}
+	
+	//Create large test data: 2000 records 
+	function generateLargeData(){
+		var data = [], rec, code1, code2, m=1, id1, id2;
+		for(var i = 1; i &lt;= 200; i++){
+			code1 = i;
+			if(i &lt; 10)
+				code1 ='00' + i;
+			else
+			if(i &lt; 100)
+				code1 = '0' + i;
+			else
+				code1 = i;
+			
+			id1 = m++;
+			rec = {id: id1, code: code1, name: getRandomChar() + code1};
+			data.push(rec);
+			for(var j = 1; j &lt; 11; j++){
+				code2 = code1+ (j &lt; 10 ? '0': '')+j;
+				id2 = m++;
+				rec = {id: id2, code: code2, name: getRandomChar() + code2, parentid: id1};
+				data.push(rec);
+				for(var k = 1; k &lt; 11; k++){
+					code3 = code2+(k &lt; 10 ? '0': '') + k;
+					rec = {id: m++, code: code3, name: getRandomChar() + code3, parentid: id2};
+					data.push(rec);
+				}
+			}
+		}
+		return data;
+	}
+	
+	
+	dsAgency = new jslet.data.Dataset("dsAgency");
+	var fldObj = jslet.data.createNumberField("id", 10);
+	fldObj.label("ID");
+	dsAgency.addField(fldObj);
+	
+	fldObj = jslet.data.createNumberField("parentid", 10);
+	fldObj.label("ParentID");
+	dsAgency.addField(fldObj);
+	
+	fldObj = jslet.data.createStringField("code", 10);
+	fldObj.label("Code");
+	dsAgency.addField(fldObj);
+	
+	fldObj = jslet.data.createStringField("name", 60);
+	fldObj.displayWidth(20);
+	fldObj.label("Name");
+	dsAgency.addField(fldObj);
+	
+	fldObj = jslet.data.createStringField("iconcls", 10);
+	fldObj.label("Icon Style Class");
+	dsAgency.addField(fldObj);
+	
+	dsAgency.keyField("id");
+	dsAgency.codeField("code");
+	dsAgency.nameField("name");
+	dsAgency.parentField("parentid");
+	
+	dsAgency.dataList(generateLargeData());
+})();
+    </code></pre>
+
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../prettify";
+    </script>
+    <script type="text/javascript" src="../prettify/run_prettify.js"></script>
+</body>
+</html>

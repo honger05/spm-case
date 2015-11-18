@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Jslet dataset designer">
+    <title>Jslet-Dataset Designer</title>
+    <script type="text/javascript" src="../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+        jslet.define('designer', 'design-ds.js');
+        jslet.require('jslet,designer');
+
+    </script>
+</head>
+<body onunload="jslet.uninstall()" class="container">
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+    <div style="margin:0px auto">
+        <h2>Jslet-Dataset Designer</h2>
+		<p>Guide</p>
+		<ol>
+			<li>Add dataset in Tab "Dataset List";</li>
+			<li>Add fields in Tab "Field List";</li>
+			<li>Go to Tab "Dataset Test" to test or generate dataset config.</li>
+		</ol>
+		<!-- tabCfg is a global variable defined in in below source lines.-->
+        <div style="width: 100%; height: auto" data-jslet= "var:tabCfg" >
+        </div>
+		
+        <div id="datasetpanel" style="padding: 4px; display: none; height: auto">
+            <p>
+				<button class="btn btn-default" onclick="dsDatasetCfg.insertRecord();">Insert</button>
+				<button class="btn btn-default" onclick="dsDatasetCfg.deleteRecord();" >Delete</button>
+			</p>
+            <div id="tblDataset" data-jslet="{type:'DBTable', dataset: 'datasetCfg', readOnly: true}"
+                style="width: 100%; height: 300px">
+            </div>
+             <div data-jslet="{type: 'DBEditPanel', dataset: 'datasetCfg', columnCount: 2}"></div>
+        </div>
+        <div id="fieldpanel" style="padding: 4px; display: none; height: auto">
+            <div id="tblField" data-jslet="{type: 'DBTable', dataset: 'fieldCfg'}" style="width: 100%;height: 150px"></div>
+            <p>
+				<button class="btn btn-default" onclick="dsFieldCfg.insertRecord();">Insert</button>
+                <button class="btn btn-default" onclick="dsFieldCfg.deleteRecord();">Delete</button>
+			</p>
+            <div data-jslet="{type: 'DBEditPanel', dataset: 'fieldCfg', columnCount: 3, labelCols: 2,fields:[
+				{field: 'type', colSpan: 1, showLine: true},
+				{field: 'displayWidth', colSpan: 1, showLine: true},
+				{field: 'displayFormat', colSpan: 2},
+				{field: 'editControl', colSpan: 2},
+				{field: 'formula', colSpan: 2},
+				{field: 'readOnly', colSpan: 1, showLine: true},
+				{field: 'required', colSpan: 1, showLine: true},
+				{field: 'regularExpr', colSpan: 2},
+				{field: 'lookup', colSpan: 1, showLine: true},
+				{field: 'betweenStyle', colSpan: 1, showLine: true},
+				{field: 'clientTranslate', colSpan: 1, showLine: true}
+				]}" style="border: 0; width: 100%; height: auto">
+            </div>
+        </div>
+        <div id="testpanel" style="display:none;margin:5px">
+			<p>
+            <button class="btn btn-default" onclick="showTestWin();" >&nbsp;Test&nbsp;</button>&nbsp;&nbsp;
+            <button class="btn btn-default" onclick="showCode();" >Generate Javascript</button>
+            <button class="btn btn-default" onclick="showDataList();">Get DataList</button>
+            </p>
+            <textarea id="genResult" rows="10" cols="1" style="width: 98%; height: 500px; overflow: scroll"></textarea>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function doTabChanged(oldIndex, newIndex) {
+            var dsCfg = jslet.data.getDataset('datasetCfg');
+            var fieldCfg = jslet.data.getDataset('fieldCfg');
+            if (oldIndex == 0) {//dataset pane
+                dsCfg.confirm();
+			}
+            else if (oldIndex == 1) {//field pane
+                fieldCfg.confirm();
+			}
+            if (newIndex == 1) {//field pane
+                fieldCfg.enableControls();
+			}
+			//If the current pane is 'dataset' pane, disable field pane. This is for performance improving.
+            if (newIndex == 0) {
+                fieldCfg.disableControls();
+			}
+        }
+
+        tabCfg = {type: 'TabControl', newable: false, onSelectedChanged: doTabChanged, 
+    			items:[{header: 'Dataset List', closable: false, divId: 'datasetpanel'}, 
+    			{header: 'Field List', closable: false, divId: 'fieldpanel'},  
+    			{header: 'Test', closable: false, divId: 'testpanel'}]};
+            
+        function genDatasetScript(dsname, hasInvokeCode) {
+            var dsDataset = jslet('#tblDataset').dataset();
+
+            if (dsDataset.recordCount() == 0)
+                return '';
+
+            var dsField = jslet('#tblField').dataset();
+            if (dsField.recordCount() == 0) {
+                alert('There aren\'t fields in this dataset, can\'t generate script!');
+                return '';
+            }
+            dsname = dsname ? dsname: dsDataset.getFieldValue('name');
+            var curr = dsDataset.getRecord();
+            var arr = ['var fldCfg='];
+            arr.push(jslet.data.record2Json(dsDataset.getFieldValue('fields')));
+            arr.push(';\n\n');
+            arr.push('jslet.data.createDataset("');
+            arr.push(dsname);
+            arr.push('",fldCfg);\n\n\n');
+            if (hasInvokeCode) {
+                arr.push('//use these codes to query data \n var yourParams = {};\n');
+                arr.push('jslet.data.getDataset("');
+                arr.push(dsname);
+                arr.push('").queryUrl(yourUrl);\n');
+                arr.push('jslet.data.getDataset("');
+                arr.push(dsname);
+                arr.push('").query(yourParams);\n');
+
+                arr.push('//or use these codes to insert/update/delete data \n');
+                arr.push('jslet.data.getDataset("');
+                arr.push(dsname);
+                arr.push('").submitUrl(url);\n');
+                arr.push('jslet.data.getDataset("');
+                arr.push(dsname);
+                arr.push('").submit();\n');
+            }
+            return arr.join('');
+        }
+
+        function showCode() {
+            var result = genDatasetScript(null, true);
+            $('#genResult')[0].value = result;
+        }
+
+        function showDataList() {
+            var dsDataset = jslet('#tblDataset').dataset();
+
+            if (dsDataset.recordCount() == 0)
+                return '';
+            var result = jslet.data.record2Json(dsDataset.dataList());
+            $('#genResult')[0].value = result;
+        }
+
+        var testHtml = '<div style="padding:10px"><div data-jslet=\'type:"dbtable",dataset:"testdata"\' style="position:relative;top:2px;width:100%;height:200px"></div>'+
+        '<div style="padding-top:5px"><button class="btn btn-default" onclick="doTestInsert()">Insert</button>&nbsp;&nbsp;<button class="btn btn-default" onclick="doTestDelete()">Delete</button></div><hr />'+
+        '<div data-jslet=\'type:"dbeditpanel",dataset:"testdata",columnCount:2\'></div></div>';
+
+        function showTestWin() {
+            var owin = jslet.ui.createControl("type:'Window',caption:'Dataset Test', width:620,height:530,isCenter:true,maximizable:false,minimizable:false");
+            var dsStr = genDatasetScript("testdata");
+            if (!dsStr)
+                return;
+
+            window.eval(dsStr);
+            owin.setContent(testHtml);
+            jslet.ui.install(owin.getContentDiv());
+            doTestInsert();
+            owin.showModal();
+        }
+
+        function doTestInsert(){
+			jslet.data.getDataset('testdata').insertRecord();
+        }
+
+        function doTestDelete(){
+			jslet.data.getDataset('testdata').deleteRecord();
+        }
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Demeostrate how to use Jslet widget: DBRating">
+    <title>Jslet - DBRating Demo</title>
+    <link rel="stylesheet" type="text/css" href="../../css/demo-style.css" />
+    <script type="text/javascript" src="../../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+        jslet.define('employee', '../../js/employee.js');
+        jslet.require('jslet,employee');
+    </script>
+	<style type="text/css">
+		select {
+			width: 200px;
+		}
+	</style>
+</head>
+<body onunload="jslet.ui.uninstall()">
+	<div class="container">
+    <div class="page-header">
+    <h2 id="top">Jslet - DBSelect Demo</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+    <h4>Employee List: (<a href="../../model/EmployeeDataModel.htm">Data Model</a>)</h4>
+    <div data-jslet="type:'DBTable',dataset:'employee'" style="width: 100%; height: 200px">
+    </div>
+	
+	<h4>DBSelect Demo:</h4>
+	<ol>
+		<li>
+			<h4 class=">Field with lookup data:</h4>
+			Config: <span style="color: blue">data-jslet="type:'DBSelect',dataset:'employee',field:'position'"</span>
+			<div class="row">
+				<div class="col-xs-3">
+					<select data-jslet="type:'DBSelect',dataset:'employee',field:'position'"></select>
+				</div>
+			</div>
+		</li>
+		<li><h4>Field with lookup data(With lookupDataset property):</h4>
+			Config: <span style="color: blue">data-jslet="type:'DBSelect',dataset:'employee',field:'position',lookupDataset:'position'"</span>
+			<div class="row">
+				<div class="col-xs-3">
+					<select data-jslet="type:'DBSelect',dataset:'employee',field:'position',lookupDataset:'position'"></select>
+				</div>
+			</div>
+		</li>
+		<li><h4>Field without lookup data, for example&quot;name&quot; field:</h4>
+			<div class="row">
+				<div class="col-xs-3">
+					<select data-jslet="type:'DBSelect',dataset:'employee',field:'name'">
+						<option value="John">John</option>
+						<option value="Marry">Marry</option>
+						<option value="Tom">Tom</option>
+						<option value="Jerry">Jerry</option>
+						<option value="Monica">Monica</option>
+						<option value="Jessica">Jessica</option>
+						<option value="Ted">Ted</option>
+					</select>
+				</div>
+			</div>
+		</li>
+	    <li><h4>Multiple select with lookup data(department):</h4>
+			<div class="row">
+				<div class="col-xs-3">
+					<select multiple="multiple" data-jslet="type:'DBSelect',dataset:'employee',field:'department'" size="6"></select>
+				</div>
+			</div>
+		</li>
+		<li><h4>Multiple select with Group item(department): </h4>
+			<div class="row">
+				<div class="col-xs-3">
+					<select multiple="multiple" data-jslet="type:'DBSelect',dataset:'employee',field:'department',groupField:'address'" size="10"></select>
+				</div>
+			</div>
+		</li>
+	</ol>
+
+	<!-- Source Code -->
+	<script type="text/javascript" src="../../source/demosource.js?height=650"></script>
+	</div>
+</body>
+</html>

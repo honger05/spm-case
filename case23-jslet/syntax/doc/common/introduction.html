@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="doc-style.css" />
+</head>
+<body>
+
+        <h3 class="title" id="core">
+            Jslet Architecture</h3>
+        <div>
+        <img src="../images/struct1.jpg" alt="Jslet architecture" /><br />
+        </div>
+        <ol class="listitem">
+        <li>UI Layer:<br />
+        Jslet UI control is standard html tag, only one customized attribute: data-jslet is added in it, so jslet is non-invasive. <br />
+		The customized attribute value is a json string, example: 
+		<pre><code>
+&lt;input data-jslet='{type:"DBText", dataset:"employee", field:"name"}' type="text" /&gt;
+		</code></pre>
+        </li>
+        <li>Data Layer:<br />
+        Jslet data layer is non-invasive too, Jslet data layer does not do any additional processing to the data comes from server.
+        </li>
+        <li>Server<br />
+        Jslet data layer(jslet.data.DataProvicer) exchanges data with server, the default format of data is JSON.
+        </li>
+        </ol>
+        <p></p>
+        
+<hr />        
+        <h3 class="title" id="dynaload">
+            Jslet Modular Loading</h3>
+        <p>Jslet framework provides a powerful loader, it can load js file, css file, even your js file.</p>
+        <p>Jslet loader js file is jslet.loader.js, you can find it in jslet project folder.</p>
+
+        <p><b>Jslet module Configuration</b></p>
+        <p>Jslet module Configuration is in the begin of jslet.loader.js</p>
+        <p>Form:<br />
+        jslet._initialModules = [<br />
+	    { name: "jquery", src: "lib/jQuery.js", baseOnLoader: true },<br />
+	    { name: "base", src: "base/jslet.base.js", baseOnLoader: true },<br />
+	    { name: "dataset", src: "data/jslet.dataset.js", deps: "jquery,base,provider", baseOnLoader: true },<br />
+		......<br />	</p>	
+		Comments：<br />
+		<ol type="a">
+		<li>name: module name;</li>
+		<li>src: the js file url of module</li>
+		<li>deps: dependency modules, separated with comma(,)；</li>
+		<li>baseOnLoader: optional value: true or false, true - the module js file is relative to jslet.loader.js, false - otherwise.</li>
+		</ol>
+</body>
+</html>

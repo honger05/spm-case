@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Demeostrate how to change user locale simply">
+    <title>Jslet - I18N(Chinese)</title>
+    <link rel="stylesheet" type="text/css" href="../css/demo-style.css" />
+    <script type="text/javascript" src="../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+		jslet.setLang('zh-cn');
+        jslet.define("employee", "../js/employee-zh.js");
+        jslet.require("jslet,employee", initialize);
+
+        function initialize() {
+            var fldObj = dsEmployee.getField('birthday');
+            fldObj.range({from: new Date(1960, 0, 1), to: new Date(2010, 11, 31)});
+
+            var fldObj = dsEmployee.getField('age');
+            fldObj.range({from: 18, to: 60});
+        }
+
+    </script>
+</head>
+<body onunload="jslet.ui.uninstall()">
+	<div class="container">
+    <div class="page-header">
+    <h2 id="top">Jslet - I18N(Chinese)</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+        <h4>改变语言:
+	<a href="i18n-en.html">English</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="i18n-ar.html">Arab</a>
+	</h4>
+    <h4>职员列表</h4>
+    <div data-jslet='type:"DBTable",dataset:"employee"' style="width: 100%; height: 200px"></div>
+
+	<h4>编辑区</h4>
+	<table style="width:100%" data-jslet='dataset:"employee"'>
+		<tr style="height:50px">
+			<td style="width:15%">
+				<label data-jslet='type:"DBLabel",field:"workerid"'></label>:
+			</td>
+			<td style="width:35%">
+				<input type="text" data-jslet='type:"DBText",field:"workerid"' class="editor" />
+			</td>
+			<td style="width:15%">
+				<label data-jslet='type:"DBLabel",field:"name"'></label>:
+			</td>
+			<td style="width:35%">
+				<input type="text" data-jslet='type:"DBText",field:"name"' class="editor" />
+			</td>
+		</tr>
+		<tr style="height:50px">
+			<td>
+				<label data-jslet='type:"DBLabel",field:"department"'></label>:
+			</td>
+			<td>
+				<select data-jslet='type:"DBSelect",field:"department"' class="editor" ></select>
+			</td>
+			<td>
+				<label data-jslet='type:"DBLabel",field:"age"'></label>:
+			</td>
+			<td>
+				<input type="text" data-jslet='type:"DBText",field:"age"' class="editor" />
+			</td>
+		</tr>
+		<tr style="height:50px">
+			<td>
+				<label data-jslet='type:"DBLabel",field:"birthday"'></label>:
+			</td>
+			<td>
+				<div id="date1" data-jslet='type:"DBDatePicker",field:"birthday"' class="editor"></div>
+			</td>
+			<td>
+				<label data-jslet='type:"DBLabel",field:"salary"'></label>:
+			</td>
+			<td>
+				<input type="text" data-jslet='type:"DBText",field:"salary"' class="editor" />
+			</td>
+		</tr>
+		<tr style="height:50px">
+			<td>
+				<label data-jslet='type:"DBLabel",field:"officephone"'></label>:
+			</td>
+			<td>
+				<input type="text" data-jslet='type:"DBText",field:"officephone"' class="editor" />
+			</td>
+			<td>
+				<label data-jslet='type:"DBLabel",field:"cellphone"'></label>:
+			</td>
+			<td>
+				<input type="text" data-jslet='type:"DBText",field:"cellphone"' class="editor" />
+			</td>
+		</tr>
+		<tr style="height:50px">
+			<td>
+				<label data-jslet='type:"DBLabel",field:"email"'></label>:
+			</td>
+			<td>
+				<input type="text" data-jslet='type:"DBText",field:"email"' class="editor" />
+			</td>
+			<td>
+				<label data-jslet='type:"DBLabel",field:"idcard"'></label>:
+			</td>
+			<td>
+				<input type="text" data-jslet='type:"DBText",field:"idcard"' class="editor" />
+			</td>
+		</tr>
+	</table>
+
+	</div>
+</body>
+</html>

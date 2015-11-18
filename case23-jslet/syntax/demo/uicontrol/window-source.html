@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;script type="text/javascript" src="../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+        jslet.require("jslet");
+    &lt;/script&gt;
+    </code></pre>
+	
+	<ul><li>Command script: </li></ul>
+    <pre class="prettyprint linenums"><code>
+        //Open window in "Body"
+        function openwin1(event) {
+            owin = jslet.ui.createControl({ type: "Window", iconClass:"winicon", caption: "&lt;i&gt;test window&lt;/i&gt;", minimizable: false, maximizable:false,onActive: doWinActive, onPositionChanged: doPositionChanged });
+            owin.setContent("Open modeless window in the Body(with icon)!");
+            owin.show(350,250);
+        }
+
+        function openwin2(event) {
+            owin = jslet.ui.createControl({ type: "Window", caption: "&lt;i&gt;child window&lt;/i&gt;", onActive: doWinActive }, $("#con")[0]);
+            owin.setContent("Open modeless window in one Div");
+            owin.show(150, 50);
+        }
+
+        //Open model window in the "Body"
+        function openwin3(event) {
+            owin = jslet.ui.createControl({ type: "Window", caption: "&lt;i&gt;child window&lt;/i&gt;", onActive: doWinActive });
+            owin.setContent("Open model window in the Body");
+            owin.showModal(150, 50);
+        }
+
+        function openwin4(event) {
+            owin = jslet.ui.createControl({ type: "Window", caption: "&lt;i&gt;child window&lt;/i&gt;", onActive: doWinActive }, $("#con")[0]);
+            owin.setContent("Open model window in on DIV");
+            owin.showModal(150, 50);
+        }
+
+        owin5 = null;
+
+        function openwin5(event) {
+            if(!owin5){
+	            owin5 = jslet.ui.createControl({ type: "Window", caption: "&lt;i&gt;child window&lt;/i&gt;", onClosed: doClose }, $("#con")[0]);
+	            owin5.setContent($("#tmp")[0]);
+            }
+            owin5.showModal(150, 50);
+        }
+
+        function openyahoo(event) {
+            owin = jslet.ui.createControl({ type: "Window", caption: "&lt;i&gt;child window&lt;/i&gt;", onActive: doWinActive });
+            owin.setContent("&lt;iframe src='http://www.yahoo.com/' width ='100%' height='100%' /&gt;");
+            owin.show(150, 50);
+        }
+
+
+        function doWinActive(owin) {
+//            alert(owin.caption);
+        }
+
+        function doPositionChanged(left, top) {
+            return { left: left + 10, top: top + 10 };
+        }
+
+        function doClose(){
+			return "hidden";//just hide window, not destroy window
+        }
+    </code></pre>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../prettify";
+    </script>
+    <script type="text/javascript" src="../prettify/run_prettify.js"></script>
+</body>
+</html>

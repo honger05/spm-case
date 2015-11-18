@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Jslet Framework Guide</title>
+    <link href="doc-style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h2>
+        Jslet-开发指南</h2>
+    <hr />
+    <table class="pme" cellpadding="1" cellspacing="1" style="width: 100%" id="table1">
+        <col width="40px" align="center" />
+        <col />
+        <tr>
+            <td>
+                1
+            </td>
+            <td>
+                <a href="#1">如何定义数据集</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                2
+            </td>
+            <td>
+                <a href="#2">如何定义字段</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                3
+            </td>
+            <td>
+                <a href="#3">如何设置查找字段</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                4
+            </td>
+            <td>
+                <a href="#4">如何设置公式字段</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                5
+            </td>
+            <td>
+                <a href="#5">如何设置字段的超链接</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                6
+            </td>
+            <td>
+                <a href="#6">如何设置字段的缺省值</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                7
+            </td>
+            <td>
+                <a href="#7">如何设置多层表头</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                8
+            </td>
+            <td>
+                <a href="#8">如何设置字段可以进行金额换算</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                9
+            </td>
+            <td>
+                <a href="#9">如何排序数据</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                10
+            </td>
+            <td>
+                <a href="#10">如何筛选数据</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                11
+            </td>
+            <td>
+                <a href="#11">如何查找数据</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                12
+            </td>
+            <td>
+                <a href="#12">如何移动数据集光标</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                13
+            </td>
+            <td>
+                <a href="#13">如何新增/修改/删除/确认/取消数据</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                14
+            </td>
+            <td>
+                <a href="#14">如何使用数据集事件</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                15
+            </td>
+            <td>
+                <a href="#15">如何使用字段链功能</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                16
+            </td>
+            <td>
+                <a href="#16">如何设置主子表</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                17
+            </td>
+            <td>
+                <a href="#17">如何设置上下文规则</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                18
+            </td>
+            <td>
+                <a href="#18">如何设置动态查找字段</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                19
+            </td>
+            <td>
+                <a href="#19">如何与服务器交互</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                20
+            </td>
+            <td>
+                <a href="#20">如何设置界面控件</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+            </td>
+        </tr>
+    </table>
+    <p>
+        <b>详细内容</b></p>
+    <p>
+        <b>1.<a id="1">如何定义数据集</a></b></p>
+    <p>
+        &nbsp;&nbsp; 数据集定义有两种方法:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; a,调用createEnumDataset方法:对于只有编码和名称的数据集,可以使用此方法快速创建数据集对象,创建的数据有两个字段:code（编码）和name（名称）,如下:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var dsSex = jslet.data.Dataset.createEnumDataset(&quot;sex&quot;,
+        &quot;M-男;F-女;N-不详&quot;);</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; b,调用Dataset构造方法:使用此方法创建的数据集对象里没有字段,需要额外定义,如下:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var dsSex = new jslet.data.Dataset(&quot;sex&quot;);</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 创建好数据集后,一般还需设置&quot;关键字字段名&quot;,即:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dsSex .setKeyField(&quot;code&quot;);//关键字字段</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 如果创建的数据集为其它数据集的字段的来源数据集,则还需要设置&quot;编码字段名&quot;,&quot;名称字段名&quot;,即:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ds1.setCodeField(&quot;code&quot;);//编码字段</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ds1.setNameField(&quot;name&quot;);//名称字段</p>
+    <p>
+    </p>
+    <p>
+        <b>2.<a id="2">如何定义字段</a></b></p>
+    <p>
+        &nbsp;&nbsp; 根据字段的数据类型不同,有4种方法创建字段对象:</p>
+    <p>
+        &nbsp;&nbsp; a,字符型字段:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var f = <a href="../doc/Field.htm">jslet.data.Field</a>.createStringField(&quot;code&quot;,10);//创建数据长度为10的&quot;code&quot;字段</p>
+    <p>
+        &nbsp;&nbsp; b,数字型字段:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var f = jslet.data.Field.createNumberField(&quot;salary&quot;,10,2);//创建数据长度为10的&quot;salary&quot;字段,小数位数为2</p>
+    <p>
+        &nbsp;&nbsp; c,布尔型字段:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var f = jslet.data.Field.createBooleanField(&quot;married&quot;);//创建&quot;married&quot;字段</p>
+    <p>
+        &nbsp;&nbsp; d,日期型字段:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var f = jslet.data.Field.createDateField(&quot;birthday&quot;);//创建&quot;birthday&quot;字段</p>
+    <p>
+        &nbsp;&nbsp; e,数据集字段:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var f = jslet.data.Field.createDatasetField(&quot;details&quot;,dsDetail);//创建&quot;details&quot;的数据集字段</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; 创建字段对象后,就可以设置其它属性,例如:f.setDisplayLabel(&quot;xxx&quot;);f.setDisplayFormat(&quot;xxx&quot;);...</p>
+    <p>
+    </p>
+    <p>
+        <b>3.<a id="3">如何设置查找字段</a></b></p>
+    <p>
+        &nbsp;&nbsp; 遵照以下步骤:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; var lkf = new <a href="../doc/LookupField.html">jslet.data.LookupField</a>();//创建查找字段对象</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; lkf.setLookupDataset(dsSex); //设置查找字段所指向的来源数据集</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; fldSex.setLookupField(lkf);//设置&quot;性别&quot;字段与lkf关联,这样fldSex的值就来源于数据集dsSex</p>
+    <p>
+    </p>
+    <p>
+        <b>4.<a id="4">如何设置公式字段</a></b></p>
+    <blockquote>
+        <p>
+            f = jslet.data.Field.createNumberField(&quot;amount&quot;,16,2);<br />
+            <b>//设置字段类型为公式字段<br />
+                f.setFormula(&quot;[num]*[price]&quot;);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                //设置公式<br />
+            </b>f.setDisplayFormat(&quot;#,##0.00&quot;);<br />
+            dsSaleDetail.addField(f);</p>
+    </blockquote>
+    <p>
+    </p>
+    <p>
+        <b>5.<a id="5">如何设置字段的超链接</a></b></p>
+    <p>
+        &nbsp;&nbsp;&nbsp; 设置字段的超链接后,即可以在DBTable中自动显示超链接</p>
+    <blockquote>
+        <p>
+            f = jslet.data.Field.createNumberField(&quot;price&quot;,16,2);<br />
+            f.setDisplayFormat(&quot;#,##0.00&quot;);<br />
+            <b>f.setUrlExpr(&quot;'<a href="http://www.jslet.com?id='+[id]">http://www.jslet.com?id='+[id]</a>&quot;);
+                //设置超链接地址表达式,其中&quot;id&quot;为关键字字段
+                <br />
+                f.setUrlTarget(&quot;_blank&quot;);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                //在哪里打开超链接<br />
+            </b>dsSaleDetail.addField(f);</p>
+        <p>
+        </p>
+    </blockquote>
+    <p>
+        <b>6.<a id="6">如何设置字段的缺省值</a></b></p>
+    <p>
+        &nbsp;&nbsp; 设置字段的缺省值后,则在新增时,就会自动赋值</p>
+    <blockquote>
+        <p>
+            f = jslet.data.Field.createNumberField(&quot;amount&quot;,16,2);<br />
+            <b>f.setDefaultExpr(&quot;1+20&quot;);&nbsp;&nbsp;&nbsp; //设置字段类型为公式字段<br />
+            </b>dsSaleDetail.addField(f);</p>
+        <p>
+        </p>
+    </blockquote>
+    <p>
+        <b>7.<a id="7">如何设置多层表头</a></b></p>
+    <p>
+        &nbsp;&nbsp;&nbsp; 为了减少DBTable的配置,多层表头的设置是在Field中进行设置,即:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; fldNum.setGroupLabel(&quot;一月|金属&quot;);</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; dlsPrice.setGroupLabel(&quot;一月|金属&quot;);</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; 这样在字段&quot;数量&quot;和&quot;单价&quot;字段上会多显示两层表头:一月和金属</p>
+    <p>
+    </p>
+    <p>
+        <b>8.<a id="8">如何设置字段可以进行金额换算</a></b></p>
+    <p>
+        &nbsp;&nbsp;&nbsp; a,设置字段是否参与金额换算</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fldAmount.setExchged(true);&nbsp; //设置字段&quot;金额&quot;字段参与金额换算</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; b,设置换算比例</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dsSales.setExchgRate(10000); //万元</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; 这样设置后,金额字段就会以万元为单位显示值</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;
+    </p>
+    <p>
+        <b>9.<a id="9">如何排序数据</a></b></p>
+    <p>
+        &nbsp;&nbsp;&nbsp; a,按一个字段排序</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dsHuman.setIndexFields(&quot;name&quot;);//升序</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dsHuman.setIndexFields(&quot;name desc&quot;);//降序</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; b,按两个字段排序</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dsHuman.setIndexFields(&quot;name,age&quot;);//升序</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dsHuman.setIndexFields(&quot;name,age
+        desc&quot;);//name升序,age降序</p>
+    <p>
+    </p>
+    <p>
+        <b>10.<a id="10">如何筛选数据</a></b></p>
+    <p>
+        &nbsp;&nbsp;&nbsp; 筛选需要以下两行代码:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; dsHuam.setFilter(&quot;[age]&gt;25&quot;);//设置筛选条件,注意在此处的字段名需要用&quot;[]&quot;括起来</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; dsHuman.setFiltered(true);//启用筛选条件</p>
+    <p>
+    </p>
+    <p>
+        <b>11.<a id="11">如何查找数据</a></b></p>
+    <p>
+        &nbsp;&nbsp;&nbsp; 查找数据有两种方式:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; a.按字段名进行查找:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dsHuman.findByField(&quot;name&quot;,&quot;tom&quot;);//查找name=tom的记录</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; b.按表达式查找:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dsHuman.find(&quot;[name]=='tom'&quot;);//注意在此处的字段名需要用&quot;[]&quot;括起来</p>
+    <p>
+    </p>
+    <p>
+        <b>12.<a id="12">如何移动数据集光标</a></b></p>
+    <p>
+        &nbsp;&nbsp;&nbsp; 移动数据集光标有以下方法:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; dsHuman.first();//移动到第一笔数据</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; dsHuman.next();//移动到下一笔数据</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; dsHuman.prior();//移动到前一笔数据</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; dsHuman.last();//移动到最后一笔数据</p>
+    <p>
+    </p>
+    <p>
+        <b>13.<a id="13">如何新增/修改/删除/确认/取消数据</a></b></p>
+    <p>
+        &nbsp;&nbsp;&nbsp; a. 新增:dsHuman.insertRecord();//此方法会触发新增事件</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; b. 修改:dsHuman.editRecord();//此方法会触发修改事件</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; c. 删除:dsHuman.deleteRecord();//此方法会触发删除事件</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; d. 确认数据:dsHuman.confirm();//此方法会触发确认事件</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; e. 取消数据:dsHuman.cancel();//此方法会触发取消事件</p>
+    <p>
+    </p>
+    <p>
+        <b>14.<a id="14">如何使用数据集事件</a></b></p>
+    <p>
+        &nbsp;&nbsp;&nbsp; 数据集事件共分为:移动光标前,移动光标后,新增前,新增后,修改前,修改后,删除前,删除后,确认前,确认后,取消前,取消后事件.</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; 设置事件句柄为的方法为:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; dsHuman.setDatasetListener(function(evtType, dataset){//evtType的值定义在类型jslet.data.DatasetEvent中</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(evtType == jslet.data.DatasetEvent.BEFORESCROLL){//移动光标前事件</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //在此加上处理的代码</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //如果需要取消操作,则可以调用代码:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dataset.abort();</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }else</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(evtType == jslet.data.DatasetEvent.BEFORECONFIRM){//确认前事件</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //可在此判断用户录入的数据是否合法,如果不合法,则可以调用dataset.abort(),禁止用户确认数据,并将调用方法:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dataset.focusEditControl(fieldName);将光标定位在不合法的字段上.</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //其它事件处理同上</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; });</p>
+    <p>
+    </p>
+    <p>
+        <b>15.<a id="15">如何使用字段链功能</a></b></p>
+    <p>
+        &nbsp;&nbsp;&nbsp; a.用字段链取值:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dsHuman.getFieldByValue(&quot;department.deptname&quot;);</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; b.根据包含字段链的表达式进行查找:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dsHuman.find(&quot;[department.address]=='北京'&quot;);</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; c.根据包含字段链的表达式进行筛选:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dsHuman.setFilter(&quot;[department.address]=='北京'&quot;);</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; d.根据字段链排序:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dsHuman.setIndexFields(&quot;department.address&quot;);//升序</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dsHuman.setIndexFields(&quot;department.address
+        desc&quot;);//降序</p>
+    <p>
+    </p>
+    <p>
+        <b>16.<a id="16">如何设置主子表</a></b></p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dsMaster = new jslet.data.Dataset(&quot;master&quot;);//创建主表数据集对象</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dsDetail = new jslet.data.Dataset(&quot;detail&quot;);//创建子表数据集对象</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var dsField = jslet.data.Field.createDatasetField(&quot;detail&quot;,dsDetail);//创建数据集字段对象</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var dsMaster.addField(dsField);</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </p>
+    <p>
+        <b>17.<a id="17">如何设置上下文规则</a></b></p>
+    <p>
+        &nbsp;&nbsp;&nbsp; var contextRule = new jslet.data.ContextRule(dsHuman);//创建上下文规则对象<br />
+        &nbsp;&nbsp;&nbsp; contextRule.addRuleItem(&quot;city&quot;,null,&quot;[province]==[human!province]&quot;,null);//添加规则<br />
+        &nbsp;&nbsp;&nbsp; dsHuman.setContextRule(contextRule);//设置上下文规则<br />
+        &nbsp;&nbsp;&nbsp; dsHuman.enableContextRule();//启用上下文规则<br />
+        &nbsp;&nbsp;&nbsp;
+    </p>
+    <p>
+        <b>18.<a id="18">如何设置动态查找字段</a></b></p>
+    <p>
+        &nbsp;&nbsp;&nbsp; 动态查找字段一般是与上下文规则一起使用:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; a.设置查找字段:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; f = jslet.data.Field.createStringField(&quot;powerfulanimal&quot;,
+        10);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; f.setDisplayLabel(&quot;最强动物&quot;);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lkf = new jslet.data.LookupField();<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; f.setLookupField(lkf);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dsAnimals.addField(f);// 一定要按这个顺序<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; f.onGetLookupField = function(lkFld)
+        {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var type = this.dataset.getFieldValue(&quot;animaltype&quot;);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (type == '1')<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        lkFld.setLookupDataset(dsFeline);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else if (type
+        == &quot;2&quot;)<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        lkFld.setLookupDataset(dsCanine);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        lkFld.setLookupDataset(dsBear);<br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+        &nbsp;&nbsp;&nbsp; b.设置上下文规则:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; var cr = new jslet.data.ContextRule(dsAnimals);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cr.addRuleItem(&quot;powerfulanimal&quot;,&quot;[animaltype]=='1'&quot;,
+        null,null);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cr.addRuleItem(&quot;powerfulanimal&quot;,&quot;[animaltype]=='2'&quot;,
+        null,null)<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cr.addRuleItem(&quot;powerfulanimal&quot;,&quot;[animaltype]=='3'&quot;,
+        null,null)<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dsAnimals.setContextRule(cr);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dsAnimals.enableContextRule();</p>
+    <p>
+        <br />
+        &nbsp;&nbsp;&nbsp; c.光标移动时需要刷新界面（如果是只读数据,则此步骤可以省略）</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; function doDatasetScroll(dsEvent){<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if(dsEvent.eventType
+        == jslet.data.DatasetEvent.AFTERSCROLL){<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        dsAnimals.renderOptions(&quot;powerfulanimal&quot;);<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dsAnimals.setDatasetListener(doDatasetScroll);<br />
+    </p>
+    <p>
+        <b>19.<a id="19">如何与服务器交互</a></b></p>
+    <p>
+        &nbsp;&nbsp;&nbsp; a.从服务端查询数据:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dsHuman.applyQuery(&quot;http://xxx/&quot;,&quot;age&gt;20&quot;);//查找年龄大于20的人员</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; b.提交新增数据到服务端:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dsHuman.applyInsert(&quot;http://xxx/&quot;);//无标识字段</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dsHuman.applyInsert(&quot;<a href="http://xxx/">http://xxx/</a>&quot;,&quot;code&quot;);//以code作为标识字段</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp; c.提交修改后的数据到服务端:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dsHuman.applyUpdate(&quot;http://xxx/&quot;);</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp; d.提交删除后的数据到服务端:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dsHuman.applyDelete(&quot;http://xxx/&quot;);</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp; e.提交选择的数据到服务端:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dsHuman.applySelected(&quot;<a href="http://xxx/">http://xxx/</a>&quot;,true);//处理成功后删除本地数据</p>
+    <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dsHuman.applySelected(&quot;<a href="http://xxx/">http://xxx/</a>&quot;,false);//处理成功后更新本地数据</p>
+    <p>
+    </p>
+    <p>
+        <b>20.<a id="20">如何设置界面控件</a></b></p>
+    <p>
+        &nbsp;&nbsp;&nbsp; 界面控件是在标准的HTML标签上增加一个属性:jslet,此属性存放的是jslet的控件对象,在标签上设置时,此属性的格式为目前很流行的JSON字符串的形式,JSON格式请查阅相关的规范:</p>
+    <p>
+        &nbsp;&nbsp;&nbsp; &lt;input type=text <b>jslet='{type:&quot;DBText&quot;,dataset:&quot;</b>ds1<b>&quot;,field:&quot;</b>fld1<b>&quot;}'</b>&gt;&lt;/input&gt;</p>
+</body>
+</html>

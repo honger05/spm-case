@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+&lt;script type="text/javascript" src="../../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+    jslet.require("jslet", function () {
+        initialize();
+    });
+
+    function initialize() {
+        var dsAnalyst = new jslet.data.Dataset("analyst");
+        var f = jslet.data.createStringField("name", 10);
+        f.label("Name");
+        f.required(true);
+        dsAnalyst.addField(f);
+
+        f = jslet.data.createNumberField("rating1", 8, 2);
+        f.label("Rate1");
+        dsAnalyst.addField(f);
+
+        f = jslet.data.createNumberField("rating2", 8, 2);
+        f.label("Rate2");
+        dsAnalyst.addField(f);
+
+        f = jslet.data.createNumberField("rating3", 8, 2);
+        f.label("Rate3");
+        f.required(true);
+        dsAnalyst.addField(f);
+
+        var dataList = [{ name: "Tom", rating1: 3, rating2: 6, rating3: 3.25 }, { name: "Jerry", rating1: 1.5, rating2: 4, rating3: 2.5 }, { name: "Mark", rating1: 0, rating2: 9, rating3: 1.75 }, { name: "Join", rating1: 5, rating2: 2, rating3: 4.5}];
+        dsAnalyst.dataList(dataList);
+    }
+&lt;/script&gt;
+    </code></pre>
+	
+	<ul><li>HTML: </li></ul>
+    <pre class="prettyprint linenums"><code>
+//Readonly DBRating：
+&lt;div data-jslet='type:"DBRating",dataset:"analyst",field:"rating1",readOnly:true' /&gt;
+
+//Set rating item to 10
+&lt;div data-jslet='type:"DBRating",dataset:"analyst",field:"rating2",itemCount:10' /&gt;
+	
+//Set item split count
+&lt;div data-jslet='type:"DBRating",dataset:"analyst",field:"rating3",itemCount:5,splitCount:2' /&gt;
+    </code></pre>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../../prettify";
+    </script>
+    <script type="text/javascript" src="../../prettify/run_prettify.js"></script>
+</body>
+</html>

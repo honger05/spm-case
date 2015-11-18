@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;script type="text/javascript" src="../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+        jslet.define("employee", "../js/employee.js", "jslet");
+        jslet.require("jslet,employee", function () {
+            initialize();
+        });
+
+        function initialize() {
+            dsEmployee.disableContextRule();
+            num = 1000;
+            dsEmployee.datasetListener(doDatasetEvent);
+        }
+
+        function doDatasetEvent(evtType, dataset) {
+            $('#eventpanel')[0].value += evtType + '    ';
+            //Set default value 
+            if (evtType == jslet.data.DatasetEvent.AFTERINSERT) {
+                dataset.setFieldValue("workerid", num);
+                num++;
+            }
+            //Confirm by user
+            if (evtType == jslet.data.DatasetEvent.BEFOREDELETE) {
+                if (!confirm("Would you delete data. ")) {
+                    dataset.abort();
+                }
+            }
+        }
+
+        function apply() {
+            var arrInserted = dsEmployee.getInsertedRecord();
+            var arrUpdated = dsEmployee.getUpdatedRecord();
+            var arrDeleted = dsEmployee.getDeletedRecord();
+            var s = "Data that will Post to server :\nInserted Data:\n";
+            s += jQuery.toJSON(arrInserted) + "\n";
+            s += "Updated Data: \n";
+            s += jQuery.toJSON(arrUpdated) + "\n";
+            s += "Deteted Data: \n";
+            s += jQuery.toJSON(arrDeleted) + "\n";
+            alert(s);
+        }
+    &lt;/script&gt;
+	</code></pre>
+	
+	<ul><li>HTML: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;input type="button" value=" Insert " onclick="dsEmployee.insertRecord();"/&gt;
+    &lt;input type="button" value=" Append " onclick="dsEmployee.appendRecord();"/&gt;
+    &lt;input type="button" value=" Edit " onclick="dsEmployee.editRecord();"/&gt;
+    &lt;input type="button" value=" Delete " onclick="dsEmployee.deleteRecord();"/&gt;
+    &lt;input type="button" value=" Confirm " onclick="dsEmployee.confirm();" /&gt;
+    &lt;input type="button" value=" Cancel " onclick="dsEmployee.cancel();" /&gt;
+    &lt;input type="button" value=" Apply " title="Apply data to server" onclick="apply();" /&gt;
+    </code></pre>
+	
+	<ul><li><a href='../js/employee-source.html' target="_blank" >Employee.js</a>: </li></ul>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../prettify";
+    </script>
+    <script type="text/javascript" src="../prettify/run_prettify.js"></script>
+</body>
+</html>

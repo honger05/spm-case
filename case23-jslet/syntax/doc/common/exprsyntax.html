@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="doc-style.css" />
+<title>Jslet-Expression Introduction</title>
+</head>
+
+<body>
+
+<h2>Jslet-Expression Introduction</h2>
+<hr />
+<p>Jslet is a flexible framework, you can use expression many places: </p>
+<ol>
+<li>Data filter expression;</li>
+<li>Data finding expression;</li>
+<li><a href="../data/field.html#formula()">Formula Expression</a>;</li>
+<li><a href="../data/lookupfield.html#displayFields()">Property: displayFields of lookup field</a>;</li>
+<li><a href="../ui/dbcontrol/dbtreeview.html">Property: displayFields of DBTreeView control;</a></li>
+</ol>
+<p>So what's Jslet expression? Actually, Jslet expression is javascript expression, only one difference is indicating field name.</p>
+<p>In Jslet expression, we use "[]" to surround Jslet dataset name and field name. The rule is:</p>
+<pre><code>[datasetName!fieldName.subFieldName]</code></pre>
+The part "datasetName" and "subFieldName" can be omitted. Sample:
+<ol>
+<li>Normal: <pre><code>[age]&gt;25, [birthday].getMonth()==0;</code></pre></li>
+<li>With dataset name: <pre><code>[department!name] == 'Sales';</code></pre></li>
+<li>With field chain: <pre><code>[department.location] == 'NewYork';</code></pre></li>
+<li>Using jslet global functions:
+<pre><code>
+<a href="globalfunction.html#jslet.like()">jslet.like</a>([empName], 'T%') <br />
+<a href="globalfunction.html#jslet.between()">jslet.between</a>([age], 20, 30)<br />
+<a href="globalfunction.html#jslet.inlist()">jslet.inlist</a>([age], 22, 25, 26)
+</code></pre>
+</li>
+</ol>
+</body>
+
+</html>

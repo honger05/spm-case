@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Jslet dataset formula field">
+    <title>Jslet - Formula Field Demo</title>
+    <link rel="stylesheet" type="text/css" href="../css/demo-style.css" />
+    <script type="text/javascript" src="../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+		jslet.define("salesdetail", "../js/salesdetail.js");
+        jslet.require("jslet,salesdetail");
+    </script>
+</head>
+<body onunload="jslet.ui.uninstall()">
+	<div class="container">
+    <div class="page-header">
+	<h2 id="top">Jslet - Formula Field Demo</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+	<div class="content">Configurate formula field and see how it works.</div>
+
+	<h4>Sales Transaction List</h4>
+	<div data-jslet='type:"DBTable",dataset:"dsSaleDetail"' style="width: 100%;
+		height: 220px" ></div>
+
+	<h4>Edit Panel</h4>
+		<p>Change value of "price" field or "num" field, and see the value of field "amount": </p>
+		<div data-jslet='type:"DBEditPanel",dataset:"dsSaleDetail", fields:[{field:"num"},{field:"price"},{field:"amount"}], onlySpecifiedFields: true'></div>
+	
+    <h3>Demo Content:</h3>
+	<div class="content">
+		<ol>
+        <li>Field formula: amount = num * price. </li>
+        <li>Field "amount" is readonly. </li>
+		</ol>
+    </div>
+	
+	<!-- Source Code -->
+	<script type="text/javascript" src="../source/demosource.js?height=400"></script>
+	</div>
+</body>
+</html>

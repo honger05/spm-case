@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Demeostrate how to submit changed data to server or query data from server">
+    <title>Jslet - Server Comunication Demo</title>
+    <link rel="stylesheet" type="text/css" href="../css/demo-style.css" />
+    <script type="text/javascript" src="../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+        jslet.define("employee", "../js/employee.js");
+        jslet.require("jslet,employee", function () {
+            initialize();
+        });
+
+        function initialize() {
+			//Clear all records which are created at client side.
+			//We need all employee data to query from server side.
+            dsEmployee.dataList(null);
+			dsEmployee.queryUrl('../../employee/findEmployee.jsp');
+			dsEmployee.submitUrl('../../employee/save.jsp');
+        }
+
+        function applyToServer() {
+            dsEmployee.submit();
+        }
+		
+		function processServerError() {
+			var oldUrl = dsEmployee.queryUrl();
+			try {
+				dsEmployee.queryUrl('../../employee/getServerErrMsg.jsp');
+				dsEmployee.query();
+			}finally{
+				dsEmployee.queryUrl(oldUrl);
+			}
+		}
+    </script>
+</head>
+<body>
+	<div class="container">
+    <div class="page-header">
+    <h2>Jslet - Server Comunication Demo</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+	<h4 style="color:red">If you see this page on http://jslet.github.io/jslet, it will raise error cause github.io only supports static page. You can goto download page to download standalone.war.</h4>
+    <h4>Employee List:</h4>
+    <div class="row">
+        <div class="col-xs-10">
+            <div data-jslet='type:"DBTable",dataset:"employee"' style="width: 100%; height: 200px">
+            </div>
+        </div>
+        <div class="col-xs-2">
+            <img data-jslet='type:"DBImage",dataset:"employee",field:"photo","baseUrl":"../photo/"'
+                style="height: 200px; width: 100%" alt="" />
+        </div>
+    </div>
+	
+	<div style="margin:10px">
+    <button class="btn btn-default" onclick="dsEmployee.query();"> Query </button>
+    <button class="btn btn-default" onclick="dsEmployee.insertRecord();" title='Add record after current cursor'> Insert </button>
+    <button class="btn btn-default" onclick="dsEmployee.editRecord();"> Edit </button>
+    <button class="btn btn-default" onclick="dsEmployee.deleteRecord();"> Delete </button>
+    <button class="btn btn-default" onclick="dsEmployee.confirm();"> Confirm </button>
+    <button class="btn btn-default" onclick="dsEmployee.cancel();"> Cancel </button>
+    <button class="btn btn-default" onclick="applyToServer();" title="Apply data to server"> Submit Changes</button>
+    <button class="btn btn-default" onclick="processServerError();"> Demonstrate Error </button>
+	</div>
+    <h4>Edit Panel</h4>
+    <div class="form-horizontal" data-jslet="dataset:'employee'">
+        <div class="form-group">
+            <label class="col-xs-2" data-jslet='type:"DBLabel",field:"workerid"'></label>
+            <div class="col-xs-4">
+                <input type="text" data-jslet='type:"DBText",field:"workerid"'/>
+            </div>
+            <label class="col-xs-2" data-jslet='type:"DBLabel",field:"name"'></label>
+            <div class="col-xs-4">
+                <input type="text" data-jslet='type:"DBText",field:"name"'/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-2" data-jslet='type:"DBLabel",field:"gender"'></label>
+            <div class="col-xs-4">
+                <div data-jslet='type:"DBRadioGroup",field:"gender"'></div>
+            </div>
+            <label class="col-xs-2" data-jslet='type:"DBLabel",field:"department"' ></label>
+            <div class="col-xs-4">
+                <div data-jslet='type:"DBcomboSelect",field:"department"'></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-2" data-jslet='type:"DBLabel",field:"age"'></label>
+            <div class="col-xs-4">
+                <div data-jslet='type:"DBSpinEdit",field:"age"'></div>
+            </div>
+            <label class="col-xs-2" data-jslet='type:"DBLabel",field:"position"'></label>
+            <div class="col-xs-4">
+                <select data-jslet='type:"DBSelect",field:"position"'></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-2" data-jslet='type:"DBLabel",field:"province"'></label>
+            <div class="col-xs-4">
+                <select data-jslet='type:"DBSelect",field:"province"'></select>
+            </div>
+            <label class="col-xs-2" data-jslet='type:"DBLabel",field:"salary"'></label>
+            <div class="col-xs-4">
+                <input type="text" data-jslet='type:"DBText",field:"salary"' />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-2" data-jslet='type:"DBLabel",field:"university"'></label>
+            <div class="col-xs-4">
+                <input type="text" data-jslet='type:"DBText",field:"university"' />
+            </div>
+        </div>
+    </div>
+
+	<!-- Source Code -->
+	<script type="text/javascript" src="../source/demosource.js?height=630"></script>
+	</div>
+</body>
+</html>

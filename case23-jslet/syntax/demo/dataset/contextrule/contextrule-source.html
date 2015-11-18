@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head Script: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;script type="text/javascript" src="../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+        jslet.define("contact", "contacts.js", "jslet");
+        //jslet is the system defined module name
+        jslet.require("jslet,contact", initialize);
+
+        function initialize() {
+            dsContact.getField('id').visible(false);
+            //Set edit mask of the following fields according to 'country' field.
+            var rule1 = {
+                condition: 'expr:[country]',
+                rules:[
+                {field: 'phone', meta: {editMask: 'expr:dsCountry.lookupByKey([Contact!country],"phoneMask")'}},
+                {field: 'ssnCode', meta: {editMask: 'expr:dsCountry.lookupByKey([Contact!country],"ssnMask")'}},
+                {field: 'idCardNum', meta: {editMask: 'expr:[Country!idCardMask]'}},
+                {field: 'driverLicenseNum', meta: {editMask: 'expr:[Country!driverLicenseMask]'}}        
+                ]
+            };
+            //If contactType is 'Organization', the following fields is disabed.
+            var rule2 = {
+                condition: '[contactType] == "O"',
+                rules:[
+                {field: 'gender', meta: {disabled: true}, value: null},
+                {field: 'firstName', meta: {disabled: true}, value: ''},
+                {field: 'lastName', meta: {disabled: true}, value: ''},
+                {field: 'salutation', meta: {disabled: true}, value: ''},
+				{field: 'birthday', meta: {disabled: true}, value: null},
+                {field: 'race', meta: {disabled: true}, value: null}
+                ]
+            };
+            //If contactType is 'Individual', the following fields is enabled.
+            var rule3 = {
+                condition: '[contactType] == "I"',
+                rules:[
+                {field: 'gender', meta: {disabled: false}},
+                {field: 'firstName', meta: {disabled: false}},
+                {field: 'lastName', meta: {disabled: false}},
+                {field: 'salutation', meta: {disabled: false}},
+				{field: 'birthday', meta: {disabled: false}},
+                {field: 'race', meta: {disabled: false}}
+                ]
+            };
+            //If contactType is 'Individual', the following fields is enabled.
+            var rule4 = {
+                condition: '[gender]',
+                rules: [
+                {field: 'salutation', lookup: {filter: '[Salutation!gender] == "${gender}" || [Salutation!gender] == "B"'}}
+                ]
+            };
+            dsContact.contextRules([rule1, rule2, rule3, rule4]);
+            dsContact.enableContextRule();
+        }
+    &lt;/script&gt;
+    </code></pre>
+    
+	<ul><li>HTML: </li></ul>
+    <pre class="prettyprint linenums"><code>
+&lt;div data-jslet='type:"DBTable",dataset:"Contact"' style="width: 100%; height: 150px">&lt;/div>
+&lt;div data-jslet="type:'DBEditPanel',dataset: 'Contact', columnWidth: 230" />
+    </code></pre>
+
+	<ul><li><a href='contact-source.html' target="_blank" >Contact.js</a>: </li></ul>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../../prettify";
+    </script>
+    <script type="text/javascript" src="../../prettify/run_prettify.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Demeostrate how to use Jslet widget: DBRating">
+    <title>Jslet - DBRating Demo</title>
+    <link rel="stylesheet" type="text/css" href="../../css/demo-style.css" />
+    <script type="text/javascript" src="../../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+        jslet.require("jslet", function () {
+            initialize();
+        });
+
+        function initialize() {
+            var dsAnalyst = new jslet.data.Dataset("analyst");
+            var fldObj = jslet.data.createStringField("name", 10);
+            fldObj.label("Name");
+            fldObj.required(true);
+            dsAnalyst.addField(fldObj);
+
+            fldObj = jslet.data.createNumberField("rating1", 8, 2);
+            fldObj.label("Rate1");
+			fldObj.readOnly(true);
+            dsAnalyst.addField(fldObj);
+
+            fldObj = jslet.data.createNumberField("rating2", 8, 2);
+            fldObj.label("Rate2");
+            dsAnalyst.addField(fldObj);
+
+            fldObj = jslet.data.createNumberField("rating3", 8, 2);
+            fldObj.label("Rate3");
+            fldObj.required(true);
+            dsAnalyst.addField(fldObj);
+
+            var dataList = [{ name: "Tom", rating1: 3, rating2: 6, rating3: 3.25 }, { name: "Jerry", rating1: 1.5, rating2: 4, rating3: 2.5 }, { name: "Mark", rating1: 0, rating2: 9, rating3: 1.75 }, { name: "Join", rating1: 5, rating2: 2, rating3: 4.5}];
+            dsAnalyst.dataList(dataList);
+        }
+    </script>
+</head>
+<body onunload="jslet.ui.uninstall()">
+	<div class="container">
+    <div class="page-header">
+    <h2 id="top">Jslet - DBRating Demo</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+    <h4>Analyst List</h4>
+    <div data-jslet='type:"DBTable",dataset:"analyst"' style="width: 100%; height: 150px">
+    </div>
+
+    <h3>Demo Content:</h3>
+	<div class="content">
+		<ol>
+    <li>
+        Readonly DBRating：
+    <div data-jslet='type:"DBRating",dataset:"analyst",field:"rating1"'>
+    </div>
+	</li>
+    <li>
+        Set rating item to 10, double click the first item, then clear rating:):
+    <div data-jslet='type:"DBRating",dataset:"analyst",field:"rating2",itemCount:10'>
+    </div>
+	</li>
+    <li>
+        Set item split count: <button onclick="jslet('#ratingEl').splitCount(2);jslet('#ratingEl').renderAll();"> Set to 2 </button>
+        <button onclick="jslet('#ratingEl').splitCount(4);jslet('#ratingEl').renderAll();"> Set to 4 </button>
+    <div id="ratingEl" data-jslet='type:"DBRating",dataset:"analyst",field:"rating3",itemCount:5,splitCount:2'></div>
+	</li>
+    <li>
+        If rating value is not required(specified by Field object), then user can double click the first item to clear the rating value;):
+    </li>
+	</ol>
+	</div>
+	<!-- Source Code -->
+	<script type="text/javascript" src="../../source/demosource.js?height=850"></script>
+	</div>
+</body>
+</html>

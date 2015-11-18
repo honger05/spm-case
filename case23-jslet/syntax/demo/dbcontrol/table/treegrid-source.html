@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;script type="text/javascript" src="../../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+        jslet.require("jslet", initialize);
+
+        function initialize() {
+            var dataList = [{ itemid: "cn", superid: "0", code: "00", name: "China", iconcls: "folderIcon",level:0 },
+			{ itemid: "1", superid: "cn", code: "01", name: "Guangdong Province",level:1 },
+			{ itemid: "2", superid: "1", code: "0101", name: "Guangzhou City",level:2 },
+			{ itemid: "3", superid: "1", code: "0102", name: "Shenzhen City",level:2 },
+			{ itemid: "4", superid: "3", code: "010201", name: "Nanshan District",level:3 },
+			{ itemid: "5", superid: "3", code: "010202", name: "Futian District",level:3 },
+			{ itemid: "6", superid: "1", code: "0103", name: "Dongguang City",level:2 },
+			{ itemid: "7", superid: "cn", code: "02", name: "Hunan Province",level:1 },
+			{ itemid: "8", superid: "7", code: "0201", name: "Changsha City",level:2 },
+			{ itemid: "9", superid: "7", code: "0202", name: "Zhuzhou City",level:2 },
+			{ itemid: "10", superid: "7", code: "0203", name: "YueYang City",level:2 },
+			{ itemid: "11", superid: "7", code: "0204", name: "Hengyang City",level:2 },
+			{ itemid: "12", superid: "7", code: "0205", name: "Shaoyang City",level:2 }
+			];
+
+            dsAgency = new jslet.data.Dataset("dsAgency");
+            f = jslet.data.createStringField("name", 30);
+            f.label("Name");
+            dsAgency.addField(f);
+
+            f = jslet.data.createStringField("code", 10);
+            f.label("Code");
+            dsAgency.addField(f);
+
+            f = jslet.data.createNumberField("itemid", 10);
+            f.label("ID");
+            f.readOnly(true);
+            dsAgency.addField(f);
+
+            f = jslet.data.createNumberField("superid", 10);
+            f.label("Parent ID");
+            f.readOnly(true);
+            dsAgency.addField(f);
+
+            f = jslet.data.createNumberField("level", 10);
+            f.label("Level");
+            f.readOnly(true);
+            dsAgency.addField(f);
+            
+            dsAgency.keyField("itemid");
+            dsAgency.codeField("code");
+            dsAgency.nameField("name");
+            dsAgency.parentField("superid");
+            dsAgency.levelField("level");
+            dsAgency.dataList(dataList);
+        }
+
+        function doGetIconClass(level, hasChild){
+			return hasChild?"folderIcon":"fileIcon";
+        }
+        
+        var treeTblCfg = {type:"DBTable",dataset:"dsAgency",disableHeadSort:true,fixedCols:1,readOnly:true,treeField:"name",columns:[{field:"name",getIconClass: doGetIconClass}]};
+    &lt;/script&gt;
+    </code></pre>
+	
+	<ul><li>Editor: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;div id="tblRegion" data-jslet='treeTblCfg' style="width: 800px; height: 300px"&gt;
+    </code></pre>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../../prettify";
+    </script>
+    <script type="text/javascript" src="../../prettify/run_prettify.js"></script>
+</body>
+</html>

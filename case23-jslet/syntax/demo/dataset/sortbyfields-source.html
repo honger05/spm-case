@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;script type="text/javascript" src="../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+        jslet.define("employee", "../js/employee.js");
+        jslet.require("jslet,employee");
+     &lt;/script&gt;
+    </code></pre>
+	
+	<ul><li>Sort script: </li></ul>
+    <pre class="prettyprint linenums"><code>
+	//Sort by one field
+	dsEmployee.indexFields('age');
+	dsEmployee.indexFields('age desc');
+	//Sort by multiple fields
+	dsEmployee.indexFields('age,department');
+	dsEmployee.indexFields('age,deparment desc');
+	dsEmployee.indexFields('age desc,deparment desc');
+    </code></pre>
+	
+	<ul><li><a href='../js/employee-source.html' target="_blank" >Employee.js</a>: </li></ul>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../prettify";
+    </script>
+    <script type="text/javascript" src="../prettify/run_prettify.js"></script>
+</body>
+</html>

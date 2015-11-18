@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;script type="text/javascript" src="../../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+        jslet.define("employee", "../../js/employee.js");
+        jslet.require("jslet,employee");
+     &lt;/script&gt;
+    </code></pre>
+	
+	<ul><li>Editor: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;div id="tblEmployee" data-jslet='type:"DBTable",dataset:"employee"' style="width: 800px; height: 220px" /&gt;
+    </code></pre>
+	
+	<ul><li>Generate test data: </li></ul>
+    <pre class="prettyprint linenums"><code>
+        function renderTable() {
+            var strCnt = $('#txtRecCnt').val();
+            var cnt = 1000;
+            if (strCnt)
+                cnt = parseInt(strCnt);
+            var rec;
+
+            var d = new Date(1984, 1, 23);
+            var dataList = new Array();
+            for (var i = 1; i &lt;= cnt; i++) {
+                rec = new Object();
+                rec.workerid = 'A' + i;
+                rec.name = "N" + i;
+                rec.department = "01";
+                rec.gender = "1";
+                rec.age = 25;
+                rec.birthday = d;
+                rec.province = "01";
+                rec.position = "1";
+                rec.university = "MIT";
+                rec.salary = 1000;
+
+                dataList.push(rec);
+            }
+            dsEmployee.dataList(dataList);
+            jslet('#tblEmployee').renderAll();
+        }
+    </code></pre>
+	
+	<ul><li><a href='../../js/employee-source.html' target="_blank" >Employee.js</a>: </li></ul>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../../prettify";
+    </script>
+    <script type="text/javascript" src="../../prettify/run_prettify.js"></script>
+</body>
+</html>

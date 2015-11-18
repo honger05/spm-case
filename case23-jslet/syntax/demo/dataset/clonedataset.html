@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Jslet dataset query criteria">
+    <title>Jslet - Query Criteria(Clone Dataset)</title>
+    <script type="text/javascript" src="../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+        jslet.define('employee', '../js/employee.js','jslet');
+        jslet.require('jslet,employee', initialize);
+
+        function initialize() {
+			dsEmployee = jslet.data.getDataset('employee');
+			
+			//Clone the employee dataset as the query criteria dataset.
+			dsCriteria = dsEmployee.clone('criteria', ['name','birthday','department']);
+			//Set birthday field to between style
+			dsCriteria.getField('birthday').valueStyle(jslet.data.FieldValueStyle.BETWEEN);
+			//dsCriteria.getField('birthday').required(true);
+			dsCriteria.insertRecord();
+			dsCriteria.autoShowError(false);
+        }
+
+    </script>
+    <link rel="stylesheet" type="text/css" href="../css/demo-style.css" />
+	<style type="text/css">
+		#employeeList {
+			width: 100%; 
+			height: 200px;
+		}
+	</style>
+</head>
+<body onunload="jslet.ui.uninstall()">
+	<div class="container">
+    <div class="page-header">
+    <h2 id="top">Jslet - Query Criteria(Clone Dataset)</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+	<div class="content">
+	<p>In most cases, the query criteria input is similar as the master dataset input, so we can clone the master dataset as the query criteria dataset. 
+		The criteria dataset and master dataset share the same field data type, validation rule(like field 'Name') and lookup data(like field "Department").
+	</p>
+	<p>You can change the criteria dataset configurations freely. In this demo, the "Birthday" field is changed to "From ... To ..." style.
+	</p>
+	</div>	
+	<h4> Query Criteria </h4>
+	<div id="criteriaPanel" data-jslet="type:'DBEditPanel',dataset:'criteria', columnCount:3"></div>
+	<div data-jslet="type: 'DBError', dataset: 'criteria'" ></div>
+	<button onclick="doQuery()"> Query Data </button>
+
+	<h4> Employee List(<a href="../model/EmployeeDataModel.htm">Data Model</a>) </h4>
+    <div id="employeeList" data-jslet = "type:'DBTable',dataset:'employee',fixedCols:0"></div>
+	
+	<script type="text/javascript">
+		function doQuery() {
+			//If dsCriteria is still in edit mode, confirm it.
+			if(dsCriteria.confirm()) {
+				//Use the criteria dataset data as the query criteria
+				var paramText = jslet.data.record2Json(dsCriteria.getRecord());
+				if(console) {
+					console.log('Query criteria: ' + paramText);
+				}
+				jslet.showInfo("The query criteria is: \n" + paramText);
+				//Replace the url "query.do" with your real url 
+				//dsEmployee.queryUrl('query.do');
+				//dsEmployee.query(dsCriteria.getRecord());
+			}
+		}
+	</script>
+	</div>
+</body>
+</html>

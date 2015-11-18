@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	
+<head>
+	<title>Animals.js Source</title>
+</head>
+<body onload="parent.resizeSourceFrame(document.body.scrollHeight);">
+	<h2>Animals.js Source</h2>
+	<hr />
+    <pre class="prettyprint linenums"><code>
+var dsAnimalType = jslet.data.createEnumDataset('animaltype',{'1':'Felidas','2':'Canine','3':'Bear'});
+
+var dsFelidas = jslet.data.createEnumDataset('felidas',{'1':'Lion','2':'Tiger','3':'Cat'});
+
+var dsCanine = jslet.data.createEnumDataset('canine',{'1':'Wolf','2':'Fox','3':'Dog'});
+
+var dsBear = jslet.data.createEnumDataset('bear',{'1':'Polar Bear','2':'Grizzly Bear','3':'Panda'});
+
+var f = jslet.data.createStringField('animaltype', 10);
+f.label('Animal Type');
+var lkf = new jslet.data.LookupField();
+lkf.dataset(dsAnimalType);
+f.lookupField(lkf);
+dsAnimals.addField(f);
+
+f = jslet.data.createStringField('powerfulanimal', 20);
+f.label('Most Powerful Animal');
+lkf = new jslet.data.LookupField();
+f.lookupField(lkf);
+dsAnimals.addField(f);
+f.onGetLookupField = function(lkFld) {
+	var type = this.dataset.fieldValue('animaltype');
+	if (type == '1')
+		lkFld.dataset(dsFelidas);
+	else if (type == '2')
+		lkFld.dataset(dsCanine);
+	else
+		lkFld.dataset(dsBear);
+
+}
+
+lkFelidas = new jslet.data.LookupField();
+lkFelidas.dataset(dsFelidas);
+
+lkCanine = new jslet.data.LookupField();
+lkCanine.dataset(dsCanine);
+
+lkBear = new jslet.data.LookupField();
+lkBear.dataset(dsBear);
+
+var cr = new jslet.data.ContextRule(dsAnimals);
+cr.addRuleItem('powerfulanimal','[animaltype]=='1'', null,null);
+cr.addRuleItem('powerfulanimal','[animaltype]=='2'', null,null)
+cr.addRuleItem('powerfulanimal','[animaltype]=='3'', null,null)
+dsAnimals.contextRule(cr);
+dsAnimals.enableContextRule();
+
+var dataList = [{
+			animaltype : '1',
+			powerfulanimal : '1'
+		}, {
+			animaltype : '2',
+			powerfulanimal : '2'
+		}, {
+			animaltype : '3',
+			powerfulanimal : '1'
+		}];
+dsAnimals.dataList(dataList);
+
+    </code></pre>
+
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../prettify";
+    </script>
+    <script type="text/javascript" src="../prettify/run_prettify.js"></script>
+</body>
+</html>

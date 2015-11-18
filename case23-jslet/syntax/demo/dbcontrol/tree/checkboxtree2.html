@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jslet - Selectable DBTreeView(Tree Node is Selectable or Not) Demo</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Demeostrate how to use Jslet widget: Selectable DBTreeView(Tree Node is Selectable or Not)">
+    <link type="text/css" rel="stylesheet" href="tree.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/demo-style.css" />
+    <script type="text/javascript" src="../../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+jslet.define('agency', 'agency.js');
+jslet.require('jslet,agency',initialize);
+
+function initialize() {
+    treeCfg3 = 
+    {type: 'DBTreeView', 
+     dataset: 'selectableAgency', 
+     displayFields: '[code]+"-"+[name]',
+     hasCheckBox: true, 
+     iconClassField: 'iconcls', 
+     correlateCheck: false,
+     expandLevel: 1
+    };
+    var dataset3 = jslet.data.getDataset('selectableAgency');
+    //Only the leaf item has check box.
+    dataset3.onCheckSelectable(function(){
+        return !this.hasChildren(); 
+    });
+}
+
+    </script>
+</head>
+<body onunload="jslet.ui.uninstall()">
+	<div class="container">
+    <div class="page-header">
+    <h2 id="top">Jslet - Selectable DBTreeView(Tree node is selectable or Not) Demo</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+	<div class="content">
+		Demonstrate how to configurate tree node has check box or not.
+	</div>
+    <h4>CheckBox Tree</h4>
+	<!-- treeCfg3 is a global variable defined in Head tag.-->
+	<div id="tree3" data-jslet="treeCfg3" style="width: 400px; height: 200px">
+	</div>
+
+    <h3>Demo Content:</h3>
+	<div class="content">
+	<ol class="content-list">
+    <li>
+        After check a child node, all of its parent node will display bold, it is very useful to find all checked nodes when the parent nodes are collapsed. 
+	</li>
+    <li>
+        Check tree node separately. You can right click on a tree node to select/unselect all.
+	</li>
+    <li>
+        Set which tree nodes have check box. In this sample, only leaf tree nodes have check box.
+	</li>
+	</ol>
+	</div>
+	<!-- Source Code -->
+	<script type="text/javascript" src="../../source/demosource.js?height=700"></script>
+	</div>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>Jslet EditMask</title>
+<meta name="date" content="2013-06-06" />
+<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style" />
+</head>
+<body>
+
+<div class="header">
+<div class="subTitle">jslet.data.</div>
+<h2 title="Class Dataset" class="title">Class EditMask;</h2>
+</div>
+<div class="contentContainer">
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<hr>
+<br>
+<div class="block">
+jslet.data.EditMask;
+</div>
+ 
+<dl><dt><span class="strong">Since:</span></dt>
+  <dd>2.0</dd>
+<dt><span class="strong">See Also:</span></dt><dd>
+<a href="field.html" title="jslet.data.Field"><code>Field</code></a>
+</dd></dl>
+</li>
+</ul>
+</div>
+
+
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><a href="#editmask()"><code><strong>jslet.data.EditMask</strong>(mask, keepChar, transform)</code></a>
+<div class="block">Constructs a new jslet.data.EditMask.</div>
+</td>
+</tr>
+</table>
+</li>
+</ul>
+	
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_detail">
+
+</a>
+<h3>Constructor Detail</h3>
+
+<a name="editmask()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>EditMask</h4>
+<pre>jslet.data.EditMask(mask, keepChar, transform)</pre>
+<div class="block">Constructs a new edit mask oject. Example:
+<pre><code class="sample">
+var maskObj = new jslet.data.EditMask('AA-0000', false, 'upper');
+</code></pre>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>mask</code> - (Required) String, mask String.
+<pre>
+Rule:
+'#': char set: 0-9 and -, not required
+'0': char set: 0-9, required
+'9': char set: 0-9, not required
+'L': char set: A-Z,a-z, required
+'l': char set: A-Z,a-z, not required
+'A': char set: 0-9,a-z,A-Z, required
+'a': char set: 0-9,a-z,A-Z, not required
+'C': char set: any char, required
+'c': char set: any char, not required
+</pre>
+</dd>
+<dd><code>keepChar</code> - (Optional) Boolean, keep non-mask character or not. Example:
+<pre>
+	Suppose mask string: AA-000
+	if keepChar is true, result will be: CC-123
+	if KeepChar is false, result will be: CC123
+</pre>
+</dd>
+<dd><code>transform</code> - (Optional) String, transform input character into UpperCase or LowerCase, optional value: <b>upper, lower or null</b>.
+</dd>
+<dt><span class="strong">Returns:</span></dt><dd>Edit mask object.</dd>
+<dt><span class="strong">Since:</span></dt><dd>2.0</dd>
+</dl>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+
+<p class="legalCopy"><small><font size="-1"> Copyright &#x00a9; 2010, 2013 All rights reserved. </font></small></p>
+</body>
+</html>

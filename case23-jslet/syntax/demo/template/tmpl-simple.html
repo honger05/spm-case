@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Demeostrate how to use Jslet framework with jQuery template library">
+    <title>Jslet - Template</title>
+    <link rel="stylesheet" type="text/css" href="../css/demo-style.css" />
+    <script type="text/javascript" src="../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+        jslet.define("employee", "../js/employee.js");
+		jslet.define("template", "jquery.tmpl.js");
+        jslet.require("jslet,employee,template", initialzie);
+		
+		function initialzie(){
+			//Dataset: employee is defined in employee.js
+			//For initial field value list
+			$( "#employeeTemplate" ).tmpl( jslet.data.getDataset('employee').dataList() )
+				.appendTo( "#employeeDataList" );	
+			
+			//For converted field value list
+			$( "#employeeTemplate" ).tmpl( jslet.data.getDataset('employee').textList() )
+				.appendTo( "#employeeList" );		
+		}
+    </script>
+	
+	<style>
+		table { border-collapse: collapse; }
+		.header th { padding:5px; border: 1px solid #77c; }
+		table td { padding: 3px; margin: 3px; border: solid #77c 1px; }
+	</style>
+</head>
+<body onunload="jslet.ui.uninstall()">
+	<div class="container">
+    <div class="page-header">
+    <h2 id="top">Jslet - Template</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+	<div class="content">Jslet can be used with jQuery template easly. 
+	There are many jQuery template engines.<br />
+	In this example, we use this: https://codeload.github.com/KanbanSolutions/jquery-tmpl/legacy.zip/1.0.3</p>
+	<script id="employeeTemplate" type="text/x-jquery-tmpl">
+		<tr>
+			<td>${name}</td>
+			<td>${gender}</td>
+			<td>${birthday}</td>
+			<td>${department}</td>
+			<td>${position}</td>
+		</tr>
+	</script>
+	</div>
+    <h4>Initial Field Values</h4>
+	<table><tbody class="header"><tr><th>Name</th><th>Gender</th><th>birthday</th><th>department</th><th>position</th></tr></tbody>
+		<tbody id="employeeDataList"></tbody>
+	</table>
+	
+    <h4>Converted Field Values</h4>
+	<table><tbody class="header"><tr><th>Name</th><th>Gender</th><th>birthday</th><th>department</th><th>position</th></tr></tbody>
+		<tbody id="employeeList"></tbody>
+	</table>
+
+	<!-- Source Code -->
+	<script type="text/javascript" src="../source/demosource.js?height=950"></script>
+	</div>
+</body>
+</html>

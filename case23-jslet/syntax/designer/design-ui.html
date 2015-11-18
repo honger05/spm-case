@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>jslet-数据集及字段配置管理器</title>
+    <link rel="stylesheet" type="text/css" href="designer-style.css" />
+    <script type="text/javascript" src="../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+        jslet.define("designer", "designer.js");
+        jslet.setLang("zh-cn");
+        jslet.require("jslet", function () {
+            initialize();
+            jslet.install();
+        });
+
+        function initialize() {
+
+        }
+    </script>
+</head>
+<body onunload="jslet.uninstall()">
+    <div style="width: 1000px;margin:0px auto">
+        <h2>
+            jslet-数据集及字段配置管理器</h2>
+        <hr />
+        <div style="width: 1000px; height: 600px" jslet='type:"TabControl",newable:false,items:[{"title":"数据集",closable:false,divId:"datasetpanel"},{"title":"字段",closable:false,divId:"fieldpanel"},{"title":"测试",closable:false,divId:"testpanel"}]'>
+        </div>
+        <div id="datasetpanel" style="padding: 4px; display: none">
+            <div id="tblDataset" jslet='{"type":"DBTable","dataset":"datasetCfg","readOnly":true}'
+                style="width: 800px; height: 150px">
+            </div>
+            <p>
+                <input type="button" value="Insert" onclick="dsDatasetCfg.insertRecord();" /><input
+                    type="button" value="Delete" onclick="dsDatasetCfg.deleteRecord();" /></p>
+             <div jslet='{"type":"DBEditPanel","dataset":"datasetCfg","columnCount":3}'></div>
+        </div>
+        <div id="fieldpanel" style="padding: 4px; display: none">
+            <div id="tblField" jslet='{"type":"DBTable","dataset":"fieldCfg"}' style="width: 900px;height: 150px"></div>
+            <p>
+                <input type="button" value="Insert" onclick="dsFieldCfg.insertRecord();" />
+                <input type="button" value="Delete" onclick="dsFieldCfg.deleteRecord();" /></p>
+            <div jslet='{"type":"DBEditPanel","dataset":"fieldCfg","columnCount":4,"fields":[
+        {"field":"type","colSpan":1,"showLine":true},
+        {"field":"displayWidth","colSpan":1,"showLine":true},
+        {"field":"fieldKind","colSpan":1,"showLine":true},
+        {"field":"formula","colSpan":2},
+        {"field":"readOnly","colSpan":1,"showLine":true},
+        {"field":"lookupField","colSpan":1,"showLine":true},
+        {"field":"betweenStyle","colSpan":1,"showLine":true},
+        {"field":"clientTranslate","colSpan":1,"showLine":true}
+        ]}' style="border: 1px solid; width: 880px">
+            </div>
+        </div>
+        <div id="testpanel" style="display:none;margin:5px">
+            <input type="button" value="Generate Javascript" onclick="showCode();" />
+            <input type="button" value="Test" onclick="showTestWin();" /><br />
+            <textarea id="genResult" rows="10" cols="1" style="width: 900px; height: 500px; overflow: scroll"></textarea>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function genDatasetScript(dsname, hasInvokeCode) {
+            var dsDataset = jslet("#tblDataset").dataset;
+
+            if (dsDataset.getRecordCount() == 0)
+                return "";
+
+            var dsField = jslet("#tblField").dataset;
+            if (dsField.getRecordCount() == 0) {
+                alert("当前的dataset没有字段信息，不能产生!");
+                return "";
+            }
+            dsname = dsname ? dsname: dsDataset.getFieldValue("name");
+            var curr = dsDataset.getCurrentRecord();
+            var arr = ['var fldCfg='];
+            arr.push(Object.toJSON(dsDataset.getFieldValue("fields")));
+            arr.push(';\n');
+            arr.push('jslet.Dataset.createDataset("');
+            arr.push(dsname);
+            arr.push('",fldCfg);\n');
+            if (hasInvokeCode) {
+                arr.push("\\\\use these codes to query data \n");
+                arr.push("jslet.getDataset('");
+                arr.push(dsname);
+                arr.push("').applyQuery(yourUrl,yourParams);\n");
+
+                arr.push("\\\\or use these codes to insert/update/delete data \n");
+                arr.push("jslet.getDataset('");
+                arr.push(dsname);
+                arr.push("').applyInsert(url);/.applyUpdate(url);/applyDelete(url);\n");
+            }
+            return arr.join("");
+        }
+
+        function showCode() {
+            var result = genDatasetScript(null, true);
+            $("genResult").value = result;
+        }
+
+        var testHtml = '<div jslet=\'type:"dbtable",dataset:"testdata"\' style="position:relative;top:20px;left:20px;width:500px;height:150px"></div>';
+
+        function showTestWin() {
+            var owin = jslet.createControl("type:'Window',caption:'数据集配置测试', width:600,height:230,isCenter:true");
+            var dsStr = genDatasetScript("testdata");
+            if (!dsStr)
+                return;
+
+            window.eval(dsStr);
+            owin.setContent(testHtml);
+            jslet.install(owin.getContentDiv());
+            owin.showModal();
+        }
+    </script>
+</body>
+</html>

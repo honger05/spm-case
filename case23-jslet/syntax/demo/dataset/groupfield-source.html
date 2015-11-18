@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+&lt;script type="text/javascript" src="../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+    jslet.define('groupfields', '../js/groupfields.js');
+    jslet.require('jslet,groupfields', initialize);
+
+	function initialize(){
+		//Global variable for this demo
+		demoDs = jslet.data.getDataset('group_field_ds');
+	}
+&lt;/script&gt;
+    </code></pre>
+	
+	<ul><li>Sort by group field: </li></ul>
+    <pre class="prettyprint linenums"><code>
+//Sort with "y10"(ascending)
+function doSortY10Asce() {
+    demoDs.indexFields('y10');
+}
+
+//Sort with "y10"(descending)
+function doSortY10Desc() {
+    demoDs.indexFields('y10 desc');
+}		
+    </code></pre>
+	
+	<ul><li><a href='../js/groupfields-source.html' target="_blank" >GroupFields.js</a>: </li></ul>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../prettify";
+    </script>
+    <script type="text/javascript" src="../prettify/run_prettify.js"></script>
+</body>
+</html>

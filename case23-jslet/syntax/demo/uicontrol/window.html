@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Demeostrate how to use UI widget: Window">
+    <title>Jslet - Window Demo</title>
+    <link rel="stylesheet" type="text/css" href="../css/demo-style.css" />
+    <script type="text/javascript" src="../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+        jslet.require("jslet");
+    </script>
+    <style type="text/css">
+    	.winicon{
+			background:transparent url('images/favicon.png');
+    	}
+    </style>
+</head>
+<body onunload="jslet.ui.uninstall()">
+	<div class="container">
+    <div class="page-header">
+    <h2 id="top">Jslet - Window Demo</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+	<div class="content">Demonstrate how to use Window control.</div>
+	<div style="margin-left: 20px;overflow:auto;">
+    <h3>Demo Content:</h3>
+	<div class="content">
+		<ol>
+    <li>Open modeless window in the "Body"(with icon) <button onclick="openwin1()"> Open </button>
+	</li>
+    <li>Open model window in the "Body" <button onclick="openwin3()"> Open </button>
+	</li>
+    <li>Open Yahoo in window <button onclick="openyahoo()"> Open </button>
+	</li>
+    <li>Demostate the features: minimize button, maximize button, double click window title to maximize, change window size, move window; </li>
+
+    <li>Open modeless window in one "Div" <button onclick="openwin2()"> Open </button>(Can open many windows)
+	</li>
+    <li>Open model window in on "DIV" <button onclick="openwin4()"> Open </button>
+	</li>
+    <li>Oen window which content is one "Div" of this page <button onclick="openwin5()"> Open </button>
+	</li>
+	</ol>
+	</div>
+    <div id="con" style="border:2px solid green;width:100%;height:400px;overflow:auto;position:relative;border-radius: 8px">Window container for test</div>
+
+
+<div id="tmp" style="display:none">This div will insert into window</div>
+    <script type="text/javascript">
+        //Open window in "Body"
+        function openwin1(event) {
+            owin = jslet.ui.createControl({ type: "Window", iconClass:"winicon", caption: "<i>test window</i>", minimizable: false, maximizable:false,onActive: doWinActive, onPositionChanged: doPositionChanged });
+            owin.setContent("Open modeless window in the Body(with icon)!");
+            owin.show(350,250);
+        }
+
+        function openwin2(event) {
+            owin = jslet.ui.createControl({ type: "Window", caption: "<i>child window</i>", onActive: doWinActive }, $("#con")[0]);
+            owin.setContent("Open modeless window in one Div");
+            owin.show(150, 50);
+        }
+
+        //Open model window in the "Body"
+        function openwin3(event) {
+            owin = jslet.ui.createControl({ type: "Window", caption: "<i>child window</i>", onActive: doWinActive });
+            owin.setContent("Open model window in the Body");
+            owin.showModal(150, 50);
+        }
+
+        function openwin4(event) {
+            owin = jslet.ui.createControl({ type: "Window", caption: "<i>child window</i>", onActive: doWinActive }, $("#con")[0]);
+            owin.setContent("Open model window in on DIV");
+            owin.showModal(150, 50);
+        }
+
+        owin5 = null;
+
+        function openwin5(event) {
+            if(!owin5){
+	            owin5 = jslet.ui.createControl({ type: "Window", caption: "<i>child window</i>", onClosed: doClose }, $("#con")[0]);
+	            owin5.setContent($("#tmp")[0]);
+            }
+            owin5.showModal(150, 50);
+        }
+
+        function openyahoo(event) {
+            owin = jslet.ui.createControl({ type: "Window", caption: "<i>child window</i>", onActive: doWinActive });
+            owin.setContent("<iframe src='http://www.yahoo.com/' width ='100%' height='100%' />");
+            owin.show(150, 50);
+        }
+
+
+        function doWinActive(owin) {
+//            alert(owin.caption);
+        }
+
+        function doPositionChanged(left, top) {
+            return { left: left + 10, top: top + 10 };
+        }
+
+        function doClose(){
+			return "hidden";//just hide window, not destroy window
+        }
+    </script>
+
+	<!-- Source Code -->
+	<script type="text/javascript" src="../source/demosource.js?height=630"></script>
+	</div>
+</body>
+</html>

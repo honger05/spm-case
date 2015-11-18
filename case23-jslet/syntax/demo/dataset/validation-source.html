@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;script type="text/javascript" src="../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+        jslet.define("employee", "../js/employee.js");
+        jslet.require("jslet,employee", initialize);
+
+        function initialize() {
+            dsEmployee.disableContextRule();
+            num = 1000;
+            dsEmployee.datasetListener(doDatasetEvent);
+
+            var fldObj = dsEmployee.getField("birthday");
+            fldObj.dataRange({from: new Date(1960, 0, 1), to: new Date(2010, 11, 31)});
+
+            var fldObj = dsEmployee.getField("age");
+            fldObj.dataRange({from: 18, to: 60});
+        }
+	&lt;/script&gt;
+    </code></pre>
+	
+	<ul><li>Keypress validation: </li></ul>
+    <pre class="prettyprint linenums"><code>
+		dsEmployee.getField('workerid').validChars('0123456789');
+    </code></pre>
+	
+	<ul><li>Field change validation: </li></ul>
+    <pre class="prettyprint linenums"><code>
+        var fldObj = dsEmployee.getField('birthday');
+		fldObj.required(true);
+        fldObj.dataRange({from: new Date(1960, 0, 1), to: new Date(2010, 11, 31)});
+		
+        fldObj = dsEmployee.getField('age');
+        fldObj.dataRange({from: 18, to: 60});
+		
+		fldObj = dsEmployee.getField('officephone');
+		fldObj.regularExpr(/(\(\d{3,4}\)|\d{3,4}-|\s)?\d{8}/ig, 'Invalid phone number!');//like: 0755-12345678
+		
+		fldObj = dsEmployee.getField('email');
+        fldObj.regularExpr(/^[a-zA-Z_0-9-'\+~]+(\.[a-zA-Z_0-9-'\+~]+)*@([a-zA-Z_0-9-]+\.)+[a-zA-Z]{2,7}$/ig, 'Invalid email address!');//like: foo@gmail.com
+    </code></pre>
+	
+	<ul><li>Record validation: </li></ul>
+    <pre class="prettyprint linenums"><code>
+        function doDatasetEvent(evtType) {
+            //Set default value 
+            if (evtType == jslet.data.DatasetEvent.AFTERINSERT) {
+                this.setFieldValue("workerid", num);
+                num++;
+            }
+
+			//Validate data when confirm
+			if(evtType == jslet.data.DatasetEvent.BEFORECONFIRM) {
+				if(this.getFieldValue('gender') == 'F' &amp;&amp; !this.getFieldValue('photo'))
+					alert('Female employee must have photo!:)');
+			}
+
+            //Confirm by user
+            if (evtType == jslet.data.DatasetEvent.BEFOREDELETE) {
+                if (!confirm("Would you delete data?")) {
+                    this.abort();
+                }
+            }
+        }
+		
+        dsEmployee.datasetListener(doDatasetEvent);		
+    </code></pre>
+	
+	<ul><li><a href='../js/employee-source.html' target="_blank" >Employee.js</a>: </li></ul>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../prettify";
+    </script>
+    <script type="text/javascript" src="../prettify/run_prettify.js"></script>
+</body>
+</html>

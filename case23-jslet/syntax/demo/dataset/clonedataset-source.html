@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../css/demo-style.css" />
+</head>
+<body>
+    <ul><li>Initialize &amp; Clone Dataset: </li></ul>
+    <pre class="prettyprint linenums"><code>
+&lt;script type="text/javascript" src="../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+    jslet.define('employee', '../js/employee.js','jslet');
+    jslet.require('jslet,employee', function () {
+        initialize();
+    });
+
+    function initialize() {
+        dsEmployee = jslet.data.getDataset('employee');
+        dsCriteria = dsEmployee.clone('criteria', ['name','birthday','department']);
+        dsCriteria.insertRecord();
+    }
+
+&lt;/script&gt;
+    </code></pre>
+    
+    <ul><li>Criteria Panel(Notice the "dataset" property): </li></ul>
+    <pre class="prettyprint linenums"><code>
+&lt;div id='criteriaPanel'
+    data-jslet="type:'DBEditPanel',dataset:'criteria', columnCount:3, columnWidth: 150, rowHeight:30"&gt;&lt;/div&gt;
+    </code></pre>
+
+    <ul><li>Employee List(Notice the "dataset" property): </li></ul>
+    <pre class="prettyprint linenums"><code>
+&lt;div id="employeeList" data-jslet = "type:'DBTable',dataset:'employee'"&gt;&lt;/div&gt;
+    </code></pre>
+
+    <ul><li>Query Action: </li></ul>
+    <pre class="prettyprint linenums"><code>
+function doQuery() {
+    //If dsCriteria is still in edit mode, confirm it.
+    if(dsCriteria.confirm(true)) {
+        //Use the criteria dataset data as the query criteria
+        if(console) {
+            console.log('Query criteria: ' + $.toJSON(dsCriteria.getRecord()));
+        }
+        dsEmployee.applyQuery('query.do', dsCriteria.getRecord());
+    } else {
+        alert('Some query criteria items  is invalidate, can't query data!');
+    }
+}
+    </code></pre>
+
+    <ul><li><a href='../js/employee-source.html' target="_blank" >Employee.js</a>: </li></ul>
+    
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../prettify";
+    </script>
+    <script type="text/javascript" src="../prettify/run_prettify.js"></script>
+</body>
+</html>

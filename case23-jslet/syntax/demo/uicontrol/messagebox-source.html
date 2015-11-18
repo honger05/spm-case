@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;script type="text/javascript" src="../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+        jslet.require("jslet");
+    &lt;/script&gt;
+    </code></pre>
+	
+	<ul><li>HTML: </li></ul>
+    <pre class="prettyprint linenums"><code>
+		//alert
+		jslet.ui.MessageBox.alert("You has to fill that blank!", "Tips");
+		
+		//alert
+        jslet.ui.MessageBox.alert("First line message&lt;br /&gt;Second line message", "Tips");
+
+		//error
+		jslet.ui.MessageBox.error("You made a mistake!", "Error");
+		
+		//warn
+		jslet.ui.MessageBox.warn("This is a warning for you!", "Warning");
+	
+		//confirm
+        jslet.ui.MessageBox.confirm("Are you sure to save this?", "Confirm", function(button){
+			$("#result2").html("You click button:"+button);
+			});
+
+		//confirm
+		jslet.ui.MessageBox.confirm("You are a boy?", "Confirm", function(button){
+			$("#result3").html("You click button:" + button);
+			}, true);
+
+		//prompt
+		jslet.ui.MessageBox.prompt("Please inpu file name：", "Input file name", function (button, inputValue) {
+			if (button == "ok")
+				$("#result4").html("Your value:" + inputValue);
+			else
+				$("#result4").html("You click button:" + button);
+		}, "test.txt", function (inputValue) {
+			if (!inputValue) {
+				jslet.ui.MessageBox.alert("File name required!");
+				return false;
+			}
+			return true;
+		});
+
+        //prompt
+		jslet.ui.MessageBox.prompt("Plase input your comments：", "Input comments", function (button, inputValue) {
+			if (button == "ok")
+				$("#result5").html("Your comments:" + inputValue);
+			else
+				$("#result5").html("You click button:" + button);
+		}, "",null, true);
+    </code></pre>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../prettify";
+    </script>
+    <script type="text/javascript" src="../prettify/run_prettify.js"></script>
+</body>
+</html>

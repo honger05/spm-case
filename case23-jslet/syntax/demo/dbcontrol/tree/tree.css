@@ -1,0 +1,32 @@
+﻿.jl-tree *{
+	font-size: 15px;	
+}
+
+.folderIcon
+{
+    background-image:url("../../images/folder.gif");
+    background-repeat:no-repeat;
+    background-position:center;
+}
+
+.fileIcon
+{
+    background-image:url("../../images/file.gif");
+    background-repeat:no-repeat;
+    background-position:center;
+}
+
+.dynset1
+{
+    background-image:url("../../images/dynset1.png");
+    background-repeat:no-repeat;
+    background-position:center;
+}
+
+.dynset2
+{
+    background-image:url("../../images/dynset2.png");
+    background-repeat:no-repeat;
+    background-position:center;
+}
+

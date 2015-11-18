@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;script type="text/javascript" src="../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+        jslet.require("jslet");
+    &lt;/script&gt;
+    </code></pre>
+
+	<ul><li>Menu Configuration: </li></ul>
+    <pre class="prettyprint linenums"><code>
+        function globalMenuItemClick(menuid, checked) {
+            alert("you choose: " + menuid + ",checked:" + checked);
+        }
+
+        var barMenuCfg = { type: 'MenuBar', onItemClick: globalMenuItemClick, items: [
+        { name: 'File', items: [
+            { id: 'new', name: 'New Tab', iconClass: 'icon1' },
+            { id: 'newWindow', name: 'New Window' },
+            { id: 'open', name: 'Open File...' },
+            { name: '-' },
+            { id: 'saveAs', name: 'Save As...' },
+            { id: 'send', name: 'Send Page...' },
+            { name: '-' },
+            { id: 'set', name: 'Page Setup...' },
+            { id: 'preview', name: 'Preview' },
+            { id: 'print', name: 'Print...' },
+            { name: '-' },
+            { id: 'offline', name: 'Offline' },
+            { id: 'exit', name: 'Exit' }
+            ]
+        },
+        { name: 'Edit', items: [
+            { id: 'undo', name: 'Undo', disabled: true },
+            { id: 'redo', name: 'Redo', disabled: true },
+            { name: '-' },
+            { id: 'cut', name: 'Cut', disabled: true },
+            { id: 'copy', name: 'Copy', disabled: true },
+            { id: 'paste', name: 'Paste', disabled: true },
+            { id: 'del', name: 'Delete', disabled: true },
+            { name: '-' },
+            { id: 'selectAll', name: 'Select All' },
+            { name: '-' },
+            { id: 'find', name: 'Find' }
+            ]
+        },
+        { name: 'View', items: [
+                    { id: 'toolbar', name: 'Tool Bar' },
+                    { id: 'sidePanel', name: 'Side Bar' },
+                    { name: '-' },
+                    { id: 'scale', name: 'Scale' },
+                    { id: 'uiStyle', name: 'UI Style' },
+                    { id: 'encode', name: 'Encode' },
+                    { name: '-' },
+                    { id: 'fullScreen', name: 'Full Screen' },
+                    { id: 'FireBug', name: 'FireBug' }
+                    ]
+        },
+        { name: 'Help', items: [
+                    { id: 'help', name: 'FireFox Help' },
+                    { id: 'answer', name: 'FAQ' },
+                    { id: 'feedback', name: 'Feedback...' },
+                    { id: 'restart', name: 'Restart &amp; Load Componenets...' },
+                    { name: '-' },
+                    { id: 'report', name: 'Report Bad Site...' },
+                    { name: '-' },
+                    { id: 'about', name: 'About Firefox' }
+                    ]
+        }
+         ]
+        };
+
+        var popupMenuCfg = { type: 'Menu', onItemClick: globalMenuItemClick, items: [
+        { id: 'back', name: 'Backward', iconClass: 'icon1' },
+        { id: 'go', name: 'Forward', disabled: true },
+        { name: '-' },
+        { id: 'saveAs', name: 'Save Background As', disabled: true },
+        { id: 'setBackground', name: 'Set Background', disabled: true },
+        { id: 'copyBackground', name: 'Copy Backgound', disabled: true },
+        { name: '-' },
+        { id: 'selectAll', name: 'Select All' },
+        { id: 'paste', name: 'Paste', disabled: true },
+        { name: '-' },
+        { id: 'createShortCut', name: 'Create Shortcut' },
+        { id: 'AddTo', name: 'Append...', disabled: true },
+        { id: 'viewSource', name: 'View Source' },
+        { name: '-' },
+        { id: 'encode', name: 'Encode', items: [
+            { id: 'autoSelect', name: 'Auto Select', itemType: 'check', checked: true },
+            { name: '-' },
+            { id: 'gb2312', name: 'Simplied Chinese(GB2312)', itemType: 'radio' },
+            { id: 'utf8', name: 'Unicode(UTF-8)', itemType: 'radio', checked: true },
+            { id: 'other', name: 'Others', items: [
+                { id: 'English', name: "English" },
+                { id: 'Japanese', name: "Franch" }
+            ]
+            }
+            ]
+        },
+        { name: '-' },
+        { id: 'leftToRight', name: 'Left to Right' },
+        { id: 'rightToLeft', name: 'Right to Left' }
+        ]
+        };
+
+    </code></pre>
+	
+	<ul><li>HTML: </li></ul>
+    <pre class="prettyprint linenums"><code>
+	&lt;!-- Bar menu, barMenuCfg is a global variable. --&gt;
+    &lt;div data-jslet="barMenuCfg" /&gt;
+		
+	&lt;!-- Context menu, popupMenuCfg is a global variable. --&gt;
+    &lt;div id="popmenu" data-jslet='popupMenuCfg' /&gt;
+	
+	&lt;!-- Context menu host --&gt;
+    &lt;div style="border: 1px solid green; width: 600px; height: 300px; overflow: auto;
+        background-color: #ffff88; vertical-align: middle; position: relative"
+        oncontextmenu="jslet('#popmenu').showContextMenu(event);" &gt;
+        
+    &lt;/div&gt;
+		
+    </code></pre>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../prettify";
+    </script>
+    <script type="text/javascript" src="../prettify/run_prettify.js"></script>
+</body>
+</html>

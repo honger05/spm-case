@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Demeostrate how to use Jslet widget: DBCheckBoxGroup">
+    <title>Jslet - DBCheckBoxGroup Demo</title>
+    <link rel="stylesheet" type="text/css" href="../../css/demo-style.css" />
+    <script type="text/javascript" src="../../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+        jslet.define('employee', '../../js/employee.js');
+        jslet.require('jslet,employee');
+    </script>
+</head>
+<body onunload="jslet.ui.uninstall()">
+	<div class="container">
+    <div class="page-header">
+    <h2 id="top">Jslet - DBCheckBoxGroup Demo</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+    <h4>Employee List</h4>
+    <div data-jslet="type:'DBTable',dataset:'employee'" style="width: 100%; height: 200px">
+    </div>
+
+	<h4>Edit Panel</h4>
+    <label data-jslet="type:'DBLabel',dataset:'employee',field:'department'">
+    </label>
+
+    <div id="cbg" data-jslet="type:'DBCheckBoxGroup',dataset:'employee',field:'department',columnCount:3">
+    </div>
+
+    <h3>Demo Content:</h3>
+	<div class="content">
+    <p>
+        1. Column count: <input type="text" value="4" id="aCols" />
+			<button class="btn btn-default" onclick="doSetColumnCount();"> OK </button>
+    </p>
+    <p>
+        2. Allowed checked count: <input type="text" value="2" id="aAllowedCols" />
+			<button class="btn btn-default" onclick="doSetValueCountLimit();"> OK </button>
+	</p>
+	</div>
+	<script type="text/javascript">
+		
+		function doSetColumnCount() {
+			var count = parseInt(document.getElementById('aCols').value);
+			jslet('#cbg').columnCount(count);
+			jslet('#cbg').renderAll();
+		}
+		
+		function doSetValueCountLimit() {
+			var count = parseInt(document.getElementById('aAllowedCols').value);
+			jslet.data.getDataset('employee').getField('department').valueCountLimit(count);
+		}
+		
+	</script>
+	<!-- Source Code -->
+	<script type="text/javascript" src="../../source/demosource.js?height=630"></script>
+	</div>
+</body>
+</html>

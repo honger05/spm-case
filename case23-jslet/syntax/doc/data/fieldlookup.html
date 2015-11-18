@@ -1,0 +1,274 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>Jslet FieldLookup</title>
+<meta name="date" content="2013-06-06" />
+
+<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style" />
+</head>
+<body>
+
+<div class="header">
+<div class="subTitle">jslet.data.</div>
+<h2 title="Class FieldLookup" class="title">Class FieldLookup;</h2>
+</div>
+<div class="contentContainer">
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<hr />
+<br />
+<div class="block">
+jslet.data.FieldLookup;
+</div>
+ 
+<dl><dt><span class="strong">Since:</span></dt>
+  <dd>1.0</dd>
+<dt><span class="strong">See Also:</span></dt><dd>
+<a href="dataset.html" title="jslet.data.Dataset"><code>Dataset</code></a>, 
+<a href="field.html" title="jslet.data.Field"><code>Field</code></a>
+</dd></dl>
+</li>
+</ul>
+</div>
+
+
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary"></a>
+
+<h3>Method Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span>Methods</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst"><code>jslet.data.Dataset<br/>this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#dataset()">dataset</a></strong>()<br />
+	<strong><a href="#dataset()">dataset</a></strong>(lkDataset)</code>
+<div class="block">Get or set lookup dataset.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>String<br/>this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#keyField()">keyField</a></strong>()<br />
+	<strong><a href="#keyField()">keyField</a></strong>(keyFldName)</code>
+<div class="block">Get or set 'key' field name of lookup dataset.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>String<br/>this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#codeField()">codeField</a></strong>()<br />
+	<strong><a href="#codeField()">codeField</a></strong>(codeFldName)</code>
+<div class="block">Get or set 'code' field name of lookup dataset.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>String<br/>this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#nameField()">nameField</a></strong>()<br />
+	<strong><a href="#nameField()">nameField</a></strong>(nameFldName)</code>
+<div class="block">Get or set 'name' field name of lookup dataset.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>String<br/>this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#parentField()">parentField</a></strong>()<br />
+	<strong><a href="#parentField()">parentField</a></strong>(parentFldName)</code>
+<div class="block">Get or set 'parent key' field name of lookup dataset.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>String<br/>this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#displayFields()">displayFields</a></strong>()<br />
+	<strong><a href="#displayFields()">displayFields</a></strong>(displayFieldExpr)</code>
+<div class="block">Get or set an expression for display field value.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>Boolean<br/>this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#onlyLeafLevel()">onlyLeafLevel</a></strong>()<br />
+	<strong><a href="#onlyLeafLevel()">onlyLeafLevel</a></strong>(onlyLeafLevel)</code>
+<div class="block">Identify whether user can select leaf level item if lookup dataset is a tree-style dataset.</div>
+</td>
+</tr>
+
+</table>
+</li>
+</ul>
+
+</li>
+</ul>
+</div>
+
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+	
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_detail"></a>
+
+<h3>Method Detail</h3>
+
+<a name="dataset()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>dataset</h4>
+<pre>dataset()</pre>
+<div class="block">Get lookup dataset object.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>lookup dataset object.</dd>
+</dl>
+<hr />
+<pre>dataset(lkDataset)</pre>
+<div class="block">Set lookup dataset.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>lkDataset</code> - (Required) jslet.data.Dataset, lookup dataset.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="keyField()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>keyField</h4>
+<pre>keyField()</pre>
+<div class="block">Get 'key' field name of lookup dataset.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>String, 'key' field name of lookup dataset.</dd>
+</dl>
+<hr />
+<pre>keyField(fieldName)</pre>
+<div class="block">Set key field name of lookup dataset.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>fieldName</code> - (Required) String, key field name of lookup dataset.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="codeField()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>codeField</h4>
+<pre>codeField()</pre>
+<div class="block">Get 'code' field name of lookup dataset.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>String, 'code' field name of lookup dataset.</dd>
+</dl>
+<hr />
+<pre>codeField(fieldName)</pre>
+<div class="block">Set 'code' field name of lookup dataset.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>fieldName</code> - (Required) String, 'code' field name of lookup dataset.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="nameField()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>nameField</h4>
+<pre>nameField()</pre>
+<div class="block">Get 'name' field name of lookup dataset.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>String, 'name' field name of lookup dataset.</dd>
+</dl>
+<hr />
+<pre>nameField(fieldName)</pre>
+<div class="block">Set 'name' field name of lookup dataset.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>fieldName</code> - (Required) String, 'name' field name of lookup dataset.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="parentField()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>parentField</h4>
+<pre>parentField()</pre>
+<div class="block">Get 'parent key' field name of lookup dataset.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>String, 'parent key' field name of lookup dataset.</dd>
+</dl>
+<hr />
+<pre>parentField(fieldName)</pre>
+<div class="block">Set 'parent key' field name of lookup dataset.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>fieldName</code> - (Required) String, parent field name of lookup dataset.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="displayFields()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>displayFields</h4>
+<pre>displayFields()</pre>
+<div class="block">Get display field expression.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>String, display field expression of lookup dataset.</dd>
+</dl>
+<hr />
+<pre>displayFields(expr)</pre>
+<div class="block">Set display field expression of lookup dataset. Example:
+<pre class="example"><code>
+lookupFldObj.displayFields('[code]+"-"+[name]');
+</code></pre>
+</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>expr</code> - (Required) String, display field expression of lookup dataset, see <a href='../common/exprsyntax.html'>expression syntax</a>.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="onlyLeafLevel()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onlyLeafLevel</h4>
+<pre>onlyLeafLevel()</pre>
+<div class="block">Get onlyLeafLevel flag.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Boolean.</dd>
+</dl>
+<hr />
+<pre>onlyLeafLevel(flag)</pre>
+<div class="block">Set onlyLeafLevel flag.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>flag</code> - (Required) Boolean, onlyLeafLevel flag.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+
+<p class="legalCopy"><small><font size="-1"> Copyright &#x00a9; 2010, 2013 All rights reserved. </font></small></p>
+</body>
+</html>

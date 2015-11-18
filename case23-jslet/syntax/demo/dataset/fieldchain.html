@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Jslet dataset using field chain">
+    <title>Jslet - Field Chain</title>
+    <link rel="stylesheet" type="text/css" href="../css/demo-style.css" />
+    <script type="text/javascript" src="../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+        jslet.define("employee", "../js/employee.js");
+        jslet.require("jslet,employee");
+     </script>
+</head>
+<body onunload="jslet.ui.uninstall()">
+	<div class="container">
+    <div class="page-header">
+    <h2 id="top">Jslet - Field Chain</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+	<div class="content">Use field chain to get value, sort data, filter data or find data.</div>
+	<h4>Employee List (<a href="../model/EmployeeDataModel.htm">Data Model</a>)</h4>
+	<table style="width:100%">
+		<tr>
+			<td style="width:70%;padding-right:10px">
+				<p>
+					Employee List:</p>
+				<div data-jslet='type:"DBTable",dataset:"employee"' style="width: 100%; height: 200px">
+				</div>
+			</td>
+			<td>
+				<p>
+					Department List:</p>
+				<div data-jslet='type:"DBTable",dataset:"department"' style="width: 100%; height: 200px">
+				</div>
+			</td>
+		</tr>
+	</table>
+    <h3>Demo Content:</h3>
+	<div class="content">
+		<ol>
+		<li><h4>Get Field Value:</h4>
+		   Get the address of a department(field:<b>department.address</b>)
+			<button onclick="doGetValue()"> Get Value </button>&nbsp;<input id="result1" size="20"/>
+		</li>
+		<li><h4>Find first employee with expression which contains field chain: </h4>
+		Find employee by condition: "department in Beijing"(expr:<b>[department.address]=='Beijing'</b>)
+		<button onclick="doFindData()"> Search </button>
+		</li>
+		<li><h4>Filter data with expression that contains field chain: </h4>
+			Filter out all employee whose department is in Beijing(expr:<b>[department.address]=='Beijing'</b>):
+			   <button onclick="doFilterData();"> Filter </button>&nbsp;<button onclick="dsEmployee.filtered(false);"> Display All </button>
+		</li>
+		<li><h4>Sort with field chain: </h4>
+			Sort with <b>department.address(Asceding</b>):<button onclick="doSortDataAsce();"> Sort </button><br />
+			Sort by <b>department.address(Descending</b>):<button onclick="doSortDataDesc();"> Sort </button>
+		</li>
+		</ol>
+	</div>
+	<script type="text/javascript">
+		function doGetValue() {
+			$('#result1').val(dsEmployee.getFieldValue('department.address'));
+		}
+		
+		function doFindData() {
+			dsEmployee.find("[department.address]=='Beijing'");
+		}
+		
+		function doFilterData() {
+			dsEmployee.filter("[department.address]=='Beijing'");
+			dsEmployee.filtered(true)
+		}
+		
+		//Sort with department.address(Asceding)
+		function doSortDataAsce() {
+			dsEmployee.indexFields("department.address");
+		}
+		
+		//Sort by department.address(Descending)
+		function doSortDataDesc() {
+			dsEmployee.indexFields("department.address desc");
+		}
+	</script>
+	<!-- Source Code -->
+	<script type="text/javascript" src="../source/demosource.js?height=430"></script>
+	</div>
+</body>
+</html>

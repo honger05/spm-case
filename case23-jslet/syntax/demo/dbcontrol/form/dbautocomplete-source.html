@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;script type="text/javascript" src="../../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+        jslet.define("employee", "../../js/employee.js");
+        jslet.require("jslet,employee");
+     &lt;/script&gt;
+    </code></pre>
+	
+	<ul><li>HTML: </li></ul>
+    <pre class="prettyprint linenums"><code>
+//Normal
+&lt;input id="cboAuto" type="text" data-jslet='type:"DBAutoComplete",field:"department"' /&gt;
+
+//Popup up after inputting 2 characters
+&lt;input type="text" data-jslet='type:"DBAutoComplete",field:"department",minChars:2' /&gt;
+
+//Popup up after elapsing 500ms
+&lt;input type="text" data-jslet='type:"DBAutoComplete",field:"department",minDelay:500' /&gt;
+
+//Search field can be specified dynamically according to the first character, if it is number, use "code" field to search data, otherwise use "name" field
+&lt;input type="text" data-jslet='type:"DBAutoComplete",field:"department", onGetFilterField:doGetFilterField' /&gt;
+    &lt;script type="text/javascript"&gt;
+        function doGetFilterField(lkds, inputValue) {
+            var c = inputValue.substring(0, 1);
+            if (c &gt;= '0' &amp;&amp; c &lt;= '9')
+                return 'deptid';
+            else
+                return 'name';
+        }
+    &lt;/script&gt;
+
+
+    </code></pre>
+	
+	<ul><li><a href='../../js/employee-source.html' target="_blank" >Employee.js</a>: </li></ul>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../../prettify";
+    </script>
+    <script type="text/javascript" src="../../prettify/run_prettify.js"></script>
+</body>
+</html>

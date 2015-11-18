@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;script type="text/javascript" src="../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+        jslet.require("jslet");
+    &lt;/script&gt;
+    </code></pre>
+	
+	<ul><li>Show waiting box: </li></ul>
+    <pre class="prettyprint linenums"><code>
+        function showWaiting1() {
+            waitingbox = new jslet.ui.WaitingBox(document.body, "#CCCCCC");
+            waitingbox.show("Please wait a moment(disappear after 2 seconds)...");
+            setTimeout(function(){waitingbox.destroy(); waitingbox = null;}, 2000);
+        }
+
+        waitingbox1 = null;
+        function showWaiting2() {
+            if (!waitingbox1)
+                waitingbox1 = new jslet.ui.WaitingBox(document.getElementById("test"), "Gray", true);
+            waitingbox1.show("Please wait a moment...");
+        }
+
+        function hideWaiting2() {
+            if (waitingbox1)
+                waitingbox1.hide();
+        }
+    </code></pre>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../prettify";
+    </script>
+    <script type="text/javascript" src="../prettify/run_prettify.js"></script>
+</body>
+</html>

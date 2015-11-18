@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;script type="text/javascript" src="../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+        jslet.require("jslet", function () {
+            initialize();
+        });
+
+        function initialize() {
+            fldCfg = [
+                { name: 'state', type: 'S', length: 30, label: 'Audit State', displayWidth: 8},
+                { name: 'auditor', type: 'S', length: 20, label: 'Auditor', displayWidth: 10},
+                { name: 'auditdate', type: 'D', length: 20, label: 'Audit Date', displayFormat: 'yyyy-MM-dd hh:mm:ss'},
+                { name: 'product', type: 'S', length: 30, label: 'Product', displayWidth: 16},
+                { name: 'price', label: 'Price', type: 'N', length: 10, scale: 2, displayFormat: '#,##0.00'},
+                { name: 'quantity', label: 'Quantity', type: 'N', length: 5, displayFormat: '#,##0.00' },
+                { name: 'cost', label: 'Total Cost', type: 'N', length: 12, scale: 2, displayFormat: '#,##0.00', formula:'[price]*[quantity]' }
+                ];
+            //Create dataset
+            product = jslet.data.createDataset('product', fldCfg);
+        }
+
+    &lt;/script&gt;
+    </code></pre>
+    
+    <ul><li>Command script: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    //Query data
+    function queryData() {
+        product.applyQuery('../../product/findall.jsp');
+    }
+    
+    //Apply selected to server
+    function applyToServer() {
+        var selRecs = product.selectedRecords();
+        if(selRecs && selRecs.length > 0) {
+            product.applySelected('../../product/audit.jsp');
+        } else {
+            jslet.showInfo('Please select records to audit!');
+        }
+    }
+
+    </code></pre>
+    
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../prettify";
+    </script>
+    <script type="text/javascript" src="../prettify/run_prettify.js"></script>
+</body>
+</html>

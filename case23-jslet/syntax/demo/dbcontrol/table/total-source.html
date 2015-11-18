@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;script type="text/javascript" src="../../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+        jslet.define("employee", "../../js/employee.js");
+        jslet.require("jslet,employee", function () {
+            dsEmployee.getField('department').visible(false);
+            dsEmployee.getField('gender').visible(false);
+            dsEmployee.getField('age').visible(false);
+            dsEmployee.getField('birthday').visible(false);
+        });
+    &lt;/script&gt;
+    </code></pre>
+	
+	<ul><li>HTML: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;div data-jslet='type:"DBTable",dataset:"employee"'
+        style="width: 100%; height: 300px" /&gt;
+    </code></pre>
+	
+	<ul><li><a href='../../js/employee-source.html' target="_blank" >Employee.js</a>: </li></ul>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../../prettify";
+    </script>
+    <script type="text/javascript" src="../../prettify/run_prettify.js"></script>
+</body>
+</html>

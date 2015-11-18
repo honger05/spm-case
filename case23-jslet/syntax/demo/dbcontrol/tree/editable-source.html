@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+&lt;script type="text/javascript" src="../../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+    jslet.define('agency', 'agency.js');
+    jslet.require("jslet,agency",initialize);
+
+    function initialize() {
+       //Global variable for #trvRegion 
+       treeCfg = { 
+        type: 'DBTreeView', 
+        dataset: 'dsAgency', 
+        displayFields: '[code]+"-"+[name]',
+        hasCheckBox: false, 
+        expandLevel: 0
+       };
+   }
+
+&lt;/script&gt;
+    </code></pre>
+
+	<ul><li>HTML: </li></ul>
+    <pre class="prettyprint linenums"><code>
+&lt;!-- treeCfg is a global variable defined in Head tag.--&gt;
+&lt;div id="trvRegion" data-jslet="treeCfg" style="width: 400px; height: 200px;float:left;margin-right: 20px"&gt;
+    </code></pre>
+	
+	<ul><li><a href='agency-source.html' target="_blank" >Agency.js(Tree data)</a>: </li></ul>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../../prettify";
+    </script>
+    <script type="text/javascript" src="../../prettify/run_prettify.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;script type="text/javascript" src="../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+		jslet.define("salesdetail", "../js/salesdetail.js");
+        jslet.require("jslet,salesdetail");
+     &lt;/script&gt;
+    </code></pre>
+	
+	<ul><li>HTML: </li></ul>
+    <pre class="prettyprint linenums"><code>
+	&lt;input type="text" data-jslet='type:"DBText",dataset:"dsSaleDetail",field:"num"' /&gt;
+	&lt;input type="text" data-jslet='type:"DBText",dataset:"dsSaleDetail",field:"price"' /&gt;
+	&lt;input type="text" data-jslet='type:"DBText",dataset:"dsSaleDetail",field:"amount"' /&gt;
+    </code></pre>
+	
+	<ul><li><a href='../js/salesdetail-source.html' target="_blank" >SalesDetail.js</a>: </li></ul>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../prettify";
+    </script>
+    <script type="text/javascript" src="../prettify/run_prettify.js"></script>
+</body>
+</html>

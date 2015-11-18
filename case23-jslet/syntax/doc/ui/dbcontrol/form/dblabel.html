@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>Jslet DBLabel</title>
+<meta name="date" content="2013-06-06" />
+<meta name="keywords" content="DBLabel" />
+<link rel="stylesheet" type="text/css" href="../../../stylesheet.css" title="Style" />
+</head>
+<body>
+
+<div class="header">
+<div class="subTitle">jslet.ui.</div>
+<h2 title="Class DBLabel" class="title">Class DBLabel;</h2>
+</div>
+<div class="contentContainer">
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<hr />
+<br />
+<div class="block">
+ Display field name, use this control to void hard-coding field name, and you can change field name dynamically. Sample:
+ <pre><code class="sample">
+ var jsletParam = {type:"DBLabel",dataset:"employee",field:"department"};
+ 
+ //1. Declaring:
+      &lt;label data-jslet='type:"DBLabel",dataset:"employee",field:"department"' /&gt;
+      or
+      &lt;label data-jslet='jsletParam' /&gt;
+      
+  //2. Binding
+      &lt;label id="ctrlId"  /&gt;
+  	//Js snippet
+ 		var el = document.getElementById('ctrlId');
+  	jslet.ui.bindControl(el, jsletParam);
+
+  //3. Create dynamically
+  	jslet.ui.createControl(jsletParam, document.body);
+ 	
+ </code></pre>
+You can also see <a href="../../../../demo/dbcontrol/form/genericcontrol.html"><span class="demo">Demo</span></a>.
+
+</div>
+ 
+<dl><dt><span class="strong">Since:</span></dt>
+  <dd>1.0</dd>
+<dt><span class="strong">See Also:</span></dt><dd>
+<a href="../../common/globalfunction.html" title="Jslet Global Functions"><code>Jslet Global Functions</code></a>
+</dd></dl> 
+</li>
+</ul>
+</div>
+
+
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+
+<!-- ========== PROPERTIES SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary"></a>
+
+<h3>Properties</h3>
+<table class="overviewSummary fixedtable" border="0" cellpadding="3" cellspacing="0">
+<tr>
+<th class="propcol" scope="col">Property Name</th>
+<th class="datatypecol" scope="col">Data Type</th>
+<th class="requiredcol" scope="col">Required</th>
+<th class="defaultcol" scope="col">Default</th>
+<th class="" scope="col">Description</th>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">type</td>
+<td>String</td>
+<td>Yes</td>
+<td>"DBLabel"</td>
+<td><code>Must be: DBLabel</code>
+</td>
+</tr>
+<tr class="altColor">
+<td class="pmename">dataset</td>
+<td>String/<a href="../../../dataset/dataset.html">jslet.data.Dataset</a></td>
+<td>Yes</td>
+<td></td>
+<td><code>Dataset name or Dataset object.</code>
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">field</td>
+<td>String</td>
+<td>Yes</td>
+<td></td>
+<td>Field name</td>
+</tr>
+
+</table>
+</li></ul>
+
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary"></a>
+
+<h3>Methods</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0">
+<tr>
+<th class="colFirst" scope="col">Name</th>
+<th class="colLast" scope="col">Description</th>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst pmename"><code>renderAll()</code></td>
+<td class="colLast">
+Use the control configuration to render control in browser.
+<dl>
+<dt><span class="strong">Since:</span></dt><dd>2.0</dd>
+</dl> 
+</td>
+</tr>
+
+
+</table>
+</li></ul>
+
+
+</li></ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+
+<p class="legalCopy"><small><font size="-1"> Copyright &#x00a9; 2010, 2013 All rights reserved. </font></small></p>
+</body>
+</html>

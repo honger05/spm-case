@@ -1,0 +1,1787 @@
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>Jslet Dataset</title>
+<meta name="date" content="2013-06-06" />
+<meta name="keywords" content="clone()" />
+<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style" />
+</head>
+<body>
+
+<div class="header">
+<div class="subTitle">jslet.data.</div>
+<h2 title="Class Dataset" class="title">Class Dataset</h2>
+</div>
+<div class="contentContainer">
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<hr />
+<br />
+<div class="block">
+jslet.data.Dataset is the core class of Jslet framework. Features:
+<ol class="descitem">
+	<li>Full support local data manipulating: add, modify, delete(<a href="../../demo/dataset/editdata.html"><span class="demo">Demo</span></a>), 
+		sort data(<a href="../../demo/dataset/sortbyfields.html"><span class="demo">Demo</span></a>), 
+		filter data(<a href="../../demo/dataset/filterdata.html"><span class="demo">Demo</span></a>), 
+		find data(<a href="../../demo/dataset/finddata.html"><span class="demo">Demo</span></a>)</li>
+	<li>Support display format;</li>
+	<li>Support edit mask(<a href="../../demo/dataset/editmask.html"><span class="demo">Demo</span></a>)</li>
+	<li>Multiple level validation, prevent any error data(<a href="../../demo/dataset/validation.html"><span class="demo">Demo</span></a>)</li>
+	<li>Support formula field, you can use it in dynamical calulations(<a href="../../demo/dataset/formulafield.html"><span class="demo">Demo</span></a>)</li>
+	<li>Support <a href="../common/glossary.html#fieldlookup">FieldLookup</a>, FieldLookup is the relation of datasets, many UI controls use field lookup to construct UI.(<a href="../../demo/dataset/fieldlookup.html"><span class="demo">Demo</span></a>)</li>
+	<li>Support <a href="../common/glossary.html#groupfield">GroupField</a>, you can use group field to sort data(<a href="../../demo/dataset/groupfield.html"><span class="demo">Demo</span></a>)</li>
+	<li>Support <a href="../common/glossary.html#datasetfield">DatasetField</a>, you can use dataset field to display Master-Detail style data easily(<a href="../../demo/dataset/masterdetail.html"><span class="demo">Demo</span></a>)</li>
+	<li>Support <a href="../common/glossary.html#fieldchain">FieldChain</a>, you can use field chain to get, sort, filter and find data.(<a href="../../demo/dataset/fieldchain.html"><span class="demo">Demo</span></a>)</li>
+	<li>Support <a href="../common/glossary.html#contextrule">Context Rule</a>(<a href="../../demo/dataset/contextrule.html"><span class="demo">Demo</span></a>)</li>
+	<li>Synchronize auto-increase field value from server automatically;</li>
+	<li>Can clone dataset structure(<a href="../../demo/dataset/clonedataset.html"><span class="demo">Demo</span></a>)</li>
+	<li>Can export data(<a href="../../demo/dataset/exportdata.html"><span class="demo">Demo</span></a>)</li>
+	
+</ol>
+</div>
+ 
+<dl><dt><span class="strong">Since:</span></dt>
+  <dd>1.0</dd>
+<dt><span class="strong">See Also:</span></dt><dd>
+<a href="field.html" title="jslet.data.Field"><code>Field</code></a>, 
+<a href="dataprovider.html" title="jslet.data.DataProvider"><code>DataProvider</code></a>, 
+<a href="contextrule.html" title="jslet.data.ContextRule"><code>ContextRule</code></a>, 
+<a href="../common/exprsyntax.html" title="Jslet Expression Synctax"><code>Jslet Expression Synctax</code></a>, 
+<a href="fieldlookup.html" title="jslet.data.FieldLookup"><code>FieldLookup</code></a>, 
+<a href="datasetevent.html" title="jslet.data.DatasetEvent">DatasetEvent</a>,
+<a href="datasetstatus.html" title = "jslet.data.DatasetStatus">DatasetStatus</a>,
+<a href="updateevent.html" title = "jslet.data.RefreshEvent">RefreshEvent</a></dd></dl>
+</li>
+</ul>
+</div>
+
+
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- ======== Public Functions SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="publicfunction_summary"></a>
+<h3>Public Dataset Functions</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Functions</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>jslet.data.Dataset</code></td>
+<td class="colLast"><code><strong><a href="#createDataset()">jslet.data.createDataset</a></strong>(dsName, fieldConfig, keyField,
+		codeField, nameField, parentField)</code>
+<div class="block">Create dataset.</div>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst"><code>jslet.data.Dataset</code></td>
+<td class="colLast"><code><strong><a href="#createEnumDataset()">jslet.data.createEnumDataset</a></strong>(dsName, enumStrOrObject)</code>
+<div class="block">Create Enumeration dataset.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>jslet.data.Dataset</code></td>
+<td class="colLast"><code><strong><a href="#getDataset()">jslet.data.getDataset</a></strong>(dsName)</code>
+<div class="block">Get dataset by dataset name.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>jslet.data.FieldValueConverter</code></td>
+<td class="colLast"><code><strong><a href="#getValueConverter()">jslet.data.getValueConverter</a></strong>(fldObj)</code>
+<div class="block">Get appropriate field value converter.</div>
+</td>
+</tr>
+
+
+</table>
+</li>
+</ul>	
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_summary"></a>
+
+<h3>Constructor Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><a href="#dataset()"><code><strong>jslet.data.Dataset</strong>()</code></a>
+<div class="block">Constructs a new jslet.data.Dataset.</div>
+</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary"></a>
+
+<h3>Method Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span>Methods</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst" colspan="2"><h4>Generic Method</h4></td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>String<br/>this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#name()">name</a></strong>()<br />
+<div class="block">Get the name of Dataset object.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#destroy()">destroy</a></strong>()</code>
+<div class="block">Destroy all associated object.</div>
+</td>
+</tr>
+<tr class="rowColor">
+	<td class="colFirst">&nbsp;</td>
+	<td class="colLast">&nbsp;</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst" colspan="2"><h4>Manuplating Field</h4></td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst"><a href="field.html" title="jslet.data.Field"><code>jslet.data.Field</code></a>[]</td>
+<td class="colLast"><code><strong><a href="#getFields()">getFields</a></strong>()</code>
+<div class="block">Get all Fields.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#addField()">addField</a></strong>(fldObj)</code>
+<div class="block">Add <code>jslet.data.Field</code> instance.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#removeField()">removeField</a>(fldName)</strong></code>
+<div class="block">Remove a field object by field name.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="field.html" title="jslet.data.Field"><code>jslet.data.Field</code></a></td>
+<td class="colLast"><code><strong><a href="#getField()">getField</a></strong>(fieldName)</code>
+<div class="block">Returns <code>jslet.data.Field</code> by field name.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst">&nbsp;</td>
+<td class="colLast">&nbsp;</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst" colspan="2"><h4>Sorting Data</h4></td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst"><code>String <br />this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#fixedIndexFields()">fixedIndexFields</a></strong>() <br />
+	<strong><a href="#fixedIndexFields()">fixedIndexFields</a></strong>(fieldNames)
+	</code>
+<div class="block">Get or set fixed index fields of dataset, field names separated by comma(,). "Fixed index fields" means the index fields is not changed.</div>
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst"><code>String <br />this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#indexFields()">indexFields</a></strong>() <br />
+	<strong><a href="#indexFields()">indexFields</a></strong>(fieldNames)
+	</code>
+<div class="block">Get or set index fields of dataset, field names separated by comma(,).</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst" colspan="2"><h4>Filtering Data</h4></td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst"><code>String <br />this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#fixedFilter()">fixedFilter</a></strong>() <br />
+	<strong><a href="#fixedFilter()">fixedFilter</a></strong>(filterExpr)
+	</code>
+<div class="block">Get or set dataset fixed filter expression. "Fixed filter" means the filter expression is not changed. </div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>String <br />this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#filter()">filter</a></strong>() <br />
+	<strong><a href="#filter()">filter</a></strong>(filterExpr)
+	</code>
+<div class="block">Get or set dataset filter expression.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>Boolean <br /> this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#filtered()">filtered</a></strong>() <br />
+	<strong><a href="#filtered()">filtered</a></strong>(flag)
+	</code>
+<div class="block">Get or set filtered flag.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst">&nbsp;</td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst" colspan="2"><h4>Finding Data</h4></td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst"><code>Boolean</code></td>
+<td class="colLast"><code><strong><a href="#find()">find</a></strong>(conditionExpr)</code>
+<div class="block">Find record with specified condition.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>Boolean</code></td>
+<td class="colLast"><code><strong><a href="#findByField()">findByField</a></strong>(fieldName, fieldValue)</code>
+<div class="block">Find record with specified field name and value.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>Object</code></td>
+<td class="colLast"><code><strong><a href="#lookup()">lookup()</a></strong>(fldName, findingValue, returnFieldName)</code>
+<div class="block">Find record and return specified field value.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>Boolean</code></td>
+<td class="colLast"><code><strong><a href="#findByKey()">findByKey</a></strong>(keyValue)</code>
+<div class="block">Find record with key value.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst">&nbsp;</td>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst" colspan="2"><h4>Moving Cursor</h4></td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#first()">first</a></strong>()</code>
+<div class="block">Move cursor to first record</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#next()">next</a></strong>()</code>
+<div class="block">Move cursor to next record.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#prior()">prior</a></strong>()</code>
+<div class="block">Move cursor to prior record.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#last()">last</a></strong>()</code>
+<div class="block">Move cursor to last record.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>Integer</code></td>
+<td class="colLast"><code><strong><a href="#recno()">recno</a></strong>()</code>
+<div class="block">Returns current record number.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>Integer</code></td>
+<td class="colLast"><code><strong><a href="#recordCount()">recordCount</a></strong>()</code>
+<div class="block">Returns record count.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst">&nbsp;</td>
+<td class="colLast">&nbsp;</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst" colspan="2"><h4>Editing Data</h4></td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst"><code>Object[] <br />void</code></td>
+<td class="colLast"><code><strong><a href="#dataList()">dataList</a></strong>()<br />
+	<strong><a href="#dataList()">dataList</a></strong>(arrayData)</code> 
+<div class="block">Get or set data list from/to dataset.</div>
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst"><code>Object[] <br />void</code></td>
+<td class="colLast"><code><strong><a href="#filteredDataList()">filteredDataList</a></strong>()</code><br />
+<div class="block">Get filtered data list from dataset.</div>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#insertRecord()">insertRecord</a></strong>()</code>
+<div class="block">Insert a new empty record after current record.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#appendRecord()">appendRecord</a></strong>()</code>
+<div class="block">Append a new empty record to the last of dataset.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#editRecord()">editRecord</a></strong>()</code>
+<div class="block">Set current record to update status.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#deleteRecord()">deleteRecord</a></strong>()</code>
+<div class="block">Delete the current record.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#confirm()">confirm</a></strong>()</code>
+<div class="block">Confirm the appending or updating record.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#cancel()">cancel</a></strong>()</code>
+<div class="block">Cancel change and restore to old value.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#insertDataset()">insertDataset</a></strong>(srcDataset)</code>
+<div class="block">Insert all records of source dataset into this dataset(After current record).</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#appendDataset()">appendDataset</a></strong>(srcDataset)</code>
+<div class="block">Insert all records of source dataset into this dataset(At last).</div>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst" colspan="2"><h4>Selecting Data</h4></td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#selectAll()">selectAll</a></strong>(selected, onSelectAll)</code>
+<div class="block">Select/unselect all records.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#select()">select</a></strong>(selected, selectBy)</code>
+<div class="block">Select/unselect current record.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#selectByKeyValue()">selectByKeyValue</a></strong>(selected, keyValue)</code>
+<div class="block">Select/unselect record by key value.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>Object[]</code></td>
+<td class="colLast"><code><strong><a href="#selectedRecords()">selectedRecords</a></strong>()</code>
+<div class="block">Get all selected records.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>Object[]</code></td>
+<td class="colLast"><code><strong><a href="#selectedKeyValues()">selectedKeyValues</a></strong>()</code>
+<div class="block">Get the key value array of all selected records.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>String<br />this</code></td>
+<td class="colLast"><code><strong><a href="#selectField()">selectField</a></strong>() <br />
+	<strong><a href="#selectField()">selectField</a></strong>(fieldName)</code>
+<div class="block">Set or get 'select' field name. "Select field" is a field to store the selected state of a record.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>Boolean<br />this</code></td>
+<td class="colLast"><code><strong><a href="#selected()">selected</a></strong>() <br />
+	<strong><a href="#selected()">selected</a></strong>(selected)</code>
+<div class="block">Get or set selected state of current record.</div>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst"><code>Boolean</code></td>
+<td class="colLast"><code><strong><a href="#checkSelectable()">checkSelectable</a></strong>()</code>
+<div class="block">Check current record if it's selectable.</div>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst"><code>Function<br />this</code></td>
+<td class="colLast"><code><strong><a href="#onCheckSelectable()">onCheckSelectable</a></strong>() <br />
+	<strong><a href="#selectField()">onCheckSelectable</a></strong>(eventHandler)</code>
+<div class="block">Set or get check selectable event, this event is fired when check a record if it's selectable or not, you can use this event to customize your own selectable rule.</div>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst" colspan="2"><h4>UI Refreshing</h4></td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#disableControls()">disableControls</a></strong>()</code>
+<div class="block">Disable UI controls to refresh which are attached this dataset.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#enableControls()">enableControls</a></strong>(needRefreshCtrl)</code>
+<div class="block">Enable UI controls to refresh which are attached this dataset.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#refreshControl()">refreshControl</a></strong>()</code>
+<div class="block">Refresh UI controls which are attached this dataset.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#renderOptions()">renderOptions</a></strong>()</code>
+<div class="block">Refresh UI controls which optional items are constructed by this dataset.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst">&nbsp;</td>
+<td class="colLast">&nbsp;</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst" colspan="2"><h4>Key Configuration</h4></td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst"><code>String<br />this</code></td>
+<td class="colLast"><code><strong><a href="#keyField()">keyField</a></strong>() <br />
+	<strong><a href="#keyField()">keyField</a></strong>(fieldName)</code>
+<div class="block">Get or set the 'key' field name of this dataset.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>String<br />this</code></td>
+<td class="colLast"><code><strong><a href="#codeField()">codeField</a></strong>() <br />
+	<strong><a href="#codeField()">codeField</a></strong>(fieldName)</code>
+<div class="block">Get or set the 'code' field name of this dataset.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>String<br />this</code></td>
+<td class="colLast"><code><strong><a href="#nameField()">nameField</a></strong>() <br />
+	<strong><a href="#nameField()">nameField</a></strong>(fieldName)</code>
+<div class="block">Get or set the 'name' field name of this dataset.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>String<br />this</code></td>
+<td class="colLast"><code><strong><a href="#parentField()">parentField</a></strong>() <br />
+	<strong><a href="#parentField()">parentField</a></strong>(fieldName)</code>
+<div class="block">Get or set the 'parent' field name of this dataset.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst">&nbsp;</td>
+<td class="colLast">&nbsp;</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst" colspan="2"><h4>Connecting to Server</h4></td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>jslet.data.DataProvider<br />this</code></td>
+<td class="colLast"><code><strong><a href="#dataProvider()">dataProvider</a></strong>() <br />
+	<strong><a href="#dataProvider()">dataProvider</a></strong>(dataProvider)</code>
+<div class="block">Get or set the data provider which is used to connect to server.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#queryUrl()">queryUrl</a></strong>(url, parameters)</code>
+<div class="block">Query url. Dataset.query() needs this property.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#query()">query</a></strong>(url, parameters)</code>
+<div class="block">Retrieve data from server.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#submitUrl()">submitUrl</a></strong>(url, parameters)</code>
+<div class="block">Submit url. Dataset.submit() needs this property.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#submit()">submit</a></strong>(url)</code>
+<div class="block">Save newly added record to server.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#submitSelected()">submitSelected</a></strong>(url, deleteOnSuccess)</code>
+<div class="block">Apply the selected records to server.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst">&nbsp;</td>
+<td class="colLast">&nbsp;</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst" colspan="2"><h4>Pagination</h4></td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst"><code>Integer<br />this</code></td>
+<td class="colLast"><code><strong><a href="#pageSize()">pageSize</a></strong>() <br />
+	<strong><a href="#pageSize()">pageSize</a></strong>(pageSize)</code>
+<div class="block">Get or set page size.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>Integer<br />this</code></td>
+<td class="colLast"><code><strong><a href="#pageNo()">pageNo</a></strong>() <br />
+	<strong><a href="#pageNo()">pageNo</a></strong>(pageNo)</code>
+<div class="block">Get or set current page number.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>Integer</code></td>
+<td class="colLast"><code><strong><a href="#pageCount()">pageCount</a></strong>() </code>
+<div class="block">Get page count.</div>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst" colspan="2"><h4>Others</h4></td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>jslet.data.Dataset</code></td>
+<td class="colLast"><code><strong><a href="#clone()">clone</a></strong>(newDsName, fieldNames)</code>
+<div class="block">Clone this dataset's structure and return new dataset object.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>Object[]</code></td>
+<td class="colLast"><code><strong><a href="#copyDataset()">copyDataset</a></strong>(underCurrentFilter)</code>
+<div class="block">Copy dataset's data.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>String</code></td>
+<td class="colLast"><code><strong><a href="#exportCsv()">exportCsv</a></strong>(includeFieldLabel, dispValue, onlySelected)</code>
+<div class="block">Export data with CSV format.</div>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst" colspan="2"><h4>Events</h4></td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>Function <br />this</code></td>
+<td class="colLast"><code><strong><a href="#datasetListener()">datasetListener</a></strong>(eventHandler)</code>
+<div class="block">Get or set dataset listener.</div>
+</td>
+</tr>
+
+<!-- 
+<tr class="altColor">
+<td class="colFirst" colspan="2"><h4>Context Rule</h4></td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst"><code><a href="contextrule.html">jslet.data.ContextRule</a> <br />
+	this</code></td>
+<td class="colLast"><code><strong><a href="#contextRule()">contextRule</a></strong>()</code>
+<div class="block">Get or set context rule.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#disableContextRules()">disableContextRules</a></strong>()</code>
+<div class="block">Disable context rule.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#enableContextRules()">enableContextRules</a></strong>()</code>
+<div class="block">Enable context rule.</div>
+</td>
+</tr>
+
+ -->
+
+
+
+</table>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+	
+<!-- ========= PUBBLIC FUNCTION DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="publicfunction_detail"></a>
+
+<h3>Public Function Detail</h3>
+
+<a name="createDataset()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>CreateDataset</h4>
+<pre>jslet.data.createDataset(dsName, fieldConfig, keyFieldName, codeFieldName, nameFieldName, parentFieldName)</pre>
+<div class="block">Create a dataset object. Example:
+<pre><code class="sample">
+var fieldConfig = [{name: 'deptId'}, {name: 'deptCode'}, {name: 'deptName'}, {name: 'parentDept'}]; 
+var dsObj = jslet.data.createDataset('department', fieldConfig, 'deptId', 'deptCode', 'deptName', 'parentDept');
+</code></pre>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>name</code> - (Required) String, dataset name.</dd>
+<dd><code>fieldConfig</code> - (Required) Array of Field configuration, required, field configuration of dataset.</dd>
+<dd><code>keyFieldName</code> - (Optional) String, key field name.</dd>
+<dd><code>codeFieldName</code> - (Optional) String, code field name.</dd>
+<dd><code>nameFieldName</code> - (Optional) String, name field name.</dd>
+<dd><code>parentFieldName</code> - (Optional) String, parent field name.</dd>
+
+<dt><span class="strong">Returns:</span></dt><dd>Dataset Object.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl>
+</div></li></ul>
+
+<a name="createEnumDataset()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createEnumDataset</h4>
+<pre>jslet.data.createEnumDataset(dsName, enumStrOrObject)</pre>
+<div class="block">Create a enumeration dataset object. Example:
+<pre><code class="sample">
+var dsGender = jslet.data.createEnumDataset('gender', 'F:Female,M:Male');
+//Or use this
+//var dsGender = jslet.data.createEnumDataset('gender', {'F':'Female','M':'Male'});
+
+dsGender.getFieldValue('code');//return 'F'
+dsGender.getFieldValue('name');//return 'Female'
+dsGender.next();
+dsGender.getFieldValue('code');//return 'M'
+dsGender.getFieldValue('name');//return 'Male'
+</code></pre>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>name</code> - (Required) String, dataset name.</dd>
+<dd><code>enumStrOrObject</code> - (Required) String, a string or an object which stores enumeration data; if it's a string, the format must be:code1:name1,code2:name2.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>Dataset Object.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl>
+</div></li></ul>
+
+<a name="getValueConverter()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getValueConverter</h4>
+<pre>jslet.data.getValueConverter(fldObj)</pre>
+<div class="block">Get appropriate field value converter.<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>fldObj</code> - (Required) jslet.data.Field, field object.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>jslet.data.FieldValueConverter.</dd>
+<dt><span class="strong">Since:</span></dt><dd>2.0</dd>
+</dl>
+</div></li></ul>
+
+<a name="getDataset()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDataset</h4>
+<pre>jslet.data.getDataset(dsName)</pre>
+<div class="block">Get a dataset object from dataset cache. Example:
+<pre><code class="sample">
+var dsGender = jslet.data.getDataset('gender');
+dsGender.getFieldValue('code');//return 'F'
+dsGender.getFieldValue('name');//return 'Female'
+</code></pre>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>name</code> - (Required) String, dataset name.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>Dataset Object.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl>
+</div></li></ul>
+
+</li>
+</ul>
+
+	
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_detail"></a>
+
+<h3>Constructor Detail</h3>
+
+<a name="dataset()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>Dataset</h4>
+<pre>jslet.data.Dataset(name)</pre>
+<div class="block">Constructs a new dataset oject. Example:
+<pre><code class="sample">
+var dsObj = new jslet.data.Dataset("test");
+</code></pre>
+<dl>
+<dt><span class="strong">Parameters:</span></dt><dd><code>name</code> - (Required) String, dataset name.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>Dataset object.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_detail"></a>
+
+<h3>Method Detail</h3>
+
+<a name="name()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>name</h4>
+<pre>this.name()</pre>
+<div class="block">Get dataset name.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Dataset name</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="destroy()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>destroy</h4>
+<pre>destroy()</pre>
+<div class="block">Destroy dataset and all associated object.</div>
+<dl>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="getFields()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getFields</h4>
+<pre>getFields()</pre>
+<div class="block">Get all field object of this dataset.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Array of jslet.data.Field object.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="addField()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addField</h4>
+<pre>addField(fldObj)</pre>
+<div class="block">Add a field object into this dataset.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>fldObj</code> - (Required) jslet.data.Field, field object.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="removeField()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>removeField</h4>
+<pre>removeField(fldName)</pre>
+<div class="block">Remove a field object by field name.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>fldName</code> - (Required) String, field name</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="getField()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getField</h4>
+<pre>getField(fldName)</pre>
+<div class="block">Get a field object by field name.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>fldName</code> - (Required) String, field name</dd>
+<dt><span class="strong">Returns:</span></dt><dd>jslet.data.Field object</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a id="fixedIndexFields()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>fixedIndexFields</h4>
+<pre>fixedIndexFields()</pre>
+<div class="block">Get dataset fixed index fields.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>String, index fields</dd>
+</dl>
+<hr />
+<pre>fixedIndexFields(indexFieldNames)</pre>
+<div class="block">Set fixed index fields, field names separated by comma(',').</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>indexFieldNames</code> - (Required) String, index field names, separated by comma(',').</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="indexFields()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>indexFields</h4>
+<pre>indexFields()</pre>
+<div class="block">Get dataset index fields.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>String, index fields</dd>
+</dl>
+<hr />
+<pre>indexFields(indexFieldNames)</pre>
+<div class="block">Set index fields, field names separated by comma(',').</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>indexFieldNames</code> - (Required) String, index field names, separated by comma(',').</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a id="fixedFilter()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>fixedFilter</h4>
+<pre>fixedFilter()</pre>
+<div class="block">Get dataset fixed filter expression.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>String, filter expression</dd>
+</dl>
+<hr />
+<pre>fixedFilter(filterExpr)</pre>
+<div class="block">Set dataset fixed filter expression. Here is <a href="../common/exprsyntax.html">expression syntax</a>. <br />
+	Filter can work depending on property: filtered, filtered must be true. Example:
+<pre><code class="sample">
+dsFoo.fixedFilter('[name] like "Bob%"');
+dsFoo.fixedFilter('[age] &gt; 20');
+</code></pre>
+</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>filterExpr</code> - (Required) String, filter expression.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="filter()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>filter</h4>
+<pre>filter()</pre>
+<div class="block">Get dataset filter expression.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>String, filter expression</dd>
+</dl>
+<hr />
+<pre>filter(filterExpr)</pre>
+<div class="block">Set dataset filter expression. Here is <a href="../common/exprsyntax.html">expression syntax</a>. <br />
+	Filter can work depending on property: filtered, filtered must be true. Example:
+<pre><code class="sample">
+dsFoo.filter('[name] like "Bob%"');
+dsFoo.filter('[age] &gt; 20');
+</code></pre>
+</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>filterExpr</code> - (Required) String, filter expression.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="filtered()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>filtered</h4>
+<pre>filtered()</pre>
+<div class="block">Get dataset filter flag.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Boolean, filter flag.</dd>
+</dl>
+<hr />
+<pre>filtered(flag)</pre>
+<div class="block">Set dataset filter flag. Only filtered is true, the filter can work.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>flag</code> - (Required) Boolean, filter flag.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="find()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>find</h4>
+<pre>find(conditionExpr)</pre>
+<div class="block">Find record with specified condition,if found, then move cursor to that record. Example:
+<pre><code class="sample">
+dsFoo.find('[name] like "Bob%"');
+dsFoo.find('[age] &gt; 20');
+</code></pre>
+</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>conditionExpr</code> - (Required) String, condition expression</dd>
+<dt><span class="strong">Returns:</span></dt><dd>Boolean, true - found, false - otherwise.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="findByField()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>findByField</h4>
+<pre>findByField(fieldName, fieldValue)</pre>
+<div class="block">Find record with specified field name and value. Example:
+<pre><code class="sample">
+dsFoo.findByField('name', 'Bob');
+</code></pre>
+</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>fieldName</code> - (Required) String, field name</dd>
+<dd><code>fieldValue</code> - (Required) String, finding value</dd>
+<dt><span class="strong">Returns:</span></dt><dd>Boolean, true - found, false - otherwise.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="findByKey()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>findByKey</h4>
+<pre>findByKey(keyValue)</pre>
+<div class="block">Find record with key value. Example:
+<pre><code class="sample">
+dsFoo.findByKey('A001');
+</code></pre>
+</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>keyValue</code> - (Required) Object, key value</dd>
+<dt><span class="strong">Returns:</span></dt><dd>Boolean, true - found, false - otherwise.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="first()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>first</h4>
+<pre>first()</pre>
+<div class="block">Move cursor to first record.</div>
+<dl>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="prior()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>prior</h4>
+<pre>prior()</pre>
+<div class="block">Move cursor to prior record.</div>
+<dl>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="next()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>next</h4>
+<pre>next()</pre>
+<div class="block">Move cursor to next record.</div>
+<dl>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="last()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>last</h4>
+<pre>last()</pre>
+<div class="block">Move cursor to last record.</div>
+<dl>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="recno()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>recno</h4>
+<pre>recno()</pre>
+<div class="block">Get dataset record number.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Integer, record number.</dd>
+</dl>
+<hr />
+<pre>recno(recno)</pre>
+<div class="block">Set dataset record number.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>recno</code> - (Required) Integer, record number.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="recordCount()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>recordCount</h4>
+<pre>recordCount()</pre>
+<div class="block">Get record count.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Integer, record count.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="dataList()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>dataList</h4>
+<pre>dataList()</pre>
+<div class="block">Get raw data list of this dataset.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Object[], raw data list.</dd>
+</dl>
+<hr />
+<pre>dataList(datalist)</pre>
+<div class="block">Set raw data list to dataset.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>datalist</code> - (Required) Object[], data list.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a id="filteredDataList()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>filteredDataList</h4>
+<pre>filteredDataList()</pre>
+<div class="block">Get filtered data list of this dataset.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Object[], filtered data list.</dd>
+</dl></li></ul>
+
+<a name="insertRecord()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>insertRecord</h4>
+<pre>insertRecord()</pre>
+<div class="block">Insert a new empty record after current record. <br />
+It will fire dataset event, see <a href="#datasetListener()">datasetListener</a>, you can set default value in this event.
+</div>
+<dl>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="appendRecord()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>appendRecord</h4>
+<pre>appendRecord()</pre>
+<div class="block">Append a new empty record to the last of dataset. <br />
+It will fire dataset event, see <a href="#datasetListener()">datasetListener</a>, you can set default value in this event.
+</div>
+<dl>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="editRecord()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>editRecord</h4>
+<pre>editRecord()</pre>
+<div class="block">Set current record to update status. <br />
+It will fire dataset event, see <a href="#datasetListener()">datasetListener</a>, you can set default value in this event.
+</div>
+<dl>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="deleteRecord()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>deleteRecord</h4>
+<pre>deleteRecord()</pre>
+<div class="block">Delete the current record.
+It will fire dataset event, see <a href="#datasetListener()">datasetListener</a>, you can show confirm info in this event.
+</div>
+<dl>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="confirm()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>confirm</h4>
+<pre>confirm()</pre>
+<div class="block">Confirm the appending or updating record. <br />
+ It will validate data before confirm, if exists invalidate data, you cannot confirm.
+</div>
+<dl>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="cancel()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>cancel</h4>
+<pre>cancel()</pre>
+<div class="block">Cancel change and restore to old value. <br />
+For appended record, it will be removed from dataset; For updated record, it will be restored to the old one.</div>
+<dl>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="insertDataset()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>insertDataset</h4>
+<pre>insertDataset(srcDataset)</pre>
+<div class="block">Insert all records of source dataset into this dataset(After current record).
+</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>srcDataset</code> - (Required) jslet.data.Dataset, source dataset, source dataset's structure must be same as this dataset.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="appendDataset()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>appendDataset</h4>
+<pre>appendDataset(srcDataset)</pre>
+<div class="block">Insert all records of source dataset into this dataset(At last).
+</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>srcDataset</code> - (Required) jslet.data.Dataset, source dataset, source dataset's structure must be same as this dataset.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<!-- Select -->
+<a name="selectAll()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>selectAll</h4>
+<pre>selectAll(selected, onSelectAll)</pre>
+<div class="block">Select/unselect all records.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>selected</code> - (Required) Boolean, true - selected, false - otherwise.</dd>
+<dd><code>onSelectAll</code> - (Optional) Funtion, event handler.
+<pre> 
+ Pattern:
+ function(dataset, Selected}{}
+ //dataset: jslet.data.Dataset
+ //Selected: Boolean
+ //return: true - allow user to select, false - otherwise.
+</pre>
+</dd></dl>
+
+<a name="select()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>select</h4>
+<pre>select(selected, selectBy)</pre>
+<div class="block">Select/unselect one record.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>selected</code> - (Required) Boolean, true - selected, false - otherwise.</dd>
+<dd><code>selectBy</code> - (Optional) String, field names, multiple fields concatenated with ','.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="selectByKeyValue()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>selectByKeyValue</h4>
+<pre>selectByKeyValue(selected, keyValue)</pre>
+<div class="block">Select/unselect record by key value.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>selected</code> - (Required) Boolean, true - selected, false - otherwise.</dd>
+<dd><code>keyValue</code> - (Required) Object, key value.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="selectedRecords()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>selectedRecords</h4>
+<pre>selectedRecords()</pre>
+<div class="block">Get all selected records.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Object[], record array.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="selectedKeyValues()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>selectedKeyValues</h4>
+<pre>selectedKeyValues()</pre>
+<div class="block">Get the key value array of all selected records.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Object[], key value array.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="selectField()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>selectField</h4>
+<pre>selectField()</pre>
+<div class="block">Get 'select' field name.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>String, 'select' field name.</dd>
+</dl>
+<hr />
+<pre>selectField(fieldName)</pre>
+<div class="block">Set 'select' field name.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>fieldName</code> - (Required) String, 'select' field name.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>2.0</dd>
+</dl></li></ul>
+
+<a name="selected()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>selected</h4>
+<pre>selected()</pre>
+<div class="block">Get or set selected state of current record.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Boolean, selected state of current record.</dd>
+</dl>
+<hr />
+<pre>selected(state)</pre>
+<div class="block">Set selected state of current record.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>state</code> - (Required) Boolean, selected state of current record.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="checkSelectable()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>checkSelectable</h4>
+<pre>checkSelectable()</pre>
+<div class="block">Check current record if it's selectable. This method is an inner method, normally you don't need to use it.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Boolean, true - record can be selected, false - otherwise.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="onCheckSelectable()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onCheckSelectable</h4>
+<pre>onCheckSelectable()</pre>
+<div class="block">Get checking selectable event handler.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Function, checking selectable event handler.</dd>
+</dl>
+<hr />
+<pre>onCheckSelectable(eventHanlder)</pre>
+<div class="block">Set checking selectable event handler. see <a href="../../demo/index.html#selectabledemo">Selectable Demo</a>.
+<pre> 
+ Event Hanlder Pattern:
+ function() {}
+ //return Boolean, true - record can be selected, false - otherwise.
+</pre>
+</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>listener</code> - (Required) Fucntion, dataset event listener.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+
+<!-- UI -->
+<a name="disableControls()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>disableControls</h4>
+<pre>disableControls()</pre>
+<div class="block">Disable refreshing UI controls. If you need process a batch of records, 
+	you can disable refreshing controls, it will extremely improve performance. 
+	Be attention, after end your processing, you must call <a href="#enableControls">enableControls()</a> to enable controls refreshing. Example: <br />
+<pre><code class="sample">
+ds.disableControls();
+try {
+    //your code here
+} finally {
+    ds.enableControls();
+}
+</code></pre>
+</div>
+<dl>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="enableControls()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>enableControls</h4>
+<pre>enableControls()</pre>
+<div class="block">Enable UI controls refreshing. See <a href="#enableControls">disableControls()</a>
+</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>needRefreshCtrl</code> - (Required) Boolean, refresh UI controls immediatly.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="refreshControl()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>refreshControl</h4>
+<pre>refreshControl()</pre>
+<div class="block">Refresh UI controls which are attached this dataset</div>
+<dl>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="renderOptions()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>renderOptions</h4>
+<pre>renderOptions()</pre>
+<div class="block">Refresh UI controls which optional items are constructed by this dataset.</div>
+<dl>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="keyField()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>keyField</h4>
+<pre>keyField()</pre>
+<div class="block">Get 'key' field name.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>String, 'key' field name.</dd>
+</dl>
+<hr />
+<pre>keyField(fieldName)</pre>
+<div class="block">Set 'key' field name.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>fieldName</code> - (Required) String, 'key' field name.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="codeField()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>codeField</h4>
+<pre>codeField()</pre>
+<div class="block">Get 'code' field name.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>String, 'code' field name.</dd>
+</dl>
+<hr />
+<pre>codeField(fieldName)</pre>
+<div class="block">Set 'code' field name.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>fieldName</code> - (Required) String, 'code' field name.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="nameField()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>nameField</h4>
+<pre>nameField()</pre>
+<div class="block">Get 'name' field name.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>String, 'name' field name.</dd>
+</dl>
+<hr />
+<pre>nameField(fieldName)</pre>
+<div class="block">Set 'name' field name.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>fieldName</code> - (Required) String, 'name' field name.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="parentField()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>parentField</h4>
+<pre>parentField()</pre>
+<div class="block">Get 'parent key' field name.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>String, 'parent key' field name.</dd>
+</dl>
+<hr />
+<pre>parentField(fieldName)</pre>
+<div class="block">Set 'parent key' field name.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>fieldName</code> - (Required) String, 'parent key' field name.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="dataProvider()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>dataProvider</h4>
+<pre>dataProvider()</pre>
+<div class="block">Get the data provider which is used to connect to server.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>jslet.data.DataProvider, data provider.</dd>
+</dl>
+<hr />
+<pre>dataProvider(provider)</pre>
+<div class="block">Set the data provider which is used to connect to server.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>provider</code> - (Required) jslet.data.DataProvider, data provider.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="queryUrl()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>queryUrl</h4>
+<pre>queryUrl()</pre>
+<div class="block">Get query url.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>String, query url.</dd>
+</dl>
+<hr />
+<pre>queryUrl(url)</pre>
+<div class="block">Set query url.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>url</code> - (Required) String, query url.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="query()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>query</h4>
+<pre>query(url, queryCriteria)</pre>
+<div class="block">Retrieve data from server. Example:
+<pre><code class="sample">
+ var queryCriteria = {name:'Bob', age:25};
+ dsEmployee.queryUrl('../getemployee.do');
+ dsEmployee.query(queryCriteria);
+</code></pre>
+</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>queryCriteria</code> - (optional) JSON Object, query criteria.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="submitUrl()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>submitUrl</h4>
+<pre>submitUrl()</pre>
+<div class="block">Get submit url.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>String, submit url.</dd>
+</dl>
+<hr />
+<pre>submitUrl(url)</pre>
+<div class="block">Set submit url.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>url</code> - (Required) String, submit url.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="submit()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>submit</h4>
+<pre>submit(url)</pre>
+<div class="block">
+<p>Send changed data to server. <br />
+If server side save data successfully and return the changed data, Jslet can refresh the local data automatically.</p>
+<p>
+Cause key value is probably generated at server side(like sequence), we need an extra field which store an unique value to update the key value,
+this extra field is named '_s_', its value will start a letter 'i', 'u' or 'd', and follow a sequence number, like: i1, i2, u1, u2, d1, d3,....
+You don't care about it in client side, it is generated by Jslet automatically.
+</p>
+<p>
+At server side, you can use the leading letter to distinguish which action will be sent to DB('i' for insert, 'u' for update and 'd' for delete)
+If the records need be changed in server(like sequence key or other calculated fields), you should return them back.Notice:
+you need not to change this value of extra field: '_s_', just return it. Example:
+</p>
+<pre><code class="sample">
+dsFoo.insertRecord();
+dsFoo.setFieldValue('name','Bob');
+dsFoo.setFieldValue('code','A01');
+
+dsFoo.confirm();
+dsFoo.submitUrl('../foo_save.do');
+dsFoo.submit();
+</code></pre>
+</div>
+<dl>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="submitSelected()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>submitSelected</h4>
+<pre>submitSelected(url, deleteOnSuccess)</pre>
+<div class="block">
+Send selected data to server whether or not the records have been changed. <br />
+Under some special scenarios, we need send user selected record to server to process. 
+Sever side need not send back the processed records. Example:
+<pre><code class="sample">
+ //Audit the selected records, if successful, delete the selected records.
+ dsFoo.submitSelected('../foo_audit.do', true);
+</code></pre>
+</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>url</code> - (Required) String, url.</dd>
+<dd><code>deleteOnSuccess</code> - (optional) Boolean, if processing successfully at server side, delete the selected record or not.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="pageSize()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>pageSize</h4>
+<pre>pageSize()</pre>
+<div class="block">Get page size.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Integer, page size.</dd>
+</dl>
+<hr />
+<pre>pageSize(pagesize)</pre>
+<div class="block">Set page size.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>pagesize</code> - (Required) Integer, page size.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="pageNo()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>pageNo</h4>
+<pre>pageNo()</pre>
+<div class="block">Get page number.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Integer, page number.</dd>
+</dl>
+<hr />
+<pre>pageNo(pageNo)</pre>
+<div class="block">Set page number.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>pagenumb</code> - (Required) Integer, page number.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="pageCount()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>pageCount</h4>
+<pre>pageCount()</pre>
+<div class="block">Get page count.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Integer, page count.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="clone()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>clone</h4>
+<pre>clone(newDsName, fieldNames)</pre>
+<div class="block">Clone this dataset's structure and return new dataset object. </div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>newDsName</code> - (Required) String, new dataset's name.</dd>
+<dd><code>fieldNames</code> - (optional) String[], a list of field names which will be cloned to new dataset.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>jslet.data.Dataset, a new dataset object</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="copyDataset()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>copyDataset</h4>
+<pre>copyDataset(underCurrentFilter)</pre>
+<div class="block">Copy dataset's data. </div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>underCurrentFilter</code> - (optional) Boolean, true - use current filter, false - disable current filter.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>Object[], array of data record.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="exportCsv()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>exportCsv</h4>
+<pre>exportCsv(includeFieldLabel, dispValue, onlySelected)</pre>
+<div class="block">Export data with CSV format. </div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>includeFieldLabel</code> - (optional) String, export with field labels.</dd>
+<dd><code>dispValue</code> - (optional) Boolean, true: export display value of field, false: export actual value of field.</dd>
+<dd><code>onlySelected</code> - (optional) Boolean, export selected records or not.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>String with CSV format.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="datasetListener()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>datasetListener</h4>
+<pre>datasetListener()</pre>
+<div class="block">Get dataset listener.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Function, dataset listener.</dd>
+</dl>
+<hr />
+<pre>datasetListener(listener)</pre>
+<div class="block">Set dataset event listener.
+<pre> 
+ Pattern:
+ function(eventType, dataset) {}
+ //eventType: <a href="datasetevent.html">jslet.data.DatasetEvent</a>
+ //dataset: jslet.data.Dataset
+</pre>
+Example:
+<pre><code class="sample">
+  dsFoo.datasetListener(function(eventType, dataset) {
+   	console.log(eventType);
+  });
+</code></pre>
+</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>listener</code> - (Required) Fucntion, dataset event listener.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="datasetListener()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>datasetListener</h4>
+<pre>datasetListener()</pre>
+<div class="block">Get dataset listener.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Function, dataset listener.</dd>
+</dl>
+<hr />
+<pre>datasetListener(listener)</pre>
+<div class="block">Set dataset event listener.
+<pre> 
+ Pattern:
+ function(eventType) {}
+ //eventType: <a href="datasetevent.html">jslet.data.DatasetEvent</a>
+</pre>
+Example:
+<pre><code class="sample">
+  dsFoo.datasetListener(function(eventType) {
+   	console.log(eventType);
+  });
+</code></pre>
+</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>listener</code> - (Required) Fucntion, dataset event listener.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+
+<p class="legalCopy"><small><font size="-1"> Copyright &#x00a9; 2010, 2013 All rights reserved. </font></small></p>
+</body>
+</html>

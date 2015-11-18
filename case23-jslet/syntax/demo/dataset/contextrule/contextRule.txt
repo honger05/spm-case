@@ -1,0 +1,39 @@
+﻿{state: ['insert','edit'],
+condition: '[contactType] == "O"',
+rules:[
+{field: 'salutation', meta: {disabled: true}, value: null},
+{field: 'firstName', meta: {disabled: true}, value: ''},
+{field: 'lastName', meta: {disabled: true}, value: ''}
+]}
+
+{state: 'insert,edit',
+condition: '[contactType] == "I"',
+rules:[
+{field: 'salutation', meta: {disabled: false}},
+{field: 'firstName', meta: {disabled: false}},
+{field: 'lastName', meta: {disabled: false}}
+]}
+
+{
+condition: '[country]',
+rules:[
+{field: 'phone', meta: {editMask: 'expr:[Country!phoneMask]'}},
+{field: 'ssnCode', meta: {editMask: 'expr:[Country!SSNMask]'}},
+{field: 'idCardNum', meta: {editMask: 'expr:[Country!IDCardMask]'}},
+{field: 'ssnCode', meta: {editMask: 'expr:[Country!SSNMask]'}},
+{field: 'driverLicenseNum', meta: {editMask: 'expr:[Country!driverLicenseMask]'}},
+
+{field: 'city', lookup: {filter: '[Country!code] == $currentValue', criteria: $currentValue}}
+
+]}
+
+{state: 'insert'}
+rules: [
+{field: 'gender', value: 'F'},
+]}
+
+{state: 'edit'}
+rules: [
+{field: 'contactCode', meta: {disabled: false}}
+]}
+

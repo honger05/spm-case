@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jslet - DBTreeView(Basic) Demo</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Demeostrate how to use Jslet widget: DBTreeView(Basic features)">
+    <link type="text/css" rel="stylesheet" href="tree.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/demo-style.css" />
+    <script type="text/javascript" src="../../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+		jslet.define('agency', 'agency.js');
+        jslet.require("jslet,agency",initialize);
+
+        function initialize() {
+			//Global variable for #trvRegion 
+            treeCfg = { type: 'DBTreeView', 
+			    dataset: 'dsAgency', 
+				displayFields: '[code]+"-"+[name]',
+                hasCheckBox: false, 
+				onItemClick: doClick,
+				//onItemDblClick: doDblClick,
+				expandLevel: 0,
+				onCreateContextMenu: doCreateContextMenu
+            };
+
+			//Global variable for below event handler
+            treeTag = document.getElementById('trvRegion');
+        }
+
+        function doClick() {
+			var dataset = jslet('#trvRegion').dataset;
+			var info = '[' + dataset.getFieldValue('name') + '] clicked!';
+			$('#info').html(info);
+        }
+
+        //Add your menu item
+        function doCreateContextMenu(menuItems) {
+            menuItems.push({ name: '-' });
+            menuItems.push({ id: 'customMenu', name: 'Customized Menu1', onClick: function () { alert('Customized Menu1 clicked!'); } });
+            menuItems.push({ id: 'customMenu', name: 'Customized Menu2', onClick: function () { alert('Customized Menu2 clicked!'); } });
+        }
+    </script>
+</head>
+<body onunload="jslet.ui.uninstall()">
+	<div class="container">
+    <div class="page-header">
+    <h2 id="top">Jslet - DBTreeView(Basic) Demo</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+
+	<!-- treeCfg is a global variable defined in Head tag.-->
+    <div id="trvRegion" data-jslet="treeCfg" style="width: 500px; height: 200px;margin-right: 20px">
+    </div>
+	<h5 id="info" style = "color: red"></h5>
+	
+    <h3>Demo Content:</h3>
+	<div class="content">
+	<ol class="content-list">
+    <li>
+        Big data, high performance. There are 1,000 records in this sample;
+	</li>
+    <li>
+        Move cursor with arrow key(left, right, top, bottom);
+	</li>
+	<li>
+		Support specifying the expanded level when initialize a tree. In this sample, all first level nodes are expanded.
+	</li>
+    <li>
+        Expand and collapse in code: <button onclick="treeTag.jslet.expand();">  Expand </button>&nbsp;&nbsp;
+			<button onclick="treeTag.jslet.collapse();">  Collapse </button>
+	</li>
+    <li>
+        Change display value of node: <input id="value1" value="[name]+' ('+[code]+')'" size="27" />
+		<button onclick="doChangeDisplayFields($('#value1').val())"> Change </button>
+        <button onclick="doChangeDisplayFields($('#value2').val())"> Restore </button>:
+		<input id="value2" value="[code]+'-'+[name]" size="27" />
+	</li>
+    <li>
+        Support click event;
+	</li>
+    <li>
+        Support context menu on the tree node, and add customized menu item.
+	</li>
+	</ol>
+	</div>
+	<script type="text/javascript">
+		function doChangeDisplayFields(fldExpr) {
+			var treeObj = jslet('#trvRegion');
+			treeObj.displayFields(fldExpr);
+			treeObj.renderAll();
+			treeObj.expand();
+		}
+	</script>
+	<!-- Source Code -->
+	<script type="text/javascript" src="../../source/demosource.js?height=1200"></script>
+	</div>
+</body>
+</html>

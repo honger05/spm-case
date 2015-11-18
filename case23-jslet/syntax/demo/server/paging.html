@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Demeostrate how to query paging data from server">
+    <title>Jslet - Pagination Demo</title>
+    <link rel="stylesheet" type="text/css" href="../css/demo-style.css" />
+    <script type="text/javascript" src="../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+        jslet.require("jslet", doLoaded, doJsletReady);
+		
+		function doLoaded() {
+            dsBOM = jslet.data.createDataset("bom", [
+                 { "name": "itemid", "type": "S", "length": 10, "label": "BOM Code", "label": "Spec", "displayWidth": 20 }, 
+                 { "name": "stdnum", "type": "N", "length": 9, "label": "Quantity", "displayWidth": 15}], "itemid");
+				 
+			dsBOM.queryUrl('../../employee/findBom.jsp');
+		}
+		
+		function doJsletReady() {
+			dsBOM.query();
+		}
+		
+    </script>
+</head>
+<body>
+	<div class="container">
+    <div class="page-header">
+    <h2>Jslet - Pagination Demo</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+	<h4 style="color:red">If you see this page on http://jslet.github.io/jslet, it will raise error cause github.io only supports static page. You can goto download page to download standalone.war.</h4>
+    <p>
+        <input id="btnQuery" type="button" value=" Query " onclick="dsBOM.query();" /></p>
+    <h4>BOM List</h4>
+    <div data-jslet='type:"DBPageBar",dataset:"bom",pageSizeList:[20,50,100,200]' class="round4" ></div>
+    <div data-jslet='type:"DBTable",dataset:"bom"' style="width: 100%; height: 200px;margin-top:10px;margin-bottom:10px" ></div>
+    <div data-jslet='type:"DBPageBar",dataset:"bom",showPageSize:false' style="width:230px"  class="round4"></div>
+
+    <h3>Demo Content:</h3>
+	<div class="content">
+        <ol>
+            <li>Demonstrate PageBar how to work;</li>
+			<li>Get server data page by page;</li>
+			<li>Multiple PageBar can connect to one dataset;</li>
+		</ol>
+    </div>
+
+	<!-- Source Code -->
+	<script type="text/javascript" src="../source/demosource.js?height=630"></script>
+	</div>
+</body>
+</html>

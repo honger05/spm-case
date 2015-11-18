@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+&lt;script type="text/javascript" src="../../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+    //dataset is the system defined module name
+    jslet.define('employee', '../../js/employee.js');
+    jslet.require('jslet,employee');
+ &lt;/script&gt;
+    </code></pre>
+	
+	<ul><li>HTML: </li></ul>
+    <pre class="prettyprint linenums"><code>
+//1. A field with lookup field, and it generates options from lookup field.
+&lt;select data-jslet="type:'DBSelect',dataset:'employee',field:'position'" /&gt;
+
+//2. A field without lookup field
+&lt;select data-jslet="type:'DBSelect',dataset:'employee',field:'name'"&gt;
+	&lt;option value="John"&gt;John&lt;/option&gt;
+	&lt;option value="Marry"&gt;Marry&lt;/option&gt;
+	&lt;option value="Tom"&gt;Tom&lt;/option&gt;
+	&lt;option value="Jerry"&gt;Jerry&lt;/option&gt;
+	&lt;option value="Monica"&gt;Monica&lt;/option&gt;
+	&lt;option value="Jessica"&gt;Jessica&lt;/option&gt;
+	&lt;option value="Ted"&gt;Ted&lt;/option&gt;
+&lt;/select&gt;
+//3. Multiple select with lookup data(department):
+&lt;select multiple="multiple" data-jslet="type:'DBSelect',dataset:'employee',field:'department'" size="6" /&gt;
+
+//4. Multiple select with Group item(department):
+&lt;select multiple="multiple" data-jslet="type:'DBSelect',dataset:'employee',field:'department',groupField:'address'" size="10" /&gt;
+    </code></pre>
+	
+	<ul><li><a href='../../js/employee-source.html' target="_blank" >Employee.js</a>: </li></ul>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../../prettify";
+    </script>
+    <script type="text/javascript" src="../../prettify/run_prettify.js"></script>
+</body>
+</html>

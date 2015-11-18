@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Jslet dataset lookup field">
+    <title>Jslet - Lookup Field Demo</title>
+    <link rel="stylesheet" type="text/css" href="../css/demo-style.css" />
+    <script type="text/javascript" src="../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+        jslet.define("employee", "../js/employee.js");
+        jslet.require("jslet,employee");
+
+        function changeDisplayFields(dispFlds) {
+            var f = dsEmployee.getField("department");
+            var lkf = f.lookup();
+            lkf.displayFields(dispFlds);
+            dsEmployee.refreshControl();
+            dsEmployee.renderOptions();
+			
+        }
+		
+    </script>
+</head>
+<body onunload="jslet.ui.uninstall()">
+	<div class="container">
+    <div class="page-header">
+    <h2 id="top">Jslet - Lookup Field Demo</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+	<div class="content">Show how lookup field works and how DBControls construct options from lookup field.</div>
+    <div data-jslet='type:"DBTable",dataset:"employee"' style="width: 100%;height: 220px"></div>
+	<hr />
+		<p>There are lookup field in these fields: "department" and "position". </p>
+	<div class="form-horizontal" data-jslet='dataset:"employee"' role="form">
+		<div class="form-group">
+		<label class="col-sm-1" data-jslet='type:"DBLabel",dataset:"employee",field:"department"'>
+		</label>
+		<div class="col-sm-11">
+		<div data-jslet='type:"DBRadioGroup",dataset:"employee",field:"department"'></div></td>
+		</div>
+		</div>
+		
+		<div class="form-group">
+		<label class="col-sm-1" data-jslet='type:"DBLabel",dataset:"employee",field:"department"'>
+		</label>
+		<div class="col-sm-4">
+		<select data-jslet='type:"DBSelect",dataset:"employee",field:"department"' style="width: 152"></select></td>
+		</div>
+		</div>
+		<div class="form-group">
+		<label class="col-sm-1" data-jslet='type:"DBLabel",dataset:"employee",field:"position"'>
+		</label>
+		<div class="col-sm-4">
+		<select data-jslet='type:"DBSelect",dataset:"employee",field:"position"' style="width: 152"></select></td>
+		</div>
+		</div>
+		</div>
+	</div>
+	<hr />	
+    <h3>Demo Content</h3>
+	<div class="content">
+		<ol>
+		<li>
+			As you see, these fields with lookup data can display automatically in DBSelect control, DBRadioGroup control, and so on;</li>
+		<li>Change the display format, for example: change "department" field display format:<br />
+			 <input id="dispFields1" value="[name]+'('+[deptid]+')'" size="30" />
+			<button class="btn btn-primary" onclick="changeDisplayFields($('#dispFields1').val())"> Change </button>
+			<button class="btn btn-primary" onclick="changeDisplayFields($('#dispFields2').val())"> Restore </button>
+			<input id="dispFields2" value="[deptid]+'-'+[name]" size="30" /><br />
+			After changed the lookup field display format, you can see DBTable and other controls will change synchronously.
+		</li>
+		</ol>
+	</div>
+	<!-- Source Code -->
+	<script type="text/javascript" src="../source/demosource.js?height=500"></script>
+	</div>
+</body>
+</html>

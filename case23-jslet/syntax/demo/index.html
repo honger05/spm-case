@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/demo-style.css" />
+    <title>Jslet-Demo</title>
+    <script type="text/javascript" src="../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+        jslet.require("jslet");
+    </script>
+	
+</head>
+<body>
+	
+    <!-- Docs master nav -->
+  <div class="navbar navbar-default container-fluid navbar-fixed-top">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-dataset">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Jslet Framework</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="nav-dataset">
+      <ul class="nav navbar-nav">
+        <li><a href="#top">Home</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dataset <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#basic">Basic Features</a></li>
+            <li class="divider"></li>
+            <li><a href="#lookup">Lookup Dataset</a></li>
+            <li><a href="#validation">Dataset Validation</a></li>
+            <li><a href="#selection">Selection Control</a></li>
+            <li class="divider"></li>
+            <li><a href="#contextrule">Context Rule</a></li>
+            <li class="divider"></li>
+            <li><a href="#advanced">Advanced Features</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">DBControl <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#formcontrol">Form Controls</a></li>
+            <li class="divider"></li>
+            <li><a href="#tabledemo">DBTable Control</a></li>
+            <li><a href="#treedemo">DBTreeView Control</a></li>
+            <li class="divider"></li>
+            <li><a href="#chartdemo">DBChart Control</a></li>
+            <li class="divider"></li>
+            <li><a href="#editorpanel">DBEditPanel</a></li>
+          </ul>
+        </li>
+        <li><a href="#server">Connect Server</a></li>
+        <li><a href="#layoutcontrol">Layout Controls</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Others <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#i18n">I18N</a></li>
+            <li class="divider"></li>
+            <li><a href="#template">UI Template</a></li>
+            
+          </ul>
+        </li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+
+	
+
+
+<div class="container-fluid content" id="top">
+<h3 id="glance">Glance</h3>
+<div class="row">
+	<div class="col-sm-6">
+		<h4><a href="glance/glance.html" target="_self">Glance of Jslet framework</a></h4>
+		<p>Take a quick glance to know how Jslet framework works.</p>
+	</div>
+</div>
+
+<hr />	
+
+<h3 id="special">Special Features</h3>
+<div class="row">
+	<div class="col-sm-6">
+		<h4><a href="dataset/contextrule/contextrule.html" target="_self">Context Rule(Field Changed)</a></h4>
+		<p>Demonstrate how context rule works when field value changed.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="dataset/masterdetail.html" target="_self">Master/Detail dataset</a></h4>
+		<p>Demonstrate how to configurate master/detail style dataset and show how it works.</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-6">
+		<h4><a href="dataset/lookupfield.html" target="_self">Lookup Field</a></h4>
+		<p>Show how lookup field works and how DBControls construct options from lookup field.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="dataset/groupfield.html" target="_self">Group Field</a></h4>
+		<p>Configurate group field and show its usage.</p>
+	</div>
+</div>
+
+
+<hr />	
+
+<h3 id="basic">Data Manipulation</h3>
+<p>This section demonstrates how to create and use dataset component. You can use dataset to add, update, delete, sort, filter data,
+	and you can use it to validate data, export data and other advanced features. 
+</p>
+<h4>Basic</h4>
+
+<div class="row">
+	<div class="col-sm-6">
+		<h4><a href="dataset/editdata.html" target="_self">Edit data</a></h4>
+		<p>Insert, append, update, delete, set default value, validate data and so on.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="dataset/finddata.html" target="_self">Find data</a></h4>
+		<p>Find data with a single value or an expression.</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-6">
+		<h4><a href="dataset/filterdata.html" target="_self">Filter data</a></h4>
+		<p>Filter data with an expression.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="dataset/sortbyfields.html" target="_self">Sort Data</a></h4>
+		<p>Sort data with one field or multiple fields.</p>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-6">
+		<h4><a href="dataset/formulafield.html" target="_self">Formula Field</a></h4>
+		<p>Configurate formula field and see how it works.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="dataset/groupfield.html" target="_self">Group Field</a></h4>
+		<p>Configurate group field and show its usage.</p>
+	</div>
+</div>
+<div id="lookup" class="row">
+	<div class="col-sm-6">
+		<h4><a href="dataset/fieldvalueconverter.html" target="_self">Custom Field Value Converter</a></h4>
+		<p>Customize display text for one field.</p>
+	</div>
+</div>
+
+<h4>Lookup Dataset</h4>
+<div id="validation" class="row">
+	<div class="col-sm-6">
+		<h4><a href="dataset/lookupfield.html" target="_self">Lookup Field</a></h4>
+		<p>Show how lookup field works and how DBControls construct options from lookup field.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="dataset/fieldchain.html" target="_self">Field Chain</a></h4>
+		<p>Use field chain(like:field1.field2.field3) to get value, sort data, filter data or find data.</p>
+	</div>
+</div>
+
+
+<h4>Validation</h4>
+<div id="selection" class="row">
+	<div class="col-sm-6">
+		<h4><a href="dataset/validation.html" target="_self">Validation</a></h4>
+		<p>Demonstrate how to validate a record.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="dataset/editmask.html" target="_self">Edit Mask</a></h4>
+		<p>Demonstrate how to configurate edit mask.</p>
+	</div>
+</div>
+
+<h4>Selection Control</h4>
+<div id="contextrule" class="row">
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/table/selection.html" target="_self">Selection control in Table</a></h4>
+		<p>Control data records can be selected in DBTable or not.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/tree/checkboxtree2.html" target="_self">Selection control in Tree</a></h4>
+		<p>Control data records can be selected in DBTreeView or not.</p>
+	</div>
+</div>
+
+<h4>Context Rule</h4>
+<div id="advanced" class="row">
+	<div class="col-sm-6">
+		<h4><a href="dataset/contextrule/contextrule.html" target="_self">Context Rule(Field Changed)</a></h4>
+		<p>Demonstrate how context rule works when field value changed.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="dataset/contextrule/contextrule1.html" target="_self">Context Rule(Status Changed)</a></h4>
+		<p>In this example, field 'Num#' is only editable in INSERT status.</p>
+	</div>
+</div>
+
+<h4>Advanced</h4>
+<div class="row">
+	<div class="col-sm-6">
+		<h4><a href="dataset/masterdetail.html" target="_self">Master/Detail dataset</a></h4>
+		<p>Demonstrate how to configurate master/detail style dataset and show how it works.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="dataset/unitconversion.html" target="_self">Unit Conversion</a></h4>
+		<p>Demostate how to chage the unit of a field.</p>
+	</div>
+</div>
+<div id="layoutcontrol" class="row">
+	<div class="col-sm-6">
+		<h4><a href="dataset/exportdata.html" target="_self">Export Dataset</a></h4>
+		<p>Export data with CVS format.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="dataset/clonedataset.html" target="_self">Query Criteria</a></h4>
+		<p>Clone the dataset to create query criteria.</p>
+	</div>
+</div>
+
+<hr />
+
+<h3>Layout Controls</h3>
+<div class="row">
+	<div class="col-sm-6">
+		<h4><a href="uicontrol/accordion.html" target="_self"><b>Accordion</b></a></h4>
+		<p>Demonstrate how to use Accordion control.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="uicontrol/calendar.html" target="_self">Calendar</a></h4>
+		<p>Demonstrate how to use Calendar control.</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-6">
+		<h4><a href="uicontrol/fieldset.html" target="_self">FieldSet</a></h4>
+		<p>Demonstrate how to use FieldSet control.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="uicontrol/menu.html" target="_self">Menu</a></h4>
+		<p>Demonstrate how to use menu bar, menu and context menu control.</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-6">
+		<h4><a href="uicontrol/messagebox.html" target="_self">MessageBox</a></h4>
+		<p>Demonstrate how to use MessageBox control.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="uicontrol/splitpanel.html" target="_self">SplitPanel</a></h4>
+		<p>Demonstrate how to use SplitPanel control.</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-6">
+		<h4><a href="uicontrol/tabcontrol.html" target="_self">TabControl</a></h4>
+		<p>Demonstrate how to use TabControl control.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="uicontrol/waitingbox.html" target="_self">WaitingBox</a></h4>
+		<p>Demonstrate how to use WaitingBox control.</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-6">
+		<h4><a href="uicontrol/window.html" target="_self">Window</a></h4>
+		<p>Demonstrate how to use Window control.</p>
+	</div>
+</div>
+
+<hr />
+		
+<h3 id="formcontrol">Dataset Sensitive Controls</h3>
+
+<h4>Form Control</h4>
+<div class="row">
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/form/dbplace.html" target="_self">DBPlace</a></h4>
+		<p>Demonstrate how to use DBPlace as a placeholder for other DB controls.</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/form/genericcontrol.html" target="_self">Generic Controls</a></h4>
+		<p>Demonstrate how to use DBLabel, DBDataLabel, DBTextArea, DBPassword, DBCheckBox.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/form/dbtext.html" target="_self">DBText</a></h4>
+		<p>Demonstrate how to use DBText.</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/form/dbspinedit.html" target="_self">DBSpinEdit</a></h4>
+		<p>Demonstrate how to use DBSpinEdit.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/form/dbselect.html" target="_self">DBSelect</a></h4>
+		<p>Demonstrate how to use DBSelect.</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/form/dbrangeselect.html" target="_self">DBRangeSelect</a></h4>
+		<p>Demonstrate how to use DBRangeSelect.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/form/dbautocomplete.html" target="_self">DBAutoComplete</a></h4>
+		<p>Demonstrate how to use DBAutoComplete.</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/form/dbcheckboxgroup.html" target="_self">DBCheckBoxGroup</a></h4>
+		<p>Demonstrate how to use DBText.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/form/dbradiogroup.html" target="_self">DBRadioGroup</a></h4>
+		<p>Demonstrate how to use DBRadioGroup.</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/form/dbcomboselect.html" target="_self">DBComboSelect</a></h4>
+		<p>Demonstrate how to use DBComboSelect.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/form/dbbetweenedit.html" target="_self">DBBetweenEdit</a></h4>
+		<p>Demonstrate how to use DBBetweenEdit.</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/form/dbdatepicker.html" target="_self">DBDatePicker</a></h4>
+		<p>Demonstrate how to use DBDatePicker</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/form/dbtimepicker.html" target="_self">DBTimePicker</a></h4>
+		<p>Demonstrate how to use DBTimePicker.</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/form/dbhtml.html" target="_self">DBHtml</a></h4>
+		<p>Demonstrate how to use DBHtml.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/form/dbrating.html" target="_self">DBRating</a></h4>
+		<p>Demonstrate how to use DBRating.</p>
+	</div>
+</div>
+<div id="tabledemo" class="row">
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/form/dbimage.html" target="_self">DBImage</a></h4>
+		<p>Demonstrate how to use DBImage.</p>
+	</div>
+</div>
+
+<h4>DBTable Control</h4>
+<div class="row">
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/table/basic.html" target="_self">Basic Features</a></h4>
+		<p>Demonstrate basic features of DBTable.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/table/appearance.html" target="_self">Table Appearance(row style/cell style)</a></h4>
+		<p>Demonstrate how to change the appearance of DBTable.</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/table/editable.html" target="_self">Editable DBTable</a></h4>
+		<p>Demonstrate how to edit data in row.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/table/command.html" target="_self">DBTable with Action Column</a></h4>
+		<p>Demonstrate how to add an action column in DBTable.</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/table/customrender.html" target="_self">Cusomized Render Column</a></h4>
+		<p>Demonstrate how to customize rendering column.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/table/hugedata.html" target="_self">High Performance with Big Data</a></h4>
+		<p>Test rendering performance with large amount of records.</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/table/mergecell.html" target="_self">Merge Cells</a></h4>
+		<p>Demonstrate how to merge cells if adjacent rows have same value.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="dataset/groupfield.html" target="_self">Stack Heads Table</a></h4>
+		<p>Demonstrate how to configurate stack head of DBTable.</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/table/total.html" target="_self">DBTable with Total Section</a></h4>
+		<p>Demonstrate how to add total section of DBTable.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/table/treegrid.html" target="_self">Tree style Table</a></h4>
+		<p>Demonstrate how to show a tree style DBTable.</p>
+	</div>
+</div>
+<div id="treedemo" class="row">
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/table/selection.html" target="_self">Selection</a></h4>
+		<p>Control data records can be selected in DBTable or not.</p>
+	</div>
+</div>
+
+<h4>DBTreeView Control</h4>
+<div class="row">
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/tree/basic.html" target="_self">Basic Features</a></h4>
+		<p>Demonstrate basic features of DBTreeView.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/tree/appearance.html" target="_self">Appearance</a></h4>
+		<p>Demonstrate how to change the appearance of DBTreeView.</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/tree/editable.html" target="_self">Edit Data</a></h4>
+		<p>Demonstrate how to edit data with DBTreeView.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/tree/checkboxtree.html" target="_self">Correlate Check Tree</a></h4>
+		<p>Demonstrate how correlate check tree view works.</p>
+	</div>
+</div>
+<div id="chartdemo" class="row">
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/tree/checkboxtree1.html" target="_self">Non-Correlate Check Tree</a></h4>
+		<p>Demonstrate how non-correlate check tree view works.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/tree/checkboxtree2.html" target="_self">Selection Control</a></h4>
+		<p>Demonstrate how to configurate tree node has check box or not.</p>
+	</div>
+</div>
+
+
+<h4>DBChart Control</a></h4>
+<p>Demonstrate how to use DBChart control.</p>
+<div id="editorpanel" class="row">
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/chart/dbchart.html" target="_self">DBChart Demo</a></h4>
+	</div>
+</div>
+
+<h4>Editor Panel Control</h4>
+<div id="server" class="row">
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/dbeditpanel.html" target="_self">DBEditPanel</a></h4>
+		<p>Demonstrate how to use DBEditPanel control.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="dbcontrol/dbinspector.html" target="_self">DBInspector</a></h4>
+		<p>Demonstrate how to use DBInspector control.</p>
+	</div>
+</div>
+
+<hr />
+<h3>Connect to server</h3>
+<p>Demonstrate how to connect to server. </p>
+<div class="row">
+	<div class="col-sm-6">
+		<h4><a href="server/basic.html" target="_self">Basic Features</a></h4>
+		<p>Demonstrate how to use jslet to work with server side.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="server/multidataset.html" target="_self">Query Multiple Dataset Data</a></h4>
+		<p>Demonstrate how to return multiple dataset data over one request</p>
+	</div>
+</div>
+<div id="template" class="row">
+	<div class="col-sm-6">
+		<h4><a href="server/paging.html" target="_self">Query Paging Data(DBPageBar)</a></h4>
+		<p>Demonstrate how to use DBPageBar to query paging data .</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="server/applyselected.html" target="_self">Apply Selected Demo</a></h4>
+		<p>Demonstrate how to apply selected data to server.</p>
+	</div>
+</div>
+
+<hr />
+<h3>Template</h3>
+<p>Use Jslet dataset with jQuery Template</p>
+<div id="i18n" class="row">
+	<div class="col-sm-6">
+		<h4><a href="template/tmpl-simple.html" target="_self">Template</a></h4>
+		<p>Demonstrate how to use jslet to work with third party template component.</p>
+	</div>
+</div>
+
+<hr />
+<h3>I18N and Theme</h3>
+<div class="row">
+	<div class="col-sm-6">
+		<h4><a href="other/i18n-en.html" target="_self">I18N Demo</a></h4>
+		<p>Demonstrate how to change language.</p>
+	</div>
+	<div class="col-sm-6">
+		<h4><a href="other/theme.html" target="_self">Theme</a></h4>
+		<p>Demonstrate how to change theme.</p>
+	</div>
+</div>
+
+</div>
+
+</body>
+</html>

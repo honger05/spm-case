@@ -1,0 +1,507 @@
+h<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>Jslet DBTable</title>
+<meta name="date" content="2013-06-06" />
+<meta name="keywords" content="DBTable" />
+<link rel="stylesheet" type="text/css" href="../../stylesheet.css" title="Style" />
+</head>
+<body>
+
+<div class="header">
+<div class="subTitle">jslet.ui.</div>
+<h2 title="Class DBTable" class="title">Class DBTable;</h2>
+</div>
+<div class="contentContainer">
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<hr />
+<br />
+<div class="block">
+DBTable is a powerful control. Below is its features:
+<ul style="line-height: 150%">
+	<li>Performance
+	<ol>
+		<li>Perfect performance, you can load unlimited data into DBTable.</li>
+	</ol></li>
+	<li>Appearance
+	<ol>
+		<li>Can specify fixed columns or fixed rows;</li>
+		<li>Show sequence column or not;</li>
+		<li>Show select column or not, you can select a row or a group rows;</li>
+		<li>Navigate data rows by clicking or cursor key(up, down, page up, page down);</li>
+		<li>Can change column width by draging table header;</li>
+		<li>Show total section or not.</li>
+		<li>Show hyperlink on a field value or not;</li>
+		<li>Can customize your table cell render;</li>
+		<li>Show field value as a tip, it is very convenient for long field value.</li>
+		<li>Merge same value of adjacent rows or not.</li>
+	</ol></li>
+	<li>Stack Header
+	<ol>
+		<li>Support stack header, and you can click stack header to sort data;</li>
+	</ol>
+	</li>
+	<li>Sort by clicking table header
+	<ol>
+		<li>Sort data by clicking table header, and toggle sorting direction by next clicking. </li>
+		<li>Sort data with multiple field by 'CTRL' + clicking; </li>
+		<li>If a field is a lookup field, it sorts data with the 'Code' field of lookup dataset, like: [deptId.code], because deptId is a sequence id, it isn't meanful;</li>
+	</ol>
+	</li>
+	<li>Edit in cell
+	<ul>
+		<li>Edit data in cell, editable field is decided with jslet.data.Field: <a href="../../dataset/field.html#readOnly()">readOnly()</a> and <a
+			href="../../dataset/field.html#enabled()">enabled()</a>(), and edit control is specified jslet.data.Field: <a
+				href="../../dataset/field.html#editControl()">editControl()</a>;</li>
+	</ul>
+	</li>
+	<li>Tree style table
+	<ul>
+		<li>Show data as a tree style table;</li>
+	</ul>
+	</li>
+</ul>
+
+ Sample:
+ <pre><code class="sample">
+ var jsletParam = {type:"DBTable",dataset:"employee"};
+ 
+ //1. Declaring:
+      &lt;label data-jslet='jsletParam' /&gt;
+      
+  //2. Binding
+      &lt;label id="ctrlId"  /&gt;
+  	//Js snippet
+ 		var el = document.getElementById('ctrlId');
+  	jslet.ui.bindControl(el, jsletParam);
+
+  //3. Create dynamically
+  	jslet.ui.createControl(jsletParam, document.body);
+ 	
+ </code></pre>
+You can also see <a href="../../../demo/index.html#tabledemo"><span class="demo">DBTable Demo</span></a>.
+
+</div>
+ 
+<dl><dt><span class="strong">Since:</span></dt>
+  <dd>1.0</dd>
+<dt><span class="strong">See Also:</span></dt><dd>
+<a href="../../common/globalfunction.html" title="Jslet Global Functions"><code>Jslet Global Functions</code></a>
+</dd></dl> 
+</li>
+</ul>
+</div>
+
+
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+
+<!-- ========== PROPERTIES SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary"></a>
+
+<h3>Properties</h3>
+<table class="overviewSummary fixedtable" border="0" cellpadding="3" cellspacing="0">
+<tr>
+<th class="propcol" scope="col">Property Name</th>
+<th class="datatypecol" scope="col">Data Type</th>
+<th class="requiredcol" scope="col">Required</th>
+<th class="defaultcol" scope="col">Default</th>
+<th class="" scope="col">Description</th>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">type</td>
+<td>String</td>
+<td>Yes</td>
+<td>"DBTable"</td>
+<td><code>Must be: DBTable</code>
+</td>
+</tr>
+<tr class="altColor">
+<td class="pmename">dataset</td>
+<td>String/<a href="../../dataset/dataset.html">jslet.data.Dataset</a></td>
+<td>Yes</td>
+<td></td>
+<td><code>Dataset name or Dataset object.</code>
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">fixedRows</td>
+<td>Integer</td>
+<td></td>
+<td>0</td>
+<td>Fixed row count</td>
+</tr>
+
+<tr class="altColor">
+<td class="pmename">fixedCols</td>
+<td>Integer</td>
+<td></td>
+<td>0</td>
+<td>Fixed column count</td>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">rowHeight</td>
+<td>Integer</td>
+<td></td>
+<td></td>
+<td>Table row height</td>
+</tr>
+
+<tr class="altColor">
+<td class="pmename">hasSeqCol</td>
+<td>Boolean</td>
+<td></td>
+<td>false</td>
+<td>True - has sequence column, false otherwise.</td>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">hasSelectCol</td>
+<td>Boolean</td>
+<td></td>
+<td>false</td>
+<td>True - has select column, false otherwise.</td>
+</tr>
+
+<tr class="altColor">
+<td class="pmename">noborder</td>
+<td>Boolean</td>
+<td></td>
+<td>false</td>
+<td>True - no border, false otherwise.</td>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">readOnly</td>
+<td>Boolean</td>
+<td></td>
+<td>true</td>
+<td>True - readOnly table, false otherwise.</td>
+</tr>
+
+<tr class="altColor">
+<td class="pmename">hideHead</td>
+<td>Boolean</td>
+<td></td>
+<td>false</td>
+<td>True - hide table header, false otherwise.</td>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">disableHeadSort</td>
+<td>Boolean</td>
+<td></td>
+<td>false</td>
+<td>True - user can't sort data by clicking table header, false otherwise.</td>
+</tr>
+
+<tr class="altColor">
+<td class="pmename">onlySpecifiedCol</td>
+<td>Boolean</td>
+<td></td>
+<td>false</td>
+<td>True - only show specified columns, false otherwise.</td>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">selectBy</td>
+<td>String</td>
+<td></td>
+<td></td>
+<td>one or more fields' name concatenated with ','.</td>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">treeField</td>
+<td>String</td>
+<td></td>
+<td></td>
+<td>One or more number fields concatenated with ','. <br />
+If this property is set, the dataset must be a tree style dataset, it means dataset.parentField() and dataset.levelField() can not be empty.	
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="pmename">columns</td>
+<td><a href="#tablecolumn">jslet.ui.TableColumn</a>[]</td>
+<td></td>
+<td></td>
+<td>Table columns of this table, if not set, it will create columns from dataset#fields instead.</td>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">onRowClick</td>
+<td>Event</td>
+<td></td>
+<td></td>
+<td>Fired when user clicks a table row. Event handler:
+<pre><code class="sample">
+function(event) {...};
+Parameters:
+  event: mouse event.
+Return:
+  void;
+</code></pre>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="pmename">onRowDblClick</td>
+<td>Event</td>
+<td></td>
+<td></td>
+<td>Fired when user double clicks a table row. Event handler:
+<pre><code class="sample">
+function(event) {...};
+Parameters:
+  event: mouse event.
+Return:
+  void;
+</code></pre>
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">onCustomSort</td>
+<td>Event</td>
+<td></td>
+<td></td>
+<td>Fired when user click table header to sort data. You can use it to sort data instead of default, like sending request to server to sort data. Event handler:
+<pre><code class="sample">
+function(indexFlds) {...};
+Parameters:
+  indexFlds: String, format: <code>fieldName desc/asce(default), fieldName,...</code>, desc - descending order, asce - ascending order.
+			Sample: <code>"field1 desc,field2,field3"</code>.
+Return:
+  void;
+</code></pre>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="pmename">onSelect</td>
+<td>Event</td>
+<td></td>
+<td></td>
+<td>Fired when user selects one row. Event handler:
+<pre><code class="sample">
+function(selected) {...};
+Parameters:
+  selected: Boolean, the row is selected or not. <br />
+Return:
+  Boolean, true - allow user to select this row, false - otherwise.;
+</code></pre>
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">onSelectAll</td>
+<td>Event</td>
+<td></td>
+<td></td>
+<td>Fired when user click select all by clicking "Select Column" header. Event handler:
+<pre><code class="sample">
+function(dataset, Selected) {...};
+Parameters:
+  dataset: jslet.data.Dataset, this dataset. <br />
+  selected: Boolean, the row is selected or not. <br />
+Return:
+  void.
+</code></pre>
+</td>
+</tr>
+
+
+<tr class="altColor">
+<td class="pmename">onFillRow</td>
+<td>Event</td>
+<td></td>
+<td></td>
+<td>Fired when fill row, user can use this to customize each row style like background color, font color. Event handler:
+<pre><code class="sample">
+function(otr, dataset) {...};
+Parameters:
+  otr: Html TR object. <br />
+  dataset: jslet.data.Dataset, this dataset. <br />
+Return:
+  void.
+</code></pre>
+</td>
+</tr>
+
+
+<tr class="rowColor">
+<td class="pmename">onFillCell</td>
+<td>Event</td>
+<td></td>
+<td></td>
+<td>Fired when fill cell, user can use this to customize each cell style like background color, font color. Event handler:
+<pre><code class="sample">
+function(otd, dataset, fieldName) {...};
+Parameters:
+  otd: Html TD object. <br />
+  dataset: jslet.data.Dataset, this dataset. <br />
+  fieldName: String, field name of this column. <br />
+Return:
+  void.
+</code></pre>
+</td>
+</tr>
+
+
+</table>
+</li></ul>
+
+<!-- ========== Table Column PROPERTIES SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList">
+
+<h3><a name="tabitem">jslet.ui.TableColumn Properties</a></h3>
+<table class="overviewSummary fixedtable" border="0" cellpadding="3" cellspacing="0">
+<tr>
+<th class="propcol" scope="col">Property Name</th>
+<th class="datatypecol" scope="col">Data Type</th>
+<th class="requiredcol" scope="col">Required</th>
+<th class="defaultcol" scope="col">Default</th>
+<th class="" scope="col">Description</th>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">colNum</td>
+<td>Integer</td>
+<td></td>
+<td></td>
+<td>Column number.</td>
+</tr>
+
+<tr class="altColor">
+<td class="pmename">field</td>
+<td>String</td>
+<td></td>
+<td></td>
+<td>Field name, field name can be null.
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">label</td>
+<td>String</td>
+<td>Yes</td>
+<td></td>
+<td>Column header label</td>
+</tr>
+
+<tr class="altColor">
+<td class="pmename">title</td>
+<td>String</td>
+<td></td>
+<td></td>
+<td>Column title(tips)</td>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">width</td>
+<td>Integer</td>
+<td></td>
+<td></td>
+<td>column display width.</td>
+</tr>
+
+<tr class="altColor">
+<td class="pmename">disableHeadSort</td>
+<td>Boolean</td>
+<td></td>
+<td>false</td>
+<td>true - user can sort this column by click column header, false - otherwise.</td>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">mergeSame</td>
+<td>Boolean</td>
+<td></td>
+<td>false</td>
+<td>true - if this column value of adjoined rows is same then merge these rows, false - otherwise.</td>
+</tr>
+
+<tr class="altColor">
+<td class="pmename">noRefresh</td>
+<td>Boolean</td>
+<td></td>
+<td>false</td>
+<td>If customized column which is not connected with dataset, you can set it to true.</td>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">visible</td>
+<td>Boolean</td>
+<td></td>
+<td>true</td>
+<td><code>Identify specified column is visible or not.</code>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="pmename">cellRender</td>
+<td>Function</td>
+<td></td>
+<td></td>
+<td>column cell render for customized column. Render prototype:
+<pre><code class="sample">
+jslet.ui.TreeCellRender = jslet.Class.create(jslet.ui.CellRender, {
+    initialize: function () {
+    },
+	createCell: function (otd, colCfg) {
+	},
+	refreshCell: function (otd, colCfg) {
+	}
+}
+
+</code></pre>
+</td>
+</tr>
+
+</table>
+</li></ul>
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary"></a>
+
+<h3>Methods</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0">
+<tr>
+<th class="colFirst" scope="col">Name</th>
+<th class="colLast" scope="col">Description</th>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst pmename"><code>renderAll()</code></td>
+<td class="colLast">
+Use the control configuration to render control in browser.
+<dl>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl> 
+</td>
+</tr>
+
+
+</table>
+</li></ul>
+
+
+</li></ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+
+<p class="legalCopy"><small><font size="-1"> Copyright &#x00a9; 2010, 2013 All rights reserved. </font></small></p>
+</body>
+</html>

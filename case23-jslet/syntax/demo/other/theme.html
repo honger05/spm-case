@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Demeostrate how to change UI theme simply">
+    <title>Jslet - Theme(Default) Demo</title>
+    <link rel="stylesheet" type="text/css" href="../css/demo-style.css" />
+    <script type="text/javascript" src="../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+        jslet.require("jslet");
+    </script>
+</head>
+<body onunload="jslet.ui.uninstall()">
+	<div class="container">
+    <div class="page-header">
+    <h2 id="top">Jslet - Theme(Default) Demo</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+	<div class="content">
+	<p>Only one line code to change theme: <br />
+	    jslet.setTheme('[theme name]');
+	</p>
+
+    <div id="calDemo" data-jslet='type:"Calendar"' style="width: 250px; height: 226px; marging-left: 20px">
+    </div>
+
+    <h3>Demo Content:</h3>
+    <p>
+		<a href="theme-gray.html" title="Gray Theme">Gray Theme</a>
+    </p>
+	</div>
+</body>
+</html>

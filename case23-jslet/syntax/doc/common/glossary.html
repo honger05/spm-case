@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Jslet-Glossary</title>
+    <link rel="stylesheet" type="text/css" href="doc-style.css" />
+</head>
+
+<body>
+
+<h2>Jslet-Glossary</h2>
+<hr />
+<dl><dt><b><a id="dataaware">Data-aware controls</a></b></dt>
+<dd>If data changed, the UI controls will changed synchronously.</dd>
+</dl>
+<hr />
+<dl><dt><b><a id="lookupfield">Lookup Field</a></b></dt>
+<dd>It means a field value comes from another dataset. </dd>
+</dl>
+<hr />
+<dl><dt><b><a id="fieldchain">Field chain</a></b></dt>
+<dd>Field chain is combined with relative fields and separated with dot(.),form:
+<pre><code>field1.field2.field3....</code></pre>
+Tips: all fields in the field chain except the last one must be lookup field.
+Example: 
+<pre><code>dsEmployee.setFilter("[deptId.location] == 'NewYork'");</code></pre>
+</dd>
+</dl>
+
+<hr />
+<dl><dt><b><a id="datasetfield">Dataset Field</a></b>:</dt>
+<dd>Dataset field is a virtual field, it points to another dataset.Generally, we use it in master-detail case.</dd>
+</dl>
+
+<hr />
+<dl><dt><b><a id="groupfield">Group Field</a></b></dt>
+<dd>Group field is a virtual field, we use this field to group other fields. Group field can contain normal field and group field.</dd>
+</dl>
+
+<hr />
+<dl><dt><b><a id="contextrule">Context Rule</a></b></dt>
+<dd>Context rule is the rule between fields, means some field's state will changed synchronously if one field's value changed.</dd>
+<p>　</p>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+&lt;script type="text/javascript" src="../../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+	jslet.define("employee", "../../js/employee.js");
+	jslet.require("jslet,employee", function () {
+		dsEmployee.next();
+		dsEmployee.fieldValue("summary", 
+		   "His photo:&lt;br /&gt;&lt;img style='width:100px;height:100px' src='./photo/2.jpg'&gt;&lt;/img&gt;");
+		dsEmployee.first();
+		dsEmployee.fieldValue("summary", "A very &lt;b style='color:red'&gt;good&lt;/b&gt; guy");
+	});
+&lt;/script&gt;
+    </code></pre>
+	
+	<ul><li>HTML: </li></ul>
+    <pre class="prettyprint linenums"><code>
+&lt;div data-jslet='type:"DBHtml",dataset:"employee",field:"summary"'
+     style="height: 200px; width: 240px;border:1px solid blue;overflow:scroll" /&gt;
+
+    </code></pre>
+	
+	<ul><li><a href='../../js/employee-source.html' target="_blank" >Employee.js</a>: </li></ul>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../../prettify";
+    </script>
+    <script type="text/javascript" src="../../prettify/run_prettify.js"></script>
+</body>
+</html>

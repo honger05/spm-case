@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+&lt;script type="text/javascript" src="../../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+jslet.require("jslet", initialize);
+
+function initialize(regular) {
+	var fldCfg = [
+		{ name: 'strtime', type: 'S', length: 20, label: 'String Time', range: {min:'07',max:'19'}},
+		{ name: 'datetime', type: 'D', label: 'Date Time', displayFormat: 'yyyy-MM-dd hh:mm:ss', displayWidth: 20}
+		];
+	
+	var dsTime = jslet.data.createDataset('timedataset', fldCfg);
+	var dataList = [
+		{strtime: '13:23:33', datetime: new Date()},
+		{strtime: '09:46:22', datetime: new Date(2000, 5, 1, 5, 45, 18,0)}];
+	dsTime.dataList(dataList);
+}
+&lt;/script&gt;
+    </code></pre>
+	
+	<ul><li>HTML: </li></ul>
+    <pre class="prettyprint linenums"><code>
+&lt;div data-jslet='type:"DBTimePicker",field:"datetime",hasSecond:true,is12Hour: true' /&gt;
+
+    </code></pre>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../../prettify";
+    </script>
+    <script type="text/javascript" src="../../prettify/run_prettify.js"></script>
+</body>
+</html>

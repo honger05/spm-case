@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;script type="text/javascript" src="../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+        jslet.require("jslet", function () {
+            initialize();
+        });
+
+        function initialize() {
+		
+            products = [{key: '1', code: '101', name: 'Car'},{key: '2', code: '201', name: 'Monitor'},
+               {key: '3', code: '301', name: 'Keyboard'},{key: '4', code: '401', name: 'Mouse'}];
+
+            //Create Dataset
+            var dsSaleDetail = new jslet.data.Dataset("dsSaleDetail");
+            fldObj = jslet.data.createNumberField("seqno");
+            fldObj.label("Number#");
+            dsSaleDetail.addField(fldObj);
+
+            fldObj = jslet.data.createStringField("product", 20);
+            fldObj.label("Product");
+            var customConverter = {
+            	textToValue: function(fldObj, inputText) {
+            		var value = 'Not found:' + inputText, product;
+            		for(var i = 0, len = products.length; i &lt; len; i++) {
+            			product = products[i];
+            			if(inputText == product.code) {
+            				value = product.key;
+            				break;
+            			}
+            		}
+            		return value;
+            	},
+	
+            	valueToText: function(fldObj, value, isEditing) {
+            		var text = value, product;
+            		for(var i = 0, len = products.length; i < len; i++) {
+            			product = products[i];
+            			if(value == product.key) {
+            				text = isEditing ? product.code: product.name;
+            				break;
+            			}
+            		}
+            		return text;
+            	}
+            };
+
+            fldObj.customValueConverter(customConverter);
+
+            dsSaleDetail.addField(fldObj);
+
+            fldObj = jslet.data.createNumberField("num", 8);
+            fldObj.label("Quantity");
+            fldObj.displayFormat("#,##0");
+            dsSaleDetail.addField(fldObj);
+
+            fldObj = jslet.data.createNumberField("price", 16, 2);
+            fldObj.label("Price");
+            fldObj.displayFormat("#,##0.00");
+            dsSaleDetail.addField(fldObj);
+
+            fldObj = jslet.data.createNumberField("amount", 16, 2);
+            fldObj.label("Amount");
+            fldObj.formula("[num]*[price]");
+            fldObj.displayFormat("#,##0.00");
+            fldObj.unitConverted(false);
+            dsSaleDetail.addField(fldObj);
+
+            //Add detail data
+            var detail1 = [
+            	{ "seqno": 1, "product": "1", "num": 1000, "price": 11.5 },
+            	{ "seqno": 2, "product": "6", "num": 2000, "price": 11.5 },
+            	{ "seqno": 3, "product": "2", "num": 3000, "price": 11.5 },
+            	{ "seqno": 4, "product": "3", "num": 5000, "price": 11.5 },
+            	{ "seqno": 5, "product": "4", "num": 8000, "price": 11.5}];
+            dsSaleDetail.dataList(detail1);
+        }
+    &lt;/script&gt;
+    </code></pre>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../prettify";
+    </script>
+    <script type="text/javascript" src="../prettify/run_prettify.js"></script>
+</body>
+</html>

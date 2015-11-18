@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Demeostrate how to use Jslet widget: DBLabel, DBDataLabel, DBTextArea, DBPassword, DBCheckBox">
+    <title>Jslet - Generic Controls</title>
+    <link rel="stylesheet" type="text/css" href="../../css/demo-style.css" />
+	<script type="text/javascript" src="../../../loader/jslet.loader.js"></script>
+	<script type="text/javascript">
+	    //jslet is predefined module name
+		jslet.define('employee','../../js/employee.js');
+		jslet.require('jslet,employee');
+	</script>
+	
+</head>
+<body onunload="jslet.ui.uninstall()">
+	<div class="container">
+    <div class="page-header">
+    <h2 id="top">Jslet - Generic Controls</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+    <div class="content">
+	Here, we'll show the features of the following controls: <br />
+	<b>DBLabel, DBDataLabel, DBTextArea, DBPassword, DBCheckBox</b></div>
+	<h4>Employee List:&nbsp;&nbsp;(<a href="../../model/EmployeeDataModel.htm">Data Model</a>)</h4>
+	<!-- Employee List -->
+	<div data-jslet="type:'DBTable',dataset:'employee',hasSelectCol:true,rowHeight:25"
+		style="width: 100%; height: 200px">
+	</div>
+
+	<div style="margin:10px">
+	<!-- Employee Navigator, dsEmployee is a global variable defined in employee.js -->
+    <button class="btn btn-default" onclick="dsEmployee.first();"> First </button>
+    <button class="btn btn-default" onclick="dsEmployee.prior();"> Prior </button>
+    <button class="btn btn-default" onclick="dsEmployee.next();"> Next </button>
+    <button class="btn btn-default" onclick="dsEmployee.last();" > Last </button>
+	</div>
+    <h4>Edit Panel</h4>
+	<!-- Employee Editor -->
+    <table data-jslet="dataset:'employee'" cellspacing="10">
+		<col width="150px" />
+		<col width="300px" />
+		<col width="150px" />
+		<col width="300px"/>
+        <tr>
+            <td>
+				<span><b>(DBLabel)</b></span><br />
+                <label data-jslet="type:'DBLabel',field:'name'"></label>
+            </td>
+            <td>
+				<span><b>(DBDataLabel)</b></span><br />
+                <label data-jslet="type:'DBDataLabel',field:'name'" class="editor" ></label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label data-jslet="type:'DBLabel',field:'name'" ></label>
+            </td>
+            <td>
+				<span><b>(DBTextArea)</b></span><br />
+                <textarea data-jslet="type:'DBTextArea',field:'name'" class="editor" ></textarea>
+            </td>
+            <td>
+                <label data-jslet="type:'DBLabel',field:'name'" ></label>
+            </td>
+            <td>
+				<span><b>(DBPassword)</b></span><br />
+                <input type="password" data-jslet="type:'DBPassword',field:'name'" class="editor" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label data-jslet="type:'DBLabel',field:'married'"></label>
+            </td>
+            <td>
+				<span><b>(DBCheckBox)</b></span><br />
+                <input type="checkbox" data-jslet="type:'DBCheckBox',field:'married'" />
+            </td>
+		</tr>
+    </table>
+</fieldset>
+	<!-- Source Code -->
+	<script type="text/javascript" src="../../source/demosource.js?height=600"></script>
+	</div>
+</body>
+</html>

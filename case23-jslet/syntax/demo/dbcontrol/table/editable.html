@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Demeostrate how to use Jslet widget: DBTable(Edit data in cell)">
+    <title>Jslet - Editable DBTable Demo</title>
+    <link rel="stylesheet" type="text/css" href="../../css/demo-style.css" />
+    <script type="text/javascript" src="../../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+        jslet.define("employee", "../../js/employee.js");
+        jslet.require("jslet,employee");
+        
+        function setEditControl() {
+            var f = dsEmployee.getField("department");
+            f.editControl({ type: "DBComboSelect" });
+            $('#tblEmployee')[0].jslet.renderAll();
+        }
+
+        function clearEditControl() {
+            var f = dsEmployee.getField("department");
+            f.editControl(null);
+            $('#tblEmployee')[0].jslet.renderAll();
+        }
+    </script>
+</head>
+<body onunload="jslet.ui.uninstall()">
+	<div class="container">
+    <div class="page-header">
+    <h2 id="top">Jslet - Editable DBTable Demo</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+    <h4>Employee List</h4>
+    <div id="tblEmployee" data-jslet='type:"DBTable",dataset:"employee","hasSeqCol":true,readOnly:false'
+        style="width: 100%; height: 400px">
+    </div>
+	
+    <h3>Demo Content:</h3>
+	<div class="content">
+	<ol class="content-list">
+    <li>
+        Use default editor that are configurated in field object of dataset;
+	</li>
+    <li>
+        Change editor in field object, set editor of field &quot;department&quot;:DBComboSelect;
+		<button onclick="setEditControl()"> Set </button>
+        <button onclick="clearEditControl()"> Restore </button>
+	</li>
+	</ol>
+	</div>
+	<!-- Source Code -->
+	<script type="text/javascript" src="../../source/demosource.js?height=600"></script>
+	</div>
+</body>
+</html>

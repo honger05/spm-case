@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head Script: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;script type="text/javascript" src="../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+        jslet.define("contact", "contacts.js", "jslet");
+        //jslet is the system defined module name
+        jslet.require("jslet,contact", initialize);
+
+        function initialize() {
+			var rule1 = {status: ['update','other'],
+				rules:[
+				{field:'id',meta:{disabled:true}}
+				]};
+			var rule2 = {status: ['insert'],
+				rules:[
+				{field:'id',meta:{disabled:false}}
+				]};
+			dsContact.contextRules([rule1,rule2]);
+			dsContact.enableContextRule();
+        }
+    &lt;/script&gt;
+    </code></pre>
+    
+	<ul><li>HTML: </li></ul>
+    <pre class="prettyprint linenums"><code>
+&lt;div data-jslet='type:"DBTable",dataset:"Contact"' style="width: 100%; height: 150px">&lt;/div>
+&lt;div data-jslet="type:'DBEditPanel',dataset: 'Contact', columnWidth: 230" />
+    </code></pre>
+
+	<ul><li><a href='contact-source.html' target="_blank" >Contact.js</a>: </li></ul>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../../prettify";
+    </script>
+    <script type="text/javascript" src="../../prettify/run_prettify.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;script type="text/javascript" src="../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+        jslet.define("employee", "../js/employee.js");
+		jslet.define("template", "jquery.tmpl.js");
+        jslet.require("jslet,employee,template", initialzie);
+		
+		function initialzie(){
+			//Dataset: employee is defined in employee.js
+			//For initial field value list
+			$( "#employeeTemplate" ).tmpl( jslet.data.getDataset('employee').dataList() )
+				.appendTo( "#employeeDataList" );	
+			
+			//For converted field value list
+			$( "#employeeTemplate" ).tmpl( jslet.data.getDataset('employee').textList() )
+				.appendTo( "#employeeList" );		
+		}
+    &lt;/script&gt;
+    </code></pre>
+	
+	<ul><li>Template: </li></ul>
+    <pre class="prettyprint linenums"><code>
+	&lt;script id="employeeTemplate" type="text/x-jquery-tmpl"&gt;
+		&lt;tr&gt;
+			&lt;td&gt;${name}&lt;/td&gt;
+			&lt;td&gt;${gender}&lt;/td&gt;
+			&lt;td&gt;${birthday}&lt;/td&gt;
+			&lt;td&gt;${department}&lt;/td&gt;
+			&lt;td&gt;${position}&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/script&gt;
+	
+    </code></pre>
+
+	<ul><li>Template Container: </li></ul>
+    <pre class="prettyprint linenums"><code>
+	&lt;p&gt;Initial Field Values&lt;/p&gt;
+	&lt;table&gt;&lt;tbody class="header"&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Gender&lt;/th&gt;&lt;th&gt;birthday&lt;/th&gt;&lt;th&gt;department&lt;/th&gt;&lt;th&gt;position&lt;/th&gt;&lt;/tr&gt;&lt;/tbody&gt;
+		&lt;tbody id="employeeDataList"&gt;&lt;/tbody&gt;
+	&lt;/table&gt;
+	
+	&lt;p&gt;Converted Field Values&lt;/p&gt;
+	&lt;table&gt;&lt;tbody class="header"&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Gender&lt;/th&gt;&lt;th&gt;birthday&lt;/th&gt;&lt;th&gt;department&lt;/th&gt;&lt;th&gt;position&lt;/th&gt;&lt;/tr&gt;&lt;/tbody&gt;
+		&lt;tbody id="employeeList"&gt;&lt;/tbody&gt;
+	&lt;/table&gt;
+	
+    </code></pre>
+	
+	
+	<ul><li><a href='../js/employee-source.html' target="_blank" >Employee.js</a>: </li></ul>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../prettify";
+    </script>
+    <script type="text/javascript" src="../prettify/run_prettify.js"></script>
+</body>
+</html>

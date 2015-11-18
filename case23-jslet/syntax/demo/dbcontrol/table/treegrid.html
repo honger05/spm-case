@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jslet-TreeGrid Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Demeostrate how to use Jslet widget: DBTable(tree style)">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="../../css/demo-style.css" />
+    <script type="text/javascript" src="../../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+        jslet.require('jslet', initialize, doReady);
+
+        function initialize() {
+            var dataList = [{ itemid: 'cn', superid: '0', code: '00', name: 'China' },
+			{ itemid: '1', superid: 'cn', code: '01', name: 'Guangdong' },
+			{ itemid: '2', superid: '1', code: '0101', name: 'Guangzhou' },
+			{ itemid: '3', superid: '1', code: '0102', name: 'Shenzhen' },
+			{ itemid: '4', superid: '3', code: '010201', name: 'Nanshan' },
+			{ itemid: '5', superid: '3', code: '010202', name: 'Futian' },
+			{ itemid: '6', superid: '1', code: '0103', name: 'Dongguang' },
+			{ itemid: '7', superid: 'cn', code: '02', name: 'Hunan' },
+			{ itemid: '8', superid: '7', code: '0201', name: 'Changsha' },
+			{ itemid: '9', superid: '7', code: '0202', name: 'Zhuzhou' },
+			{ itemid: '10', superid: '7', code: '0203', name: 'YueYang' },
+			{ itemid: '11', superid: '7', code: '0204', name: 'Hengyang' },
+			{ itemid: '12', superid: '7', code: '0205', name: 'Shaoyang' }
+			];
+
+            dsAgency = new jslet.data.Dataset('dsAgency');
+            var fldObj = jslet.data.createStringField('name', 20);
+            fldObj.label('Name');
+            fldObj.required(true);
+            dsAgency.addField(fldObj);
+
+            fldObj = jslet.data.createStringField('code', 10);
+            fldObj.label('Code');
+            fldObj.required(true);
+            dsAgency.addField(fldObj);
+
+            fldObj = jslet.data.createNumberField('itemid', 10);
+            fldObj.label('ID');
+            dsAgency.addField(fldObj);
+
+            fldObj = jslet.data.createNumberField('superid', 10);
+            fldObj.label('Parent ID');
+            fldObj.readOnly(true);
+            dsAgency.addField(fldObj);
+
+            dsAgency.keyField('itemid');
+            dsAgency.codeField('code');
+            dsAgency.nameField('name');
+            dsAgency.parentField('superid');
+            dsAgency.dataList(dataList);
+			
+			jslet.ui.onReady = function(){
+				jslet('#tblRegion').expandAll();
+			}
+        }
+
+        function doReady() {
+        	jslet("#tblRegion").expandAll();
+        }
+
+        var treeTblCfg = {type:"DBTable",dataset:"dsAgency",disableHeadSort:true,readOnly:true,treeField:"name"};
+    </script>
+</head>
+<body>
+	<div class="container">
+    <div class="page-header">
+    <h2 id="top">Jslet - TreeGrid Demo</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+    <h4>Agency List</h4>
+	<!-- treeTblCfg is a global variable defined in head tag.-->
+    <div id="tblRegion" data-jslet='treeTblCfg' style="width: 100%; height: 220px">
+    </div>
+
+<div style="margin:10px">
+<button class="btn btn-default" onclick='jslet("#tblRegion").expandAll();'> Expand All </button>
+<button class="btn btn-default" onclick='jslet("#tblRegion").collapseAll();'> Colapse All </button>&nbsp;
+
+<button class="btn btn-default" onclick='dsAgency.insertChild();'> Add Child </button>
+<button class="btn btn-default" onclick='dsAgency.insertSibling();'> Add Sibling </button>&nbsp;
+<button class="btn btn-default" onclick='dsAgency.deleteRecord();'> Delete </button>&nbsp;
+<button class="btn btn-default" onclick='dsAgency.confirm();'> Confirm </button>
+<button class="btn btn-default" onclick='dsAgency.cancel();'> Cancel </button>
+</div>
+	<h4>Edit Panel</h4>
+	<table>
+		<tr style="height:50px">
+			<td><label data-jslet='type:"DBLabel",dataset:"dsAgency",field:"itemid"'></label></td>
+			<td><input type="text" data-jslet='type:"DBText",dataset:"dsAgency",field:"itemid"'/></td>
+		</tr>
+		<tr style="height:50px">
+			<td><label data-jslet='type:"DBLabel",dataset:"dsAgency",field:"code"'></label></td>
+			<td><input type="text" data-jslet='type:"DBText",dataset:"dsAgency",field:"code"'/></td>
+		</tr>
+		<tr style="height:50px">
+			<td><label data-jslet='type:"DBLabel",dataset:"dsAgency",field:"name"'></label></td>
+			<td><input type="text" data-jslet='type:"DBText",dataset:"dsAgency",field:"name"'/></td>
+		</tr>
+	</table>
+
+<h3>Demo Content:</h3>
+<ol class="content-list">
+    <li>
+        Tree style;</li>
+    <li>
+        Insert/Update/Delete data.</li>
+	</ol>
+
+	<!-- Source Code -->
+	<script type="text/javascript" src="../../source/demosource.js?height=630"></script>
+	</div>
+</body>
+</html>

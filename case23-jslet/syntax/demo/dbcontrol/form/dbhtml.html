@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Demeostrate how to use Jslet widget: DBHtml">
+    <title>Jslet - DBHtml Demo</title>
+    <link rel="stylesheet" type="text/css" href="../../css/demo-style.css" />
+	<script type="text/javascript" src="../../../loader/jslet.loader.js"></script>
+	<script type="text/javascript">
+	    jslet.define("employee", "../../js/employee.js");
+	    jslet.require("jslet,employee", function () {
+		    dsEmployee.next();
+		    dsEmployee.getField('summary').antiXss(false);
+		    dsEmployee.setFieldValue("summary", 
+			   "His photo:<br /><img style='width:100px;height:100px' src='../../photo/2.jpg'></img><!--3.jpg or 4.jpg etc -->");
+		    dsEmployee.first();
+		    dsEmployee.setFieldValue("summary", "A very <b style='color:red'>good</b> guy");
+		});
+	</script>
+</head>
+<body>
+	<div class="container">
+    <div class="page-header">
+    <h2 id="top">Jslet - DBHtml Demo</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+    <h4>Employee List: (<a href="../../model/EmployeeDataModel.htm">Data Model</a>)</h4>
+    <table>
+        <tr>
+            <td style="width:70%;padding-right:10px">
+                <div data-jslet='type:"DBTable",dataset:"employee",hasSelectCol:true,rowHeight:25'
+                    style="width: 100%; height: 200px">
+                </div>
+            </td>
+            <td>
+                <div data-jslet='type:"DBHtml",dataset:"employee",field:"summary"' style="height: 200px; width: 100%;overflow:auto" ></div>
+            </td>
+        </tr>
+    </table>
+	
+	<div style="padding-top:5px;padding-bottom:5px">
+	<!-- Employee Navigator, dsEmployee is a global variable defined in employee.js -->
+    <button class="btn btn-default" onclick="dsEmployee.first();"> First </button>
+    <button class="btn btn-default" onclick="dsEmployee.prior();"> Prior </button>
+    <button class="btn btn-default" onclick="dsEmployee.next();"> Next </button>
+    <button class="btn btn-default" onclick="dsEmployee.last();" > Last </button>
+	</div>
+	<hr />
+    <h4>Edit Html source:</h4>
+	<div style="padding-top:5px;padding-bottom:5px">
+    <input class="btn btn-default" type="button" value=" OK " onclick="dsEmployee.confirm();" />
+    <input class="btn btn-default" type="button" value=" Cancel " onclick="dsEmployee.cancel();" />
+	</div>
+
+    <textarea rows="10" cols="80" data-jslet='type:"DBTextArea",dataset:"employee",field:"summary"' style="width:100%;height:300px"></textarea>
+
+	<!-- Source Code -->
+	<script type="text/javascript" src="../../source/demosource.js?height=500"></script>
+	</div>
+</body>
+</html>

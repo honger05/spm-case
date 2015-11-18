@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jslet - Selectable DBTreeView(Correlate) Demo</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Demeostrate how to use Jslet widget: DBTreeView(Correlate checking)">
+    <link type="text/css" rel="stylesheet" href="tree.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/demo-style.css" />
+    <script type="text/javascript" src="../../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+		jslet.define('agency', 'agency.js');
+        jslet.require('jslet,agency',initialize);
+
+        function initialize() {
+			//Global variable for #trvRegion 
+            treeCfg1 = { type: 'DBTreeView', 
+			    dataset: 'dsAgency', 
+				displayFields: '[code]+"-"+[name]',
+                hasCheckBox: true, 
+				iconClassField: 'iconcls', 
+				correlateCheck: true,
+				expandLevel: 0
+            };
+        }
+
+    </script>
+</head>
+<body onunload="jslet.ui.uninstall()">
+	<div class="container">
+    <div class="page-header">
+    <h2 id="top">Jslet - Selectable DBTreeView(Correlate) Demo</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+	<div class="content">
+		Demonstrate how correlate check tree view works(Tree node count: 1000).
+	</div>
+    <h4>CheckBox Tree</h4>
+	<!-- treeCfg1 is a global variable defined in Head tag.-->
+	<div id="tree1" data-jslet="treeCfg1" style="width: 400px; height: 200px">
+	</div>
+
+    <h3>Demo Content:</h3>
+	<div class="content">
+	<ol class="content-list">
+    <li>
+        After check a child node, all of its parent node will display bold, it is very useful to find all checked nodes when the parent nodes are collapsed. 
+	</li>
+    <li>
+        Correlate check parent node and child node when check on a tree node.
+	</li>
+    <li>
+        Right click on tree node to show context menu.
+	</li>
+	</ol>
+	</div>
+	<!-- Source Code -->
+	<script type="text/javascript" src="../../source/demosource.js?height=700"></script>
+	</div>
+</body>
+</html>

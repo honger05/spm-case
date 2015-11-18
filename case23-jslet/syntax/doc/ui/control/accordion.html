@@ -1,0 +1,174 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>Jslet Accordion</title>
+<meta name="date" content="2013-06-06" />
+<meta name="keywords" content="accordion" />
+<link rel="stylesheet" type="text/css" href="../../stylesheet.css" title="Style" />
+</head>
+<body>
+
+<div class="header">
+<div class="subTitle">jslet.ui.</div>
+<h2 title="Class Accordion" class="title">Class Accordion;</h2>
+</div>
+<div class="contentContainer">
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<hr />
+<br />
+<div class="block">
+jslet.ui.Accordion. Sample:
+ <pre><code class="sample">
+ //There are 3 ways to create this control:
+ var jsletParam = {type:"Accordion",selectedIndex:1,items:[{caption:"Caption1"},{caption:"Caption2"}]};
+ //1. Declaring(recommend):
+     &lt;div data-jslet='jsletParam' style="width: 300px; height: 400px;"&gt;
+       &lt;div&gt;content1&lt;/div&gt;
+       &lt;div&gt;content2&lt;/div&gt;
+      &lt;/div&gt;
+      
+  //2. Binding
+  	&lt;div id='ctrlId'&gt;
+  		&lt;div&gt;content1&lt;/div&gt;
+          &lt;div&gt;content2&lt;/div&gt;
+  	&lt;/div&gt;
+  	//Js snippet
+ 		var el = document.getElementById('ctrlId');
+  	jslet.ui.bindControl(el, jsletParam);
+  		
+  //3. Create dynamically
+  	jslet.ui.createControl(jsletParam, document.body);
+  	
+ </code></pre>
+You can also see <a href="../../../demo/uicontrol/accordion.html"><span class="demo">Demo</span></a>.
+
+</div>
+ 
+<dl><dt><span class="strong">Since:</span></dt>
+  <dd>2.0</dd>
+<dt><span class="strong">See Also:</span></dt><dd>
+<a href="../../common/globalfunction.html" title="Jslet Global Functions"><code>Jslet Global Functions</code></a>
+</dd></dl> 
+</li>
+</ul>
+</div>
+
+
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+
+<!-- ========== PROPERTIES SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary"></a>
+
+<h3>Properties</h3>
+<table class="overviewSummary fixedtable" border="0" cellpadding="3" cellspacing="0">
+<tr>
+<th class="propcol" scope="col">Property Name</th>
+<th class="datatypecol" scope="col">Data Type</th>
+<th class="requiredcol" scope="col">Required</th>
+<th class="defaultcol" scope="col">Default</th>
+<th class="" scope="col">Description</th>
+</tr>
+
+<tr class="altColor">
+<td class="pmename">type</td>
+<td>String</td>
+<td>Yes</td>
+<td>"Accordion"</td>
+<td><code>Must be: Accordion</code>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="pmename">selectedIndex</td>
+<td>Integer</td>
+<td></td>
+<td>0</td>
+<td><code>Selected index.</code>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="pmename">onChanged</td>
+<td>Event</td>
+<td></td>
+<td></td>
+<td>Fired when change accordion item. Event handler:
+<pre><code class="sample">
+function(currentIndex) {...};
+Parameters:
+  currentIndex: Integer, current index.
+Return:
+  void;
+</code></pre>
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">items</td>
+<td>Array</td>
+<td></td>
+<td></td>
+<td>Array of accordion items, accordion item like:
+<pre><code class="sample">
+{caption: 'accordion item caption'};
+Properties:
+  caption: String, accordion item caption.
+</code></pre>
+</td>
+</tr>
+
+
+</table>
+</li></ul>
+
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary"></a>
+
+<h3>Methods</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0">
+<tr>
+<th class="colFirst" scope="col">Name</th>
+<th class="colLast" scope="col">Description</th>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst pmename">setSelectedIndex(index)</td>
+<td class="colLast">
+Set selected index.
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>index</code> - (Required) Integer, new index.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>void</dd>
+<dt><span class="strong">Since:</span></dt><dd>2.0</dd>
+</dl> 
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst pmename"><code>renderAll()</code></td>
+<td class="colLast">
+Use the control configuration to render control in browser.
+<dl>
+<dt><span class="strong">Since:</span></dt><dd>2.0</dd>
+</dl> 
+</td>
+</tr>
+
+
+</table>
+</li></ul>
+
+
+</li></ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+
+<p class="legalCopy"><small><font size="-1"> Copyright &#x00a9; 2010, 2013 All rights reserved. </font></small></p>
+</body>
+</html>

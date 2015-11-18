@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Demeostrate how to use UI widget: MessageBox">
+    <title>Jslet - MessageBox Demo</title>
+    <link rel="stylesheet" type="text/css" href="../css/demo-style.css" />
+    <script type="text/javascript" src="../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+        jslet.require("jslet");
+    </script>
+
+    <style type="text/css">
+    .result
+    {
+        color:Red;
+    }
+    </style>
+</head>
+<body onunload="jslet.ui.uninstall()">
+	<div class="container">
+    <div class="page-header">
+    <h2 id="top">Jslet - MessageBox Demo</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+	<div class="content">Demonstrate how to use MessageBox control.</div>
+    
+	<h4>Simple Message Box</h4>
+    <p>Single line message: <button onclick='jslet.ui.MessageBox.alert("You has to fill that blank!", "Tips");'> Show </button> </p>
+    <p>Multiple line message: <button onclick='openwin1();'> Show </button> </p>
+    <p>Error message: <button onclick='jslet.ui.MessageBox.error("You made a mistake!", "Error");'> Show </button> </p>
+    <p>Warning message: <button onclick='jslet.ui.MessageBox.warn("This is a warning for you!", "Warning");'> Show </button> </p>
+
+	<h4>Choice Message Box</h4>
+    <p>Confirm/Cancel dialog: <button onclick='openwin2();'> Show </button><span id="result2" class="result"></span> </p>
+    <p>Yes/No/Cancel dialog: <button onclick='openwin3();'> Show </button><span id="result3" class="result"></span> </p>
+	<h4>Input Message Box</h4>
+    <p>Single line input box(with default value and，required test): <button onclick='openwin4();'> Show </button><span id="result4" class="result"></span> </p>
+    <p>Multiple line input box: <button onclick='openwin5();'> Show </button><span id="result5" class="result"></span> </p>
+
+    <script type="text/javascript">
+		//alert
+        function openwin1(event) {
+            jslet.ui.MessageBox.alert("First line message<br />Second line message", "Tips");
+        }
+
+		//confirm
+        function openwin2(event) {
+            jslet.ui.MessageBox.confirm("Are you sure to save this?", "Confirm", function(button){
+				$("#result2").html("You click button:"+button);
+                });
+        }
+
+		//confirm
+        function openwin3(event) {
+            jslet.ui.MessageBox.confirm("You are a boy?", "Confirm", function(button){
+                $("#result3").html("You click button:" + button);
+                }, true);
+        }
+
+		//prompt
+        function openwin4(event) {
+            jslet.ui.MessageBox.prompt("Please inpu file name：", "Input file name", function (button, inputValue) {
+                if (button == "ok")
+                    $("#result4").html("Your value:" + inputValue);
+                else
+                    $("#result4").html("You click button:" + button);
+            }, "test.txt", function (inputValue) {
+                if (!inputValue) {
+                    jslet.ui.MessageBox.alert("File name required!");
+                    return false;
+                }
+                return true;
+            });
+        }
+
+        //prompt
+		function openwin5(event) {
+            jslet.ui.MessageBox.prompt("Plase input your comments：", "Input comments", function (button, inputValue) {
+                if (button == "ok")
+                    $("#result5").html("Your comments:" + inputValue);
+                else
+                    $("#result5").html("You click button:" + button);
+            }, "",null, true);
+        }
+
+    </script>
+
+	<!-- Source Code -->
+	<script type="text/javascript" src="../source/demosource.js?height=630"></script>
+	</div>
+</body>
+</html>

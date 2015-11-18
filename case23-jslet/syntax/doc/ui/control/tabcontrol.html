@@ -1,0 +1,384 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>Jslet TabControl</title>
+<meta name="date" content="2013-06-06" />
+<meta name="keywords" content="TabControl" />
+<link rel="stylesheet" type="text/css" href="../../stylesheet.css" title="Style" />
+</head>
+<body>
+
+<div class="header">
+<div class="subTitle">jslet.ui.</div>
+<h2 title="Class TabControl" class="title">Class TabControl</h2>
+</div>
+<div class="contentContainer">
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<hr />
+<br />
+<div class="block">
+jslet.ui.Window, it has the following features: 
+<ol>
+<li>User can add tab item dynamically;</li>
+<li>User can close tab item;</li>
+<li>Support context menu on tab item header;</li>
+</ol>
+ <pre><code class="sample">
+ //There are 3 ways to create this control:
+ var jsletParam = {type: "TabControl", 
+		selectedIndex: 1, 
+		onCreateContextMenu: doCreateContextMenu, 
+		items: [
+			{header: "one", userIFrame: true, url: "http://www.google.com", iconCls: "tabIcon"},
+			{header: "two", closable: true, divId: "p2"},
+			{header:"three",closable:true,divId:"p3"},
+		]};
+ //1. Declaring(recommend):
+     &lt;div data-jslet='jsletParam' style="width: 300px; height: 400px;"/&gt;
+      
+  //2. Binding
+  	&lt;div id='ctrlId'&gt;
+  	&lt;/div&gt;
+  	//Js snippet
+ 		var el = document.getElementById('ctrlId');
+  	jslet.ui.bindControl(el, jsletParam);
+  		
+  //3. Create dynamically
+  	jslet.ui.createControl(jsletParam, document.body);
+	
+ </code></pre>
+You can also see <a href="../../../demo/uicontrol/tabcontrol.html"><span class="demo">Demo</span></a>.
+
+</div>
+ 
+<dl><dt><span class="strong">Since:</span></dt>
+  <dd>2.0</dd>
+<dt><span class="strong">See Also:</span></dt><dd>
+<a href="../../common/globalfunction.html" title="Jslet Global Functions"><code>Jslet Global Functions</code></a>, 
+<a href="menu.html" title="Jslet Menu"><code>Jslet Menu Control</code></a>
+</dd></dl> 
+</li>
+</ul>
+</div>
+
+
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+
+<!-- ========== PROPERTIES SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary"></a>
+
+<h3>Properties</h3>
+<table class="overviewSummary fixedtable" border="0" cellpadding="3" cellspacing="0">
+<tr>
+<th class="propcol" scope="col">Property Name</th>
+<th class="datatypecol" scope="col">Data Type</th>
+<th class="requiredcol" scope="col">Required</th>
+<th class="defaultcol" scope="col">Default</th>
+<th class="" scope="col">Description</th>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">type</td>
+<td>String</td>
+<td>Yes</td>
+<td>"TabControl" </td>
+<td><code>Must be: "TabControl"</code>
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">selectedIndex</td>
+<td>Integer</td>
+<td></td>
+<td>0</td>
+<td><code>Selected tab item index</code>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="pmename">newable</td>
+<td>Boolean</td>
+<td></td>
+<td>true</td>
+<td><code>Allow user to add a new tab item or not.</code>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="pmename">closable</td>
+<td>Boolean</td>
+<td></td>
+<td>true</td>
+<td><code>Allow user to close current tab item or not.</code>
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">onAddTabItem</td>
+<td>Event</td>
+<td></td>
+<td></td>
+<td>Fired when user add a new tab item. Event handler:
+<pre><code class="sample">
+function() {...};
+Return:
+  jslet.ui.TabItem;
+</code></pre>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="pmename">onRemoveTabItem</td>
+<td>Event</td>
+<td></td>
+<td></td>
+<td>Fired when user delete a tab item. Event handler:
+<pre><code class="sample">
+function(tabIndex, selected) {...};
+Parameters:
+  tabIndex: Integer, the index of deleting tab item.
+  selected: Boolean, the deleting tab item is selected or not.
+Return:
+  Boolean, true - can delete tab item, false otherwise;
+</code></pre>
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">onSelectedChanged</td>
+<td>Event</td>
+<td></td>
+<td></td>
+<td>Fire when user toggle tab item. Event handler:
+<pre><code class="sample">
+function(oldIndex, newIndex) {...};
+Parameters:
+  oldIndex: Integer, old index.
+  newIndex: Integer, new index.
+Return:
+  Boolean, true - can change tab item index, false otherwise;
+</code></pre>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="pmename">onCreateContextMenu</td>
+<td>Event</td>
+<td></td>
+<td></td>
+<td>Fire before show context menu, you can add your own context menu in this event. Example:
+<pre><code class="sample">
+tabObj.onCreateContextMenu = function(menuItems) {
+  var menuObj = {id: "copy", name: "Copy", 
+	onClick: doClick};
+  menuItems.push(menuObj);
+}
+</code></pre>
+Event handler:
+<pre><code class="sample">
+function(menuItems) {...};
+Parameters:
+  menuItems: Array of <a href="menu.html#menuitem">menu item</a>.
+Return:
+  void;
+</code></pre>
+</td>
+</tr>
+
+</table>
+</li></ul>
+
+
+<!-- ========== MENU ITEM PROPERTIES SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList">
+
+<h3><a name="tabitem">jslet.ui.TabItem Properties</a></h3>
+<table class="overviewSummary fixedtable" border="0" cellpadding="3" cellspacing="0">
+<tr>
+<th class="propcol" scope="col">Property Name</th>
+<th class="datatypecol" scope="col">Data Type</th>
+<th class="requiredcol" scope="col">Required</th>
+<th class="defaultcol" scope="col">Default</th>
+<th class="" scope="col">Description</th>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">id</td>
+<td>String</td>
+<td></td>
+<td></td>
+<td><code>Tab item id</code>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="pmename">header</td>
+<td>String</td>
+<td></td>
+<td></td>
+<td><code>Tab item header</code>
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">iconClass</td>
+<td>String</td>
+<td></td>
+<td></td>
+<td>The icon css class name of menu item.</td>
+</tr>
+
+
+<tr class="altColor">
+<td class="pmename">itemType</td>
+<td>String</td>
+<td></td>
+<td></td>
+<td><code>Menu item type, optional value: null, radio, check</code>
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">closable</td>
+<td>Boolean</td>
+<td></td>
+<td>false</td>
+<td><code>Identify user can close tab item or not.</code>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="pmename">enable</td>
+<td>Boolean</td>
+<td></td>
+<td>true</td>
+<td>Identify tab item is enabled or not.</td>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">visible</td>
+<td>Boolean</td>
+<td></td>
+<td>true</td>
+<td>Identify tab item is visible or not.</td>
+</tr>
+
+<tr class="altColor">
+<td class="pmename">content</td>
+<td>String</td>
+<td></td>
+<td></td>
+<td><code>Html content.</code>
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">useIFrame</td>
+<td>Boolean</td>
+<td></td>
+<td>false</td>
+<td>Identify tab item is an iframe.</td>
+</tr>
+
+<tr class="altColor">
+<td class="pmename">url</td>
+<td>String</td>
+<td></td>
+<td></td>
+<td><code>The url of tab item.</code>
+</td>
+</tr>
+
+</table>
+</li></ul>
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary"></a>
+
+<h3>Methods</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0">
+<tr>
+<th class="colFirst" scope="col">Name</th>
+<th class="colLast" scope="col">Description</th>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst pmename">setSelectedIndex(index)</td>
+<td class="colLast">
+Change selected tab item.
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>index</code> - (Required) Integer, the index which will be toggled to.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>void</dd>
+<dt><span class="strong">Since:</span></dt><dd>2.0</dd>
+</dl> 
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst pmename">close()</td>
+<td class="colLast">
+Close the current active tab item  if this tab item is closable.
+<dl>
+<dt><span class="strong">Since:</span></dt><dd>2.0</dd>
+</dl> 
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst pmename">addTabItem(newItemCfg)</td>
+<td class="colLast">
+Add tab item dynamically.
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>newItemCfg</code> - (Required) <a href="#tabitem">jslet.ui.TabItem</a>, tab item object.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>void</dd>
+<dt><span class="strong">Since:</span></dt><dd>2.0</dd>
+</dl> 
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst pmename">removeTabItem(index)</td>
+<td class="colLast">
+Remove tab item.
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>index</code> - (Required) Integer, tab item index.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>void</dd>
+<dt><span class="strong">Since:</span></dt><dd>2.0</dd>
+</dl> 
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst pmename"><code>renderAll()</code></td>
+<td class="colLast">
+Use the control configuration to render control in browser.
+<dl>
+<dt><span class="strong">Since:</span></dt><dd>2.0</dd>
+</dl> 
+</td>
+</tr>
+
+
+</table>
+</li></ul>
+
+
+</li></ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+
+<p class="legalCopy"><small><font size="-1"> Copyright &#x00a9; 2010, 2013 All rights reserved. </font></small></p>
+</body>
+</html>

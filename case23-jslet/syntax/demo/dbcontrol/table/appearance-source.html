@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;script type="text/javascript" src="../../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+        jslet.define("employee", "../../js/employee.js");
+        jslet.require("jslet,employee");
+     &lt;/script&gt;
+    </code></pre>
+	
+	<ul><li>Row style: odd/even row with difference color </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;div data-jslet='type:"DBTable",dataset:"employee",&lt;b&gt;&lt;i&gt;onFillRow: doFillRowOdd&lt;/i&gt;&lt;/b&gt;,hasSelectCol:true,hasSeqCol:true,readOnly:true,fixedRows:1' style="width: 100%;height: 180px"&gt;
+    &lt;/div&gt;
+    //Javascript
+    function doFillRowOdd(otr, dataset) {
+        var recno = dataset.recno();
+        if(recno % 2 == 0)
+            $(otr).removeClass("oddRow");
+        else
+            $(otr).addClass("oddRow");
+    }
+    
+    </code></pre>
+	
+	<ul><li>Row style: difference color according to "gender" field</li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;div data-jslet='type:"DBTable",dataset:"employee",&lt;b&gt;&lt;i&gt;onFillRow: doFillRowGender&lt;/i&gt;&lt;/b&gt;,hasSelectCol:true,hasSeqCol:true,readOnly:true,fixedRows:1' style="width: 100%;height: 180px"&gt;
+    &lt;/div&gt;
+    //Javascript
+    function doFillRowGender(otr, dataset) {
+        var gender = dataset.getFieldValue('gender');
+        var jqTr = $(otr);
+        if(gender == 'M'){
+            jqTr.removeClass("femaleRow");
+            jqTr.removeClass("unknownRow");
+        }
+        else
+        if(gender == 'F'){
+            jqTr.addClass("femaleRow");
+            jqTr.removeClass("unknownRow");
+        }else{
+            jqTr.removeClass("femaleRow");
+            jqTr.addClass("unknownRow");
+        }
+    }
+    
+    </code></pre>
+    
+	<ul><li>Cell style: diffence color for manager </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;div data-jslet='type:"DBTable",dataset:"employee",onFillRow: doFillRowOdd, &lt;b&gt;&lt;i&gt;onFillCell: doFillCell&lt;/i&gt;&lt;/b&gt;,hasSelectCol:true,hasSeqCol:true,readOnly:true,fixedRows:1' style="width: 100%;height: 180px"&gt;
+    &lt;/div&gt;
+    //Javascript
+    function doFillCell(otd, dataset, fieldName) {
+        //If value of field "position" is 0 or 1, change the background color of column "name"
+        if(fieldName != "name")
+            return;
+        var posValue = dataset.getFieldValue("position");
+
+        if(posValue &gt; 1)
+            $(otd).removeClass("managerCell");
+        else
+            $(otd).addClass("managerCell");
+    }
+    </code></pre>
+	
+	<ul><li><a href='../../js/employee-source.html' target="_blank" >Employee.js</a>: </li></ul>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../../prettify";
+    </script>
+    <script type="text/javascript" src="../../prettify/run_prettify.js"></script>
+</body>
+</html>

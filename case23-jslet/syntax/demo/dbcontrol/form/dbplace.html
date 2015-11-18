@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Jslet ui control: DBPlace">
+    <title>Jslet - DBPlace</title>
+    <script type="text/javascript" src="../../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+        jslet.define('employee', '../../js/employee.js', 'jslet');
+        jslet.require('jslet,employee', function () {
+            
+        });
+        
+        function changeDepartmentEditControl() {
+        	var dsEmp = jslet.data.getDataset('employee');
+        	var fldObj = dsEmp.getField('department');
+        	fldObj.editControl('{type:"DBAutoComplete"}');
+        }
+
+    </script>
+</head>
+<body onunload="jslet.ui.uninstall()">
+	<div class="container-fluid">
+	<!--[if lt IE 8]>
+	<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+	<![endif]-->
+	<div class="page-header" id="top">
+		<h2>Jslet - DBPlace</h2>
+		<p class="lead">Demonstrate how to use DBPlace as a placeholder for other controls.</p>
+	</div>
+    <h4>Employee List:&nbsp;&nbsp;(<a href="../model/EmployeeDataModel.htm">Data Model</a>)</h4>
+    <div data-jslet='type:"DBTable",dataset:"employee",hasSelectCol:true' style="width: 100%; height: 200px"></div>
+    <div class="row" style="margin:10px">
+    <button class="btn btn-primary" onclick="changeDepartmentEditControl();"> change Edit Control(Department) </button>
+    </div>	
+	
+	<div class="form-horizontal" data-jslet='dataset:"employee"' role="form">
+		<div class="form-group">
+			<label class="col-sm-1" data-jslet='type:"DBLabel",field:"workerid"'></label>
+			<div class="col-sm-3">
+				<div data-jslet='type:"DBPlace",field:"workerid"' ></div>
+			</div>
+			<label class="col-sm-1" data-jslet='type:"DBLabel",field:"name"'></label>
+			<div class="col-sm-3">
+				<div data-jslet='type:"DBPlace",field:"name"' ></div>
+			</div>
+			<label class="col-sm-1" data-jslet='type:"DBLabel",field:"gender"'></label>
+			<div class="col-sm-3">
+				<div data-jslet='type:"DBPlace",field:"gender"'></div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-1" data-jslet='type:"DBLabel",field:"married"' for="chkmarried"></label>
+			<div class="col-sm-3">
+				<div data-jslet='type:"DBPlace",field:"married"'></div>
+			</div>
+			<label class="col-sm-1" data-jslet='type:"DBLabel",field:"department"'></label>
+			<div class="col-sm-3">
+				<div data-jslet='type:"DBPlace",field:"department"'></div>
+			</div>
+			<label class="col-sm-1" data-jslet='type:"DBLabel",field:"age"'></label>
+			<div class="col-sm-3">
+				<div data-jslet='type:"DBPlace",field:"age"'></div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-1" data-jslet='type:"DBLabel",field:"birthday"'></label>
+			<div class="col-sm-3">
+				<div data-jslet='type:"DBPlace",field:"birthday"'></div>
+			</div>
+			<label class="col-sm-1" data-jslet='type:"DBLabel",field:"position"'></label>
+			<div class="col-sm-3">
+				<div data-jslet='type:"DBPlace",field:"position"'></div>
+			</div>
+			<label class="control-label col-sm-1" data-jslet='type:"DBLabel",field:"province"'></label>
+			<div class="col-sm-3">
+				<div data-jslet='type:"DBPlace",field:"province"'></div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-1" data-jslet='type:"DBLabel",field:"salary"'></label>
+			<div class="col-sm-3">
+				<div data-jslet='type:"DBPlace",field:"salary"'></div>
+			</div>
+			<label class="col-sm-1" data-jslet='type:"DBLabel",field:"university"'></label>
+			<div class="col-sm-3">
+				<div data-jslet='type:"DBPlace",field:"university"'></div>
+			</div>
+		</div>
+
+
+	</div>
+	<hr />
+	<section>
+	<h3>Demo Comments:</h3>
+	<div class="cotent">
+		<ol>
+		<li>Modify data in an edit control and observe the above data table changes;</li>
+		<li>The label with red star(*) means field is required;</li>
+		<li>Click the tool button, and see the dataset event log;</li>
+		<li>Set default value of field "ID" when insert a new record;</li>
+		<li>Click "Delete" button, and see how to intercept the delete action.</li>
+		</ol>
+	</div>
+	</section>
+	<!-- Source Code -->
+	<script type="text/javascript" src="../source/demosource.js?height=1050"></script>
+	</div>
+</body>
+</html>

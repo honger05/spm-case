@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Demeostrate how to submit user selected data to server">
+    <title>Jslet - Submit Selected to Server Demo</title>
+    <link rel="stylesheet" type="text/css" href="../css/demo-style.css" />
+    <script type="text/javascript" src="../../loader/jslet.loader.js"></script>
+</head>
+<body>
+	<div class="container">
+    <div class="page-header">
+    <h2>Jslet - Submit Selected Demo</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+	<h4 style="color:red">If you see this page on http://jslet.github.io/jslet, it will raise error cause github.io only supports static page. You can goto download page to download standalone.war.</h4>
+
+    <p>Product List: <button class="btn btn-primary" onclick="queryData()"> Query </button>
+    <button class="btn btn-primary" onclick="applyToServer()"> Audit Selected </button>
+	</p>
+	<div data-jslet='type:"DBTable",dataset:"product",hasSelectCol:true' style="width: 100%; height: 200px">
+	</div>	
+
+    <script type="text/javascript">
+        jslet.require("jslet", function () {
+            initialize();
+        });
+
+        function initialize() {
+			fldCfg = [
+				{ name: 'state', type: 'S', length: 30, label: 'Audit State', displayWidth: 8},
+				{ name: 'auditor', type: 'S', length: 20, label: 'Auditor', displayWidth: 10},
+				{ name: 'auditdate', type: 'D', length: 20, label: 'Audit Date', displayFormat: 'yyyy-MM-dd hh:mm:ss'},
+				{ name: 'product', type: 'S', length: 30, label: 'Product', displayWidth: 16},
+				{ name: 'price', label: 'Price', type: 'N', length: 10, scale: 2, displayFormat: '#,##0.00'},
+				{ name: 'quantity', label: 'Quantity', type: 'N', length: 5, displayFormat: '#,##0.00' },
+				{ name: 'cost', label: 'Total Cost', type: 'N', length: 12, scale: 2, displayFormat: '#,##0.00', formula:'[price]*[quantity]' }
+				];
+			//Create dataset
+			product = jslet.data.createDataset('product', fldCfg);
+			product.queryUrl('../../product/findall.jsp');
+        }
+
+		function queryData() {
+			product.query();
+		}
+
+        function applyToServer() {
+			var selRecs = product.selectedRecords();
+			if(selRecs && selRecs.length > 0) {
+				product.submitSelected('../../product/audit.jsp');
+			} else {
+				jslet.showInfo('Please select records to audit!');
+			}
+        }
+    </script>
+
+	<!-- Source Code -->
+	<script type="text/javascript" src="../source/demosource.js?height=830"></script>
+	</div>
+</body>
+</html>

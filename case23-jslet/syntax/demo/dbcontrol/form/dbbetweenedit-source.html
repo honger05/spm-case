@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;script type="text/javascript" src="../../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+        jslet.require("jslet", function () {
+            initialize();
+        });
+
+        function initialize() {
+            var dsbtwdataset = jslet.data.createDataset("btwdataset", [
+			{ name: "name1", type: "S", length: 10, label: "Name(From)",betweenStyle:true,maxValueField:"name2"},
+			{ name: "name2", type: "S", length: 10, label: "Name(To)" },
+			{ name: "date1", type: "D", length: 10, displayWidth: 15, label: "Date(From)",betweenStyle:true,maxValueField:"date2" },
+			{ name: "date2", type: "D", length: 10, displayWidth: 15, label: "Date(To)" },
+			{ name: "amt1", type: "N", length: 12, scale: 2, displayFormat: "#,##0.00", label: "Number(From)" ,betweenStyle:true,maxValueField:"amt2"},
+			{ name: "amt2", type: "N", length: 12, scale: 2, displayFormat: "#,##0.00", label: "Number(TO)"  },
+			{ name: "department1", type: "S", length: 12, label: "Department(From)", lookupField: { dataset: "department"},betweenStyle:true,maxValueField:"department2"},
+			{ name: "department2", type: "S", length: 12, label: "Department(To)", lookupField: { dataset: "department"}}],
+			"id");
+            dsbtwdataset.insertRecord();
+        } 
+        
+    &lt;/script&gt;
+    </code></pre>
+	
+	<ul><li>Editor: </li></ul>
+    <pre class="prettyprint linenums"><code>
+//String field 
+&lt;div data-jslet='type:"DBBetweenEdit","minValueField":"name1","maxValueField":"name2"' /&gt;
+
+//Date field
+&lt;div data-jslet='type:"DBBetweenEdit","minValueField":"date1","maxValueField":"date2"' /&gt;
+
+//Number field
+&lt;div data-jslet='type:"DBBetweenEdit","minValueField":"amt1","maxValueField":"amt2"' /&gt;
+    </code></pre>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../../prettify";
+    </script>
+    <script type="text/javascript" src="../../prettify/run_prettify.js"></script>
+</body>
+</html>

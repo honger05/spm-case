@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Jslet - Dynamic Lookup Field Demo</title>
+    <link rel="stylesheet" type="text/css" href="../css/demo-style.css" />
+    <script type="text/javascript" src="../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+        //'jslet' is the system defined module name.
+        jslet.define('animals', '../js/animals.js');
+        jslet.require('jslet,animals', function () {
+            dsAnimals.datasetListener(doDatasetScroll);
+        });
+
+        function doDatasetScroll(dsEvent) {
+            if (dsEvent.eventType == jslet.data.DatasetEvent.AFTERSCROLL) {
+                dsAnimals.renderOptions('powerfulanimal');
+            }
+        }
+    </script>
+	<style type="text/css">
+		.lookupds {
+			width: 100%; 
+			height: 150px
+		}
+		
+	</style>
+</head>
+<body onunload="jslet.ui.uninstall()">
+    <h2>Jslet - Dynamic Lookup Field Demo</h2>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+    <div class="content">
+        <p>"Dynamic Lookup Field" means one field's value comes from multiple lookup datasets. In the following example:<br />
+		The value of field "Most Powerful Animala" comes from dataset "felidas", "canine" and "bear", 
+			the particular value stored in this field is according to the field "Animal Type".</p>
+	</div>
+	<fieldset>
+		<legend>Lookup Datasets</legend>
+		<table style="width:100%">
+			<tr>
+				<td>
+					Felidas:<div data-jslet="type:'DBTable',dataset:'felidas'" class="lookupds">
+					</div>
+				</td>
+				<td>
+					Canine:<div data-jslet="type:'DBTable',dataset:'canine'" class="lookupds">
+					</div>
+				</td>
+				<td>
+					Bear:<div data-jslet="type:'DBTable',dataset:'bear'" class="lookupds">
+					</div>
+				</td>
+			</tr>
+		</table>
+	</fieldset>
+
+	<fieldset>
+		<legend>The Most Powerful Animala List</legend>
+		<div data-jslet="type:'DBTable',dataset:'animals'" style="width: 100%; height: 150px">
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend>Edit Panel</legend>
+
+		<label data-jslet="type:'DBLabel',dataset:'animals',field:'animaltype'"></label>:
+		<div data-jslet="type:'DBRadioGroup',dataset:'animals',field:'animaltype'"></div>
+
+		<label data-jslet="type:'DBLabel',dataset:'animals',field:'powerfulanimal'"></label>:
+		<select data-jslet="type:'DBSelect',dataset:'animals',field:'powerfulanimal'" style="width: 180px">
+		</select>
+	</fieldset>
+
+    <h3>Demo Actions:</h3>
+	<ol class="content">
+		<li>Move cursor in "The Most Powerful Animala List", and check the display values in the list and the edit panel.</li>
+		<li>Change "Animal Type" field value in the edit panel, and check the display values.</li>
+	</ol>
+
+	<!-- Source Code -->
+	<script type="text/javascript" src="../source/demosource.js?height=600"></script>
+</body>
+</html>

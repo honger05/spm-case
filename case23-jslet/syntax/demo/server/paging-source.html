@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;script type="text/javascript" src="../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+    jslet.require("jslet", doLoaded, doJsletReady);
+
+    function doLoaded() {
+       dsBOM = jslet.data.createDataset("bom", [
+         { "name": "itemid", "type": "S", "length": 10, "label": "BOM Code", "label": "Spec", "displayWidth": 20 }, 
+         { "name": "stdnum", "type": "N", "length": 9, "label": "Quantity", "displayWidth": 15}], "itemid");
+       dsBOM.queryUrl('../../employee/findBom.jsp');
+    }
+    function doJsletReady() {
+       dsBOM.query();
+    }
+    &lt;/script&gt;
+    </code></pre>
+	
+	<ul><li>HTML: </li></ul>
+    <pre class="prettyprint linenums"><code>
+&lt;div data-jslet='type:"DBPageBar",dataset:"bom",pageSizeList:[20,50,100,200]' /&gt;	
+&lt;div data-jslet='type:"DBPageBar",dataset:"bom",showPageSize:false' /&gt;
+    </code></pre>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../prettify";
+    </script>
+    <script type="text/javascript" src="../prettify/run_prettify.js"></script>
+</body>
+</html>

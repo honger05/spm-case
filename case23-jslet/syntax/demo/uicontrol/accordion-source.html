@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;script type="text/javascript" src="../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+        jslet.require("jslet");
+    &lt;/script&gt;
+    </code></pre>
+	
+	<ul><li>HTML: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;div data-jslet='type:"Accordion",onChanged:doChanged,selectedIndex:1,items:[{caption:"caption1"},{caption:"caption2"},{caption:"caption3"}]'
+        style="width: 300px; height: 400px; margin-left: 20px"&gt;
+        &lt;div&gt;content1&lt;/div&gt;
+        &lt;div&gt;content2&lt;/div&gt;
+        &lt;div&gt;content3&lt;/div&gt;
+   &lt;/div&gt;
+    </code></pre>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../prettify";
+    </script>
+    <script type="text/javascript" src="../prettify/run_prettify.js"></script>
+</body>
+</html>

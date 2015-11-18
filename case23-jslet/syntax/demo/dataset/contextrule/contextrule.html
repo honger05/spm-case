@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Jslet dataset context rule">
+    <title>Jslet - Context Rule</title>
+    <link rel="stylesheet" type="text/css" href="../../css/demo-style.css" />
+    <script type="text/javascript" src="../../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+        jslet.define("contact", "contacts.js", "jslet");
+        //jslet is the system defined module name
+        jslet.require("jslet,contact", initialize);
+
+        function initialize() {
+            dsContact.getField('id').visible(false);
+			//Set edit mask of the following fields according to 'country' field.
+			var rule1 = {
+				condition: 'expr:[country]',
+				rules:[
+				{field: 'phone', meta: {editMask: 'expr:dsCountry.lookupByKey([Contact!country],"phoneMask")'}},
+				{field: 'ssnCode', meta: {editMask: 'expr:dsCountry.lookupByKey([Contact!country],"ssnMask")'}},
+				{field: 'idCardNum', meta: {editMask: 'expr:[Country!idCardMask]'}},
+				{field: 'driverLicenseNum', meta: {editMask: 'expr:[Country!driverLicenseMask]'}}		
+				]
+			};
+			//If contactType is 'Organization', the following fields is disabed.
+			var rule2 = {
+				condition: '[contactType] == "O"',
+				rules:[
+				{field: 'gender', meta: {disabled: true}, value: null},
+				{field: 'firstName', meta: {disabled: true}, value: ''},
+				{field: 'lastName', meta: {disabled: true}, value: ''},
+				{field: 'salutation', meta: {disabled: true}, value: ''},
+				{field: 'birthday', meta: {disabled: true}, value: null},
+				{field: 'race', meta: {disabled: true}, value: null}
+				]
+			};
+			//If contactType is 'Individual', the following fields is enabled.
+			var rule3 = {
+				condition: '[contactType] == "I"',
+				rules:[
+				{field: 'gender', meta: {disabled: false}},
+				{field: 'firstName', meta: {disabled: false}},
+				{field: 'lastName', meta: {disabled: false}},
+				{field: 'salutation', meta: {disabled: false}},
+				{field: 'birthday', meta: {disabled: false}},
+				{field: 'race', meta: {disabled: false}}
+				]
+			};
+			//If contactType is 'Individual', the following fields is enabled.
+			var rule4 = {
+				condition: '[gender]',
+				rules: [
+				{field: 'salutation', lookup: {filter: '[Salutation!gender] == "${gender}" || [Salutation!gender] == "B"'}}
+				]
+			};
+			dsContact.contextRules([rule1, rule2, rule3, rule4]);
+			dsContact.enableContextRule();
+        }
+    </script>
+</head>
+<body onunload="jslet.ui.uninstall()">
+	<div class="container">
+    <div class="page-header"><h2 id="top">Jslet - Context Rule</h2></div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+	<div class="content">
+	<p>Demonstrate how context rule works when field value changed. Context rule can change the following item:</p>
+	<p><b>label, tip, nullText, required, readOnly, visible, formula, scale, defaultValue, displayFormat, editMask, editControl, dataRange, reqularExpr, valueCountLimit, validChars, customValidator</b></p>
+	</div>	
+	<!-- fieldset style="width:100%" -->
+	<div data-jslet="type: 'TabControl', newable:false, items: [
+					{header: 'Contact', divId: 'contactPanel'},
+					{header: 'Country', divId: 'countryPanel'}
+				]"
+        style="width: 100%; height: auto">
+	</div>
+	<div id = "contactPanel" style="display:none;padding:5px;">
+	<div class="toolbar">
+		<div class="btn-group">
+		<button onclick="dsContact.insertRecord()" class="btn btn-default"> Insert </button>
+		<button onclick="dsContact.editRecord()" class="btn btn-default"> Update </button>
+		<button onclick="dsContact.deleteRecord()" class="btn btn-default"> Delete </button>
+		</div>
+		<div class="btn-group">
+		<button onclick="dsContact.confirm()" class="btn btn-default"> Confirm </button>
+		<button onclick="dsContact.cancel()" class="btn btn-default"> Cancel </button>
+		</div>
+	</div>
+	
+	<div data-jslet='type:"DBTable",dataset:"Contact"' style="width: 100%; height: 150px"></div>
+	</div>
+	<div id = "countryPanel"  style="display:none;padding:5px;">
+		<div data-jslet='type:"DBTable",dataset:"Country"' style="width: 100%; height: 150px"></div>
+	</div>
+    <!--  /fieldset -->
+	<fieldset>
+		<legend>Edit Panel</legend>
+		<div data-jslet="type:'DBEditPanel',dataset: 'Contact',labelCols:2, fields:[{field:'contactType',dataCols: 6},{field:'firstName',inFirstCol:true}]" />
+    </fieldset>
+
+    <h3>Demo Content:</h3>
+	<ol>
+		<li>Disabled: Change "Contact Type" field to organization, some fields like "First Name" are disabled;</li>
+		<li>Edit Mask: if "Country" field Changed, some fields' edit mask like "Phone" will change too. ;</li>
+		<li>Lookup Data: if "Gender" field changed, the options of Field "Salutation" will change too;</li>
+	</ol>
+	
+	<!-- Source Code -->
+	<script type="text/javascript" src="../../source/demosource.js?height=1100"></script>
+	</div>
+</html>

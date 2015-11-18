@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Initialize: </li></ul>
+    <pre class="prettyprint linenums"><code>
+&lt;script type="text/javascript" src="../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+    //"jslet" is the system defined module name.
+    jslet.define("animals", "../js/animals.js");
+    jslet.require("jslet,animals", function () {
+        dsAnimals.datasetListener(doDatasetScroll);
+    });
+
+    function doDatasetScroll(dsEvent) {
+        if (dsEvent.eventType == jslet.data.DatasetEvent.AFTERSCROLL) {
+            dsAnimals.renderOptions("powerfulanimal");
+        }
+    }
+&lt;/script&gt;
+    </code></pre>
+	
+	<ul><li>Most Powerful Animals: </li></ul>
+    <pre class="prettyprint linenums"><code>
+&lt;div data-jslet='type:"DBTable",dataset:"animals"' style="width: 100%; height: 150px"/&gt;
+    </code></pre>
+	
+	<ul><li>Edit Panel: </li></ul>
+    <pre class="prettyprint linenums"><code>
+&lt;div data-jslet='type:"DBRadioGroup",dataset:"animals",field:"animaltype"' /&gt;
+&lt;select data-jslet='type:"DBSelect",dataset:"animals",field:"powerfulanimal"' style="width: 180px" /&gt;
+    </code></pre>
+	
+	<ul><li><a href='../js/animals-source.html' target="_blank" >Animals.js</a>: </li></ul>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../prettify";
+    </script>
+    <script type="text/javascript" src="../prettify/run_prettify.js"></script>
+</body>
+</html>

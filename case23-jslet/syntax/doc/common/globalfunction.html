@@ -1,0 +1,288 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>Jslet Global Functions</title>
+<meta name="date" content="2013-06-06" />
+<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style" />
+</head>
+<body>
+
+<div class="header">
+<div class="subTitle">jslet.</div>
+<h2 title="Global Functions" class="title">Global Functions;</h2>
+</div>
+<div class="contentContainer">
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<hr />
+<br />
+<div class="block">
+Global Functions:
+</div>
+ 
+<dl><dt><span class="strong">Since:</span></dt>
+  <dd>1.0</dd>
+</dl>
+</li>
+</ul>
+</div>
+
+
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+
+<!-- ======== Public Functions SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="publicfunction_summary"></a>
+<h3>Global Functions</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Functions</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>String</code></td>
+<td class="colLast"><code><strong><a href="#jslet.nextId()">jslet.nextId</a></strong>()</code>
+<div class="block">Generate a unique id for html element.</div>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst"><code>Boolean</code></td>
+<td class="colLast"><code><strong><a href="#jslet.like()">jslet.like</a></strong>(testValue, pattern, escapeChar)</code>
+<div class="block">Test if the specified value matchs the pattern, the format of pattern is same as SQL like.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>Boolean</code></td>
+<td class="colLast"><code><strong><a href="#jslet.between()">jslet.between</a></strong>(testValue, minValue, maxValue)</code>
+<div class="block">Test if the specified value is between minValue and maxValue.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>Boolean</code></td>
+<td class="colLast"><code><strong><a href="#jslet.inlist()">jslet.inlist</a></strong>(testValue, testValue, value1, value2, ...)</code>
+<div class="block">Test if the specified value is in the list.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#showInfo()">showInfo</a></strong>(info)</code>
+<div class="block">Show infomation to user.</div>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#showError()">showError</a></strong>(message)</code>
+<div class="block">Show error message to user.</div>
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst"><code>jslet control</code></td>
+<td class="colLast"><code><strong><a href="#jslet.ui.createControl()">jslet.ui.createControl</a></strong>(jsletparam, parent, width, height)</code>
+<div class="block">Create jslet control according to control configuration, and add it to parent element.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#jslet.ui.bindControl()">jslet.ui.bindControl</a></strong>(el, jsletparam)</code>
+<div class="block">Create jslet control according to control configuration, and add it to parent element.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#jslet.ui.install()">jslet.ui.install</a></strong>(pElement)</code>
+<div class="block">Scan the specified html element children and bind jslet control to these html element with 'data-jslet' attribute.</div>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><strong><a href="#jslet.ui.uninstall()">jslet.ui.uninstall</a></strong>(pElement)</code>
+<div class="block">Scan the specified html element children and unbind jslet control.</div>
+</td>
+</tr>
+
+</table>
+</li>
+</ul>
+
+</li>
+</ul>	
+</div>
+
+<!-- ========= PUBBLIC FUNCTION DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList">
+<h3>Global Functions Detail</h3>
+
+
+<a name="jslet.nextId()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>jslet.nextId</h4>
+<pre>jslet.nextId()</pre>
+<div class="block">Generate a unique id for html element
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>String, element id.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl>
+</div></li></ul>
+
+<a name="jslet.like()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>jslet.like</h4>
+<pre>jslet.like(testValue, pattern, escapeChar)</pre>
+<div>Test if the specified value matchs the pattern, the format of pattern is same as SQL like. Sample:
+<pre><code class="sample">
+jslet.like('abc','%b%');// true
+jslet.like('abc','%b'); // false
+jslet.like('abc','a_c');// true
+</code></pre>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>testValue</code> - (Required) String, test value.</dd>
+<dd><code>pattern</code> - (Required) String, test pattern, format same as SQL like.</dd>
+<dd><code>escapeChar</code> - (Optional) String, use this character to escape special character, default is "\".</dd>
+<dt><span class="strong">Returns:</span></dt><dd>Boolean, true for matched, false for otherwise.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl> 
+</div></li></ul>
+
+<a name="jslet.between()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>jslet.between</h4>
+<pre>jslet.between(testValue, minValue, maxValue)</pre>
+<div>Test if the specified value is between minValue and maxValue. Sample:
+<pre><code class="sample">
+jslet.between(4,2,5);// true
+jslet.between('c','a','b'); // false
+</code></pre>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>testValue</code> - (Required) Object, test value.</dd>
+<dd><code>minValue</code> - (Required) Object, minimum value.</dd>
+<dd><code>maxValue</code> - (Required) Object, maximum value.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>Boolean, true for matched, false for otherwise.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl> 
+</div></li></ul>
+
+<a name="jslet.inlist()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>jslet.inlist</h4>
+<pre>jslet.inlist(testValue, value1, value2, ...)</pre>
+<div>Test if the specified value is in the list. Sample:
+<pre><code class="sample">
+jslet.inlist('a','c','d','e') // false
+</code></pre>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>testValue</code> - (Required) Object, test value.</dd>
+<dd><code>valueN</code> - (Required) Object, value to be compared.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>Boolean, true for matched, false for otherwise.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl> 
+</div></li></ul>
+
+<a name="jslet.showInfo()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>jslet.showInfo</h4>
+<pre>jslet.showInfo(info)</pre>
+<div>Show infomation to user.
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>info</code> - (Required) String, information.</dd>
+<dt><span class="strong">Since:</span></dt><dd>2.0</dd>
+</dl>
+</div></li></ul>
+
+<a name="jslet.showError()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>jslet.showError</h4>
+<pre>jslet.showError(message)</pre>
+<div>Show error message to user.
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>message</code> - (Required) String, error message.</dd>
+<dt><span class="strong">Since:</span></dt><dd>2.0</dd>
+</dl>
+</div></li></ul>
+
+<a name="jslet.ui.createControl()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>jslet.ui.createControl</h4>
+<pre>jslet.ui.createControl(jsletparam, parent, width, height)</pre>
+<div>Create jslet control according to control configuration, and add it to parent element.
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>jsletparam</code> - (Required) Object, jslet control configuration object, like: {type:"DBText", field: "test"}.</dd>
+<dd><code>parent</code> - (Optional) Html Element, the parent element.</dd>
+<dd><code>width</code> - (Optional) Integer, control width.</dd>
+<dd><code>height</code> - (Optional) Integer, control height.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>Jslet Control.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl>
+</div></li></ul>
+
+<a name="jslet.ui.bindControl()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>jslet.ui.bindControl</h4>
+<pre>jslet.ui.bindControl(el, jsletparam)</pre>
+<div>Bind jslet control to an existing html element.
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>el</code> - (Optional) Html Element.</dd>
+<dd><code>jsletparam</code> - (Required) Object, jslet control configuration object, like: {type:"DBText", field: "test"}.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl>
+</div></li></ul>
+
+
+<a name="jslet.ui.install()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>jslet.ui.install</h4>
+<pre>jslet.ui.install(pElement)</pre>
+<div>Scan the specified html element children and bind jslet control to these html element with 'data-jslet' attribute.
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>pElement</code> - (Optional) Parent html element which need to be scan, if null, document.body used.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl>
+</div></li></ul>
+
+<a name="jslet.ui.uninstall()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>jslet.ui.uninstall</h4>
+<pre>jslet.ui.uninstall(pElement)</pre>
+<div>Scan the specified html element children and unbind jslet control.
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>pElement</code> - (Optional) Parent html element which need to be scan, if null, document.body used.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl>
+</div></li></ul>
+
+</div>
+
+<!-- ========= END OF CLASS DATA ========= -->
+
+
+
+<p class="legalCopy"><small><font size="-1"> Copyright &#x00a9; 2010, 2013 All rights reserved. </font></small></p>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Jslet dataset export data">
+    <title>Jslet - Export Data</title>
+    <link rel="stylesheet" type="text/css" href="../css/demo-style.css" />
+    <script type="text/javascript" src="../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+        jslet.define("employee", "../js/employee.js","jslet");
+        jslet.require("jslet,employee");
+    </script>
+</head>
+<body onunload="jslet.ui.uninstall()">
+	<div class="container">
+    <div class="page-header">
+    <h2 id="top">Jslet - Export Data</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+	<div class="content">Export data with CVS format.</div>
+    <h4>Employee List:&nbsp;&nbsp;(<a href="../model/EmployeeDataModel.htm">Data Model</a>)</h4>
+	<div data-jslet='type:"DBTable",dataset:"employee",hasSelectCol:true,hasSeqCol:true' style="width: 100%; height: 220px">
+		</div>
+
+
+	<h4>Export Options</h4>
+        <input id="showDispValue" type="radio" checked="checked" name="export" />Export field's display value&nbsp;<input type="radio" name="export" />Export fields's real value<br />
+        <input type="checkbox" id="selected" />Only selected records<br />
+		<input id="exportHeader" type="checkbox" checked="checked"/>With field name.<br />
+        <input id="includeFields" type="checkbox" checked="checked" />Include fields: workerid, name, gender <br />
+        <input id="excludeFields" type="checkbox" checked="checked" />Exclude fields: department, birthday 
+
+	<h4>Export Data</h4>
+		<p><button class="btn btn-primary" onclick="doExport()"> Export .CSV </button></p>
+		<textarea id="result" rows="3" cols="5" style="height:200px; width:100%"></textarea>
+
+   <script type="text/javascript">
+   		function doExport(){
+			var showDispValue = $("#showDispValue")[0].checked;
+			var onlySelected = $("#selected")[0].checked;
+			var exportHeader = $("#exportHeader")[0].checked;
+			var hasIncludeFields = $("#includeFields")[0].checked;
+			var hasExcludeFields = $("#excludeFields")[0].checked;
+			var option = {
+				exportHeader: exportHeader,
+				exportDisplayValue: showDispValue,
+				onlySelected: onlySelected,
+				excludeFields: ['workerid', 'name', 'gender']
+			};
+			if(hasIncludeFields) {
+				option.includeFields = ['workerid', 'name', 'gender'];
+			}
+			if(hasExcludeFields) {
+				option.excludeFields = ['department', 'birthday'];
+			}
+			$("#result")[0].value = dsEmployee.exportCsv(option);
+   		}
+   </script>
+   
+	<!-- Source Code -->
+	<script type="text/javascript" src="../source/demosource.js?height=430"></script>
+	</div>
+</body>
+</html>

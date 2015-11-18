@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head Javascript: </li></ul>
+    <pre class="prettyprint linenums"><code>
+	&lt;script type="text/javascript" src="../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+	&lt;script type="text/javascript"&gt;
+	    jslet.define("employee","../js/employee.js");
+	    //jslet is predefined module name
+	    jslet.require("jslet,employee");
+	&lt;/script&gt;
+	</code></pre>
+	
+	<ul><li>Employee List: </li></ul>
+    <pre class="prettyprint linenums"><code>
+        &lt;div data-jslet="type:'DBTable',dataset:'employee',hasSelectCol:true,rowHeight:25"
+            style="width: 100%; height: 200px"&gt;
+        &lt;/div&gt;
+	</code></pre>
+
+	<ul><li>Employee Photo: </li></ul>
+    <pre class="prettyprint linenums"><code>
+        &lt;img id="imgPhoto" alt="employee phote" src="" 
+		   data-jslet="type:'DBImage',srcType:'file',dataset:'employee',field:'photo',baseUrl:'../photo/'"
+           style="height: 160px; width: 140px" /&gt;
+	</code></pre>
+
+	<ul><li>Employee Editor: </li></ul>
+    <pre class="prettyprint linenums"><code>
+	&lt;!-- Employee Editor --&gt;
+    &lt;table data-jslet="dataset:'employee'" cellspacing="10"&gt;
+        &lt;tr&gt;
+            &lt;td&gt;
+                &lt;label data-jslet="type:'DBLabel',field:'workerid'" /&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                &lt;input type="text" data-jslet="type:'DBText',field:'workerid'" class="editor" /&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                &lt;label data-jslet="type:'DBLabel',field:'name'"/&gt;
+            &lt;/td&gt;
+            &lt;td&gt;
+                &lt;input type="text" data-jslet="type:'DBText',field:'name'" class="editor" /&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+	</code></pre>
+	<ul><li><a href='../js/employee-source.html' target="_blank" >Employee.js</a>: </li></ul>
+
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../prettify";
+    </script>
+    <script type="text/javascript" src="../prettify/run_prettify.js"></script>
+</body>
+</html>

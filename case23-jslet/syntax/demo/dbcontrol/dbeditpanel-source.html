@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+&lt;script type="text/javascript" src="../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+    jslet.define("employee", "../js/employee.js");
+    jslet.require("jslet,employee", function () {
+        initialize();
+    });
+&lt;/script&gt;
+    </code></pre>
+	
+	<ul><li>Editor: </li></ul>
+    <pre class="prettyprint linenums"><code>
+&lt;div id='editpanel' style="border: 1px solid #7F9DB9;width:800px;height:210px"
+ data-jslet='type:"DBeditpanel",dataset:"employee", columnCount:3, columnWidth: 150, rowHeight:30, 
+    fields:[{field:"workerid",colSpan:2},{field:"department",colSpan:2,showLine:true}]' /&gt;
+    </code></pre>
+	
+	<ul><li><a href='../js/employee-source.html' target="_blank" >Employee.js</a>: </li></ul>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../prettify";
+    </script>
+    <script type="text/javascript" src="../prettify/run_prettify.js"></script>
+</body>
+</html>

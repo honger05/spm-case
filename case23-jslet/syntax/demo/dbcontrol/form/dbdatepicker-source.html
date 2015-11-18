@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head Javascript: </li></ul>
+    <pre class="prettyprint linenums"><code>
+&lt;script type="text/javascript" src="../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+    jslet.define("employee","../js/employee.js");
+    //jslet is predefined module name
+    jslet.require("jslet,employee");
+&lt;/script&gt;
+	</code></pre>
+	
+	<ul><li>Generic Controls: </li></ul>
+    <pre class="prettyprint linenums"><code>
+&lt;!-- DBDatePicker --&gt;
+&lt;div data-jslet="type:'DBDatePicker',field:'birthday'"&gt;&lt;/div&gt;
+
+	</code></pre>
+	<ul><li><a href='../js/employee-source.html' target="_blank" >Employee.js</a>: </li></ul>
+
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../../prettify";
+    </script>
+    <script type="text/javascript" src="../../prettify/run_prettify.js"></script>
+</body>
+</html>

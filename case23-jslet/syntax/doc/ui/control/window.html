@@ -1,0 +1,463 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>Jslet Window</title>
+<meta name="date" content="2013-06-06" />
+<meta name="keywords" content="Window" />
+<link rel="stylesheet" type="text/css" href="../../stylesheet.css" title="Style" />
+</head>
+<body>
+<div class="header">
+<div class="subTitle">jslet.ui.</div>
+<h2 title="Class Window" class="title">Class Window</h2>
+</div>
+<div class="contentContainer">
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<hr />
+<br />
+<div class="block">
+jslet.ui.Window, it has the following features: 
+<ol>
+<li>Show as modal or modeless;</li>
+<li>User can change window size;</li>
+<li>User can minimize, maximize, restore or close window;</li>
+<li>User can move window;</li>
+</ol>
+Example:
+<pre><code class="sample">
+    var oWin = jslet.ui.createControl({ type: "Window", iconcls:"winicon", caption: "test window", minimizable: false, maximizable:false,onActive: doWinActive, onPositionChanged: doPositionChanged });
+    oWin.setContent("Open modeless window in the Body(with icon)!");
+    oWin.show(350,250);
+    //or oWin.showModel(350, 250);
+
+ 	
+</code></pre>
+You can also see <a href="../../../demo/uicontrol/window.html"><span class="demo">Demo</span></a>.
+
+</div>
+ 
+<dl><dt><span class="strong">Since:</span></dt>
+  <dd>2.0</dd>
+<dt><span class="strong">See Also:</span></dt><dd>
+<a href="../../common/globalfunction.html" title="Jslet Global Functions"><code>Jslet Global Functions</code></a>
+</dd></dl> 
+</li>
+</ul>
+</div>
+
+
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+
+<!-- ========== PROPERTIES SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary"></a>
+
+<h3>Properties</h3>
+<table class="overviewSummary fixedtable" border="0" cellpadding="3" cellspacing="0">
+<tr>
+<th class="propcol" scope="col">Property Name</th>
+<th class="datatypecol" scope="col">Data Type</th>
+<th class="requiredcol" scope="col">Required</th>
+<th class="defaultcol" scope="col">Default</th>
+<th class="" scope="col">Description</th>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">type</td>
+<td>String</td>
+<td>Yes</td>
+<td>"Window"</td>
+<td><code>Must be: Window</code>
+</td>
+</tr>
+<tr class="altColor">
+<td class="pmename">caption</td>
+<td>String</td>
+<td></td>
+<td></td>
+<td><code>The caption of window.</code>
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">resizable</td>
+<td>Boolean</td>
+<td></td>
+<td></td>
+<td>Identify user can resize window or not.</td>
+</tr>
+
+<tr class="altColor">
+<td class="pmename">minimizable</td>
+<td>Boolean</td>
+<td></td>
+<td>true</td>
+<td>Identify user can minimize window or not.</td>
+</tr>
+
+
+<tr class="rowColor">
+<td class="pmename">maximizable</td>
+<td>Boolean</td>
+<td></td>
+<td>true</td>
+<td>Identify user can maximize window or not.</td>
+</tr>
+
+<tr class="altColor">
+<td class="pmename">closable</td>
+<td>Boolean</td>
+<td></td>
+<td>true</td>
+<td>Identify user can close window or not.</td>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">iconClass</td>
+<td>String</td>
+<td></td>
+<td></td>
+<td><code>The title icon class of window.</code>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="pmename">isCenter</td>
+<td>Boolean</td>
+<td></td>
+<td>false</td>
+<td>Show window in the center of container.</td>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">width</td>
+<td>Integer</td>
+<td></td>
+<td></td>
+<td><code>Width of window.</code>
+</td>
+</tr>
+<tr class="altColor">
+<td class="pmename">minWidth</td>
+<td>Integer</td>
+<td></td>
+<td></td>
+<td><code>Minimum width of window.</code>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="pmename">maxWidth</td>
+<td>Integer</td>
+<td></td>
+<td></td>
+<td><code>Maximum width of window.</code>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="pmename">height</td>
+<td>Integer</td>
+<td></td>
+<td></td>
+<td><code>Height of window.</code>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="pmename">minHeight</td>
+<td>Integer</td>
+<td></td>
+<td></td>
+<td><code>Minimum height of window.</code>
+</td>
+</tr>
+<tr class="altColor">
+<td class="pmename">maxHeight</td>
+<td>Integer</td>
+<td></td>
+<td></td>
+<td><code>Maximum height of window.</code>
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">onSizeChanged</td>
+<td>Event</td>
+<td></td>
+<td></td>
+<td>Fired when user changes window size. Event handler:
+<pre><code class="sample">
+function(width, height) {...};
+Parameters:
+  width: Integer, new width.
+  height: Integer, new height.
+Return:
+  void;
+</code></pre>
+</td>
+</tr>
+
+
+<tr class="altColor">
+<td class="pmename">onPositionChanged</td>
+<td>Event</td>
+<td></td>
+<td></td>
+<td>Fired when user changes window position. Event handler:
+<pre><code class="sample">
+function(left, top) {...};
+Parameters:
+  left: Integer, left
+  top: Integer, top
+Return:
+  Object, new position, like: {left: 999, top: 999};
+</code></pre>
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="pmename">onActive</td>
+<td>Event</td>
+<td></td>
+<td></td>
+<td>Fired when user activates window. Event handler:
+<pre><code class="sample">
+function(self) {...};
+Parameters:
+  self: jslet.ui.Window, this window.
+Return:
+  void;
+</code></pre>
+</td>
+</tr>
+
+
+<tr class="altColor">
+<td class="pmename">onClosed</td>
+<td>Event</td>
+<td></td>
+<td></td>
+<td>Fired when user closes window. Event handler:
+<pre><code class="sample">
+function(self) {...};
+Parameters:
+  self: jslet.ui.Window, this window.
+Return:
+  String, action name, optional value: close, hidden;
+  if return value is hidden, window is hidden.
+</code></pre>
+</td>
+</tr>
+
+</table>
+</li></ul>
+
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary"></a>
+
+<h3>Methods</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0">
+<tr>
+<th class="colFirst" scope="col">Name</th>
+<th class="colLast" scope="col">Description</th>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst pmename">show(left, top)</td>
+<td class="colLast">
+Show window at specified position.
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>left</code> - (Required) Integer, left.</dd>
+<dd><code>top</code> - (Required) Integer, top.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>void</dd>
+<dt><span class="strong">Since:</span></dt><dd>2.0</dd>
+</dl> 
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst pmename">showModal(left, top)</td>
+<td class="colLast">
+Show modal window at specified position.
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>left</code> - (Required) Integer, left.</dd>
+<dd><code>top</code> - (Required) Integer, top.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>void</dd>
+<dt><span class="strong">Since:</span></dt><dd>2.0</dd>
+</dl> 
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst pmename">hide()</td>
+<td class="colLast">
+Hide window.
+<dl>
+<dt><span class="strong">Since:</span></dt><dd>2.0</dd>
+</dl> 
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst pmename">close()</td>
+<td class="colLast">
+Close window, this will fire onClosed event.
+<dl>
+<dt><span class="strong">Since:</span></dt><dd>2.0</dd>
+</dl> 
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst pmename">minimize()</td>
+<td class="colLast">
+Minimize window.
+<dl>
+<dt><span class="strong">Since:</span></dt><dd>2.0</dd>
+</dl> 
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst pmename">maximize()</td>
+<td class="colLast">
+Maximize window.
+<dl>
+<dt><span class="strong">Since:</span></dt><dd>2.0</dd>
+</dl> 
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst pmename">restore()</td>
+<td class="colLast">
+Restore window.
+<dl>
+<dt><span class="strong">Since:</span></dt><dd>2.0</dd>
+</dl> 
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst pmename">activate()</td>
+<td class="colLast">
+Activate window, this will fire the 'OnActive' event.
+<dl>
+<dt><span class="strong">Since:</span></dt><dd>2.0</dd>
+</dl> 
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst pmename">setPosition(left, top)</td>
+<td class="colLast">
+Change window position.
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>left</code> - (Required) Integer, left.</dd>
+<dd><code>top</code> - (Required) Integer, top.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>void</dd>
+<dt><span class="strong">Since:</span></dt><dd>2.0</dd>
+</dl> 
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst pmename">changeSize(width, height)</td>
+<td class="colLast">
+Change window size.
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>width</code> - (Required) Integer, width.</dd>
+<dd><code>height</code> - (Required) Integer, height.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>void</dd>
+<dt><span class="strong">Since:</span></dt><dd>2.0</dd>
+</dl> 
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst pmename">setCaption(caption)</td>
+<td class="colLast">
+Set window caption.
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>caption</code> - (Required) String, caption.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>void</dd>
+<dt><span class="strong">Since:</span></dt><dd>2.0</dd>
+</dl> 
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst pmename">setContent(html)</td>
+<td class="colLast">
+Set window content.
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>html</code> - (Required) String, content html.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>void</dd>
+<dt><span class="strong">Since:</span></dt><dd>2.0</dd>
+</dl> 
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst pmename">getCaptionDiv()</td>
+<td class="colLast">
+Get window caption element. You can use it to customize window caption.
+<dl>
+<dt><span class="strong">Since:</span></dt><dd>2.0</dd>
+</dl> 
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst pmename">getContentDiv()</td>
+<td class="colLast">
+Get window content element. You can use it to customize window content.
+<dl>
+<dt><span class="strong">Since:</span></dt><dd>2.0</dd>
+</dl> 
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst pmename">bringToFront()</td>
+<td class="colLast">
+Bring window to front.
+<dl>
+<dt><span class="strong">Since:</span></dt><dd>2.0</dd>
+</dl>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst pmename">setZIndex(zIndex)</td>
+<td class="colLast">
+Set window Z-Index.
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>zIndex</code> - (Required) Integer, z index.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>void</dd>
+<dt><span class="strong">Since:</span></dt><dd>2.0</dd>
+</dl> 
+</td>
+</tr>
+
+</table>
+</li></ul>
+
+
+</li></ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+
+<p class="legalCopy"><small><font size="-1"> Copyright &#x00a9; 2010, 2013 All rights reserved. </font></small></p>
+</body>
+</html>

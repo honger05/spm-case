@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Jslet dataset edit mask">
+    <title>Jslet - Edit Mask</title>
+    <link rel="stylesheet" type="text/css" href="../css/demo-style.css" />
+    <script type="text/javascript" src="../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+        jslet.define("salesdetail", "../js/salesdetail.js");
+        jslet.require("jslet,salesdetail", function () {
+            initialize();
+        });
+
+        function initialize() {
+			dsSaleMaster = jslet.data.getDataset('dsSaleMaster');
+            var idFldObj = dsSaleMaster.getField('saleid');
+			idFldObj.editMask({mask:'LL-0000', keepChar: true, transform: 'upper'});
+			idFldObj.tip('ID format: LL-0000');
+
+            var dateFldObj = dsSaleMaster.getField('saledate');
+			dateFldObj.editMask({mask:'0000-00-00', keepChar: true});
+			dateFldObj.tip('Date format: 0000-00-00');
+			
+			var timeFldObj = dsSaleMaster.getField('comment');
+			timeFldObj.editMask({mask:'00:00:00', keepChar: true});
+			timeFldObj.tip('Time format: 00:00:00');
+			
+			dsSaleMaster.dataList(null);
+			dsSaleMaster.insertRecord();
+
+	        jslet.ui.onReady = function(){
+				dsSaleMaster.focusEditControl('saleid');
+	        }
+        }
+
+    </script>
+</head>
+<body onunload="jslet.ui.uninstall()">
+	<div class="container">
+    <div class="page-header">
+    <h2 id="top">Jslet - Edit Mask</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+	<div class="content">Demonstrate how to configurate edit mask.</div>
+    <h4>Employee List:&nbsp;&nbsp;(<a href="../model/EmployeeDataModel.htm">Data Model</a>)</h4>
+	<div data-jslet='type:"DBTable",dataset:"dsSaleMaster"' style="width: 100%; height: 200px"></div><br />
+	<div class="row">
+    <button class="btn btn-default" onclick="dsSaleMaster.insertRecord();dsSaleMaster.focusEditControl('saleid');" title="Add record after current cursor"> Insert </button>
+    <button class="btn btn-default" onclick="dsSaleMaster.appendRecord();dsSaleMaster.focusEditControl('saleid');" title="Add record after last record"> Append </button>
+    <button class="btn btn-default" onclick="dsSaleMaster.editRecord();dsSaleMaster.focusEditControl>);"> Edit </button>
+    <button class="btn btn-default" onclick="dsSaleMaster.deleteRecord();"> Delete </button>
+    <button class="btn btn-default" onclick="dsSaleMaster.confirm();"> Confirm </button>
+    <button class="btn btn-default" onclick="dsSaleMaster.cancel();"> Cancel </button>
+	</div>
+	
+    <h4>Edit Panel</h4>
+	<div class="form-horizontal" data-jslet='dataset:"dsSaleMaster"' role="form">
+		<div class="form-group">
+			<label class="col-sm-2" data-jslet='type:"DBLabel",field:"saleid"'></label>
+			<div class="col-sm-3">
+				<input type="text" data-jslet='type:"DBText",field:"saleid"' class="editor" ></input>
+			</div>
+			<label class="col-sm-4" data-jslet='type:"DBLabel",field:"saleid#tip"' ></label>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2" data-jslet='type:"DBLabel",field:"saledate"'></label>
+			<div class="col-sm-3">
+				<div id="date1" data-jslet='type:"DBDatePicker",field:"saledate"' class="editor"></div>
+			</div>
+			<label class="col-sm-4" data-jslet='type:"DBLabel",field:"saledate#tip"' ></label>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2" style="text-align:right">Time:</label>
+			<div class="col-sm-3">
+				<input data-jslet='type:"DBText",field:"comment"' class="editor"></input><br />
+			</div>
+			<label class="col-sm-4" data-jslet='type:"DBLabel",field:"comment#tip"' ></label>
+		</div>
+	</div>
+
+    <h3>Demo Comments</h3>
+	<div class="content">
+	The edit mask of all fields:
+    <ol>
+    <li>Sales ID: <b>LL-0000</b>
+     <br />2 upper case characters + 4 numbers.</li>
+    <li>Sales Date: <b>0000-00-00</b></li>
+    <li>Time: <b>00:00:00</b></li>
+    </ol>
+	</div>
+	<!-- Source Code -->
+	<script type="text/javascript" src="../source/demosource.js?height=630"></script>
+	</div>
+</body>
+</html>

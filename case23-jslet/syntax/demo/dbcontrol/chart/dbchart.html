@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Demeostrate how to use Jslet widget: DBChart">
+    <title>Jslet - DBChart Demo</title>
+    <link rel="stylesheet" type="text/css" href="../../css/demo-style.css" />
+    <!--[if lt IE 9]><script language="javascript" type="text/javascript" src="excanvas.min.js"></script><![endif]-->
+    
+    <script type="text/javascript" src="../../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+        //jslet is the system defined module name
+        jslet.require("jslet,jqplot", initialize);
+
+        function initialize() {
+            //Create dataset for chart
+            dsSummary = new jslet.data.Dataset("summary");
+
+            var f = jslet.data.createStringField("month", 10);
+            f.label("Month");
+            dsSummary.addField(f);
+
+            f = jslet.data.createNumberField("amount", 16, 2);
+            f.label("Amount");
+            f.displayFormat("#,##0.00");
+            dsSummary.addField(f);
+
+            f = jslet.data.createNumberField("netprofit", 16, 2);
+            f.label("Net Profit");
+            f.displayFormat("#,##0.00");
+            dsSummary.addField(f);
+
+            var dataList = [{ "area": "East", "month": "Jan.", "amount": 20000, "netprofit": 8000 },
+				{"month": "Jan.", "amount": 30000, "netprofit": 11000 },
+				{"month": "Feb.", "amount": 55500, "netprofit": 21000 },
+				{"month": "Mar.", "amount": 45300, "netprofit": 14090 },
+				{"month": "Apr.", "amount": 29300, "netprofit": 7409 },
+				{"month": "May.", "amount": 49300, "netprofit": 12409 },
+				{"month": "Jun.", "amount": 57900, "netprofit": 19900}];
+
+            dsSummary.dataList(dataList);
+        }
+    </script>
+</head>
+<body onunload="jslet.ui.uninstall()">
+	<div class="container">
+    <div class="page-header">
+    <h2 id="top">Jslet - DBChart Demo</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+    <div class="content">Tips: DBChart is designed with Flash. Cause the .swf file size is 514k, it is probably slow when open it first time.</div>
+    <h4>Summary List</h4>
+    <div data-jslet='type:"DBTable",dataset:"summary",hasSelectCol:true,selectBy:"area"'
+        style="width: 600px; height: 200px">
+    </div>
+
+	<h4>Chart Area</h4>
+    <table>
+        <tr>
+            <td>
+                <div id="chartId" data-jslet='type:"dbchart",chartType:"line",categoryField:"month",valueFields:"amount,netprofit", dataset:"summary"'
+                    style="width: 600px; height: 400px"></div>
+            </td>
+            <td style="vertical-align: top">
+				<p>Chart Options:</p>
+				<ol>
+                <li>
+                    Chart Type : <select id="idType" onchange="doChangeChartType()">
+                        <option value="line">Line Chart</option>
+                        <option value="bar">Bar Chart</option>
+                        <option value="stackbar">Stack Bar Chart</option>
+                        <!--option value="area">Area Chart</option -->
+                        <option value="pie">Pie Chart</option>
+                    </select>
+				</li>
+                <li>
+                    Value Data : <select id="selValueField" onchange="doChangeValueField()">
+                        <option value="amount,netprofit">Amount+Net Profit </option>
+                        <option value="amount">Sales Amount</option>
+                        <option value="netprofit">Net Profit</option>
+                    </select>
+				</li>
+                <li>
+                    Chart title: <input id="txtChartTitle" type="text" size="20" />
+						<button onclick="doChangeChartTitle()"> OK </button>
+                </li>
+                <li>
+                    Filter Data: <input id="txtFilter" type="text" size="20" value="[amount] > 30000" />
+						<button onclick="doFilterData(true)"> Set </button>
+						<button onclick="doFilterData(false)"> Clear </button>
+                </li>
+				</ol>
+            </td>
+        </tr>
+    </table>
+
+	<script type="text/javascript">
+		//Change Chart Type
+		function doChangeChartType() {
+			var chartObj = jslet('#chartId');
+			var chartType = $('#idType').val();
+			if(chartType == 'stackbar') {
+				chartObj.valueFields('amount,netprofit');
+			}
+			chartObj.chartType(chartType);
+			chartObj.renderAll();
+		}
+		
+		//Change value fields
+		function doChangeValueField() {
+			var chartObj = jslet('#chartId');
+			chartObj.valueFields($('#selValueField').val());
+			chartObj.renderAll();
+		}
+		
+		function doChangeChartTitle() {
+			var chartObj = jslet('#chartId');
+			chartObj.chartTitle($('#txtChartTitle').val());
+			chartObj.renderAll();
+		}
+		
+		function doFilterData(filtered) {
+			var chartObj = jslet('#chartId');
+			var dsObj = chartObj.dataset();
+			var filter = jQuery.trim($('#txtFilter').val());
+			if(filter && filtered) {
+				dsObj.filter(filter);
+				dsObj.filtered(true);
+			} else {
+				dsObj.filtered(false);			
+			}
+		} 
+		
+	</script>
+	<!-- Source Code -->
+	<script type="text/javascript" src="../../source/demosource.js?height=900"></script>
+	</div>
+</body>
+</html>

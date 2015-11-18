@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head Javascript: </li></ul>
+    <pre class="prettyprint linenums"><code>
+&lt;script type="text/javascript" src="../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+	jslet.define("employee","../js/employee.js");
+	//jslet is predefined module name
+	jslet.require("jslet,employee");
+&lt;/script&gt;
+	</code></pre>
+	
+	<ul><li>Generic Controls: </li></ul>
+    <pre class="prettyprint linenums"><code>
+&lt;!-- DBLabel --&gt;
+&lt;label data-jslet="type:'DBLabel',field:'name'"&gt;&lt;/label&gt;
+
+&lt;!-- DBDataLabel --&gt;
+&lt;label data-jslet="type:'DBDataLabel',field:'name'"&gt;&lt;/label&gt;
+
+&lt;!-- DBTextArea --&gt;
+&lt;textarea data-jslet="type:'DBTextArea',field:'name'"&gt;&lt;/textarea&gt;
+
+&lt;!-- DBPassword --&gt;
+&lt;input type="password" data-jslet="type:'DBPassword',field:'name'" /&gt; 
+
+&lt;!-- DBCheckBox --&gt;
+&lt;input type="checkbox" data-jslet="type:'DBCheckBox',field:'married'" /&gt;
+	</code></pre>
+	<ul><li><a href='../js/employee-source.html' target="_blank" >Employee.js</a>: </li></ul>
+
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../../prettify";
+    </script>
+    <script type="text/javascript" src="../../prettify/run_prettify.js"></script>
+</body>
+</html>

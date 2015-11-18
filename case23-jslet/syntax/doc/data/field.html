@@ -1,0 +1,1356 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>Jslet Field</title>
+<meta name="date" content="2013-06-06" />
+<meta name="keywords" content="clone()" />
+<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style" />
+</head>
+<body>
+
+<div class="header">
+<div class="subTitle">jslet.data.</div>
+<h2 title="Class Field" class="title">Class Field;</h2>
+</div>
+<div class="contentContainer">
+<div class="description">
+<ul class="blockList">
+<li class="blockList">
+<hr>
+<br>
+<div class="block">
+jslet.data.Field is used for store field configuration support data type: String, Number, Date, Boolean, Group, Dataset;
+</div>
+ 
+<dl><dt><span class="strong">Since:</span></dt>
+  <dd>1.0</dd>
+<dt><span class="strong">See Also:</span></dt><dd>
+<a href="dataset.html" title="jslet.data.Dataset"><code>Dataset</code></a>, 
+<a href="../common/exprsyntax.html" title="Jslet Expression Synctax"><code>Jslet Expression Synctax</code></a>, 
+<a href="fieldlookup.html" title="jslet.data.FieldLookup"><code>FieldLookup</code></a>, 
+<a href="editmask.html" title="jslet.data.EditMask"><code>EditMask</code></a>, 
+<a href="fielddatatype.html" title="jslet.data.DataType"><code>DataType</code></a>
+<a href="fieldvaluestyle.html" title="jslet.data.FieldValueStyle"><code>FieldValueStyle</code></a>
+</dd></dl>
+</li>
+</ul>
+</div>
+
+
+<div class="summary">
+<ul class="blockList">
+<li class="blockList">
+<!-- ======== Public Functions SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="publicfunction_summary">
+<!--   -->
+</a>
+<h3>Public Functions</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Functions</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>jslet.data.Field</code></td>
+<td class="colLast"><code><strong><a href="#createField()">jslet.data.createField</a></strong>(fieldConfig, parent)</code>
+<div class="block">Create field object.</div>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst"><code>jslet.data.Field</code></td>
+<td class="colLast"><code><strong><a href="#createStringField()">jslet.data.createStringField</a></strong>(fldName, length, parent)</code>
+<div class="block">Create string field object.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>jslet.data.Field</code></td>
+<td class="colLast"><code><strong><a href="#createNumberField()">jslet.data.createNumberField</a></strong>(fldName, length, scale, parent)</code>
+<div class="block">Create number field object.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>jslet.data.Field</code></td>
+<td class="colLast"><code><strong><a href="#createBooleanField()">jslet.data.createBooleanField</a></strong>(fldName, parent)</code>
+<div class="block">Create boolean field object.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>jslet.data.Field</code></td>
+<td class="colLast"><code><strong><a href="#createDateField()">jslet.data.createDateField</a></strong>(fldName, parent)</code>
+<div class="block">Create Date field object.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>jslet.data.Field</code></td>
+<td class="colLast"><code><strong><a href="#createDateField()">jslet.data.createDateField</a></strong>(fldName, parent)</code>
+<div class="block">Create Date field object.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>jslet.data.Field</code></td>
+<td class="colLast"><code><strong><a href="#createDatasetField()">jslet.data.createDatasetField</a></strong>(fldName, subDataset, parent)</code>
+<div class="block">Create Dataset field object.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>jslet.data.Field</code></td>
+<td class="colLast"><code><strong><a href="#createGroupField()">jslet.data.createGroupField</a></strong>(fldName, label, parent)</code>
+<div class="block">Create group field object.</div>
+</td>
+</tr>
+
+</table>
+</li>
+</ul>	
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_summary">
+<!--   -->
+</a>
+<h3>Constructor Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Constructor Summary table, listing constructors, and an explanation">
+<caption><span>Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colOne"><a href="#field()"><code><strong>jslet.data.Field</strong>(fieldName, dataType)</code></a>
+<div class="block">Constructs a new jslet.data.Field.</div>
+</td>
+</tr>
+</table>
+</li>
+</ul>
+<!-- ========== METHOD SUMMARY =========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_summary">
+<!--   -->
+</a>
+<h3>Method Summary</h3>
+<table class="overviewSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
+<caption><span>Methods</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Method and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst" colspan="2"><h4>Generic Method</h4></td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst"><code>String<br/>this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#name()">name</a></strong>()<br />
+<div class="block">Get the name of Field object.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>String<br/>this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#getType()">getType</a></strong>()</code>
+<div class="block">Get or set the field data type.</div>
+</td>
+</tr>
+
+
+<tr class="rowColor">
+<td class="colFirst"><code>String<br/>this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#label()">label</a></strong>()<br />
+	<strong><a href="#label()">label</a></strong>(label)</code>
+<div class="block">Get or set the label of Field object</div>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst"><code>String</code></td>
+<td class="colLast"><code><strong><a href="#getType()">getType</a></strong>()</code>
+<div class="block">Get field type.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>Integer<br/>this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#length()">length</a></strong>()<br />
+	<strong><a href="#length()">length</a></strong>(len)</code>
+<div class="block">Get or set field length.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>Integer<br/>this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#scale()">scale</a></strong>()<br />
+	<strong><a href="#scale()">scale</a></strong>(scale)</code>
+<div class="block">Get or set field scale</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>String<br/>this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#valueStyle()">valueStyle</a></strong>()<br />
+	<strong><a href="#valueStyle()">valueStyle</a></strong>(valueStyle)</code>
+<div class="block">Get or set the value style of field.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>String<br/>this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#valueSeparator()">valueSeparator</a></strong>()<br />
+	<strong><a href="#valueSeparator()">valueSeparator</a></strong>(separator)</code>
+<div class="block">Get or set the value separator of field.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>Integer<br/>this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#valueCountLimit()">valueCountLimit</a></strong>()<br />
+	<strong><a href="#valueCountLimit()">valueCountLimit</a></strong>(count)</code>
+<div class="block">Get or set the allowed count if valueStyle is multiple.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="dataset.html">jslet.data.Dataset</a><br/>this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#subDataset()">subDataset</a></strong>()<br />
+	<strong><a href="#subDataset()">subDataset</a></strong>(subDataset)</code>
+<div class="block">Get or set the sub dataset.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>String<br/>this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#formula()">formula</a></strong>()<br />
+	<strong><a href="#formula()">formula</a></strong>(formula)</code>
+<div class="block">Get or set the formula for field.</div>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst" colspan="2"><h4>Displaying Field</h4></td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst"><code>Integer<br/>this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#displayOrder()">displayOrder</a></strong>()<br />
+	<strong><a href="#displayOrder()">displayOrder</a></strong>(displayOrder)</code>
+<div class="block">Get or set field displayOrder.</div>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst"><code>String<br/>this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#alignment()">alignment</a></strong>()<br />
+	<strong><a href="#alignment()">alignment</a></strong>(alignment)</code>
+<div class="block">Get or set field display alignment</div>
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst"><code>String<br/>this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#nullText()">nullText</a></strong>()<br />
+	<strong><a href="#nullText()">nullText</a></strong>(nullText)</code>
+<div class="block">Get or set field display text if field's value is null.</div>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst"><code>Integer<br/>this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#displayWidth()">displayWidth</a></strong>()<br />
+	<strong><a href="#displayWidth()">displayWidth</a></strong>(width)</code>
+<div class="block">Get or set field display width.</div>
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst"><code>String<br/>this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#displayFormat()">displayFormat</a></strong>()<br />
+	<strong><a href="#displayFormat()">displayFormat</a></strong>(displayFormat)</code>
+<div class="block">Get or set field display text if field display format.</div>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst"><code>Boolean <br />this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#visible()">visible</a></strong>() <br />
+	<strong><a href="#visible()">visible</a></strong>(visible)
+	</code>
+<div class="block">Get or set if field is visible.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>jslet.data.FieldValueConverter <br />this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#customValueConverter()">customValueConverter</a></strong>() <br />
+	<strong><a href="#customValueConverter()">customValueConverter</a></strong>(converter)
+	</code>
+<div class="block">Get or set customized field value converter.</div>
+</td>
+</tr>
+	<tr class="rowColor">
+<td class="colFirst">&nbsp;</td>
+<td class="colLast">&nbsp;</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst" colspan="2"><h4>Editing Field</h4></td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst"><code>String <br />this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#defaultExpr()">defaultExpr</a></strong>() <br />
+	<strong><a href="#defaultExpr()">defaultExpr</a></strong>(expression)
+	</code>
+<div class="block">Get or set the expression to calculate field's default value.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>Object <br />this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#defaultValue()">defaultValue</a></strong>() <br />
+	<strong><a href="#defaultValue()">defaultValue</a></strong>(defaultValue)
+	</code>
+<div class="block">Get or set field's default value.</div>
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst"><code>Boolean <br />this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#unique()">unique</a></strong>() <br />
+	<strong><a href="#unique()">unique</a></strong>(unique)
+	</code>
+<div class="block">Get or set if field is unique.</div>
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst"><code>Boolean <br />this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#required()">required</a></strong>() <br />
+	<strong><a href="#required()">required</a></strong>(required)
+	</code>
+<div class="block">Get or set if field is required.</div>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst"><code>Boolean <br />this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#enabled()">enabled</a></strong>() <br />
+	<strong><a href="#enabled()">enabled</a></strong>(enabled)
+	</code>
+<div class="block">Get or set if field is enabled</div>
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst"><code>Boolean <br />this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#readOnly()">readOnly</a></strong>() <br />
+	<strong><a href="#readOnly()">readOnly</a></strong>(readOnly)
+	</code>
+<div class="block">Get or set if field is readOnly</div>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst"><code>String/<a href="editmask.html">jslet.data.EditMask </a><br />this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#editMask()">editMask</a></strong>() <br />
+	<strong><a href="#editMask()">editMask</a></strong>(editMask)
+	</code>
+<div class="block">Get or set the field's edit mask.</div>
+</td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst"><code>String/Object<br />this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#editControl()">editControl</a></strong>() <br />
+	<strong><a href="#editControl()">editControl</a></strong>(editControl)
+	</code>
+<div class="block">Get or set the field's edit control.</div>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst" colspan="2"><h4>Validtion</h4></td>
+</tr>
+
+<tr class="rowColor">
+<td class="colFirst"><code>String <br />this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#regularExpr()">regularExpr</a></strong>() <br />
+	<strong><a href="#regularExpr()">regularExpr</a></strong>(regularExpr)
+	</code>
+<div class="block">Get or set regular expression to validate the field value.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>Object/String <br />this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#dataRange()">dataRange</a></strong>() <br />
+	<strong><a href="#dataRange()">dataRange</a></strong>(range)
+	</code>
+<div class="block">Get or set the range of field value.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>Function <br />this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#customValidator()">customValidator</a></strong>() <br />
+	<strong><a href="#customValidator()">customValidator</a></strong>(validator)
+	</code>
+<div class="block">Get or set customized validator to validate field value.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>String <br />this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#validChars()">validChars</a></strong>() <br />
+	<strong><a href="#validChars()">validChars</a></strong>(validChars)
+	</code>
+<div class="block">Get or set valid character to validate field value.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst">&nbsp;</td>
+<td class="colLast">&nbsp;</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst" colspan="2"><h4>Group field</h4></td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>jslet.data.Field <br />this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#parent()">parent</a></strong>() <br />
+	<strong><a href="#parent()">parent</a></strong>(parent)
+	</code>
+<div class="block">Get or set the parent of the field.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>jslet.data.Field <br />this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#children()">children</a></strong>() <br />
+	<strong><a href="#children()">children</a></strong>(children)
+	</code>
+<div class="block">Get or set the children of the field.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst">&nbsp;</td>
+<td class="colLast">&nbsp;</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst" colspan="2"><h4>Field Lookup</h4></td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="fieldlookup.html">jslet.data.FieldLookup </a><br />this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#lookupField()">lookup</a></strong>() <br />
+	<strong><a href="#lookupField()">lookup</a></strong>(lookup)
+	</code>
+<div class="block">Get or set the field lookup setting.</div>
+</td>
+</tr>
+
+<tr class="altColor">
+<td class="colFirst" colspan="2"><h4>Others</h4></td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>Boolean <br />this</code></td>
+<td class="colLast"><code>
+	<strong><a href="#antiXss()">antiXss</a></strong>() <br />
+	<strong><a href="#antiXss()">antiXss</a></strong>(antiXss)
+	</code>
+<div class="block">Get or set if enable anti-XSS.</div>
+</td>
+</tr>
+
+
+<tr class="altColor">
+<td class="colFirst" colspan="2"><b>Events</b></td>
+</tr>
+
+</table>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+<div class="details">
+<ul class="blockList">
+<li class="blockList">
+	
+<!-- ========= PUBBLIC FUNCTION DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="publicfunction_detail">
+<!--   -->
+</a>
+<h3>Public Function Detail</h3>
+
+<a name="createField()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createField</h4>
+<pre>jslet.data.createField(fieldConfig, parent)</pre>
+<div class="block">Create a field object. Example:
+<pre><code class="sample">
+var fldObj = jslet.data.createField({name:'field1', type:'N', label: 'field1 label'});
+</code></pre>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>fieldConfig</code> - (Required) Object, a json object which property names are same as jslet.data.Field. Example: {name: 'xx', type: 'N', ...}.</dd>
+<dd><code>parent</code> - (Optional) jslet.data.Field, the parent field of this field.</dd>
+
+<dt><span class="strong">Returns:</span></dt><dd>Field Object.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl>
+</div></li></ul>
+
+<a name="createStringField()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createStringField</h4>
+<pre>jslet.data.createStringField(fldName, length, parent)</pre>
+<div class="block">Create a string field object. Example:
+<pre><code class="sample">
+var fldObj = jslet.data.createStringField('field1', 20});
+fldObj.label('field1 label');
+</code></pre>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>fldName</code> - (Required) String, field name.</dd>
+<dd><code>length</code> - (Optional) Integer, field length, if not set, field length will be 10.</dd>
+<dd><code>parent</code> - (Optional) jslet.data.Field, the parent field of this field.</dd>
+
+<dt><span class="strong">Returns:</span></dt><dd>Field Object.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl>
+</div></li></ul>
+
+<a name="createNumberField()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createNumberField</h4>
+<pre>jslet.data.createNumberField(fldName, length, scale, parent)</pre>
+<div class="block">Create a string number object. Example:
+<pre><code class="sample">
+var fldObj = jslet.data.createNumberField('field1', 12, 2});
+fldObj.label('field1 label');
+</code></pre>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>fldName</code> - (Required) String, field name.</dd>
+<dd><code>length</code> - (Optional) Integer, field length, if not set, field length will be 10.</dd>
+<dd><code>scale</code> - (Optional) Integer, field scale.</dd>
+<dd><code>parent</code> - (Optional) jslet.data.Field, the parent field of this field.</dd>
+
+<dt><span class="strong">Returns:</span></dt><dd>Field Object.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl>
+</div></li></ul>
+
+<a name="createDateField()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createDateField</h4>
+<pre>jslet.data.createDateField(fldName, parent)</pre>
+<div class="block">Create a date field object. Example:
+<pre><code class="sample">
+var fldObj = jslet.data.createDateField('dateField1'});
+fldObj.label('field1 label');
+</code></pre>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>fldName</code> - (Required) String, field name.</dd>
+<dd><code>parent</code> - (Optional) jslet.data.Field, the parent field of this field.</dd>
+
+<dt><span class="strong">Returns:</span></dt><dd>Field Object.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl>
+</div></li></ul>
+
+<a name="createBooleanField()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createBooleanField</h4>
+<pre>jslet.data.createBooleanField(fldName, parent)</pre>
+<div class="block">Create a boolean field object. Example:
+<pre><code class="sample">
+var fldObj = jslet.data.createBooleanField('field1'});
+fldObj.label('field1 label');
+</code></pre>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>fldName</code> - (Required) String, field name.</dd>
+<dd><code>parent</code> - (Optional) jslet.data.Field, the parent field of this field.</dd>
+
+<dt><span class="strong">Returns:</span></dt><dd>Field Object.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl>
+</div></li></ul>
+
+<a name="createDatasetField()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createDatasetField</h4>
+<pre>jslet.data.createDatasetField(fldName, subDataset, parent)</pre>
+<div class="block">Create a dataset field object, we usually use this method to create master/detail style ui. Example:
+<pre><code class="sample">
+var fldObj = jslet.data.createDatasetField('field1', subdataset});
+fldObj.label('field1 label');
+</code></pre>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>fldName</code> - (Required) String, field name.</dd>
+<dd><code>subDataset</code> - (Required) jslet.data.Dataset, sub dataset.</dd>
+<dd><code>parent</code> - (Optional) jslet.data.Field, the parent field of this field.</dd>
+
+<dt><span class="strong">Returns:</span></dt><dd>Field Object.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl>
+</div></li></ul>
+
+<a name="createGroupField()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>createGroupField</h4>
+<pre>jslet.data.createGroupField(fldName, label, parent)</pre>
+<div class="block">Create a group field object. Example:
+<pre><code class="sample">
+var parentField = jslet.data.createGroupField('field1', 'field label1'});
+var childField = jslet.data.createStringField('name', 15, parentField);
+</code></pre>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>fldName</code> - (Required) String, field name.</dd>
+<dd><code>label</code> - (Required) String, field label.</dd>
+<dd><code>parent</code> - (Optional) jslet.data.Field, the parent field of this field.</dd>
+
+<dt><span class="strong">Returns:</span></dt><dd>Field Object.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl>
+</div></li></ul>
+
+</li>
+</ul>
+
+	
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="constructor_detail">
+<!--   -->
+</a>
+<h3>Constructor Detail</h3>
+
+<a name="field()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>Field</h4>
+<pre>jslet.data.field(fieldName, dataType)</pre>
+<div class="block">Constructs a new field oject. Example:
+<pre><code class="sample">
+var fldObj = new jslet.data.Field('field1', 'N');
+</code></pre>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>fieldName</code> - (Required) String, field name.</dd>
+<dd><code>dataType</code> - (Required) String, field data type, see <a href="fielddatatype.html">jslet.data.DataType</a>.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>Field object.</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+<!-- ============ METHOD DETAIL ========== -->
+<ul class="blockList">
+<li class="blockList"><a name="method_detail">
+<!--   -->
+</a>
+<h3>Method Detail</h3>
+
+<a name="name()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>name</h4>
+<pre>this.name()</pre>
+<div class="block">Get field name.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Field name</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="getType()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getType</h4>
+<pre>getType()</pre>
+<div class="block">Get field data type, see <a href="fielddatatype.html">jslet.data.DataType</a>.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Field data type</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="label()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>label</h4>
+<pre>label()</pre>
+<div class="block">Get field label.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Field label</dd>
+</dl>
+<hr />
+<pre>label(label)</pre>
+<div class="block">Set field label.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>label</code> - (Required) String, field label.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="length()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>length</h4>
+<pre>length()</pre>
+<div class="block">Get field length.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Field length</dd>
+</dl>
+<hr />
+<pre>length(length)</pre>
+<div class="block">Set field length.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>length</code> - (Required) Integer, field length.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="scale()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>scale</h4>
+<pre>scale()</pre>
+<div class="block">Get field scale.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Field scale.</dd>
+</dl>
+<hr />
+<pre>scale(scale)</pre>
+<div class="block">Set field scale.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>scale</code> - (Required) Integer, field scale.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="valueStyle()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>valueStyle</h4>
+<pre>valueStyle()</pre>
+<div class="block">Get field value style.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Field value style.</dd>
+</dl>
+<hr />
+<pre>valueStyle(valueStyle)</pre>
+<div class="block">Set field value style.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>valueStyle</code> - (Required) Integer, field value style, see <a href="fieldvaluestyle.html">jslet.data.FieldValueStyle</a> .</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="valueSeparator()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>valueSeparator</h4>
+<pre>valueSeparator()</pre>
+<div class="block">Get field value separator if field can contain multiple values.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Field value separator</dd>
+</dl>
+<hr />
+<pre>valueSeparator(separator)</pre>
+<div class="block">Set field value separator, default separator is comma(,).</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>separator</code> - (Required) String, field value separator.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="valueCountLimit()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>valueCountLimit</h4>
+<pre>valueCountLimit()</pre>
+<div class="block">Get field value count limit if field can contain multiple values.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Field value count limit.</dd>
+</dl>
+<hr />
+<pre>valueCountLimit(valueCountLimit)</pre>
+<div class="block">Set field value count limit.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>valueCountLimit</code> - (Required) Integer, field value count limit.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="subDataset()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>subDataset</h4>
+<pre>subDataset()</pre>
+<div class="block">Get field sub dataset.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Field sub dataset.</dd>
+</dl>
+<hr />
+<pre>subDataset(subDataset)</pre>
+<div class="block">Set field sub dataset.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>subDataset</code> - (Required) jslet.data.Dataset, field sub dataset.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="formula()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>formula</h4>
+<pre>formula()</pre>
+<div class="block">Get formula expression of field.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>String, formula expression.</dd>
+</dl>
+<hr />
+<pre>formula(formula)</pre>
+<div class="block">Set formula expression of field.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>formula</code> - (Required) String, formula expression.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="displayOrder()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>displayOrder</h4>
+<pre>displayOrder()</pre>
+<div class="block">Get field display order.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Field display order.</dd>
+</dl>
+<hr />
+<pre>displayOrder(displayOrder)</pre>
+<div class="block">Set field display order.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>displayOrder</code> - (Required) Integer, field display order.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="alignment()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>alignment</h4>
+<pre>alignment()</pre>
+<div class="block">Get field alignment.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>String, field alignment.</dd>
+</dl>
+<hr />
+<pre>alignment(alignment)</pre>
+<div class="block">Set field alignment, optional values: left, right and center.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>alignment</code> - (Required) String, field alignment.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="nullText()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>nullText</h4>
+<pre>nullText()</pre>
+<div class="block">Get field display text if field's value is null.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>String, field display text.</dd>
+</dl>
+<hr />
+<pre>nullText(nullText)</pre>
+<div class="block">Set field display text if field's value is null.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>nullText</code> - (Required) String, field display text.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="displayWidth()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>displayWidth</h4>
+<pre>displayWidth()</pre>
+<div class="block">Get field display width.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Field display width.</dd>
+</dl>
+<hr />
+<pre>displayWidth(displayWidth)</pre>
+<div class="block">Set field display width.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>displayWidth</code> - (Required) Integer, field display width.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="displayFormat()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>displayFormat</h4>
+<pre>displayFormat()</pre>
+<div class="block">Get field display format.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>String, field display format.</dd>
+</dl>
+<hr />
+<pre>displayFormat(displayFormat)</pre>
+<div class="block">Set field display format.<br />
+For number field like: #,##0.00<br />
+For date field like: yyyy/MM/dd
+</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>displayFormat</code> - (Required) String, field display format.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="visible()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>visible</h4>
+<pre>visible()</pre>
+<div class="block">Get field visible or not.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Boolean, field visible or not.</dd>
+</dl>
+<hr />
+<pre>visible(visible)</pre>
+<div class="block">Set field display visible.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>visible</code> - (Required) Boolean, field visible.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="customValueConverter()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>customValueConverter</h4>
+<pre>customValueConverter()</pre>
+<div class="block">Get custom field value converter.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>jslet.data.FieldValueConverter.</dd>
+</dl>
+<hr />
+<pre>customValueConverter(converter)</pre>
+<div class="block">Set custom field value converter.
+	<pre><code class="sample">
+var converter = {
+	textToValue: function(fldObj, inputText) {
+		var value = inputText;
+		//Your code here
+		return value;
+	},
+	
+	valueToText: function(fldObj, value, isEditing) {
+		var text = value;
+		//Your code here
+		return text;
+	}
+};
+
+fldObj.customValueConverter(converter);
+	</code></pre>	
+</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>converter</code> - (Required) jslet.data.FieldValueConverter, field value converter.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+
+
+
+<a name="defaultExpr()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>defaultExpr</h4>
+<pre>defaultExpr()</pre>
+<div class="block">Get field default value expression.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>String, field default value expression.</dd>
+</dl>
+<hr />
+<pre>defaultExpr(defaultExpr)</pre>
+<div class="block">Set field default value expression.<br />
+This expression will be calculated when inserting a record.
+</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>defaultExpr</code> - (Required) String, default value expression.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="defaultValue()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>defaultValue</h4>
+<pre>defaultValue()</pre>
+<div class="block">Get field default value.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>String, field default value.</dd>
+</dl>
+<hr />
+<pre>defaultValue(defaultValue)</pre>
+<div class="block">Set field default value.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>defaultValue</code> - (Required) Object, field default value.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="unique()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>unique</h4>
+<pre>unique()</pre>
+<div class="block">Get field unique or not.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Boolean, field unique or not.</dd>
+</dl>
+<hr />
+<pre>unique(unique)</pre>
+<div class="block">Set field display unique.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>unique</code> - (Required) Boolean, field unique.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="required()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>required</h4>
+<pre>required()</pre>
+<div class="block">Get field required or not.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Boolean, field required or not.</dd>
+</dl>
+<hr />
+<pre>required(required)</pre>
+<div class="block">Set field display required.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>required</code> - (Required) Boolean, field required.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="enabled()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>enabled</h4>
+<pre>enabled()</pre>
+<div class="block">Get field enabled or not.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Boolean, field enabled or not.</dd>
+</dl>
+<hr />
+<pre>enabled(enabled)</pre>
+<div class="block">Set field display enabled.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>enabled</code> - (Required) Boolean, field enabled.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="readOnly()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>readOnly</h4>
+<pre>readOnly()</pre>
+<div class="block">Get field readOnly or not.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Boolean, field readOnly or not.</dd>
+</dl>
+<hr />
+<pre>readOnly(readOnly)</pre>
+<div class="block">Set field display readOnly.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>readOnly</code> - (Required) Boolean, field readOnly.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="editControl()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>editControl</h4>
+<pre>editControl()</pre>
+<div class="block">Get field edit control.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Boolean, field edit control.</dd>
+</dl>
+<hr />
+<pre>editControl(editControl)</pre>
+<div class="block">Set field edit control.It is similar as DBControl configuration, but you need not set 'dataset' and 'field' property. Example:
+<pre><code class="sample">
+//Normal DBControl configuration
+//var normalCtrlCfg = {type:"DBSpinEdit",dataset:"employee",field:"age",minValue:10,maxValue:100,step:5};
+
+var editCtrlCfg = {type:"DBSpinEdit",minValue:10,maxValue:100,step:5};
+fldObj.displayControl(editCtrlCfg);
+
+</code></pre>
+</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>editControl</code> - (Required) Object/json String, field edit control.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="regularExpr()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>regularExpr</h4>
+<pre>regularExpr()</pre>
+<div class="block">Get field regular validation expression.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>An object like: { expr: expr, message: message }.</dd>
+</dl>
+<hr />
+<pre>regularExpr(expr, message)</pre>
+<div class="block">Set field regular validation expression. Example:
+<pre><code class="sample">
+    fldObj.regularExpr(/(\(\d{3,4}\)|\d{3,4}-|\s)?\d{8}/ig, 'Invalid phone number!');//like: 0755-12345678
+</code></pre>	
+</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>expr</code> - (Required) String/RegExp, field regular validation expression.</dd>
+<dd><code>message</code> - (Required) String, message if field value is invalid.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="dataRange()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>dataRange</h4>
+<pre>dataRange()</pre>
+<div class="block">Get field value range.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>An object like: { from: value1, to: value2}.</dd>
+</dl>
+<hr />
+<pre>dataRange(range)</pre>
+<div class="block">Set field value range. Example:
+<pre><code class="sample">
+//For String field
+  var range = {from: 'a', to: 'z'};
+//For Date field
+  var range = {from: new Date(2000,1,1), to: new Date(2010,12,31)};
+//For Number field
+  var range = {from: 0, to: 100};
+fldObj.dataRange(range);
+</code></pre>	
+</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>range</code> - (Required) String/Object, an object like: { from: value1, to: value2}.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="customValidator()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>customValidator</h4>
+<pre>customValidator()</pre>
+<div class="block">Get custom validator for field value.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Fucntion, custom validator for field value.</dd>
+</dl>
+<hr />
+<pre>customValidator(customValidator)</pre>
+<div class="block">Set custom validator for field value. Pattern
+<pre><code class="sample">
+function(fieldObj, fldValue){}
+ //fieldObj: jslet.data.Field, Field object
+ //fldValue: Object, Field value
+ //return: String, if validate failed, return error message, otherwise return null; 
+</code></pre>
+</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>customValidator</code> - (Required) Function, custom validator for field value.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="validChars()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>validChars</h4>
+<pre>validChars()</pre>
+<div class="block">Get valid characters for field value.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>String, valid characters for field value.</dd>
+</dl>
+<hr />
+<pre>validChars(validChars)</pre>
+<div class="block">Set valid characters for field value. Example:
+<pre><code class="sample">
+fldObj.validChars('0123456789');
+</code></pre>	
+</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>validChars</code> - (Required) String, valid characters for field value.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="parent()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>parent</h4>
+<pre>parent()</pre>
+<div class="block">Get the parent of the field.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>String, valid characters for field value.</dd>
+</dl>
+<hr />
+<pre>parent(parent)</pre>
+<div class="block">Set the parent of the field.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>parent</code> - (Required) jslet.data.Field, the parent of the field.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="children()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>children</h4>
+<pre>children()</pre>
+<div class="block">Get the children of the field.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>jslet.data.Field[], the children of the field.</dd>
+</dl>
+<hr />
+<pre>children(children)</pre>
+<div class="block">Set the children of the field.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>children</code> - (Required) jslet.data.Field[], the children of the field.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="lookup()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>lookup</h4>
+<pre>lookup()</pre>
+<div class="block">Get the field lookup setting.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>jslet.data.FieldLookup, field lookup setting.</dd>
+</dl>
+<hr />
+<pre>lookup(lookupObj)</pre>
+<div class="block">Set the field lookup object.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>lookupObj</code> - (Required) jslet.data.FieldLookup, field lookup object.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+<a name="antiXss()"></a>
+<ul class="blockList">
+<li class="blockList">
+<h4>antiXss</h4>
+<pre>antiXss()</pre>
+<div class="block">Get anti-xss flag.</div>
+<dl>
+<dt><span class="strong">Returns:</span></dt><dd>Boolean.</dd>
+</dl>
+<hr />
+<pre>antiXss(antiXss)</pre>
+<div class="block">Set anti-xss flag, if the flag is true, the content of this field will be encoded.</div>
+<dl>
+<dt><span class="strong">Parameters:</span></dt>
+<dd><code>antiXss</code> - (Required) Boolean, anti-xss flag.</dd>
+<dt><span class="strong">Returns:</span></dt><dd>this</dd>
+<dt><span class="strong">Since:</span></dt><dd>1.0</dd>
+</dl></li></ul>
+
+
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<!-- ========= END OF CLASS DATA ========= -->
+
+<p class="legalCopy"><small><font size="-1"> Copyright &#x00a9; 2010, 2013 All rights reserved. </font></small></p>
+</body>
+</html>

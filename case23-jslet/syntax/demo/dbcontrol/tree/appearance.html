@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jslet - DBTreeView(Appearance) Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Demeostrate how to use Jslet widget: DBTreeView(Appearance)">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link type="text/css" rel="stylesheet" href="tree.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/demo-style.css" />
+    <script type="text/javascript" src="../../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+		jslet.define('agency', 'agency.js');
+        jslet.require('jslet,agency',initialize);
+
+        function initialize() {
+			//Global variable for #trvRegion 
+            treeCfg = { type: 'DBTreeView', 
+			    dataset: 'dsAgency', 
+				displayFields: '[code]+"-"+[name]',
+                hasCheckBox: true, 
+				iconClassField: 'iconcls',
+				expandLevel: 1 
+            };
+
+			//Global variable for below event handler
+            treeTag = document.getElementById('trvRegion');
+        }
+
+        function doGetIconClass(keyValue, level, isLeaf) {
+            return isLeaf ? 'dynset2' : 'dynset1';
+        }
+		
+    </script>
+</head>
+<body onunload="jslet.ui.uninstall()">
+	<div class="container">
+    <div class="page-header">
+    <h2 id="top">Jslet - DBTreeView(Appearance) Demo</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+    <h4>Tree Area</h4>
+	<!-- treeCfg is a global variable defined in Head tag.-->
+    <div id="trvRegion" data-jslet="treeCfg" style="width: 100%; height: 200px;margin-right: 20px">
+    </div>
+
+    <h3>Demo Content:</h3>
+	<div class="content">
+	<ol class="content-list">
+    <li>
+        After check a child node, all of its parent node will display bold, it is very useful to find all checked nodes when the parent nodes are collapsed. 
+	</li>
+    <li>
+        Set icon class id of tree node with field value(iconClassField). 
+	</li>
+    <li>
+        Set icon class id of tree node with customized event(onGetIconClass): 
+		<button onclick="treeTag.jslet.onGetIconClass = doGetIconClass; treeTag.jslet.renderAll(); treeTag.jslet.expand();">  Set </button>
+		<button onclick="treeTag.jslet.onGetIconClass = null; treeTag.jslet.renderAll(); treeTag.jslet.expand();">  Clear </button>
+	</li>
+	</ol>
+	</div>
+	<!-- Source Code -->
+	<script type="text/javascript" src="../../source/demosource.js?height=700"></script>
+	</div>
+</body>
+</html>

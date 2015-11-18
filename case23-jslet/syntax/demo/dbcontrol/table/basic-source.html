@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;script type="text/javascript" src="../../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+        jslet.define("employee", "../../js/employee.js");
+        jslet.require("jslet,employee");
+     &lt;/script&gt;
+    </code></pre>
+	
+	<ul><li>HTML: </li></ul>
+    <pre class="prettyprint linenums"><code>
+&lt;div id="tblEmployee" data-jslet='type:"DBTable",dataset:"employee",hasSelectCol:true,hasSeqCol:true,readOnly:true,fixedRows:1' style="width: 100%;height: 220px" /&gt;
+
+    </code></pre>
+	
+	<ul><li>Script let: </li></ul>
+    <pre class="prettyprint linenums"><code>
+//Display Sequence column and select column
+jslet('#tblEmployee').hasSeqCol = true;
+jslet('#tblEmployee').hasSelectCol = true;
+
+//Set fixed rows and fixed columns
+jslet('#tblEmployee').fixedRows = 1;
+jslet('#tblEmployee').fixedCols = 2;
+
+//Set custom sort event handler
+  function doCustomSort(indexFlds) {
+     alert("Custom sort fields is: " + indexFlds + ",\n you can send this to server side to sort data.");
+
+     jslet('#tblEmployee').dataset.indexFields(indexFlds);
+  }
+jslet('#tblEmployee').onCustomSort = doCustomSort;
+
+//Set onRowClick event handler
+jslet('#tblEmployee').onRowClick=function(){};
+
+//Set onRowDblClick event handler
+jslet('#tblEmployee').onRowDblClick=function(){};
+
+//Set onSelect event handler
+function doSelect(selected) {
+	if (selected) {
+		if (window.confirm('Are you sure to select this record?')) {
+			return true;
+		}
+		return false;
+	}
+}
+jslet('#tblEmployee').onSelect=doSelect;
+
+//Set onSelect event handler
+function doSelect(selected) {
+	if (selected) {
+		if (window.confirm('Are you sure to select this record?')) {
+			return true;
+		}
+		return false;
+	}
+}
+jslet('#tblEmployee').onSelect=doSelect;
+
+//Set onSelectAll event handler
+function doSelectAll(dataset, selected) {
+	var val = dataset.fieldValue("age");
+	return (val &lt;= 30);
+}
+jslet('#tblEmployee').onSelectAll=doSelectAll;
+
+    </code></pre>
+	
+	<ul><li><a href='../../js/employee-source.html' target="_blank" >Employee.js</a>: </li></ul>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../../prettify";
+    </script>
+    <script type="text/javascript" src="../../prettify/run_prettify.js"></script>
+</body>
+</html>

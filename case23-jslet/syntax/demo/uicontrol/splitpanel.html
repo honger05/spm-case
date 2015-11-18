@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Demeostrate how to use UI widget: SplitPanel">
+    <title>Jslet - SplitPanel Demo</title>
+    <link rel="stylesheet" type="text/css" href="../css/demo-style.css" />
+    <script type="text/javascript" src="../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+        jslet.define("employee", "../js/employee.js");
+        jslet.require("jslet,employee");
+    </script>
+
+</head>
+<body onunload="jslet.ui.uninstall()">
+	<div class="container">
+    <div class="page-header">
+    <h2 id="top">Jslet - SplitPanel Demo</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+	<div class="content">Demonstrate how to use SplitPanel control.</div>
+	<h4>Horizon Split Panel:</h4>
+    <div data-jslet='type:"SplitPanel",direction:"hori",floatIndex: 1'
+        style="width: 90%; height: 150px; margin-left: 20px">
+     	<div style="overflow:hidden; width:200px;min-width:50px">
+			<div id="tmp" data-jslet='type:"Accordion",selectedIndex:1,items:[{caption:"caption1"},{caption:"caption2"},{caption:"caption3"}]'
+				style="width: 100%; height: 100%">
+				<div>content1</div>
+				<div>content2</div>
+				<div>content3</div>
+		   </div>
+     	</div>
+     	<div style="overflow:hidden; background-color:#ffff99">Float Panel</div>
+     	<div style="overflow:hidden; width:100px">Right Pane1</div>
+     	<div style="overflow:hidden; width:100px">Right Pane2</div>
+    </div>
+	<h4>Horizon with left panel collapsed</h4>
+    <div data-jslet='type:"SplitPanel",direction:"hori",floatIndex: 1'
+        style="width: 800px; height: 100px; margin-left: 20px">
+     	<div style="overflow:hidden; width:100px;min-width:50px;display:none">Left Pane</div>
+     	<div style="overflow:hidden; background-color:#ff9">
+			Float Panel
+			<p>
+				Add css text: "display:none" into the left panel, it will be collapsed.
+			</p>
+		</div>
+     	<div style="overflow:hidden; width:100px">Right Pane</div>
+    </div>
+    <h4>Vertical Split Panel</h4>
+    <div data-jslet='type:"SplitPanel",direction:"vert",floatIndex: 1'
+        style="width: 600px; height: 600px; margin-left: 20px">
+     	<div style="overflow:hidden; height:100px;min-height:30px">Top Pane1</div>
+     	<div style="overflow:hidden">
+			<div data-jslet='type:"DBTable",dataset:"employee",hasSelectCol:true,hasSeqCol:true,readOnly:true,fixedRows:1' style="width: 100%;height: 100%">
+			</div>
+		</div>
+     	<div style="overflow:hidden; height:50px;">Bottom Pane2</div>
+     	<div style="overflow:hidden; height:50px;">Bottom Pane1</div>
+    </div>
+    
+    <h3>Demo Content:</h3>
+	<div class="content">
+	<ol>
+    <li>
+        Set direction: horizon or vertical;</li>
+    <li>
+        Set float pane, which can change width automactically when change other pane's width;</li>
+    <li>
+        Click expander button to expand or collapse panel quickly.</li>
+	</ol>		
+	</div>
+	<!-- Source Code -->
+	<script type="text/javascript" src="../source/demosource.js?height=630"></script>
+	</div>
+</body>
+</html>

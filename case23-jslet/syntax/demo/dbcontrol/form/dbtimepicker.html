@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Demeostrate how to use Jslet widget: DBTimePicker">
+    <title>Jslet - DBTimePicker Demo</title>
+    <link rel="stylesheet" type="text/css" href="../../css/demo-style.css" />
+    <script type="text/javascript" src="../../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+        jslet.require("jslet", initialize);
+		
+        function initialize(regular) {
+			//
+			var fldCfg = [
+				{ name: 'strtime', type: 'S', length: 20, label: 'String Time', dataRange: {min:'07',max:'19'}},
+				{ name: 'datetime', type: 'D', label: 'Date Time', displayFormat: 'yyyy-MM-dd hh:mm:ss', displayWidth: 20}
+				];
+			
+			var dsTime = jslet.data.createDataset('timedataset', fldCfg);
+			var dataList = [
+				{strtime: '13:23:33', datetime: new Date()},
+				{strtime: '09:46:22', datetime: new Date(2000, 5, 1, 5, 45, 18,0)}];
+			dsTime.dataList(dataList);
+        }
+    </script>
+</head>
+<body onunload="jslet.ui.uninstall()">
+	<div class="container">
+    <div class="page-header">
+    <h2 id="top">Jslet - DBTimePicker Demo</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+    <h4>Data List</h4>
+    <div data-jslet='type:"DBTable",dataset:"timedataset"' style="width: 100%; height: 150px">
+    </div>
+
+    <h3>Demo Content:</h3>
+    <div data-jslet='dataset:"timedataset"' class="content">
+		<ol>
+        <li><h4>24-Hour, without second part(default): </h4>
+			<div class="form-horizontal">
+				<div class="form-group">
+				<label class="col-sm-2 control-label">String time:</label>
+				<div class="col-sm-3"> 
+				<div data-jslet='type:"DBTimePicker",field:"strtime"' ></div>
+				</div>
+				<label class="col-sm-2 control-label">Date time:</label>
+				<div class="col-sm-3"> 
+				<div data-jslet='type:"DBTimePicker",field:"datetime"' ></div>
+				</div>
+				</div>
+			</div>
+		</li>
+        <li><h4>24-Hour, with second part: </h4>
+			<div class="form-horizontal">
+				<div class="form-group">
+				<label class="col-sm-2 control-label">String time:</label>
+				<div class="col-sm-4"> 
+				<div data-jslet='type:"DBTimePicker",field:"strtime",hasSecond:true' ></div>
+				</div>
+				<label class="col-sm-2 control-label">Date time:</label>
+				<div class="col-sm-4"> 
+				<div data-jslet='type:"DBTimePicker",field:"datetime",hasSecond:true' ></div>
+				</div>
+				</div>
+			</div>
+		</li>
+        <li><h4>12-Hour, with second part: </h4>
+ 			<div class="form-horizontal">
+				<div class="form-group">
+				<label class="col-sm-2 control-label">String time:</label>
+				<div class="col-sm-4"> 
+				<div data-jslet='type:"DBTimePicker",field:"strtime",hasSecond:true,is12Hour: true' ></div>
+				</div>
+				<label class="col-sm-2 control-label">Date time:</label>
+				<div class="col-sm-4"> 
+				<div data-jslet='type:"DBTimePicker",field:"datetime",hasSecond:true,is12Hour: true' ></div>
+				</div>
+				</div>
+			</div>
+		</li>
+		</ol>
+    </div>
+
+	<!-- Source Code -->
+	<script type="text/javascript" src="../../source/demosource.js?height=600"></script>
+	</div>
+</body>
+</html>

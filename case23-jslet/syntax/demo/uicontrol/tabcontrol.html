@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Demeostrate how to use UI widget: TabControl">
+    <title>Jslet - TabControl Demo</title>
+    <link rel="stylesheet" type="text/css" href="../css/demo-style.css" />
+    <script type="text/javascript" src="../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+        jslet.require("jslet", initialize);
+		
+		function initialize(){
+			//Globel variable
+			tabCfg = {type: "TabControl", 
+				selectedIndex: 1, 
+				onCreateContextMenu: doCreateContextMenu, 
+				items: [
+					{header: "User IFrame", useIFrame: true, closable: true, url: "calendar.html", iconClass: "tabIcon"},
+					{header: "User Panel Id1", closable: true, divId: "p2"},
+					{header: "Disabled Pane",closable:true,divId:"p3",disabled:true},
+					{header: "Page Four ",closable:true},
+					{header: "Page Five",closable:true}
+				]};
+		}
+    </script>
+
+    <style type="text/css">
+        .tabIcon
+        {
+            background-image:url("../images/favicon.png");
+            background-repeat:no-repeat;
+            background-position:center;
+        }
+    </style>
+</head>
+<body onunload="jslet.ui.uninstall()">
+	<div class="container">
+    <div class="page-header">
+    <h2 id="top">Jslet - TabControl Demo</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+	<div class="content">Demonstrate how to use TabControl control.</div>
+
+	<!-- tabCfg is a global variable which defined in Head tag.-->
+    <div id="tabDemo" data-jslet='tabCfg'
+        style="width: 95%; margin-left: 20px">
+    </div>
+	<div id="p2" style="height: 200px">
+		two page</div>
+	<div id="p3">
+		three page</div>
+	<hr />
+    <h3>Demo Content:</h3>
+	<div class='content"><ol>
+    <li>
+        Enable "New" button to add tab item:
+        <input type="checkbox" checked="checked" onclick="jslet('#tabDemo').newable(this.checked);jslet('#tabDemo').renderAll();" />
+	</li>
+    <li>
+        Set onAddTabItem event handler:
+        <button class="btn btn-default" onclick="jslet('#tabDemo').onAddTabItem(doAddTabItem);alert('Done, please click new button!')"> Set </button>&nbsp;
+		<button class="btn btn-default" onclick="jslet('#tabDemo').onAddTabItem(null)"> Clear </button>
+	</li>
+    <li>
+        Set onRemoveTabItem event handler:
+        <button class="btn btn-default" onclick="jslet('#tabDemo').onRemoveTabItem(doRemoveTabItem);alert('Done, please try to close current tab item!')"> Set </button>&nbsp;
+		<button class="btn btn-default" onclick="jslet('#tabDemo').onRemoveTabItem(null)"> Clear </button>
+	</li>
+    <li>
+        Set onSelectedChanged event handler :
+        <button class="btn btn-default" onclick="jslet('#tabDemo').onSelectedChanged(doSelectedChanged);alert('Done, please toggle tab item!')"> Set </button>&nbsp;
+		<button class="btn btn-default" onclick="jslet('#tabDemo').onSelectedChanged(null)"> Clear </button>
+	</li>
+    <li>
+        Enable context menu,and add customized context menu item.
+	</li>
+</ol></div>
+
+    <script type="text/javascript">
+        //Event handler for onAddTabItem event
+        function doAddTabItem() {
+            var header = prompt("Please input new tab item caption：", "new tabitem");
+            var cfg = new jslet.ui.TabItem();
+            //cfg.iconClass = "tabIcon";
+            cfg.header = header;
+            cfg.closable = true;
+            cfg.iframe = false;
+            cfg.url = null;
+            cfg.divId = null;
+            cfg.content = document.createElement("div");
+            cfg.content.innerHTML = "Demo Panel";
+            return cfg;
+        }
+
+        //Event handler for onRemoveTabItem event
+        function doRemoveTabItem(tabIndex, selected) {
+            return confirm("Are you sure to remove the current tab item?");
+        }
+
+        //Event handler for onSelectedChanged event
+        function doSelectedChanged(oldIndex, newIndex) {
+            return confirm("Are you sure to toggle this tab item?");
+        }
+
+        //Add your menu item
+        function doCreateContextMenu(menuItems) {
+            menuItems.push({ name: "-" });
+            menuItems.push({ id: "customMenu", name: "Customized Menu", onclick: function () { alert('Customized Menu clicked!'); } });
+        }
+
+    </script>
+
+	<!-- Source Code -->
+	<script type="text/javascript" src="../source/demosource.js?height=630"></script>
+	</div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;script type="text/javascript" src="../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+        jslet.require("jslet", initialize);
+		
+		function initialize(){
+			//Globel variable
+			tabCfg = {type: "TabControl", 
+				selectedIndex: 1, 
+				onCreateContextMenu: doCreateContextMenu, 
+				items: [
+					{header: "User IFrame", useIFrame: true, url: "menu.html", iconClass: "tabIcon"},
+					{header: "User Panel Id1", closable: true, divId: "p2"},
+					{header:"User Panel ID2",closable:true,divId:"p3"},
+					{header:"Page Four ",closable:true},
+					{header:"Page Five",closable:true}
+				]};
+		}
+    &lt;/script&gt;
+    </code></pre>
+	
+	<ul><li>HTML: </li></ul>
+    <pre class="prettyprint linenums"><code>
+	&lt;!-- tabCfg is a global variable which defined in Head tag.--&gt;
+    &lt;div id="tabDemo" data-jslet='tabCfg'
+        style="width: 600px; height: 300px; margin-left: 20px"&gt;
+    </code></pre>
+	
+	<ul><li>Command script: </li></ul>
+    <pre class="prettyprint linenums"><code>
+        //Event handler for onAddTabItem event
+        function doAddTabItem() {
+            var title = prompt("Please input new tab item caption：", "new tabitem")
+            var cfg = new jslet.ui.TabItem();
+            cfg.iconClass = "tabIcon";
+            cfg.title = title;
+            cfg.closable = true;
+            cfg.iframe = false;
+            cfg.url = null;
+            cfg.divId = null;
+            cfg.content = document.createElement("div"); 
+            cfg.content.innerHTML = "Demo Panel";
+            return cfg;
+        }
+
+        //Event handler for onRemoveTabItem event
+        function doRemoveTabItem(tabIndex, selected) {
+            if (selected) {
+                alert("Can't close current tabitem!");
+                return false;
+            }
+            return true;
+        }
+
+        //Event handler for onSelectedChanged event
+        function doSelectedChanged(oldIndex, newIndex) {
+            return confirm("Are you sure to switch this tab item?");
+        }
+
+        //Add your menu item
+        function doCreateContextMenu(menuItems) {
+            menuItems.push({ name: "-" });
+            menuItems.push({ id: "customMenu", name: "Customized Menu", onclick: function () { alert('Customized Menu clicked!'); } });
+        }
+    </code></pre>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../prettify";
+    </script>
+    <script type="text/javascript" src="../prettify/run_prettify.js"></script>
+</body>
+</html>

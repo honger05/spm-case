@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Jslet Framework Test Suite</title>
+
+  <link rel="stylesheet" href="lib/qunit.css" media="screen">
+
+  <script type="text/javascript" src="../loader/jslet.loader.js"></script>
+  <script type="text/javascript">
+	jslet.define('qunit', 'lib/qunit.js', 'jquery');
+	jslet.define('phantom','unit/phantom.js', 'qunit');
+	jslet.define('test1', 'unit/jslet.common.test.js', 'qunit');
+	jslet.define('test2', 'unit/jslet.expression.test.js', 'qunit');
+	jslet.define('employee', 'unit/testdata/employee.js', 'jslet-data');
+	jslet.define('groupfields', 'unit/testdata/groupfields.js', 'jslet-data');
+	jslet.define('test-ds1', 'unit/jslet.dataset.test.js', 'qunit,employee,groupfields');
+
+	jslet.define('tests', null,['phantom','test1','test2','test-ds1']);
+	jslet.require('jslet-data,tests', function(){
+		QUnit.config.hidepassed = true;
+		QUnit.load();
+	});
+  </script>
+</head>
+<body>
+  <div>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+  </div>
+</body>
+</html>

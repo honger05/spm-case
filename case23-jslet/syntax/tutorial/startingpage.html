@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html style="overflow:hidden">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Jslet - Get Starting</title>
+    <script type="text/javascript" src="../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+        jslet.require('jslet', initialize);
+		
+		function initialize(){
+		    var dsGender = jslet.data.createEnumDataset('gender', {'F':'Female','M':'Male','U':'Unknown'});
+
+			var fldCfg=[
+			{index: 0, type: "N", name: "id", label: "ID", length: 8},
+			{index: 1, type: "S", name: "StringFld", label: "String Field", length: 12},
+			{index: 2, type: "N", name: "IntFld", label: "Int Field", length: 8, displayFormat: "#,##0"},
+			{index: 3, type: "N", name: "DoubleFld", label: "Double Field", scale: 2, length: 12, displayFormat: "#,##0.00"},
+			{index: 4, type: "D", name: "DateFld", label: "Date Field"},
+			{index: 5, type: "B", name: "BooleanFld", label: "Boolean Field"},
+			{index: 6, type: "S", name: "Gender", label: "Gender", lookupField: {dataset: "gender"}}];
+			
+			var dsobj = jslet.data.createDataset("firstds",fldCfg);
+			dsobj.insertRecord();
+		}
+</script>
+</head>
+<body>
+<div data-jslet="type:'DBTable', dataset: 'firstds'" ></div>
+<p />
+<div data-jslet="type:'DBEditPanel', dataset: 'firstds'"></div>
+</body>
+</html>

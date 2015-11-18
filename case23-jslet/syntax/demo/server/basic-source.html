@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;script type="text/javascript" src="../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+        jslet.define("employee", "../js/employee.js");
+        jslet.require("jslet,employee", function () {
+            initialize();
+        });
+
+        function initialize() {
+            //Clear all records which are created at client side.
+            //We need all employee data to query from server side.
+            dsEmployee.dataList(null);
+            dsEmployee.queryUrl('../../employee/findEmployee.jsp');
+            dsEmployee.submitUrl('../../employee/save.jsp');
+        }
+
+    &lt;/script&gt;
+    </code></pre>
+	
+	<ul><li>Command script: </li></ul>
+    <pre class="prettyprint linenums"><code>
+
+        function applyToServer() {
+            dsEmployee.submit();
+        }
+		
+        function processServerError() {
+            var oldUrl = dsEmployee.queryUrl();
+            try {
+                dsEmployee.queryUrl('../../employee/getServerErrMsg.jsp');
+                dsEmployee.query();
+            }finally{
+                dsEmployee.queryUrl(oldUrl);
+            }
+        }
+
+    </code></pre>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../prettify";
+    </script>
+    <script type="text/javascript" src="../prettify/run_prettify.js"></script>
+</body>
+</html>

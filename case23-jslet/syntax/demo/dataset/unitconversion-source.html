@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<ul><li>Head: </li></ul>
+    <pre class="prettyprint linenums"><code>
+    &lt;script type="text/javascript" src="../../loader/jslet.loader.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+		jslet.define("salesdetail", "../js/salesdetail.js");
+        jslet.require("jslet,salesdetail", function () {
+            initialize();
+        });
+		
+        function initialize() {
+            //Global variable defined in salesdetail.js
+        	dsSaleDetail = jslet.data.getDataset("dsSaleDetail");
+        	//Enable unit conversion of field "amount" 
+        	var amountFld = dsSaleDetail.getField("amount");
+        	amountFld.unitConverted(true);
+        }
+		
+	&lt;script&gt;
+    </code></pre>
+	
+	<ul><li>Action: </li></ul>
+    <pre class="prettyprint linenums"><code>
+	//Enable unit convert field 
+	function enableUnitConvertField(fieldName, enableUnitConvert) {
+		var f = dsSaleDetail.getField(fieldName);
+		if (f) {
+			f.unitConverted(enableUnitConvert);
+			dsSaleDetail.refreshControl();
+		}
+	}
+	enableUnitConvertField('amount', true);
+	
+	//Set unit convert factor
+	dsSaleDetail.unitConvertFactor(1000);
+	
+    </code></pre>
+	
+	<ul><li><a href='../js/salesdetail-source.html' target="_blank" >SalesDetail.js</a>: </li></ul>
+	
+    <script type="text/javascript">
+        window.LOADER_BASE_URL = "../prettify";
+    </script>
+    <script type="text/javascript" src="../prettify/run_prettify.js"></script>
+</body>
+</html>

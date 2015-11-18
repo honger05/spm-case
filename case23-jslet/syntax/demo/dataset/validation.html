@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Jslet dataset data validation">
+    <title>Jslet - Data Validation</title>
+    <link rel="stylesheet" type="text/css" href="../css/demo-style.css" />
+    <script type="text/javascript" src="../../loader/jslet.loader.js"></script>
+    <script type="text/javascript">
+        jslet.define("employee", "../js/employee.js", "jslet");
+        jslet.require("jslet,employee", initialize);
+
+        function initialize() {
+            dsEmployee.disableContextRule();
+            num = 1000;
+            dsEmployee.datasetListener(doDatasetEvent);
+
+            var fldObj = dsEmployee.getField('birthday');
+            fldObj.dataRange({min: new Date(1960, 0, 1), max: new Date(2010, 11, 31)});
+
+            var fldObj = dsEmployee.getField('age');
+            fldObj.dataRange({min: 18, max: 60});
+        }
+
+        function doDatasetEvent(evtType) {
+            //Set default value 
+            if (evtType == jslet.data.DatasetEvent.AFTERINSERT) {
+                this.setFieldValue("workerid", num);
+                num++;
+            }
+
+			//Validate data when confirm
+			if(evtType == jslet.data.DatasetEvent.BEFORECONFIRM){
+				if(this.getFieldValue('gender') == 'F' && !this.getFieldValue('photo'))
+					alert('Female employee must have photo!:)');
+			}
+
+            //Confirm by user
+            if (evtType == jslet.data.DatasetEvent.BEFOREDELETE) {
+                if (!confirm("Would you delete data?")) {
+                    this.abort();
+                }
+            }
+        }
+
+    </script>
+	<style type="text/css">
+		td {
+			vertical-align: top;
+		}
+	</style>
+</head>
+<body onunload="jslet.ui.uninstall()">
+	<div class="container">
+    <div class="page-header">
+    <h2 id="top">Jslet - Data Validation</h2>
+	</div>
+<!--[if lt IE 8]>
+<p class="chromeframe">Jslet framework only supports IE 8+. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->
+	<div class="content">
+		<p>Show how to validate a record.</p>
+		<p>Here we also demonstrate how to show field tip and field invalid message. Tips and invalid message are also shown with DBLabel, the following is their contrast:<br/>
+			&lt;label data-jslet="field: 'name'" /&gt <i>//For field label</i><br />
+			&lt;label data-jslet="field: 'name<b>#tip</b>'" /&gt <i>For field tip</i><br />
+			&lt;label data-jslet="field: 'name<b>#message</b>'" /&gt <i>For field invalid message</i>
+		</p>
+	</div>
+	
+    <h4>Employee List:&nbsp;&nbsp;(<a href="../model/EmployeeDataModel.htm">Data Model</a>)</h4>
+    <div data-jslet='type:"DBTable",dataset:"employee"' style="width: 100%; height: 200px"></div>
+	<div style="padding-top:5px;padding-bottom:5px">
+    <button class="btn btn-default" onclick="dsEmployee.insertRecord();" title='Add record after current cursor'> Insert </button>
+    <button class="btn btn-default" onclick="dsEmployee.appendRecord();" title='Add record after last record'> Append </button>
+    <button class="btn btn-default" onclick="dsEmployee.editRecord();"> Edit </button>
+    <button class="btn btn-default" onclick="dsEmployee.deleteRecord();"> Delete </button>
+    <button class="btn btn-default" onclick="dsEmployee.confirm();"> Confirm </button>
+    <button class="btn btn-default" onclick="dsEmployee.cancel();"> Cancel </button>
+    </div>
+	
+	<div class="form-horizontal" data-jslet='dataset:"employee"' role="form">
+		<div class="form-group">
+			<label class="col-sm-2" data-jslet='type:"DBLabel",field:"workerid"'></label>
+			<div class="col-sm-4">
+				<input type="text" data-jslet='type:"DBText",field:"workerid"' class="editor" />
+			</div>
+			<label class="col-sm-2" data-jslet='type:"DBLabel",field:"name"'></label>
+			<div class="col-sm-4">
+				<input type="text" data-jslet='type:"DBText",field:"name"' class="editor" />
+				<label data-jslet='type:"DBLabel", field: "name#tip"' ></label>
+				<label data-jslet='type:"DBLabel", field: "name#message"' ></label>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2" data-jslet='type:"DBLabel",field:"department"'></label>
+			<div class="col-sm-4">
+				<select data-jslet='type:"DBSelect",field:"department"' class="editor" ></select>
+			</div>
+			<label class="col-sm-2" data-jslet='type:"DBLabel",field:"age"'></label>
+			<div class="col-sm-4">
+				<input type="text" data-jslet='type:"DBText",field:"age"' class="editor" />
+				<label data-jslet='type:"DBLabel", field: "age#message"' ></label>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2" data-jslet='type:"DBLabel",field:"birthday"'></label>
+			<div class="col-sm-4">
+				<div id="date1" data-jslet='type:"DBDatePicker",field:"birthday"' class="editor"></div>
+			</div>
+			<label class="col-sm-2" data-jslet='type:"DBLabel",field:"salary"'></label>
+			<div class="col-sm-4">
+				<input type="text" data-jslet='type:"DBText",field:"salary"' class="editor" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2" data-jslet='type:"DBLabel",field:"officephone"'></label>
+			<div class="col-sm-4">
+				<input type="text" data-jslet='type:"DBText",field:"officephone"' class="editor" />
+				<label data-jslet='type:"DBLabel", field: "officephone#tip"' ></label>
+				<label data-jslet='type:"DBLabel", field: "officephone#message"' ></label>
+			</div>
+			<label class="col-sm-2" data-jslet='type:"DBLabel",field:"cellphone"'></label>
+			<div class="col-sm-4">
+				<input type="text" data-jslet='type:"DBText",field:"cellphone"' class="editor" />
+				<label data-jslet='type:"DBLabel", field: "cellphone#tip"' ></label>
+				<label data-jslet='type:"DBLabel", field: "cellphone#message"' ></label>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2" data-jslet='type:"DBLabel",field:"email"'></label>
+			<div class="col-sm-4">
+				<input type="text" data-jslet='type:"DBText",field:"email"' class="editor" />
+				<label data-jslet='type:"DBLabel", field: "email#tip"' ></label>
+				<label data-jslet='type:"DBLabel", field: "email#message"' ></label>
+			</div>
+			<label class="col-sm-2" data-jslet='type:"DBLabel",field:"idcard"'></label>
+			<div class="col-sm-4">
+				<input type="text" data-jslet='type:"DBText",field:"idcard"' class="editor" />
+				<label data-jslet='type:"DBLabel", field: "idcard#tip"' ></label>
+				<label data-jslet='type:"DBLabel", field: "idcard#message"' ></label>
+			</div>
+		</div>
+	</div>
+    <h3>
+        Demo Content:</h3>
+	<div class="content">
+	<p>	There are three level validations:</p> 
+	<ol class="content-list">
+    <li><b>Keypress validation</b>(When user press a key)<br />
+		If fieldObj.validChars is set, user only input the letter which defined in fieldObj.validChars. For number field and date field, there is a pre-defined valid charaters.  
+	</li>
+		
+    <li><b>Field Change validation</b>(When user change a field value, normally it is a field is lost focus or value changed) <br />
+		This can check field's required, range, regular expression, or you can specify your customized validator. 
+	</li>
+		
+    <li><b>Record validation</b>(When user confirm a record)<br />
+		You can set dataset.datasetListener to valid data when user confirms a record. 
+	</li>
+	</ol>
+	</div>
+	<!-- Source Code -->
+	<script type="text/javascript" src="../source/demosource.js?height=1050"></script>
+	</div>
+</body>
+</html>

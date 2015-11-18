@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Jslet-如何设置多语言</title>
+    <link href="tutorial-style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+</head>
+<body>
+    <h3>
+        如何设置多语言</h3>
+    <hr />
+    <p style="text-indent: 20px">
+        Jslet支持多语言开发，需要进行多语言界面一般分为两部分：Jslet本身的提示信息和用户的数据(字段名和数据等).<br />
+    </p>
+    <ul type="square" class="listitem">
+        <li><b>Jslet本身的提示信息：</b>
+            <ol class="listitem">
+                <li>存放位置：<br />
+                    所有的语言均存放locale/路径下,一种语言一个目录，如：locale/{lang}/locale.js</li>
+                <li>增加语言;<br />
+                    增加语言的步骤：
+                    <ol type="a">
+                        <li>在locale/目录下选择一个目录(如：en)，并复制一个;</li>
+                        <li>修改复制后的locale文件的语言资源,本地化设置等</li>
+                    </ol>
+                </li>
+                <li>切换语言<br />
+                    在初始化方法时调用全局方法：jslet.setLang("xxx");例如：<br />
+<p>	&lt;script type=&quot;text/javascript&quot;&gt;<br>
+&nbsp;&nbsp;&nbsp;<b>jslet.setLang("zh-cn");</b><br />
+&nbsp;&nbsp;&nbsp;jslet.define(&quot;employee&quot;,&quot;employee.js&quot;);<br>
+&nbsp;&nbsp;&nbsp;jslet.require(&quot;dbcontrols,dbdatepicker,dbcombodlg,employee&quot;);<br>
+&lt;/script&gt;<br>
+　</p>
+                    
+                     </li>
+            </ol>
+            <br />
+        </li>
+        <li><b>用户的数据(字段名和数据等)</b><br />
+            用户的数据多语言化包含用户界面和数据，对于数据多语言化，需另行处理。而界面的多语言化，Jslet已经有完善的设计：<br />
+            界面字段信息存放在jslet.Dataset对象中，界面上字段信息用jslet.DBLabel,这样界面会随着jslet.Dataset对象中的字段信息自动变化<br />
+            示例可参考我们的<a href="../demo.html" target="_self">演示程序</a>，然后选择查看源代码。<br />
+            实际开发时，可以讲字段配置信息存放在数据中，根据用户所选语言调入相应语言的配置信息；
+            <br />
+        </li>
+    </ul>
+</body>
+</html>
