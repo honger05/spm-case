@@ -1,21 +1,35 @@
 <div class="panel panel-default">
+
 	<div class="panel-heading fn-relative">
+
 		<div class="panel-title">{{title}}</div>
-		<div class="options">
+
+		{{#if options}}
+		<div class="options form-horizontal">
 			{{#each options.inputs}}
-				<input type="text" class="form-control" id={{this}}Input>
+				<label class="col-sm-1 control-label">{{this}}</label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" id={{this}}Option>
+				</div>
 			{{/each}}
 			{{#each options.buttons}}
-				<button class="btn btn-default" id="{{this}}Btn">{{this}}</button>
+				<div class="col-sm-3">
+					<button class="btn btn-default" id="{{this}}Btn">{{this}}</button>
+				</div>
 			{{/each}}
 		</div>
+		{{/if}}
+
 		<div class="btn-group fn-toolbar">
 			{{#each toolbar}}
 				<button class="btn btn-default" id="{{this}}Btn">{{this}}</button>
 			{{/each}}
 		</div>
+
 	</div>
+
 	<div class="panel-body">
 		{{{bodyTpl}}}
 	</div>
+
 </div>

@@ -14,26 +14,30 @@ var tpl = {
 	root: 'root',
 	controls: [
 		{
-			el: 'serachPanel',
 			panel: {
-				title: 'serachPanel', 
+				title: 'serach', 
 				bodyTpl: '<div id="serachPanel"></div>',
 				toolbar: ['search', 'reset']
 			},
-			jsletParams: {type:'DBEditPanel', dataset: 'criteria'}
+			bind: [{
+				el: 'serachPanel',
+				jsletParams: {type:'DBEditPanel', dataset: 'criteria'}
+			}]
 		},
 		{
-			el: 'resultPanel',
 			panel: {
 				title: '', 
 				bodyTpl: '<div id="resultPanel" style="height:400px"></div>',
-				toolbar: [],
+				toolbar: ['filterMale', 'showAll'],
 				options: {
-					inputs: ['filter'],
+					inputs: ['id'],
 					buttons: ['find']
 				}
 			},
-			jsletParams: {type:'DBTable', dataset: 'employee'}
+			bind: [{
+				el: 'resultPanel',
+				jsletParams: {type:'DBTable', dataset: 'employee'}
+			}]
 		}
 	]
 };
@@ -46,7 +50,11 @@ interpreter.parse();
 // parseEvent
 document.getElementById('searchBtn').addEventListener('click', doQuery);
 
+document.getElementById('findBtn').addEventListener('click', doFind);
 
+document.getElementById('filterMaleBtn').addEventListener('click', doFilterMale);
+
+document.getElementById('showAllBtn').addEventListener('click', showAll);
 
 function doQuery() {
 
@@ -63,6 +71,20 @@ function doQuery() {
 		//dsEmployee.query(dsCriteria.getRecord());
 	}
 
+}
+
+function doFind() {
+	var idOption = document.getElementById('idOption');
+	dsEmployee.findByField('workerid', idOption.value);
+}
+
+function doFilterMale() {
+	dsEmployee.filter("[gender]=='M'");
+	dsEmployee.filtered(true);
+}
+
+function showAll() {
+	dsEmployee.filtered(false);
 }
 
 

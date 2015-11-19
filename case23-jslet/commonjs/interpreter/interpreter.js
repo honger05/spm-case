@@ -11,12 +11,18 @@ Interpreter.prototype.parse = function() {
 
 	var rootEl = tpl.root ? document.getElementById(tpl.root) : document.body;
 
+	var control, bind;
 	for (; i < len; i++) {
-		var control = tpl.controls[i];
+		control = tpl.controls[i];
 		
 		createPanel(control.panel, rootEl);
 		
-		jslet.ui.bindControl(document.getElementById(control.el), control.jsletParams);
+		bind = control.bind;
+
+		for (var k = 0, blen = bind.length; k < blen; k++) {
+			jslet.ui.bindControl(document.getElementById(bind[k].el), bind[k].jsletParams);
+		}
+		
 	}	
 
 }
