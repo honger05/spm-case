@@ -16,7 +16,7 @@ var tpl = {
 		{
 			panel: {
 				title: 'Master-Detail', 
-				bodyTpl: '<div id="tablePanel" style="height:200px"></div><div id="editPanel"></div>',
+				bodyTpl: '<div id="tablePanel" style="height:200px"></div><hr><div id="editPanel"></div>',
 				toolbar: ['edit']
 			},
 			bind: [{

@@ -12,6 +12,7 @@ var dsCriteria = dsEmployee.clone('criteria', ['name', 'birthday', 'department',
 // pares....
 var tpl = {
 	root: 'root',
+	masterDataset: '',
 	controls: [
 		{
 			panel: {
