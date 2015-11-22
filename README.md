@@ -71,9 +71,34 @@ $ open dist/index.html
 	"tab_size": 2,
 	"theme": "Nexus.sublime-theme"
 }
+
+// or
+
+{
+	"caret_style": "phase",
+	"color_scheme": "Packages/User/SublimeLinter/Tomorrow-Night (SL).tmTheme",
+	"font_size": 11,
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"margin": 0,
+	"tab_size": 2,
+	"theme": "Nexus.sublime-theme"
+}
 ````
 
 ## web font
 
 * Helvetica arial "Helvetica Neue" "Trebuchet MS" sans-serif
 
+
+## Linux 命令
+
+`netstat -ano|findStr "8000"`  查看占用端口号(8000)的进程
+`ps -ef` 查看正在活动的进程
+`ps -ef |grep abc` 查看含有"abc"的活动进程
+`ps -ef |grep -v abc` 查看不含abc的活动进程
+`kill -9 pid` 杀死 pid 进程
