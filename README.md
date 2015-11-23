@@ -98,8 +98,14 @@ $ open dist/index.html
 
 ## Linux 命令
 
-`netstat -ano|findStr "8000"`  查看占用端口号(8000)的进程
-`ps -ef` 查看正在活动的进程
-`ps -ef |grep abc` 查看含有"abc"的活动进程
-`ps -ef |grep -v abc` 查看不含abc的活动进程
-`kill -9 pid` 杀死 pid 进程
+````bash
+`netstat -ano|findStr "8000"`  // 查看占用端口号(8000)的进程
+`ps -ef` // 查看正在活动的进程
+`ps -ef |grep abc`  // 查看含有"abc"的活动进程
+`ps -ef |grep -v abc` // 查看不含abc的活动进程
+`kill -9 pid` // 杀死 pid 进程
+````
+
+
+
+

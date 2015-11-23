@@ -2,7 +2,7 @@
 /**
  * 程序主入口，主视图
  *
- * 视图的作用： 
+ * 视图的作用：
  * 			1. el tagName className 绑定一个 dom 元素
  * 			2. events 配置事件代理 delegateEvents
  *
@@ -22,6 +22,11 @@ TodoView = require('./todos');
 todos = require('../collections/todos');
 common = require('../common');
 
+
+/**
+ *  view 嵌套 和 组合
+ */
+
 AppView = Backbone.View.extend({
 
 	el: '#todoapp',
@@ -30,6 +35,9 @@ AppView = Backbone.View.extend({
 
 	/**
 	 * Dom 事件，只会处理 model ，然后让 model 去渲染界面.
+	 *
+	 * 有点像 view --> model 的绑定
+	 *
 	 */
 	events: {
 		'keypress #new-todo': 'createOnEnter',
@@ -43,6 +51,10 @@ AppView = Backbone.View.extend({
 		this.$input = this.$('#new-todo');
 		this.$footer = this.$('#footer');
 		this.$main = this.$('#main');
+
+		/**
+		 *  model --> view 的绑定
+		 */
 
 		// todos.create 被动触发 add 事件
 		// appView 的 addOne 进行界面同步
@@ -136,7 +148,7 @@ AppView = Backbone.View.extend({
 
 	/**
 	 *  过滤一次，触发主视图 render n + 1 次. n 表示集合长度
-	 *  app render method: visible N 
+	 *  app render method: visible N
       app render method: filter
 	 */
 	filterAll: function() {
