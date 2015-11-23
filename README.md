@@ -46,6 +46,7 @@ $ open dist/index.html
 
 ### 程序博客类
 
+* [TasteJS - Medium](https://medium.com/%40tastejs)
 * [slideshare - nzakas](http://www.slideshare.net/nzakas/enterprise-javascript-error-handling-presentation)
 * [nczonline](https://www.nczonline.net/blog/2009/04/28/javascript-error-handling-anti-pattern/)
 * [techrepublic](http://www.techrepublic.com/blog/australian-technology/error-handling-in-javascript-rarely-done-often-needed/)
