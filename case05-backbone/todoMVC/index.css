@@ -1,0 +1,13 @@
+
+#todo-list li.completed label {
+    text-decoration: line-through;
+    color: #a9a9a9;
+}
+
+#filters li a.selected, #todoapp h1 {
+    font-weight: 700;
+}
+
+.hidden {
+	display: none;
+}
