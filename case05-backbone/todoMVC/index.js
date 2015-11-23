@@ -1,12 +1,18 @@
+
+/**
+ * 程序入口，启动路由，启动主视图 
+ */
+
 require('./index.css');
 
-window.jQuery = require('jquery');
 var Backbone = require('backbone');
-var App = require('./views/app');
+var app = require('./views/app');
 var Router = require('./routers/router');
 
-new Router();
+app = new app();
 
+new Router();
 Backbone.history.start();
 
-new App();
+
+

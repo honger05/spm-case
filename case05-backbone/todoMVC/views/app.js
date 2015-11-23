@@ -1,10 +1,24 @@
+
+/**
+ * 程序主入口，主视图
+ *
+ * 视图的作用： 
+ * 			1. el tagName className 绑定一个 dom 元素
+ * 			2. events 配置事件代理 delegateEvents
+ *
+ * 其它的 Backbone 并不作限制
+ *
+ *
+ * 主视图是对集合的处理
+ */
+
 var Backbone, TodoView, todos, common, AppView;
 
 var $ = require('jquery');
 var _ = require('underscore');
 
 Backbone = require('backbone');
-TodoView = require('../views/todos');
+TodoView = require('./todos');
 todos = require('../collections/todos');
 common = require('../common');
 
@@ -14,6 +28,9 @@ AppView = Backbone.View.extend({
 
 	statsTemplate: _.template($('#stats-template').html()),
 
+	/**
+	 * Dom 事件，只会处理 model ，然后让 model 去渲染界面.
+	 */
 	events: {
 		'keypress #new-todo': 'createOnEnter',
 		'click #clear-completed': 'clearCompleted',
@@ -22,24 +39,41 @@ AppView = Backbone.View.extend({
 
 	initialize: function() {
 		this.allCheckbox = this.$('#toggle-all')[0];
+
 		this.$input = this.$('#new-todo');
 		this.$footer = this.$('#footer');
 		this.$main = this.$('#main');
 
+		// todos.create 被动触发 add 事件
+		// appView 的 addOne 进行界面同步
 		this.listenTo(todos, 'add', this.addOne);
-		this.listenTo(todos, 'reset', this.addAll);
-		this.listenTo(todos, 'change:completed', this.filterOne);
+
+		// 在路由中，主动触发 filter 事件
+		// appView 的 filterAll 进行界面同步
 		this.listenTo(todos, 'filter', this.filterAll);
+
+		// 模型属性的改变，被动触发 change:completed 事件
+		// appView 的 filterOne 进行界面同步
+		this.listenTo(todos, 'change:completed', this.filterOne);
+
+		this.listenTo(todos, 'reset', this.addAll);
+
+		// 集合上所有事件都要触发 all 事件
 		this.listenTo(todos, 'all', this.render);
 
+		// 拉取到所有数据后，依次触发 [add - all] 事件。
 		todos.fetch();
 	},
 
-	render: function() {
+	render: function(method) {
+
+		console.log('app render method: ' + method);
+
 		var completed = todos.completed().length;
 		var remaining = todos.remaining().length;
 
 		if (todos.length) {
+
 			this.$main.show();
 			this.$footer.show();
 
@@ -51,40 +85,14 @@ AppView = Backbone.View.extend({
 			this.$('#filters li a')
 				.removeClass('selected')
 				.filter('[href="#/' + (common.TodoFilter || '') + '"]')
-				.addClass('selected')
-		}
-		else {
+				.addClass('selected');
+
+		} else {
 			this.$main.hide();
 			this.$footer.hide();
 		}
 
 		this.allCheckbox.checked = !remaining;
-	},
-
-	addOne: function(todo) {
-		var view = new TodoView({model: todo});
-		$('#todo-list').append(view.render().el);
-	},
-
-	addAll: function() {
-		this.$('#todo-list').html('');
-		todos.each(this.addOne, this);
-	},
-
-	filterOne: function(todo) {
-		todo.trigger('visible');
-	},
-
-	filterAll: function() {
-		todos.each(this.filterOne, this);
-	},
-
-	newAttributes: function() {
-		return {
-			title: this.$input.val().trim(),
-			order: todos.nextOrder(),
-			completed: false
-		}
 	},
 
 	createOnEnter: function(e) {
@@ -96,6 +104,45 @@ AppView = Backbone.View.extend({
 		this.$input.val('');
 	},
 
+	/**
+	 *  增加一条数据会触发 主视图 render 5 次。
+	 *  app render method: add
+			app render method: sort
+			app render method: change:id
+			app render method: change
+			app render method: sync
+	 */
+	addOne: function(todo) {
+		var view = new TodoView({model: todo});
+		$('#todo-list').append(view.render().el);
+	},
+
+	addAll: function() {
+		this.$('#todo-list').html('');
+		todos.each(this.addOne, this);
+	},
+
+	newAttributes: function() {
+		return {
+			title: this.$input.val().trim(),
+			order: todos.nextOrder(),
+			completed: false
+		}
+	},
+
+	filterOne: function(todo) {
+		todo.trigger('visible');
+	},
+
+	/**
+	 *  过滤一次，触发主视图 render n + 1 次. n 表示集合长度
+	 *  app render method: visible N 
+      app render method: filter
+	 */
+	filterAll: function() {
+		todos.each(this.filterOne, this);
+	},
+
 	clearCompleted: function() {
 		_.invoke(todos.completed(), 'destroy');
 		return false;
@@ -104,12 +151,14 @@ AppView = Backbone.View.extend({
 	toggleAllComplete: function() {
 		var completed = this.allCheckbox.checked;
 
-		todos.each(function(todo) {
+		// 通过改变模型的状态来驱动界面的展示
+		todos.each(function (todo) {
 			todo.save({
 				'completed': completed
 			})
 		})
 	}
+
 })
 
 module.exports = AppView;

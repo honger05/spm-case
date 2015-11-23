@@ -34,6 +34,8 @@
  *           与 Arale.Events 相同。
  *
  *  validationError: 字符串，用 validate 验证失败返回的值
+ *
+ *  collection: Backbone.collection 实例，指明它被这个集合包含了。 
  */
 
 var Backbone = require('backbone');
