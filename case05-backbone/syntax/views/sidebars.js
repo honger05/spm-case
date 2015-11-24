@@ -10,7 +10,7 @@
  *
  * attributes: dom 对象上的属性
  *
- * _listenTo: 对象，监听模型的事件
+ * _listeningTo: 正在监听的对象，监听模型的事件
  *
  * model: Backbone.Model 实例
  * 

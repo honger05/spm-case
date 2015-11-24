@@ -32,10 +32,13 @@
  *  _events: 对象，etc：change:color: Array[1] 。
  *           Backbone.Events 实例，记录事件信息。
  *           与 Arale.Events 相同。
+ *           被监听的事件也在其中
  *
  *  validationError: 字符串，用 validate 验证失败返回的值
  *
- *  collection: Backbone.collection 实例，指明它被这个集合包含了。 
+ *  collection: Backbone.collection 实例，指明它被这个集合包含了。
+ *
+ * _listenId: 表示被监听的 id 
  */
 
 var Backbone = require('backbone');
