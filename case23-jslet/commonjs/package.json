@@ -2,7 +2,8 @@
   "spm": {
     "output": [
       "index.*",
-      "demo/**/*.*"
+      "demo/**/*.*",
+      "jslet-all.css"
     ],
     "build": {
       "global": {
