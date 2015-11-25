@@ -61,6 +61,34 @@ var TodoView = Mn.ItemView.extend({
 		}
 	}
 
+})
 
+
+var ListView = Mn.CompositeView.extend({
+
+	template: '#template-todoListCompositeView',
+
+	childView: TodoView,
+
+	childViewContainer: '#todo-list',
+
+	ui: {
+		toggle: '#toggle-all'
+	},
+
+	events: {
+		'click @ui.toggle': 'onToggleAllClick'
+	},
+
+	collectionEvents: {
+		'change:completed': 'render',
+		all: 'setCheckAllState'
+	},
+
+	initialize: function() {
+		// this.listenTo()
+	}
 
 })
+
+

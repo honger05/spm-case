@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "backbone.marionette": "^2.4.4",
+    "backbone.radio": "^1.0.2"
+  },
+  "spm": {
+    "output": [
+      "index.html",
+      "tutorial1/index.*",
+      "tutorial2/index.*"
+    ],
+    "dependencies": {
+      "backbone": "~1.1.2",
+      "lodash": "~3.10.1",
+      "jquery": "~2.1.4"
+    }
+  }
+}
