@@ -5,7 +5,7 @@ spm_modules
 node_modules
 
 # build
-# dist
+dist
 
 # test runner
 _site
