@@ -51,9 +51,10 @@ $ open dist/index.html
 * [nczonline](https://www.nczonline.net/blog/2009/04/28/javascript-error-handling-anti-pattern/)
 * [techrepublic](http://www.techrepublic.com/blog/australian-technology/error-handling-in-javascript-rarely-done-often-needed/)
 
-### 视频学习
+### 学习资源
 
 * [egghead](https://egghead.io/)
+* [leanpub](https://leanpub.com/)
 
 ## sublime 配置
 

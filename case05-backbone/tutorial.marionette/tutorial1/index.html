@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Tutorial of Marionette</title>
+	<link rel="stylesheet" href="../assets/css/custom.css">
 </head>
 <body>
 	
@@ -13,7 +14,12 @@
 	<script type="text/template" id="angry_cats-template">
 	  <thead>
 	    <tr class='header'>
+	    	<th>Rank</th>
+	    	<th>Votes</th>
 	      <th>Name</th>
+	      <th>Image</th>
+	      <th></th>
+				<th></th>
 	    </tr>
 	  </thead>
 	  <tbody id="name-td">
@@ -21,7 +27,15 @@
 	</script>
 
 	<script type="text/template" id="angry_cat-template">
+		<td><%= rank %></td>
+		<td><%= votes %></td>
 		<td><%= name %></td>
+		<td><img class='angry_cat_pic' src='<%= image_path %>' /></td>
+		<td>
+			<div class='rank_up'><img src='../assets/images/up.gif' ></div>
+			<div class='rank_down'><img src='../assets/images/down.gif' ></div>
+		</td>
+		<td><a href="#" class="disqualify">Disqualify</a></td>
 	</script>
 
 	<script src="index.js"></script>
