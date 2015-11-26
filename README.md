@@ -1,5 +1,5 @@
 # spm-case
-some package which submit on spm3.6 .
+some package which base on spm3.6 .
 
 ## Prepare
 
