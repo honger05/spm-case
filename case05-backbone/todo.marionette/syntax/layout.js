@@ -107,8 +107,3 @@ var FooterLayout = Mn.ItemView.extend({
 
 })
 
-
-// var footer = new FooterLayout();
-
-
-// footer.render();
