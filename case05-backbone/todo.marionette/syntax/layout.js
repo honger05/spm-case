@@ -8,7 +8,7 @@ var Backbone = require('backbone');
 var Mn = Backbone.Marionette;
 var Radio = Backbone.Radio;
 
-var RootLayout = Mn.LayoutView.extend({
+exports.RootLayout = Mn.LayoutView.extend({
 
 	el: '#todoapp',
 
@@ -20,90 +20,90 @@ var RootLayout = Mn.LayoutView.extend({
 
 })
 
-var HeaderLayout = Mn.ItemView.extend({
+// exports.HeaderLayout = Mn.ItemView.extend({
 
-	template: '#template-header',
+// 	template: '#template-header',
 
-	ui: {
-		input: '#new-todo'
-	},
+// 	ui: {
+// 		input: '#new-todo'
+// 	},
 
-	events: {
-		'keypress @ui.input': 'onInputKeypress'
-	},
+// 	events: {
+// 		'keypress @ui.input': 'onInputKeypress'
+// 	},
 
-	onInputKeypress: function(e) {
-		var ENTER_KEY = 13;
-		var todoText = this.ui.input.val().trim();
+// 	onInputKeypress: function(e) {
+// 		var ENTER_KEY = 13;
+// 		var todoText = this.ui.input.val().trim();
 
-		if (e.which === ENTER_KEY && todoText) {
-			this.collection.create({
-				title: todoText
-			});
-			this.ui.input.val('');
-		}
-	}
+// 		if (e.which === ENTER_KEY && todoText) {
+// 			this.collection.create({
+// 				title: todoText
+// 			});
+// 			this.ui.input.val('');
+// 		}
+// 	}
 
-})
+// })
 
 
-var FooterLayout = Mn.ItemView.extend({
-	
-	template: '#template-footer',
+// exports.FooterLayout = Mn.ItemView.extend({
 
-	ui: {
-		filters: '#filters a',
-		completed: '.completed a',
-		active: '.active a',
-		all: '.all a',
-		summary: '#todo-count',
-		clear: '#clear-completed'
-	},
+// 	template: '#template-footer',
 
-	events: {
-		'click @ui.clear': 'onClearClick'
-	},
+// 	ui: {
+// 		filters: '#filters a',
+// 		completed: '.completed a',
+// 		active: '.active a',
+// 		all: '.all a',
+// 		summary: '#todo-count',
+// 		clear: '#clear-completed'
+// 	},
 
-	collectionEvents: {
-		all: 'render'
-	},
+// 	events: {
+// 		'click @ui.clear': 'onClearClick'
+// 	},
 
-	templateHelpers: {
-		activeCountLabel: function() {
-			return (this.activeCount === 1 ? 'item' : 'items') + ' left';
-		}
-	},
+// 	collectionEvents: {
+// 		all: 'render'
+// 	},
 
-	initialize: function() {
-		console.log('footer initialize');
-	},
+// 	templateHelpers: {
+// 		activeCountLabel: function() {
+// 			return (this.activeCount === 1 ? 'item' : 'items') + ' left';
+// 		}
+// 	},
 
-	serializeData: function() {
-		var active = this.collection.getActive().length;
-		var total = this.collection.length;
+// 	initialize: function() {
+// 		console.log('footer initialize');
+// 	},
 
-		return {
-			activeCount: active,
-			totalCount: total,
-			completedCount: total - active
-		};
-	},
+// 	serializeData: function() {
+// 		var active = this.collection.getActive().length;
+// 		var total = this.collection.length;
 
-	onRender: function() {
-		this.$el.parent().toggle(this.collection.length > 0);
-		// this.updateFilterSelection();
-	},
+// 		return {
+// 			activeCount: active,
+// 			totalCount: total,
+// 			completedCount: total - active
+// 		};
+// 	},
 
-	updateFilterSelection: function() {
-		this.ui.filters.removeClass('selected');
-	},
+// 	onRender: function() {
+// 		this.$el.parent().toggle(this.collection.length > 0);
+// 		// this.updateFilterSelection();
+// 	},
 
-	onClearClick: function() {
-		var completed = this.collection.getCompleted();
-		completed.forEach(function (todo) {
-			todo.destroy();
-		})
-	}
+// 	updateFilterSelection: function() {
+// 		this.ui.filters.removeClass('selected');
+// 	},
 
-})
+// 	onClearClick: function() {
+// 		var completed = this.collection.getCompleted();
+// 		completed.forEach(function (todo) {
+// 			todo.destroy();
+// 		})
+// 	}
+
+// })
 
