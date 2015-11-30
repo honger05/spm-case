@@ -1,0 +1,11 @@
+{
+    "source": "content",
+    "output": "_site",
+    "theme": "_themes/one",
+    "permalink": "{{directory}}/{{filename}}.html",
+    "writers": [
+        "nico.PostWriter",
+        "nico.FileWriter",
+        "nico.StaticWriter"
+    ]
+}
