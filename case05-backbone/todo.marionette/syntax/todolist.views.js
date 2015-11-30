@@ -1,94 +1,94 @@
 
 
-var Backbone = require('backbone');
+// var Backbone = require('backbone');
 
-var Mn = Backbone.Marionette;
-var Radio = Backbone.Radio;
+// var Mn = Backbone.Marionette;
+// var Radio = Backbone.Radio;
 
-var TodoView = Mn.ItemView.extend({
+// var TodoView = Mn.ItemView.extend({
 
-	tagName: 'li',
+// 	tagName: 'li',
 
-	template: '#template-todoItemView',
+// 	template: '#template-todoItemView',
 
-	className: function() {
-		return this.model.get('completed') ? 'completed' : 'active';
-	},
+// 	className: function() {
+// 		return this.model.get('completed') ? 'completed' : 'active';
+// 	},
 
-	ui: {
-		edit: '.edit',
-		destroy: '.destroy',
-		label: 'label',
-		toggle: '.toggle'
-	},
+// 	ui: {
+// 		edit: '.edit',
+// 		destroy: '.destroy',
+// 		label: 'label',
+// 		toggle: '.toggle'
+// 	},
 
-	events: {
-		'click @ui.destroy': 'deleteModel',
-		'keydown @ui.edit': 'onEditKeypress',
-		'focusout @ui.edit': 'onEditFocusout'
-	},
+// 	events: {
+// 		'click @ui.destroy': 'deleteModel',
+// 		'keydown @ui.edit': 'onEditKeypress',
+// 		'focusout @ui.edit': 'onEditFocusout'
+// 	},
 
-	modelEvents: {
-		change: 'render'
-	},
+// 	modelEvents: {
+// 		change: 'render'
+// 	},
 
-	deleteModel: function() {
-		this.model.destroy();
-	},
+// 	deleteModel: function() {
+// 		this.model.destroy();
+// 	},
 
-	onEditFocusout: function() {
-		var todoText = this.ui.edit.val().trim();
-		if (todoText) {
-			this.model.set('title', todoText).save();
-			this.$el.removeClass('editing');
-		} else {
-			this.destroy();
-		}
-	},
+// 	onEditFocusout: function() {
+// 		var todoText = this.ui.edit.val().trim();
+// 		if (todoText) {
+// 			this.model.set('title', todoText).save();
+// 			this.$el.removeClass('editing');
+// 		} else {
+// 			this.destroy();
+// 		}
+// 	},
 
-	onEditKeypress: function() {
-		var ENTER_KEY = 13;
-		var ESC_KEY = 27;
+// 	onEditKeypress: function() {
+// 		var ENTER_KEY = 13;
+// 		var ESC_KEY = 27;
 
-		if (e.which === ENTER_KEY) {
-			this.onEditFocusout();
-			return;
-		}
+// 		if (e.which === ENTER_KEY) {
+// 			this.onEditFocusout();
+// 			return;
+// 		}
 
-		if (e.which === ESC_KEY) {
-			this.ui.edit.val(this.model.get('title'));
-			this.$el.removeClass('editing');
-		}
-	}
+// 		if (e.which === ESC_KEY) {
+// 			this.ui.edit.val(this.model.get('title'));
+// 			this.$el.removeClass('editing');
+// 		}
+// 	}
 
-})
+// })
 
 
-var ListView = Mn.CompositeView.extend({
+// var ListView = Mn.CompositeView.extend({
 
-	template: '#template-todoListCompositeView',
+// 	template: '#template-todoListCompositeView',
 
-	childView: TodoView,
+// 	childView: TodoView,
 
-	childViewContainer: '#todo-list',
+// 	childViewContainer: '#todo-list',
 
-	ui: {
-		toggle: '#toggle-all'
-	},
+// 	ui: {
+// 		toggle: '#toggle-all'
+// 	},
 
-	events: {
-		'click @ui.toggle': 'onToggleAllClick'
-	},
+// 	events: {
+// 		'click @ui.toggle': 'onToggleAllClick'
+// 	},
 
-	collectionEvents: {
-		'change:completed': 'render',
-		all: 'setCheckAllState'
-	},
+// 	collectionEvents: {
+// 		'change:completed': 'render',
+// 		all: 'setCheckAllState'
+// 	},
 
-	initialize: function() {
-		// this.listenTo()
-	}
+// 	initialize: function() {
+// 		// this.listenTo()
+// 	}
 
-})
+// })
 
 

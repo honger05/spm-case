@@ -1,14 +1,14 @@
 {
   "spm": {
     "output": [
-      "index.*",
-      "demo/**/*.*",
-      "jslet-all.css"
+      "index.html",
+      "demo/**/*.*"
     ],
     "build": {
       "global": {
         "jquery": "jQuery"
-      }
+      },
+      "sourcemap": true
     }
   }
 }
