@@ -6,7 +6,6 @@
 var Backbone = require('backbone');
 
 var Mn = Backbone.Marionette;
-var Radio = Backbone.Radio;
 
 exports.RootLayout = Mn.LayoutView.extend({
 
@@ -20,90 +19,90 @@ exports.RootLayout = Mn.LayoutView.extend({
 
 })
 
-// exports.HeaderLayout = Mn.ItemView.extend({
+exports.HeaderLayout = Mn.ItemView.extend({
 
-// 	template: '#template-header',
+	template: '#template-header',
 
-// 	ui: {
-// 		input: '#new-todo'
-// 	},
+	ui: {
+		input: '#new-todo'
+	},
 
-// 	events: {
-// 		'keypress @ui.input': 'onInputKeypress'
-// 	},
+	events: {
+		'keypress @ui.input': 'onInputKeypress'
+	},
 
-// 	onInputKeypress: function(e) {
-// 		var ENTER_KEY = 13;
-// 		var todoText = this.ui.input.val().trim();
+	onInputKeypress: function(e) {
+		var ENTER_KEY = 13;
+		var todoText = this.ui.input.val().trim();
 
-// 		if (e.which === ENTER_KEY && todoText) {
-// 			this.collection.create({
-// 				title: todoText
-// 			});
-// 			this.ui.input.val('');
-// 		}
-// 	}
+		if (e.which === ENTER_KEY && todoText) {
+			this.collection.create({
+				title: todoText
+			});
+			this.ui.input.val('');
+		}
+	}
 
-// })
+})
 
 
-// exports.FooterLayout = Mn.ItemView.extend({
+exports.FooterLayout = Mn.ItemView.extend({
 
-// 	template: '#template-footer',
+	template: '#template-footer',
 
-// 	ui: {
-// 		filters: '#filters a',
-// 		completed: '.completed a',
-// 		active: '.active a',
-// 		all: '.all a',
-// 		summary: '#todo-count',
-// 		clear: '#clear-completed'
-// 	},
+	ui: {
+		filters: '#filters a',
+		completed: '.completed a',
+		active: '.active a',
+		all: '.all a',
+		summary: '#todo-count',
+		clear: '#clear-completed'
+	},
 
-// 	events: {
-// 		'click @ui.clear': 'onClearClick'
-// 	},
+	events: {
+		'click @ui.clear': 'onClearClick'
+	},
 
-// 	collectionEvents: {
-// 		all: 'render'
-// 	},
+	collectionEvents: {
+		all: 'render'
+	},
 
-// 	templateHelpers: {
-// 		activeCountLabel: function() {
-// 			return (this.activeCount === 1 ? 'item' : 'items') + ' left';
-// 		}
-// 	},
+	templateHelpers: {
+		activeCountLabel: function() {
+			return (this.activeCount === 1 ? 'item' : 'items') + ' left';
+		}
+	},
 
-// 	initialize: function() {
-// 		console.log('footer initialize');
-// 	},
+	initialize: function() {
+		console.log('footer initialize');
+	},
 
-// 	serializeData: function() {
-// 		var active = this.collection.getActive().length;
-// 		var total = this.collection.length;
+	serializeData: function() {
+		var active = this.collection.getActive().length;
+		var total = this.collection.length;
 
-// 		return {
-// 			activeCount: active,
-// 			totalCount: total,
-// 			completedCount: total - active
-// 		};
-// 	},
+		return {
+			activeCount: active,
+			totalCount: total,
+			completedCount: total - active
+		};
+	},
 
-// 	onRender: function() {
-// 		this.$el.parent().toggle(this.collection.length > 0);
-// 		// this.updateFilterSelection();
-// 	},
+	onRender: function() {
+		this.$el.parent().toggle(this.collection.length > 0);
+		// this.updateFilterSelection();
+	},
 
-// 	updateFilterSelection: function() {
-// 		this.ui.filters.removeClass('selected');
-// 	},
+	updateFilterSelection: function() {
+		this.ui.filters.removeClass('selected');
+	},
 
-// 	onClearClick: function() {
-// 		var completed = this.collection.getCompleted();
-// 		completed.forEach(function (todo) {
-// 			todo.destroy();
-// 		})
-// 	}
+	onClearClick: function() {
+		var completed = this.collection.getCompleted();
+		completed.forEach(function (todo) {
+			todo.destroy();
+		})
+	}
 
-// })
+})
 
