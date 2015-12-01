@@ -504,10 +504,18 @@ _.partition([0, 1, 2, 3, 4, 5], isOdd);
 
 ### _.first (array, [n]) 
 
-返回array（数组）的第一个元素。传递 n参数将返回数组中从第一个元素开始的n个元素（愚人码头注：返回数组中前 n 个元素.）。
+返回array（数组）的第一个元素。传递 n参数将返回数组中从第一个元素开始的n个元素。
 
 ````js
+_.first = _.head = _.take = function(array, n, guard) {
+	// 处理特殊情况 void 修饰的 都返回 undefined
+	if (array == null) return void 0;
+	if ((n == null) || guard) return array[0];
+	if (n < 0) return [];
 
+	// 截取 0 - n 个元素
+	return slice.call(array, 0, n);
+}
 ````
 
 示例
@@ -523,7 +531,9 @@ _.first([5, 4, 3, 2, 1]);
 返回数组中除了最后一个元素外的其他全部元素。 在arguments对象上特别有用。传递 n参数将从结果中排除从最后一个开始的n个元素
 
 ````js
-
+_.initial = function(array, n, guard) {
+	return slice.call(array, 0, Math.max(0, array.length - (n == null || guard ? 1 : n)));
+}
 ````
 
 示例
@@ -539,7 +549,11 @@ _.initial([5, 4, 3, 2, 1]);
 返回array（数组）的最后一个元素。传递 n参数将返回数组中从最后一个元素开始的n个元素
 
 ````js
-
+_.last = function(array, n, guard) {
+	if (array == null) return void 0;
+	if ((n == null) || guard) return array[array.length - 1];
+	return slice.call(array, Math.max(array.length - n, 0));
+}
 ````
 
 示例
@@ -552,10 +566,12 @@ _.last([5, 4, 3, 2, 1]);
 --- 
 ### _.rest (array, [index])  
 
-返回数组中除了第一个元素外的其他全部元素。传递 index 参数将返回从index开始的剩余所有元素 。
+返回数组中除了第一个元素外的其他全部元素。传递 index 参数将返回从index开始的剩余所有元素 。Especially useful on the arguments object
 
 ````js
-
+_.rest = _.tail = _.drop = function(array, n, guard) {
+	return slice.call(array, (n == null) || guard ? 1 : n);
+}
 ````
 
 示例
@@ -571,7 +587,9 @@ _.rest([5, 4, 3, 2, 1]);
 返回一个除去所有false值的 array副本。 在javascript中, false, null, 0, "", undefined 和 NaN 都是false值.
 
 ````js
-
+_.compact = function(array) {
+	return _.filter(array, _.identity);
+}
 ````
 
 示例
@@ -1138,7 +1156,15 @@ welcome('moe');
 检索object拥有的所有可枚举属性的名称
 
 ````js
+_.keys = function(obj) {
+	if (!_.isObject(obj)) return [];
+	if (nativeKeys) return nativeKeys(obj);
+	var keys = [];
 
+	// 避免遍历到父类的 keys
+	for (var key in obj) if (_.has(obj, key)) keys.push(key);
+	return keys;
+}
 ````
 
 示例
@@ -1154,7 +1180,7 @@ _.keys({one: 1, two: 2, three: 3});
 检索object拥有的和继承的所有属性的名称。
 
 ````js
-
+non
 ````
 
 示例
@@ -1174,7 +1200,15 @@ _.allKeys(new Stooge("Moe"));
 返回object对象所有的属性值。
 
 ````js
-
+_.values = function(obj) {
+	var keys = _.keys(obj);
+	var length = keys.length;
+	var values = new Array(length);
+	for (var i = 0; i < length; i++) {
+    values[i] = obj[keys[i]]
+  }
+  return values;
+}
 ````
 
 示例
@@ -1190,7 +1224,7 @@ _.values({one: 1, two: 2, three: 3});
 它类似于map，但是这用于对象。转换每个属性的值。
 
 ````js
-
+non
 ````
 
 示例
@@ -1208,7 +1242,15 @@ _.mapObject({start: 5, end: 12}, function(val, key) {
 把一个对象转变为一个[key, value]形式的数组。
 
 ````js
-
+_.pairs = function(obj) {
+  var keys = _.keys(obj);
+  var length = keys.length;
+  var pairs = new Array(length);
+  for (var i = 0; i < length; i++) {
+    pairs[i] = [keys[i], obj[keys[i]]];
+  }
+  return pairs;
+};
 ````
 
 示例

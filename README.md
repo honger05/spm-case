@@ -56,7 +56,11 @@ $ open dist/index.html
 * [egghead](https://egghead.io/)
 * [leanpub](https://leanpub.com/)
 
+### 国外大牛 Blog
 
-
+* [reindex](https://www.reindex.io/blog/)
+* [davidsulc -- backbone.marionette](http://davidsulc.com/blog/)
+* [victorsavkin -- angular2](http://victorsavkin.com/)
+* [lostechies](https://lostechies.com/)
 
 
