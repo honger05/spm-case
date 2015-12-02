@@ -4,6 +4,8 @@ require('./index.css');
 
 var React = require('react');
 var Router = require('react-router');
+
+// First we import some components...
 var { Route, RouteHandler, Link } = Router;
 
 var App = React.createClass({

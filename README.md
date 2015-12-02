@@ -62,5 +62,6 @@ $ open dist/index.html
 * [davidsulc -- backbone.marionette](http://davidsulc.com/blog/)
 * [victorsavkin -- angular2](http://victorsavkin.com/)
 * [lostechies](https://lostechies.com/)
+* [andrewray](http://blog.andrewray.me/)
 
 
