@@ -86,6 +86,26 @@ Clui.previewImage = function(url){
 
 2. 在 cl-ued 的 src 目录 中，把很多单独功能的小模块拆成小文件，方便管理和维护。 src 目录下的代码并不能直接使用，因为他们是 commonjs 规范的。必须由 [spm-sea](https://github.com/spmjs/spm-sea) 工具将其打包到 dist 目录中才能使用。Makefile 的作用是调整目录结构。
 
+2.1 spm-sea 安装
+
+先下载安装 nodejs 。然后执行下面命令
+
+```bash
+npm install spm-sea -g
+```
+
+cmd 进入 clui 的 src 目录，执行
+
+```bash
+spm-sea 
+```
+
+可以使用 `spm-sea --help` 查看帮助
+
+打包之后的 dist 目录可以手动复制到其他的位置存放。也可以使用 Makefile ，用命令来移动。
+
+windows 系统可以安装 cygwin 。来执行 make 命令。
+
 #### 1.1 列举小模块
 
 1. code.js ：一些公共的提示代码，未进行有效整理。可以优化。

@@ -24,13 +24,14 @@ class CommentList extends React.Component {
 
 class CommentForm extends React.Component {
 
-	handleSubmit(e) {
+	handleSubmit = (e) => {
 		e.preventDefault();
 		var author = this.refs.author.value.trim();
 		var text = this.refs.text.value.trim();
 		if (!text || !author) {
 			return;
 		}
+		this.props.onCommentSubmit({author: author, text: text});
 		this.refs.author.value = '';
 		this.refs.text.value = '';
 		return;
@@ -69,18 +70,23 @@ class CommentBox extends React.Component {
 
 	state =  {data: []}
 
+	handleCommentSubmit = (comment) => {
+		var comments = this.state.data;
+		var newComents = comments.concat([comment]);
+		this.setState({data: newComents});
+	}
+
 	componentDidMount() {
-		var self = this;
 		$.ajax({
 			url: this.props.url,
 			dataType: 'json',
 			cache: false,
-			success(data) {
-				self.setState({data: data})
-			},
-			error(xhr, status, err) {
-				console.error(self.props.url, status, err.toString());
-			}
+			success: ((data) => {
+				this.setState({data: data})
+			}),
+			error: ((xhr, status, err) => {
+				console.error(this.props.url, status, err.toString());
+			})
 		})
 	}
 
@@ -89,7 +95,7 @@ class CommentBox extends React.Component {
 			<div className="commentBox">
 				<h1>Comments</h1>
 				<CommentList data={this.state.data} />
-				<CommentForm />
+				<CommentForm onCommentSubmit={this.handleCommentSubmit}/>
 			</div>
 		)
 	}
