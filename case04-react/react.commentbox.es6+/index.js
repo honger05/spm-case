@@ -102,4 +102,7 @@ class CommentBox extends React.Component {
 }
 
 
-ReactDom.render(<CommentBox url='/api/comments.json' />, document.getElementById('content'))
+ReactDom.render(
+	<CommentBox url='/api/comments.json' />, 
+	document.getElementById('content')
+)
