@@ -11,6 +11,11 @@ AppDispatcher.register( function( payload ) {
       // Tell the world we changed!
       ListStore.trigger( 'change' );
     break;
+
+    case 'delete-item':
+    	ListStore.items.splice(0, 1);
+    	ListStore.trigger( 'change' );
+    break;
   }
   return true; // Needed for Flux promise resolution
 });

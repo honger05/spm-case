@@ -2,11 +2,16 @@
 var React = require('react');
 var ListStore = require('../store/ListStore.js');
 var ListActions = require('../action/ListActions.js');
+var count = 0;
 
 var MyButton = React.createClass({
 
   createNewItem: function(evt) {
-    ListActions.add({ name: 'Marco' });
+    ListActions.add({ id: ++count, name: 'Marco' + count });
+  },
+
+  deleteItem: function(ev) {
+    ListActions.delete({})
   },
 
   componentDidMount: function() {
@@ -32,15 +37,21 @@ var MyButton = React.createClass({
     var itemHtml = items.map( function( listItem ) {
       // "key" is important, should be a unique
       // identifier for each list item
-      return <li key={ listItem.id }>
-        { listItem.name }
-      </li>;
-    });
+      return (
+        <li key={ listItem.id } onClick={this.deleteItem}>
+          { listItem.name }
+        </li>
+      )
 
-    return (<div>
-      <ul>{ itemHtml }</ul>
-      <button onClick={ this.createNewItem }>New Item</button>
-    </div>);
+    }.bind(this));
+
+    return (
+      <div>
+        <ul>{ itemHtml }</ul>
+        <button onClick={ this.createNewItem }>New Item</button>
+      </div>
+    );
+
   }
 
 });
