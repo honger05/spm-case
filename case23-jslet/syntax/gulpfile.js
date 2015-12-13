@@ -4,6 +4,8 @@ var concat = require('gulp-concat');
 
 gulp.task('build', ['build-js', 'build-css', 'copy-images', 'copy-lib-lang']);
 
+gulp.task('build-js', ['build-js-data', 'build-js-ui']);
+
 gulp.task('build-js-data', function() {
 	gulp.src(['src/jslet.global.js', 'src/core/*.js', '!src/core/jslet.messagebus.js', 'src/data/*.js'])
 			.pipe(concat('jslet-data.debug.js'))
@@ -15,8 +17,6 @@ gulp.task('build-js-ui', function() {
 			.pipe(concat('jslet-ui.debug.js'))
 			.pipe(gulp.dest('build'));
 })
-
-gulp.task('build-js', ['build-js-data', 'build-js-ui'])
 
 gulp.task('build-css', function() {
 	gulp.src(['src/asset/default/*.css'])
