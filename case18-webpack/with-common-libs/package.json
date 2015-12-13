@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "gulp-util": "~2.2.9",
+    "gulp": "~3.3.0",
+    "webpack": "~1.0.0-beta6",
+    "webpack-dev-server": "~1.2.0",
+    "css-loader": "~0.6.6",
+    "url-loader": "~0.5.2",
+    "file-loader": "~0.5.0",
+    "style-loader": "~0.6.0",
+    "react": "^0.10.0",
+    "jsx-loader": "^0.10.2"
+  }
+}
