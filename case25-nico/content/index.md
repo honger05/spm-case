@@ -50,10 +50,12 @@ var cb2 = new ConfirmBox({
 
 ## ConfirmBox 的静态方法 `常用`
 
+<p>
 <input type="button" id="trigger12" value="ConfirmBox.alert()" />
 <input type="button" id="trigger13" value="ConfirmBox.confirm()" />
 <input type="button" id="trigger13-1" value="ConfirmBox.confirm() with onCancel" />
 <input type="button" id="trigger14" value="ConfirmBox.show()" />
+</p>
 
 ````js
 
